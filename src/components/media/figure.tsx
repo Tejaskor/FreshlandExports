@@ -1,0 +1,51 @@
+import Image from "next/image";
+
+import { BotanicalArt, type ArtVariant } from "@/components/media/botanical-art";
+import { cn } from "@/lib/utils";
+
+type FigureProps = {
+  /** Real photography. When null, generated botanical art is rendered instead. */
+  image: string | null;
+  alt: string;
+  art: ArtVariant;
+  className?: string;
+  /** Applied to the image/art itself — the hover scale lives here. */
+  mediaClassName?: string;
+  priority?: boolean;
+  sizes?: string;
+};
+
+/**
+ * Every photographic slot on the site goes through this component, so adding
+ * real imagery later is a config change rather than a layout change.
+ */
+export function Figure({
+  image,
+  alt,
+  art,
+  className,
+  mediaClassName,
+  priority = false,
+  sizes = "100vw",
+}: FigureProps) {
+  return (
+    <div className={cn("relative overflow-hidden bg-sage-100", className)}>
+      {image ? (
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes={sizes}
+          className={cn("object-cover", mediaClassName)}
+        />
+      ) : (
+        <BotanicalArt
+          variant={art}
+          label={alt}
+          className={cn("absolute inset-0 object-cover", mediaClassName)}
+        />
+      )}
+    </div>
+  );
+}
