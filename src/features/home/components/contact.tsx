@@ -16,8 +16,10 @@ export function Contact() {
       {/* Decorative backdrop: pale map-and-foliage plate. Empty alt because it
           carries no information the surrounding copy does not already give. */}
       <div className="pointer-events-none absolute inset-0 -z-10 hidden overflow-hidden lg:block">
+        {/* Bled 4% past top and bottom so the ±3.5% drift never uncovers the
+            plate's edge — otherwise a hairline of section background shows. */}
         <ScrollScrub
-          className="absolute inset-0"
+          className="absolute inset-x-0 -inset-y-[4%]"
           from={{ yPercent: 3.5 }}
           to={{ yPercent: -3.5 }}
           desktopOnly

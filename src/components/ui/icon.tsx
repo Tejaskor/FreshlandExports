@@ -19,6 +19,11 @@ export type IconName =
   | "mail"
   | "phone"
   | "pin"
+  | "eye"
+  | "target"
+  | "award"
+  | "users"
+  | "layers"
   | "linkedin"
   | "instagram"
   | "youtube";
@@ -41,6 +46,11 @@ const strokePaths: Partial<Record<IconName, string>> = {
   phone: "M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1Z",
   pin: "M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
   play: "M9 6.5v11l9-5.5-9-5.5Z",
+  eye: "M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Zm9.5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z",
+  target: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-4a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z",
+  award: "M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm-3.5-1.1L7 21l5-2.5 5 2.5-1.5-7.1",
+  users: "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-6 10v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1m1-10a3.5 3.5 0 0 0 0-7m2.5 17v-1a4.5 4.5 0 0 0-3-4.2",
+  layers: "M12 3 3 8l9 5 9-5-9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5",
 };
 
 const filledPaths: Partial<Record<IconName, string>> = {

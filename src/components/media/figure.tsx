@@ -12,6 +12,10 @@ type FigureProps = {
   /** Applied to the image/art itself — the hover scale lives here. */
   mediaClassName?: string;
   priority?: boolean;
+  /** Must be listed in `images.qualities` in next.config.ts. */
+  quality?: number;
+  /** "eager" for above-the-fold images that are not worth a preload. */
+  loading?: "eager" | "lazy";
   sizes?: string;
 };
 
@@ -26,6 +30,8 @@ export function Figure({
   className,
   mediaClassName,
   priority = false,
+  quality,
+  loading,
   sizes = "100vw",
 }: FigureProps) {
   return (
@@ -36,6 +42,8 @@ export function Figure({
           alt={alt}
           fill
           priority={priority}
+          quality={quality}
+          loading={priority ? undefined : loading}
           sizes={sizes}
           className={cn("object-cover", mediaClassName)}
         />

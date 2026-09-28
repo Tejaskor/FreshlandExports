@@ -10,4 +10,5 @@ export { ScrollScrub } from "@/animations/scroll-scrub";
 export { Magnetic } from "@/animations/magnetic";
 export { Tilt } from "@/animations/tilt";
 export { CountUp } from "@/animations/count-up";
+export { ClipReveal } from "@/animations/clip-reveal";
 export { MEDIA, EASE, DURATION, START, SCRUB_RANGE, amplitude } from "@/animations/motion";
