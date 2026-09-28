@@ -64,14 +64,16 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="hidden xl:block">
-          <ul className="flex items-center gap-8">
+          {/* Tighter spacing until 85rem: "Our Signature Ingredients" is the
+              longest label, and at 1280px the full gap left almost no room. */}
+          <ul className="flex items-center gap-6 min-[85rem]:gap-8">
             {primaryNav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-1.5 text-[1rem] transition-colors duration-300",
+                    "flex items-center gap-1.5 text-[1rem] whitespace-nowrap transition-colors duration-300",
                     isActive(item.href)
                       ? "text-leaf"
                       : "text-ink hover:text-leaf",

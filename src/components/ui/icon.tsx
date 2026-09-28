@@ -10,6 +10,7 @@ export type IconName =
   | "search"
   | "menu"
   | "close"
+  | "check"
   | "sprout"
   | "shield"
   | "globe"
@@ -24,6 +25,9 @@ export type IconName =
   | "award"
   | "users"
   | "layers"
+  | "flask"
+  | "molecule"
+  | "clipboard"
   | "linkedin"
   | "instagram"
   | "youtube";
@@ -36,6 +40,7 @@ const strokePaths: Partial<Record<IconName, string>> = {
   search: "M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm6.5-1.5L21 21",
   menu: "M4 7h16M4 12h16M4 17h16",
   close: "M6 6l12 12M18 6 6 18",
+  check: "m5 12.5 4.5 4.5L19 7.5",
   sprout: "M12 21v-8m0 0c0-4-3-7-7-7 0 4 3 7 7 7Zm0 0c0-4 3-7 7-7 0 4-3 7-7 7Z",
   shield: "M12 3l7 3v6c0 4-3 7.5-7 9-4-1.5-7-5-7-9V6l7-3Zm-2.5 9 2 2 4-4",
   globe: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.5-2.4 3.8-5.4 3.8-9S14.5 5.4 12 3M12 21c-2.5-2.4-3.8-5.4-3.8-9S9.5 5.4 12 3M3.4 9h17.2M3.4 15h17.2",
@@ -51,6 +56,9 @@ const strokePaths: Partial<Record<IconName, string>> = {
   award: "M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Zm-3.5-1.1L7 21l5-2.5 5 2.5-1.5-7.1",
   users: "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-6 10v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1m1-10a3.5 3.5 0 0 0 0-7m2.5 17v-1a4.5 4.5 0 0 0-3-4.2",
   layers: "M12 3 3 8l9 5 9-5-9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5",
+  flask: "M9.5 3h5M10 3v6.2L4.8 18.1A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.9L14 9.2V3M7.2 14h9.6",
+  molecule: "M12 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm-6 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm12 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM10.8 9.2l-3.6 5.6m6-5.6 3.6 5.6M8.5 17h7",
+  clipboard: "M9 4h6v3H9V4Zm-2 1.5H6a1 1 0 0 0-1 1V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1h-1M8.5 12h7m-7 4h4.5",
 };
 
 const filledPaths: Partial<Record<IconName, string>> = {

@@ -6,7 +6,7 @@ import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { ScrollScrub } from "@/animations/scroll-scrub";
 import { Section } from "@/components/ui/section";
-import { RuledEyebrow } from "@/features/about/components/ruled-eyebrow";
+import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { ourStory } from "@/features/about/data";
 
 export function OurStory() {

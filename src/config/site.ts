@@ -57,13 +57,16 @@ export const primaryNav: readonly NavItem[] = [
   },
   { label: "About Us", href: "/about", hint: "Who we are and how we began" },
   { label: "Our Farms", href: "/farms", hint: "Soil, seed and the growers behind it" },
-  { label: "Quality", href: "/quality", hint: "Standards we are audited against" },
+  {
+    label: "Our Signature Ingredients",
+    href: "/signature-ingredients",
+    hint: "Science-backed botanicals for global industries",
+  },
   { label: "R&D Lab", href: "/r-and-d", hint: "Extraction, assay and validation" },
   {
-    label: "Resources",
-    href: "/resources",
-    hasMenu: true,
-    hint: "Documentation, journal and downloads",
+    label: "Certificates",
+    href: "/certificates",
+    hint: "Certifications and registrations we hold",
   },
 ] as const;
 
@@ -76,7 +79,7 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       { label: "Products", href: "/products" },
       { label: "R&D Lab", href: "/r-and-d" },
       { label: "Our Farms", href: "/farms" },
-      { label: "Quality", href: "/quality" },
+      { label: "Our Signature Ingredients", href: "/signature-ingredients" },
       { label: "Journal", href: "/journal" },
       { label: "Contact Us", href: "/contact" },
     ],
@@ -105,11 +108,12 @@ export const legalNav: readonly NavItem[] = [
 export const staticRoutes: readonly string[] = [
   "/",
   "/products",
+  "/signature-ingredients",
   "/about",
   "/farms",
-  "/quality",
   "/r-and-d",
   "/categories",
   "/resources",
+  "/certificates",
   "/contact",
 ] as const;

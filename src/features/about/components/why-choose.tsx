@@ -7,7 +7,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { Section } from "@/components/ui/section";
-import { RuledEyebrow } from "@/features/about/components/ruled-eyebrow";
+import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { whyChoose } from "@/features/about/data";
 
 export function WhyChoose() {

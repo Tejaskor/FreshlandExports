@@ -116,7 +116,7 @@ export function Hero() {
             >
               <p
                 aria-hidden="true"
-                className="max-w-[16rem] text-right font-display text-[1.625rem] leading-relaxed text-forest italic"
+                className="max-w-[16rem] text-right font-display text-[1.625rem] leading-relaxed text-forest"
               >
                 {hero.script.map((line) => (
                   <span key={line} className="block">

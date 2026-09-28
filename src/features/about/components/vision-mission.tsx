@@ -6,7 +6,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { ScrollScrub } from "@/animations/scroll-scrub";
 import { Section } from "@/components/ui/section";
-import { RuledEyebrow } from "@/features/about/components/ruled-eyebrow";
+import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { visionMission } from "@/features/about/data";
 import { cn } from "@/lib/utils";
 

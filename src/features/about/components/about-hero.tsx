@@ -2,9 +2,9 @@ import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { ScrollScrub } from "@/animations/scroll-scrub";
-import { BotanicalLines } from "@/features/about/components/botanical-lines";
+import { BotanicalLines } from "@/components/media/botanical-lines";
 import { HeroPanels } from "@/features/about/components/hero-panels";
-import { RuledEyebrow } from "@/features/about/components/ruled-eyebrow";
+import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { aboutHero } from "@/features/about/data";
 
 /**
@@ -57,7 +57,7 @@ export function AboutHero() {
               </RevealLines>
 
               <Reveal delay={0.4} variant="rise">
-                <p className="mt-5 max-w-xs font-display text-[1.25rem] leading-snug text-white/70 italic lg:mt-6">
+                <p className="mt-5 max-w-xs font-display text-[1.25rem] leading-snug text-white/70 lg:mt-6">
                   {aboutHero.tagline}
                 </p>
               </Reveal>
