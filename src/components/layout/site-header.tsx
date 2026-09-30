@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,11 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
-import { ProductsMenu } from "@/components/layout/products-menu";
+import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/products-menu";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
 import { primaryNav, siteConfig } from "@/config/site";
-import { productMenu } from "@/features/products/export-catalogue";
+import { productMenu, type ProductMenuGroupId } from "@/features/products/export-catalogue";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -27,6 +26,9 @@ export function SiteHeader() {
   // it without an effect reaching back into state.
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const menuOpen = openedOn === pathname;
+
+  // Mobile menu: the one product category currently expanded.
+  const [mobileGroup, setMobileGroup] = useState<ProductMenuGroupId | null>(null);
 
   const closeMenu = () => setOpenedOn(null);
   const toggleMenu = () => setOpenedOn((current) => (current ? null : pathname));
@@ -58,9 +60,11 @@ export function SiteHeader() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[var(--ease-out-expo)]",
         // Transparent over the hero; once the page scrolls it condenses into
         // a solid white bar with a hairline, and clears again at the top.
+        // --header-pb mirrors the bottom padding so the Products menu can hang
+        // exactly from the header's bottom edge in both states.
         condensed
-          ? "border-b border-line bg-white py-3 shadow-[0_1px_12px_rgb(13_44_30/0.06)]"
-          : "border-b border-transparent bg-transparent py-5",
+          ? "border-b border-line bg-white py-3 shadow-[0_1px_12px_rgb(13_44_30/0.06)] [--header-pb:0.75rem]"
+          : "border-b border-transparent bg-transparent py-5 [--header-pb:1.25rem]",
       )}
     >
       {/* The shared content shell (90rem), so the logo and actions line up
@@ -71,8 +75,8 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Primary" className="hidden xl:block">
-          {/* Tighter spacing until 85rem: "Our Signature Ingredients" is the
-              longest label, and at 1280px the full gap left almost no room.
+          {/* Tighter spacing until 85rem, so the full set of labels (including
+              "Our Signature Ingredients" when it is enabled) fits at 1280px.
               From 2xl the wider bar shares its extra room between the links. */}
           <ul className="flex items-center gap-6 min-[85rem]:gap-8 2xl:gap-10">
             {primaryNav.map((item) => {
@@ -166,70 +170,96 @@ export function SiteHeader() {
                       so they follow the row rather than sit inside it). */}
                   {item.hasMenu && (
                     <div className="pb-6 pl-4 pt-1 sm:pl-10">
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        {productMenu.map((group) => (
-                          <div
-                            key={group.id}
-                            className="rounded-xl border border-line/60 bg-white/70 p-3 sm:p-4"
-                          >
-                            <div className="mb-2.5 flex items-center gap-2 border-b border-line/50 pb-2">
-                              <span className="flex size-5 items-center justify-center rounded-full bg-leaf-bright/10 text-leaf-bright ring-1 ring-leaf-bright/20">
+                      {/* Click-to-expand categories; one open at a time,
+                          products listed directly beneath it. */}
+                      <ul className="divide-y divide-line/60 overflow-hidden rounded-xl border border-line/60 bg-white/70">
+                        {productMenu.map((group) => {
+                          const expanded = mobileGroup === group.id;
+                          const listId = `mobile-products-${group.id}`;
+                          return (
+                            <li key={group.id}>
+                              <button
+                                type="button"
+                                aria-expanded={expanded}
+                                aria-controls={listId}
+                                onClick={() => setMobileGroup(expanded ? null : group.id)}
+                                className={cn(
+                                  "group/cat flex w-full items-center gap-3 px-3 py-3 text-left transition-colors duration-200 sm:px-4",
+                                  expanded ? "bg-section text-forest" : "text-ink hover:bg-section/70",
+                                )}
+                              >
+                                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-leaf-bright/10 text-leaf-bright ring-1 ring-leaf-bright/20">
+                                  <Icon name={group.icon} className="size-3.5" />
+                                </span>
+                                <span className="flex-1 text-[0.9375rem] font-semibold text-forest">
+                                  <span className={menuUnderline.category(expanded)}>{group.title}</span>
+                                </span>
+                                <span className="text-[0.75rem] text-ink-muted">{group.items.length}</span>
                                 <Icon
-                                  name={group.id === "powders" ? "sprout" : "seedling"}
-                                  className="size-3"
+                                  name="chevron-down"
+                                  className={cn(
+                                    "size-4 text-ink-muted transition-transform duration-300",
+                                    expanded && "rotate-180 text-rust",
+                                  )}
                                 />
-                              </span>
-                              <span className="text-[0.75rem] font-bold tracking-wider text-forest uppercase">
-                                {group.title}
-                              </span>
-                            </div>
-                            <ul
-                              className={cn(
-                                "space-y-1",
-                                group.id === "agricultural" &&
-                                  "grid grid-cols-1 gap-x-2 gap-y-1 space-y-0 min-[480px]:grid-cols-2",
-                              )}
-                            >
-                              {group.items.map((product) => {
-                                const here = pathname === product.href;
-                                return (
-                                  <li key={product.href}>
-                                    <Link
-                                      href={product.href}
-                                      onClick={closeMenu}
-                                      aria-current={here ? "page" : undefined}
-                                      className={cn(
-                                        "flex items-center gap-2.5 rounded-lg p-1.5 text-[0.875rem] transition-colors duration-200",
-                                        here
-                                          ? "bg-section font-semibold text-forest"
-                                          : "text-ink hover:bg-section hover:text-forest",
-                                      )}
-                                    >
-                                      <span className="relative size-7 shrink-0 overflow-hidden rounded-md border border-line/60 bg-section shadow-xs">
-                                        <Image
-                                          src={product.image}
-                                          alt=""
-                                          fill
-                                          sizes="28px"
-                                          className="object-cover"
-                                        />
-                                      </span>
-                                      <span className="leading-snug">{product.label}</span>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-4 flex items-center justify-between border-t border-line/50 pt-3">
+                              </button>
+                              <div
+                                id={listId}
+                                inert={!expanded}
+                                className={cn(
+                                  "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out-expo)]",
+                                  expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                                )}
+                              >
+                                <ul className="grid min-h-0 grid-cols-1 gap-x-2 gap-y-1 overflow-hidden px-2 min-[480px]:grid-cols-2 sm:px-3">
+                                  {group.items.map((product, index) => {
+                                    const here = pathname === product.href;
+                                    return (
+                                      <li
+                                        key={product.href}
+                                        className={cn(
+                                          index === 0 && "pt-2",
+                                          index === 1 && "min-[480px]:pt-2",
+                                          "last:pb-3",
+                                          index === group.items.length - 2 && "min-[480px]:pb-3",
+                                        )}
+                                      >
+                                        <Link
+                                          href={product.href}
+                                          onClick={closeMenu}
+                                          aria-current={here ? "page" : undefined}
+                                          className={cn(
+                                            "group/item flex items-center gap-2.5 rounded-lg p-1.5 text-[0.875rem] transition-colors duration-200",
+                                            here
+                                              ? "bg-section font-semibold text-forest"
+                                              : "text-ink hover:bg-section hover:text-forest",
+                                          )}
+                                        >
+                                          <ProductThumb
+                                            image={product.image}
+                                            sizeClassName="size-7 rounded-md"
+                                            sizes="28px"
+                                          />
+                                          <span className="leading-snug">
+                                            <span className={menuUnderline.item(here)}>{product.label}</span>
+                                          </span>
+                                        </Link>
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      <div className="mt-4">
                         <Link
                           href="/products"
                           onClick={closeMenu}
                           className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-forest transition-colors hover:text-leaf"
                         >
-                          View all products
+                          View All Products
                           <Icon name="arrow-right" className="size-3.5" />
                         </Link>
                       </div>

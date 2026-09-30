@@ -1,13 +1,13 @@
 import type { IconName } from "@/components/ui/icon";
 import type { MediaSlot } from "@/types/media";
 
-/** R&D Lab content. Photography lives in public/images/r-and-d/. */
+/** Knowledge Center (formerly R&D Lab) content. Photography lives in public/images/r-and-d/. */
 
 type Link = { label: string; href: string };
 type IconItem = { icon: IconName; title: string; description: string };
 
 export const rdHero = {
-  eyebrow: "Research & Innovation",
+  eyebrow: "Knowledge Center",
   headline: ["Research &", "Innovation"],
   body: "Blending the wisdom of nature with modern science to create high-quality, plant-based ingredients for a healthier, more sustainable future.",
   media: {

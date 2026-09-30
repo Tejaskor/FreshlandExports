@@ -7,9 +7,9 @@ import { ResearchNotes } from "@/features/r-and-d/components/research-notes";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "R&D Lab",
+  title: "Knowledge Center",
   description:
-    "Research and innovation at Freshland Exports: botanical formulation, microbiology, phytochemical analysis and quality assurance for plant-based ingredients.",
+    "The Freshland Exports Knowledge Center — research and innovation: botanical formulation, microbiology, phytochemical analysis and quality assurance for plant-based ingredients.",
   path: "/r-and-d",
 });
 

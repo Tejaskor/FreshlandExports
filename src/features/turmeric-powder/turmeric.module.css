@@ -1,0 +1,10 @@
+/*
+ * Turmeric page palette: muted golds that sit with the brand greens and the
+ * rust accent. Gold is used for fills, rules and numerals on dark grounds —
+ * never as text on light grounds, where it would not be legible.
+ */
+.palette {
+  --t-gold: #d6a648;
+  --t-pale: #fbf6ea;
+  --t-glow: #f3e3bf;
+}

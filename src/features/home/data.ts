@@ -48,10 +48,10 @@ export const certifications: readonly {
 ] as const;
 
 export const stats: readonly { value: string; label: string }[] = [
-  { value: "12+", label: "Years of Trust" },
-  { value: "300+", label: "Global Clients" },
-  { value: "25+", label: "Countries Served" },
-  { value: "2000+", label: "Premium Products" },
+  { value: "3+", label: "Years of Experience" },
+  { value: "50+", label: "Global Clients" },
+  { value: "10+", label: "Countries Served" },
+  { value: "100+", label: "Premium Products" },
 ] as const;
 
 

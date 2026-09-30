@@ -3,6 +3,8 @@
  * Imported by layout, SEO helpers, sitemap and robots.
  */
 
+import { featureFlags } from "@/config/features";
+
 export const siteConfig = {
   name: "Freshland Exports",
   shortName: "Freshland",
@@ -57,12 +59,18 @@ export const primaryNav: readonly NavItem[] = [
   },
   { label: "About Us", href: "/about", hint: "Who we are and how we began" },
   { label: "Our Farms", href: "/farms", hint: "Soil, seed and the growers behind it" },
-  {
-    label: "Our Signature Ingredients",
-    href: "/signature-ingredients",
-    hint: "Science-backed botanicals for global industries",
-  },
-  { label: "R&D Lab", href: "/r-and-d", hint: "Extraction, assay and validation" },
+  // Temporarily hidden — see featureFlags.signatureIngredients.
+  ...(featureFlags.signatureIngredients
+    ? [
+        {
+          label: "Our Signature Ingredients",
+          href: "/signature-ingredients",
+          hint: "Science-backed botanicals for global industries",
+        },
+      ]
+    : []),
+  // Formerly "R&D Lab"; the /r-and-d URL is kept so existing links work.
+  { label: "Knowledge Center", href: "/r-and-d", hint: "Extraction, assay and validation" },
   {
     label: "Certificates",
     href: "/certificates",
@@ -77,9 +85,11 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
       { label: "Products", href: "/products" },
-      { label: "R&D Lab", href: "/r-and-d" },
+      { label: "Knowledge Center", href: "/r-and-d" },
       { label: "Our Farms", href: "/farms" },
-      { label: "Our Signature Ingredients", href: "/signature-ingredients" },
+      ...(featureFlags.signatureIngredients
+        ? [{ label: "Our Signature Ingredients", href: "/signature-ingredients" }]
+        : []),
       { label: "Journal", href: "/journal" },
       { label: "Contact Us", href: "/contact" },
     ],
@@ -108,7 +118,7 @@ export const legalNav: readonly NavItem[] = [
 export const staticRoutes: readonly string[] = [
   "/",
   "/products",
-  "/signature-ingredients",
+  ...(featureFlags.signatureIngredients ? ["/signature-ingredients"] : []),
   "/about",
   "/farms",
   "/r-and-d",

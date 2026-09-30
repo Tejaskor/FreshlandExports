@@ -1,0 +1,31 @@
+/*
+ * Page-scoped styles for the Moringa Powder page.
+ *
+ * Loops use the individual `translate` / `rotate` properties so they never
+ * collide with the GSAP transforms on surrounding wrappers. The global
+ * reduced-motion rule in globals.css stops all of them.
+ */
+
+.float {
+  animation: moringa-float 7s ease-in-out infinite;
+}
+
+@keyframes moringa-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+.spin {
+  animation: moringa-spin 32s linear infinite;
+}
+
+@keyframes moringa-spin {
+  to {
+    rotate: 360deg;
+  }
+}

@@ -160,7 +160,7 @@ export function Hero() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="px-2 text-center sm:px-8 sm:text-left"
+                  className="px-2 text-center sm:px-5 sm:text-left lg:px-8"
                 >
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>

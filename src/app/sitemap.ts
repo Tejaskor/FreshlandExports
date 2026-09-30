@@ -1,13 +1,20 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig, staticRoutes } from "@/config/site";
+import { findLandingProduct } from "@/features/agri/content";
 import { exportProductHref, exportProducts } from "@/features/products/export-catalogue";
 import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const routes = [...staticRoutes, ...exportProducts.map((product) => exportProductHref(product.slug))];
+  // Agricultural landing pages with temporary copy stay out until final.
+  const routes = [
+    ...staticRoutes,
+    ...exportProducts
+      .filter((product) => !findLandingProduct(product.slug))
+      .map((product) => exportProductHref(product.slug)),
+  ];
 
   return routes.map((route) => ({
     url: absoluteUrl(route, siteConfig.url),

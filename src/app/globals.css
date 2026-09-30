@@ -159,6 +159,17 @@
     text-wrap: pretty;
   }
 
+  /* The brand typography is upright only: no italic or oblique text, including
+     elements browsers slant by default. Emphasis comes from weight instead. */
+  em,
+  i,
+  cite,
+  dfn,
+  var,
+  address {
+    font-style: normal;
+  }
+
   ::selection {
     background-color: var(--color-sage-200);
     color: var(--color-forest-deep);
