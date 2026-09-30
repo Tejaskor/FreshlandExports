@@ -107,12 +107,12 @@ export const visionMission = {
     },
     {
       icon: "target",
-      tone: "ember",
+      tone: "rust",
       title: "Our Mission",
       description:
         "To deliver high-quality botanical ingredients that meet diverse industry needs while building transparent, reliable, and long-lasting partnerships.",
     },
-  ] as readonly (IconFeature & { tone: "leaf" | "ember" })[],
+  ] as readonly (IconFeature & { tone: "leaf" | "rust" })[],
 } as const;
 
 export const coreValues = {

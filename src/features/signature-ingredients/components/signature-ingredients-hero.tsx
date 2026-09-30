@@ -6,7 +6,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { ScrollScrub } from "@/animations/scroll-scrub";
-import { AnchorButton } from "@/features/signature-ingredients/components/anchor-button";
+import { AnchorButton } from "@/components/ui/anchor-button";
 import { CinematicFrame } from "@/features/signature-ingredients/components/cinematic-frame";
 import { signatureHero } from "@/features/signature-ingredients/data";
 
@@ -66,7 +66,7 @@ export function SignatureIngredientsHero() {
               intro
             >
               <Line>{signatureHero.headline.lead}</Line>
-              <Line className="text-ember">{signatureHero.headline.emphasis}</Line>
+              <Line className="text-highlight-inverse">{signatureHero.headline.emphasis}</Line>
             </RevealLines>
 
             <Reveal delay={0.95} variant="rise">

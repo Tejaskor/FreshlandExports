@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig, staticRoutes } from "@/config/site";
+import { exportProductHref, exportProducts } from "@/features/products/export-catalogue";
 import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return staticRoutes.map((route) => ({
+  const routes = [...staticRoutes, ...exportProducts.map((product) => exportProductHref(product.slug))];
+
+  return routes.map((route) => ({
     url: absoluteUrl(route, siteConfig.url),
     lastModified,
     changeFrequency: route === "/" ? "weekly" : "monthly",

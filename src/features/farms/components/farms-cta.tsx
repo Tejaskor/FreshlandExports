@@ -49,7 +49,7 @@ export function FarmsCta() {
             delay={0.05}
           >
             <Line>Let&rsquo;s Grow Something</Line>
-            <Line className="text-ember">Better Together</Line>
+            <Line className="text-highlight-inverse">Better Together</Line>
           </RevealLines>
 
           <Reveal delay={0.2} variant="rise">
@@ -62,7 +62,9 @@ export function FarmsCta() {
             variant="rise"
             className="mt-8 flex flex-wrap items-center gap-4"
           >
-            <Button href={farmsCta.primary.href}>{farmsCta.primary.label}</Button>
+            <Button href={farmsCta.primary.href}>
+              {farmsCta.primary.label}
+            </Button>
             <Button
               href={farmsCta.secondary.href}
               variant="outline"

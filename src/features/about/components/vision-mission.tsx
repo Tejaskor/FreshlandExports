@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const tones = {
   leaf: { disc: "bg-sage-100 text-leaf", rule: "bg-leaf" },
-  ember: { disc: "bg-ember/10 text-ember", rule: "bg-ember" },
+  rust: { disc: "bg-rust/10 text-rust", rule: "bg-rust" },
 } as const;
 
 export function VisionMission() {

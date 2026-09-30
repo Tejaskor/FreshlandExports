@@ -62,7 +62,7 @@ export function IngredientGrid({
               </span>
 
               {/* Arrow slides forward and the disc fills on hover. */}
-              <span className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sage-100 text-forest transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-ember group-hover:text-white">
+              <span className="flex size-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sage-100 text-forest transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-rust group-hover:text-white">
                 <Icon
                   name="arrow-right"
                   className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-0.5"

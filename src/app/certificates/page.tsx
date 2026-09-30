@@ -1,22 +1,18 @@
-import { PageHeader } from "@/components/layout/page-header";
 import { CertificatesGrid } from "@/features/certificates/components/certificates-grid";
+import { CertificatesHero } from "@/features/certificates/components/certificates-hero";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "Certificates",
   description:
-    "Organic, food-safety and export certifications and registrations held by Freshland Exports.",
+    "Food safety, organic, export and quality certifications and registrations held by Freshland Exports, including FSSC 22000, FSSAI, APEDA, NPOP, USDA Organic and EU Organic.",
   path: "/certificates",
 });
 
 export default function Page() {
   return (
     <>
-      <PageHeader
-        eyebrow="Certificates"
-        title={["Our Certifications"]}
-        lead="The organic, food-safety and export certifications and registrations held by Freshland Exports."
-      />
+      <CertificatesHero />
       <CertificatesGrid />
     </>
   );

@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container";
 import { Figure } from "@/components/media/figure";
 import { Reveal } from "@/animations/reveal";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
-import { ANCHOR_OFFSET } from "@/features/signature-ingredients/components/anchor-button";
+import { ANCHOR_OFFSET } from "@/components/ui/anchor-button";
 import { ingredientAnchor, ingredients } from "@/features/signature-ingredients/data";
 import { cn } from "@/lib/utils";
 
@@ -78,7 +78,7 @@ export function IngredientNavigation() {
                     <span
                       className={cn(
                         "relative block size-[7.25rem] rounded-full bg-cream p-1 ring-1 transition-[scale,box-shadow] duration-500 ease-[var(--ease-out-expo)] group-hover:scale-105 sm:size-[8rem] lg:size-[7.625rem] xl:size-[8.25rem]",
-                        current ? "ring-2 ring-ember" : "ring-sage-300 group-hover:ring-leaf",
+                        current ? "ring-2 ring-rust" : "ring-sage-300 group-hover:ring-leaf",
                       )}
                     >
                       <Figure
@@ -99,7 +99,7 @@ export function IngredientNavigation() {
                     <span
                       className={cn(
                         "mt-1 bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-bottom bg-no-repeat pb-0.5 text-[0.9375rem] font-medium transition-[color,background-size] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-[length:100%_1px]",
-                        current ? "text-ember-deep" : "text-forest group-hover:text-ember-deep",
+                        current ? "text-rust-deep" : "text-forest group-hover:text-rust-deep",
                       )}
                     >
                       {ingredient.name}

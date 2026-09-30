@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
+import { Ornament } from "@/components/ui/ornament";
 import { BotanicalLines } from "@/components/media/botanical-lines";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
@@ -10,21 +11,10 @@ import { cn } from "@/lib/utils";
 
 const tones = {
   forest: "bg-forest",
-  // ember-deep rather than ember: white text holds 4:1, and every line on
-  // these panels is set at 24px+ (large text), clearing WCAG AA.
-  ember: "bg-ember-deep",
+  // White on rust holds 7:1 and on leaf green 5:1.
+  rust: "bg-rust",
   leaf: "bg-leaf",
 } as const;
-
-/** Small ember diamond on a hairline — the page's section ornament. */
-export function Ornament({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" viewBox="0 0 80 12" className={cn("h-3 w-20 text-ember", className)}>
-      <path d="M0 6h30M50 6h30" stroke="currentColor" strokeWidth="1" />
-      <path d="M40 1.5 44.5 6 40 10.5 35.5 6Z" fill="none" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}
 
 export function BrandPhilosophy() {
   return (
@@ -58,7 +48,7 @@ export function BrandPhilosophy() {
 
           <RevealLines as="h2" id="philosophy-heading" className="mt-6 text-display" delay={0.05}>
             <Line>{philosophy.heading[0]}</Line>
-            <Line className="text-ember">{philosophy.heading[1]}</Line>
+            <Line className="text-rust">{philosophy.heading[1]}</Line>
           </RevealLines>
 
           <Reveal delay={0.2} variant="rise">

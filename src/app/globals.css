@@ -2,9 +2,9 @@
 
 /* ==========================================================================
    Design system — Freshland Exports
-   Premium botanical B2B: cream and white grounds, deep forest green,
-   soft sage, one warm ember CTA. Editorial serif over clean sans.
-   All tokens are exposed to Tailwind through @theme.
+   Premium botanical B2B: white and cream grounds, deep forest green, soft
+   sage, and one warm rust accent for primary calls to action. Editorial
+   serif over clean sans. All tokens are exposed to Tailwind through @theme.
    ========================================================================== */
 
 @theme {
@@ -23,19 +23,35 @@
   --color-leaf: #3d7c4a;
   --color-leaf-bright: #5aa15f;
 
-  --color-ember: #e8712b;
-  --color-ember-deep: #cf5e1c;
+  /* Accent: primary CTAs, highlights, the "Exports" wordmark. White text
+     on rust holds 7:1; rust text on white 7:1. */
+  --color-rust: #963f17;
+  --color-rust-deep: #7a3212; /* hover — a step darker */
 
   --color-ink: #16241c;
   --color-ink-muted: #5c6b61;
   --color-ink-faint: #8b978f;
   /* Section eyebrows sit between body copy and the faint tone: muted enough
-     to stay subordinate to a heading, dark enough to actually read. At 11px
-     it needs 4.5:1, and ink-faint only managed 2.8:1 on cream. */
+     to stay subordinate to a heading, dark enough to actually read. */
   --color-eyebrow: #5f6e64;
 
   --color-line: #e5e9e1;
   --color-line-strong: #cdd6c6;
+
+  /* Light sage for highlights on deep-green grounds, where rust would fall
+     below 3:1 (it reaches only 2.2:1 on forest-deep; this holds 9.1:1). */
+  --color-highlight-inverse: #a8d5a2;
+
+  /* Semantic aliases, kept for components written against role names. */
+  --color-primary: var(--color-forest);
+  --color-secondary: var(--color-leaf);
+  --color-heading: var(--color-forest);
+  --color-body: var(--color-ink);
+  --color-border: var(--color-line-strong);
+  --color-section: var(--color-sage-50);
+  --color-accent-bg: var(--color-sage-100);
+  --color-map: var(--color-cream-warm);
+  --color-botanical: var(--color-leaf-bright);
 
   /* --- Typography -------------------------------------------------------- */
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
@@ -80,7 +96,8 @@
   /* --- Layout ------------------------------------------------------------ */
   --spacing-gutter: clamp(1.25rem, 3vw, 3rem);
   --spacing-section: clamp(2.5rem, 3.2vw, 4.5rem);
-  --container-shell: 84rem;
+  /* 90rem = 1440px: shared by the header and every section. */
+  --container-shell: 90rem;
 
   --radius-card: 1.25rem;
   --radius-organic: 6rem;

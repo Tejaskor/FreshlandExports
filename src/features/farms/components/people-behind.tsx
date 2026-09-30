@@ -85,7 +85,7 @@ export function PeopleBehind() {
 
           <RevealLines as="h2" id="people-heading" className="mt-6 text-display" delay={0.05}>
             <Line>Growing Together,</Line>
-            <Line className="text-ember">From the Ground Up</Line>
+            <Line className="text-rust">From the Ground Up</Line>
           </RevealLines>
 
           <Reveal stagger={0.12} delay={0.2} variant="rise" className="mt-6 space-y-4">

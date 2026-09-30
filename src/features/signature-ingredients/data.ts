@@ -125,9 +125,9 @@ export const philosophy = {
   body: "Our signature ingredients are designed to support a healthier, more balanced lifestyle through the power of botanicals.",
   pillars: [
     { icon: "users", title: "People", text: "Supporting everyday wellness", tone: "forest" },
-    { icon: "flask", title: "Purity", text: "Consistent and reliable quality", tone: "ember" },
+    { icon: "flask", title: "Purity", text: "Consistent and reliable quality", tone: "rust" },
     { icon: "sprout", title: "Planet", text: "Sustainably sourced botanicals", tone: "leaf" },
-  ] as readonly { icon: IconName; title: string; text: string; tone: "forest" | "ember" | "leaf" }[],
+  ] as readonly { icon: IconName; title: string; text: string; tone: "forest" | "rust" | "leaf" }[],
 } as const;
 
 export const featured = {

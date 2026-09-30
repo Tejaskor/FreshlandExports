@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
-type Variant = "ember" | "forest" | "outline" | "quiet";
+type Variant = "primary" | "forest" | "outline" | "quiet";
 type Size = "sm" | "md" | "lg";
 
 /**
@@ -20,7 +20,8 @@ const base =
   "disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  ember: "bg-ember text-white hover:bg-ember-deep",
+  // Primary action: rust, a step darker on hover.
+  primary: "bg-rust text-white hover:bg-rust-deep",
   forest: "bg-forest text-white hover:bg-forest-deep",
   outline:
     "border border-line-strong bg-white/80 text-forest hover:border-leaf hover:text-leaf",
@@ -49,7 +50,7 @@ type ButtonAsLink = BaseProps &
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const discTone: Record<Variant, string> = {
-  ember: "bg-white/25 text-white",
+  primary: "bg-white/25 text-white",
   forest: "bg-white/20 text-white",
   outline: "bg-sage-100 text-forest group-hover/btn:bg-leaf group-hover/btn:text-white",
   quiet: "bg-sage-100 text-forest group-hover/btn:bg-leaf group-hover/btn:text-white",
@@ -74,7 +75,7 @@ function Arrow({ variant }: { variant: Variant }) {
  * never have to choose between styling and correct semantics.
  */
 export function Button({
-  variant = "ember",
+  variant = "primary",
   size = "md",
   withArrow = true,
   className,

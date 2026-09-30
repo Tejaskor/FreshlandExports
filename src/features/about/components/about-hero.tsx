@@ -34,9 +34,9 @@ export function AboutHero() {
           {/* Same shell as every other section, so the copy's left edge meets the
               logo and page margins. Below the shell width the frame's own inset
               already supplies part of the margin, so the padding keeps a floor
-              that holds the copy off the rounded edge; from 86.5rem (shell plus
+              that holds the copy off the rounded edge; from 92.5rem (shell plus
               frame inset) the gutter alone lines it up exactly. */}
-          <Container className="relative px-7 py-12 sm:px-12 sm:py-14 lg:flex lg:min-h-[34rem] lg:items-center lg:px-10 lg:py-20 min-[86.5rem]:px-gutter">
+          <Container className="relative px-7 py-12 sm:px-12 sm:py-14 lg:flex lg:min-h-[34rem] lg:items-center lg:px-10 lg:py-20 min-[92.5rem]:px-gutter">
             {/* Capped by viewport so it always ends before the slanted strips,
                 which begin at roughly 39% of the frame. */}
             <div className="lg:w-full lg:max-w-[min(21rem,calc(39vw-7rem))]">
@@ -52,7 +52,7 @@ export function AboutHero() {
                 intro
               >
                 <Line>
-                  About <span className="text-ember">Us</span>
+                  About <span className="text-highlight-inverse">Us</span>
                 </Line>
               </RevealLines>
 

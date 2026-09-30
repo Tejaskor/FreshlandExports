@@ -34,7 +34,7 @@ export function FeaturedIngredients() {
           <Line>Featured Ingredients</Line>
         </RevealLines>
         <Reveal variant="sweep-left" delay={0.15}>
-          <span aria-hidden="true" className="mt-5 block h-0.5 w-14 rounded-full bg-ember" />
+          <span aria-hidden="true" className="mt-5 block h-0.5 w-14 rounded-full bg-rust" />
         </Reveal>
 
         {/* Editorial spread: copy on a soft sage ground, the photograph
@@ -66,12 +66,12 @@ export function FeaturedIngredients() {
             <Reveal variant="rise" delay={0.55} className="mt-8">
               <Link
                 href={ingredientHref(lead.slug)}
-                className="group/link inline-flex items-center gap-3 text-[1rem] font-semibold text-ember-deep transition-colors duration-300 hover:text-ember"
+                className="group/link inline-flex items-center gap-3 text-[1rem] font-semibold text-rust-deep transition-colors duration-300 hover:text-rust"
               >
                 <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 ease-[var(--ease-out-expo)] group-hover/link:bg-[length:100%_1px]">
                   Learn More
                 </span>
-                <span className="flex size-9 items-center justify-center rounded-full border border-ember/40 transition-[background-color,color,border-color,translate] duration-500 ease-[var(--ease-out-expo)] group-hover/link:translate-x-1 group-hover/link:border-ember group-hover/link:bg-ember group-hover/link:text-white">
+                <span className="flex size-9 items-center justify-center rounded-full border border-rust/40 transition-[background-color,color,border-color,translate] duration-500 ease-[var(--ease-out-expo)] group-hover/link:translate-x-1 group-hover/link:border-rust group-hover/link:bg-rust group-hover/link:text-white">
                   <Icon name="arrow-right" className="size-4" />
                 </span>
                 <span className="sr-only"> about {lead.name}</span>

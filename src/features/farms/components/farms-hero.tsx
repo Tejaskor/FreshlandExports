@@ -51,16 +51,16 @@ export function FarmsHero() {
             as="h1"
             id="page-heading"
             // The fluid hero size tracks the viewport, but this column stops
-            // growing with the shell (~477px), so beyond ~2000px "Fresh
+            // growing with the shell (~515px at most), so on very wide screens "Fresh
             // Produce" (~5.85em in Fraunces) overflowed it and broke onto a
-            // third line. Capped at 4.5rem it keeps ~12% headroom at every
+            // third line. Capped at 4.5rem it keeps 12%+ headroom at every
             // width, which lets each designed line hold together on desktop.
             className="mt-6 text-hero font-medium lg:text-[length:min(var(--text-hero),4.5rem)]"
             delay={0.15}
             intro
           >
             <Line className="lg:whitespace-nowrap">{farmsHero.headline.lead}</Line>
-            <Line className="text-ember lg:whitespace-nowrap">
+            <Line className="text-rust lg:whitespace-nowrap">
               {farmsHero.headline.emphasis}
             </Line>
           </RevealLines>

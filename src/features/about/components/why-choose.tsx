@@ -33,7 +33,7 @@ export function WhyChoose() {
           >
             {whyChoose.features.map((feature) => (
               <li key={feature.title} className="group flex gap-5">
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ember/10 text-ember transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-ember group-hover:text-white">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-rust/10 text-rust transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-rust group-hover:text-white">
                   <Icon
                     name={feature.icon}
                     className="size-5 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-[-8deg]"

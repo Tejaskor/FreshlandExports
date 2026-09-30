@@ -85,7 +85,7 @@ export function Sustainability() {
                 <h3 className="text-[1rem] font-sans font-medium text-white">
                   {point.title}
                 </h3>
-                <p className="mt-1.5 text-[0.875rem] text-white/70">
+                <p className="mt-1.5 text-[0.875rem] text-white/80">
                   {point.description}
                 </p>
               </span>

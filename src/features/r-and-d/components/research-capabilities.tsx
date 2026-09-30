@@ -37,7 +37,7 @@ export function ResearchCapabilities() {
             <div key={card.title}>
               <article className="group relative flex h-full flex-col rounded-[var(--radius-card)] border border-line bg-white p-7 shadow-[var(--shadow-card)] transition-[translate,box-shadow,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-sage-300 hover:shadow-[var(--shadow-lift)]">
                 <Reveal variant="bloom" delay={0.3 + index * 0.12}>
-                  <span className="flex size-12 items-center justify-center rounded-full bg-ember/10 text-ember transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-ember group-hover:text-white">
+                  <span className="flex size-12 items-center justify-center rounded-full bg-rust/10 text-rust transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-rust group-hover:text-white">
                     <Icon
                       name={card.icon}
                       className="size-6 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-rotate-8"
@@ -52,7 +52,7 @@ export function ResearchCapabilities() {
 
                 <Link
                   href={card.link.href}
-                  className="group/link mt-auto inline-flex items-center gap-2 self-start text-[0.875rem] font-medium text-ember-deep transition-colors duration-300 hover:text-ember"
+                  className="group/link mt-auto inline-flex items-center gap-2 self-start text-[0.875rem] font-medium text-rust-deep transition-colors duration-300 hover:text-rust"
                 >
                   <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 ease-[var(--ease-out-expo)] group-hover/link:bg-[length:100%_1px]">
                     {card.link.label}

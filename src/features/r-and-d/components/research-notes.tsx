@@ -55,7 +55,7 @@ export function ResearchNotes() {
                   <p className="mt-3 mb-6 text-[0.9375rem] leading-relaxed text-ink-muted">
                     {article.description}
                   </p>
-                  <span className="mt-auto inline-flex items-center gap-2 text-[0.875rem] font-medium text-ember-deep transition-colors duration-300 group-hover:text-ember">
+                  <span className="mt-auto inline-flex items-center gap-2 text-[0.875rem] font-medium text-rust-deep transition-colors duration-300 group-hover:text-rust">
                     <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-[length:100%_1px]">
                       Read Article
                     </span>

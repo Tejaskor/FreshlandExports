@@ -22,7 +22,7 @@ export function OurStory() {
 
           <RevealLines as="h2" id="story-heading" className="mt-6 text-display" delay={0.05}>
             <Line>Rooted in Trust,</Line>
-            <Line className="text-ember">Growing Worldwide.</Line>
+            <Line className="text-rust">Growing Worldwide.</Line>
           </RevealLines>
 
           <Reveal delay={0.2} variant="rise">

@@ -38,7 +38,7 @@ export function RdHero() {
           <BotanicalLines className="absolute -right-10 -bottom-20 -z-10 hidden w-72 text-white/10 md:block" />
 
           {/* Same shell as the site, so the copy meets the page margins. */}
-          <Container className="relative flex min-h-[26rem] items-center px-7 py-16 sm:px-12 lg:min-h-[30rem] lg:px-10 lg:py-20 min-[86.5rem]:px-gutter">
+          <Container className="relative flex min-h-[26rem] items-center px-7 py-16 sm:px-12 lg:min-h-[30rem] lg:px-10 lg:py-20 min-[92.5rem]:px-gutter">
             <div className="max-w-xl">
               <Reveal variant="settle">
                 <RuledEyebrow tone="inverse">{rdHero.eyebrow}</RuledEyebrow>

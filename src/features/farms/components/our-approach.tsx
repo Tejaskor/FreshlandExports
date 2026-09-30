@@ -32,7 +32,7 @@ export function OurApproach() {
 
           <RevealLines as="h2" id="approach-heading" className="mt-6 text-display" delay={0.05}>
             <Line>
-              More Than Just <span className="text-ember">Agriculture</span>
+              More Than Just <span className="text-rust">Agriculture</span>
             </Line>
           </RevealLines>
 
@@ -69,7 +69,7 @@ export function OurApproach() {
 
                 <span
                   aria-hidden="true"
-                  className="mt-auto block h-0.5 w-12 origin-left scale-x-50 rounded-full bg-ember transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+                  className="mt-auto block h-0.5 w-12 origin-left scale-x-50 rounded-full bg-rust transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
                 />
               </article>
             </div>

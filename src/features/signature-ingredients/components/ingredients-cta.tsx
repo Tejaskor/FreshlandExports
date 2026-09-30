@@ -4,7 +4,7 @@ import { Figure } from "@/components/media/figure";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
-import { Ornament } from "@/features/signature-ingredients/components/brand-philosophy";
+import { Ornament } from "@/components/ui/ornament";
 import { ingredientsCta } from "@/features/signature-ingredients/data";
 
 /**
@@ -35,7 +35,7 @@ export function IngredientsCta() {
 
       <Container className="py-24 text-center lg:py-32">
         <Reveal variant="bloom">
-          <Ornament className="mx-auto" />
+          <Ornament className="mx-auto text-highlight-inverse" />
         </Reveal>
 
         <RevealLines
@@ -45,7 +45,7 @@ export function IngredientsCta() {
           delay={0.05}
         >
           <Line>{ingredientsCta.heading[0]}</Line>
-          <Line className="text-ember">{ingredientsCta.heading[1]}</Line>
+          <Line className="text-highlight-inverse">{ingredientsCta.heading[1]}</Line>
         </RevealLines>
 
         <Reveal delay={0.3} variant="rise">

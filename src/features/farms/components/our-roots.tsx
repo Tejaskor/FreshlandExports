@@ -22,7 +22,7 @@ export function OurRoots() {
 
           <RevealLines as="h2" id="roots-heading" className="mt-6 text-display" delay={0.05}>
             <Line>
-              Where Quality <span className="text-ember">Begins</span>
+              Where Quality <span className="text-rust">Begins</span>
             </Line>
           </RevealLines>
 
@@ -41,7 +41,7 @@ export function OurRoots() {
           <svg
             aria-hidden="true"
             viewBox="0 0 100 100"
-            className="absolute top-[12%] -right-[6%] w-[62%] text-ember/35"
+            className="absolute top-[12%] -right-[6%] w-[62%] text-rust/35"
           >
             <circle cx="50" cy="50" r="49" fill="none" stroke="currentColor" strokeWidth="0.35" />
           </svg>

@@ -1,41 +1,31 @@
-import { cn } from "@/lib/utils";
+import Image from "next/image";
+
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 /**
- * Wordmark with a leaf monogram. Inline SVG so it inherits colour and ships
- * no extra request.
+ * Brand lock-up: the official globe-and-leaf emblem beside the wordmark —
+ * "Freshland" in leaf green, "Exports" in rust.
+ *
+ * The emblem is a trimmed, transparent PNG generated from
+ * public/FreshLand-Exports-Logo.svg (that file wraps a 200 KB embedded
+ * bitmap); its 415×391 proportions are preserved at every size.
  */
-export function Logo({
-  className,
-  tone = "default",
-}: {
-  className?: string;
-  tone?: "default" | "inverse";
-}) {
+export function Logo({ className, priority = false }: { className?: string; priority?: boolean }) {
   return (
-    <span className={cn("inline-flex items-baseline gap-1.5", className)}>
-      <svg
-        viewBox="0 0 24 24"
-        className={cn(
-          "size-6 shrink-0 self-center",
-          tone === "inverse" ? "text-sage-200" : "text-leaf-bright",
-        )}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        aria-hidden="true"
-      >
-        <path d="M12 22C12 13 16 5 21 2c1 8-2 17-9 20Z" />
-        <path d="M12 22C7 19 3 13 3 7c5 1 8 5 9 10" />
-      </svg>
-      <span className="font-display text-[1.5rem] leading-none tracking-[-0.02em]">
-        <span className={tone === "inverse" ? "text-white" : "text-leaf"}>
-          {siteConfig.shortName}
-        </span>
-        <span className={tone === "inverse" ? "text-sage-200" : "text-ember"}>
-          {siteConfig.wordmarkAccent}
-        </span>
+    <span className={cn("inline-flex items-center gap-2.5", className)}>
+      <Image
+        src="/images/shared/logos/freshland-mark.png"
+        alt=""
+        width={415}
+        height={391}
+        priority={priority}
+        sizes="48px"
+        className="h-9 w-auto shrink-0 sm:h-10"
+      />
+      <span className="font-display text-[1.375rem] leading-none tracking-[-0.02em] sm:text-[1.5rem]">
+        <span className="text-leaf">{siteConfig.shortName}</span>
+        <span className="text-rust">{siteConfig.wordmarkAccent}</span>
       </span>
     </span>
   );

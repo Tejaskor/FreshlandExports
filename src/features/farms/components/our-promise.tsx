@@ -20,7 +20,7 @@ export function OurPromise() {
 
           <RevealLines as="h2" id="promise-heading" className="mt-6 text-display" delay={0.05}>
             <Line>From Farm to</Line>
-            <Line className="text-ember">Finished Ingredient</Line>
+            <Line className="text-rust">Finished Ingredient</Line>
           </RevealLines>
 
           <Reveal stagger={0.12} delay={0.2} variant="rise" className="mt-6 space-y-4">

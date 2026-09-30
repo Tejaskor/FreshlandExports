@@ -22,7 +22,7 @@ export function AgriculturalNetwork() {
 
           <RevealLines as="h2" id="network-heading" className="mt-6 text-display" delay={0.05}>
             <Line>Connecting Farms to</Line>
-            <Line className="text-ember">Global Markets</Line>
+            <Line className="text-rust">Global Markets</Line>
           </RevealLines>
 
           <Reveal delay={0.2} variant="rise">

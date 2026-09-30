@@ -22,7 +22,7 @@ const field =
   "h-10 w-full rounded-lg border border-line bg-white px-3.5 text-[0.8125rem] text-ink " +
   "placeholder:text-ink-faint transition-colors duration-300 " +
   "hover:border-line-strong focus:border-leaf focus:outline-none " +
-  "aria-invalid:border-ember-deep/70 aria-invalid:focus:border-ember-deep";
+  "aria-invalid:border-rust-deep/70 aria-invalid:focus:border-rust-deep";
 
 const initialState: ContactState = { status: "idle" };
 const noFields: ReadonlySet<string> = new Set();
@@ -49,7 +49,14 @@ async function submit(previous: ContactState, formData: FormData): Promise<Conta
   }
 }
 
-export function ContactForm({ title }: { title: string }) {
+export function ContactForm({
+  title,
+  defaultMessage,
+}: {
+  title: string;
+  /** Pre-fills the message, e.g. a quote request naming the product. */
+  defaultMessage?: string;
+}) {
   const id = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(submit, initialState);
@@ -79,7 +86,7 @@ export function ContactForm({ title }: { title: string }) {
 
   const error = (name: ContactField) =>
     errorFor(name) ? (
-      <span id={`${id}-${name}-error`} className="mt-1 block text-left text-[0.75rem] text-ember-deep">
+      <span id={`${id}-${name}-error`} className="mt-1 block text-left text-[0.75rem] text-rust-deep">
         {errorFor(name)}
       </span>
     ) : null;
@@ -190,7 +197,7 @@ export function ContactForm({ title }: { title: string }) {
               rows={3}
               maxLength={limits.message}
               placeholder="Message*"
-              defaultValue={values?.message}
+              defaultValue={values?.message ?? defaultMessage}
               className={cn(field, "h-auto resize-none py-3.5 leading-relaxed")}
             />
             {error("message")}
@@ -201,7 +208,7 @@ export function ContactForm({ title }: { title: string }) {
           {pending ? "Sending…" : "Send Message"}
         </Button>
 
-        <p role="alert" className="mt-3 text-[0.75rem] text-ember-deep empty:hidden">
+        <p role="alert" className="mt-3 text-[0.75rem] text-rust-deep empty:hidden">
           {state.status === "error" && (
             <>
               {state.message} You can also email us at{" "}

@@ -38,7 +38,7 @@ export function ResearchFocus() {
 
           <RevealLines as="h2" id="focus-heading" className="mt-6 text-display" delay={0.05}>
             <Line>
-              Our Research <span className="text-ember">Focus</span>
+              Our Research <span className="text-rust">Focus</span>
             </Line>
           </RevealLines>
 

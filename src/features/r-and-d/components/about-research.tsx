@@ -19,7 +19,7 @@ export function AboutResearch() {
 
           <RevealLines as="h2" id="research-heading" className="mt-6 text-display" delay={0.05}>
             <Line>
-              About Our <span className="text-ember">Research</span>
+              About Our <span className="text-rust">Research</span>
             </Line>
           </RevealLines>
 
