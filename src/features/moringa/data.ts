@@ -35,7 +35,7 @@ export const nutrients: readonly Nutrient[] = [
   { symbol: "Ca", name: "Calcium", role: "Healthy bones and teeth" },
   { symbol: "Fe", name: "Iron", role: "Oxygen transport" },
   { symbol: "Pr", name: "Plant Protein", role: "Growth and tissue repair" },
-  { symbol: "Fi", name: "Fiber", role: "Digestive health" },
+  { symbol: "Fi", name: "Fibre", role: "Digestive health" },
 ];
 
 export type Benefit = { title: string; text: string };
@@ -50,7 +50,7 @@ export const benefits: readonly Benefit[] = [
     text: "The leaves naturally contain polyphenols and other plant compounds.",
   },
   {
-    title: "Contains dietary fiber",
+    title: "Contains dietary fibre",
     text: "Milling the whole dried leaf keeps its natural fibre in the powder.",
   },
   {
@@ -210,7 +210,7 @@ export const moringaMoq = {
   label: "Minimum Order Quantity",
   heading: "Minimum Order:",
   quantity: "500 KG",
-  body: "Our minimum order quantity for Moringa Powder is 500 kilograms. Contact us to discuss your bulk order requirements and export inquiries.",
+  body: "Bulk supply available for wholesale, food-service, processing and export buyers.",
   highlight: "MOQ: 500 KG",
 } as const;
 
@@ -220,9 +220,9 @@ export const specifications: readonly { label: string; value: string; pending?: 
   { label: "Product Name", value: "Moringa Leaf Powder" },
   { label: "Botanical Name", value: "Moringa oleifera" },
   { label: "Form", value: "Fine Powder" },
-  { label: "Color", value: "Green" },
+  { label: "Colour", value: "Green" },
   { label: "Processing", value: "As per buyer requirements" },
-  { label: "Packaging", value: "Customizable" },
+  { label: "Packaging", value: "Customisable" },
   { label: "Origin", value: "India" },
   { label: "Grade", value: toBeConfirmed, pending: true },
   { label: "Mesh Size", value: toBeConfirmed, pending: true },

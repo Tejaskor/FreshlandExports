@@ -1,9 +1,10 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
-// TEMPORARY content — replace with final product copy. Facts are taken from
-// the existing Garlic catalogue entry (graded bulbs, forms, packing).
+// Facts come from the existing Garlic catalogue entry (forms, packing). Size,
+// grade, packaging, origin and supply stay qualified. MOQ: features/products/moq.ts.
 const slug = "garlic";
+const dir = "/images/products/Agricultural Products/Garlic";
 
 export const garlic: AgriProduct = {
   slug,
@@ -13,74 +14,138 @@ export const garlic: AgriProduct = {
   hero: {
     eyebrow: "Fresh Agricultural Products",
     title: "Fresh Garlic",
-    tagline: "Aromatic bulbs, carefully graded for export.",
-    body: "Fresh garlic cleaned and graded by bulb size, supplied for fresh markets, food service and food processing worldwide.",
-    highlights: ["Graded by bulb size", "Whole bulbs or peeled cloves", "Bulk supply available"],
+    tagline: "Aromatic Bulbs, Carefully Selected for Export",
+    body: "Fresh garlic bulbs selected for appearance, firmness and commercial requirements, supplied for wholesale, food-service and food-processing applications.",
+    highlights: ["Whole bulbs or peeled cloves", "Selected for firmness", "Bulk supply available"],
   },
   intro: {
-    eyebrow: "About Our Garlic",
+    eyebrow: "Product Overview",
     heading: "Strong Aroma, Clean Bulbs",
-    statement: "A kitchen essential with a distinctive, pungent flavour.",
+    statement: "Whole garlic bulbs with a strong natural aroma, supplied in bulk.",
     body: [
-      "Garlic (Allium sativum) is valued in cuisines around the world for its strong aroma and savoury depth.",
-      "Our garlic is cleaned and graded by bulb diameter to suit each buyer's market, and can be supplied as whole bulbs or, on request, as peeled cloves.",
+      "Fresh garlic (Allium sativum) is supplied as whole bulbs with a strong natural aroma, a clean appearance and firm cloves.",
+      "Bulbs are selected and sized according to buyer requirements, with peeled cloves available on request, and supplied in bulk for wholesale, food-service and food-processing buyers.",
     ],
     highlights: [
       { label: "Product", value: "Fresh garlic" },
       { label: "Botanical name", value: "Allium sativum" },
       { label: "Forms", value: "Whole bulbs, peeled cloves on request" },
-      { label: "Grading", value: "By bulb diameter" },
+      { label: "Supply", value: "Bulk supply for commercial buyers" },
     ],
   },
   features: {
-    eyebrow: "Why Garlic",
+    eyebrow: "Key Product Features",
     heading: "Simple, Versatile, Essential",
     items: [
-      { title: "Pungent Flavour", text: "Brings a characteristic savoury depth to a wide range of dishes." },
-      { title: "Graded Bulbs", text: "Sorted by size so each shipment is consistent for its market." },
-      { title: "Flexible Forms", text: "Whole bulbs, with peeled cloves and dehydrated forms on request." },
-      { title: "Fresh Markets", text: "Suited to retail and wholesale produce supply." },
-      { title: "Food Processing", text: "Used in pastes, sauces, pickles and seasonings." },
-      { title: "Food Service", text: "A staple of restaurant and catering kitchens." },
+      { title: "Distinctive Aroma", text: "Naturally aromatic garlic suited to a wide range of culinary applications." },
+      { title: "Bulb Quality", text: "Selected for appearance, firmness and buyer requirements." },
+      { title: "Flexible Forms", text: "Whole bulbs with peeled cloves available on request." },
+      { title: "Wholesale Supply", text: "Suitable for wholesale and commercial food markets." },
+      { title: "Food Processing", text: "Used in sauces, pastes, seasonings and processed foods." },
+      { title: "Food Service", text: "Suitable for restaurants, catering and commercial kitchens." },
     ],
   },
   uses: {
     eyebrow: "Applications",
     heading: "From Kitchen to Factory",
-    intro: "Temporary overview of how buyers typically use fresh garlic.",
+    intro: "How commercial buyers use fresh garlic, from kitchens to processing lines.",
     groups: [
-      { title: "Home Cooking", items: ["Curries and stir-fries", "Soups and stews", "Roasted vegetables"] },
-      { title: "Food Service", items: ["Restaurant kitchens", "Catering", "Marinades"] },
-      { title: "Food Processing", items: ["Garlic paste", "Sauces and dips", "Pickles"] },
-      { title: "Seasonings", items: ["Spice blends", "Seasoning mixes", "Flavoured oils"] },
+      { title: "Home Cooking", items: ["Curries", "Stir-fries", "Sauces", "Everyday vegetable dishes"] },
+      { title: "Food Service", items: ["Restaurant kitchens", "Catering", "Prepared meals"] },
+      { title: "Food Processing", items: ["Garlic pastes", "Sauces", "Seasonings", "Processed foods"] },
+      { title: "Seasonings", items: ["Spice blends", "Seasoning mixes", "Marinades", "Flavouring applications"] },
     ],
   },
   specs: {
-    eyebrow: "Product Details",
+    eyebrow: "Product Specifications",
     heading: "Garlic Specifications",
-    rows: freshSpecs(
-      [
-        { label: "Product Name", value: "Fresh Garlic" },
-        { label: "Product Type", value: "Fresh vegetable (bulb)" },
-        { label: "Colour", value: "White to off-white, varies by variety" },
-        { label: "Forms", value: "Whole bulbs; peeled cloves on request" },
-      ],
-      [{ label: "Packing Options", value: "Mesh bags, cartons, custom packing on request" }],
-    ),
+    rows: [
+      { label: "Product Name", value: "Fresh Garlic" },
+      { label: "Botanical Name", value: "Allium sativum" },
+      { label: "Product Type", value: "Fresh Vegetable" },
+      { label: "Form", value: "Whole bulbs; peeled cloves available on request" },
+      { label: "Colour", value: "White to off-white, subject to variety" },
+      { label: "Size / Grade", value: "As per buyer requirements" },
+      { label: "Packaging", value: "As per buyer requirements" },
+      { label: "Origin", value: "India, subject to confirmation" },
+      { label: "Supply", value: "Subject to seasonal availability" },
+      { label: "Harvest / Availability", value: "Subject to seasonal availability" },
+    ],
     note: specsNote,
+  },
+  storage: {
+    heading: "Storage & Handling",
+    text: "Good storage keeps garlic bulbs firm and dry from packing to delivery.",
+    points: [
+      "Store garlic in a cool, dry environment",
+      "Maintain good ventilation",
+      "Protect from excess moisture",
+      "Avoid unsuitable storage conditions",
+      "Handle carefully during transportation",
+      "Follow recommended storage conditions for the product and buyer requirements",
+    ],
+  },
+  faqs: {
+    eyebrow: "FAQ",
+    heading: "Garlic Questions",
+    items: [
+      {
+        question: "What type of fresh garlic do you supply?",
+        answer:
+          "We supply fresh garlic (Allium sativum), white to off-white in colour depending on variety. Variety and availability are confirmed with each enquiry.",
+      },
+      {
+        question: "Is garlic available as whole bulbs?",
+        answer: "Yes. Fresh garlic is supplied as whole bulbs.",
+      },
+      {
+        question: "Are peeled garlic cloves available?",
+        answer: "Yes, peeled cloves are available on request. Please mention them in your enquiry.",
+      },
+      {
+        question: "What bulb sizes or grades are available?",
+        answer:
+          "Bulb size and grade are supplied as per buyer requirements. Share the size you need and we will confirm availability with your quotation.",
+      },
+      {
+        question: "What is the minimum order quantity?",
+        answer:
+          "The minimum order quantity for fresh garlic is 500 KG. Share your required quantity and we will confirm availability with your quotation.",
+      },
+      {
+        question: "How is fresh garlic packed for export?",
+        answer:
+          "Packaging is supplied as per buyer requirements. Options include mesh bags, cartons and custom packing on request.",
+      },
+      {
+        question: "How should fresh garlic be stored?",
+        answer:
+          "Store garlic in a cool, dry and well-ventilated environment, protect it from excess moisture and handle it carefully during transport.",
+      },
+      {
+        question: "Can packaging be customised according to buyer requirements?",
+        answer: "Yes. Packaging can be arranged according to buyer requirements and is confirmed with each quotation.",
+      },
+    ],
   },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Source Fresh Garlic with Freshland",
-    body: "Tell us your market, bulb size and quantity, and our team will share availability and a quotation.",
+    body: "Tell us your market, bulb size and quantity requirements, and our team will help you with availability and a quotation.",
   },
   images: {
-    // Wide pill hero — fresh garlic bulbs and cloves on an ivory surface (21:9).
-    hero: img(slug, "hero", "Fresh garlic bulbs and cloves on an ivory surface", "Fresh garlic bulbs"),
-    // Close-up — a single bulb with separated cloves (1:1).
-    detail: img(slug, "detail", "Close-up of a garlic bulb with separated cloves", "Garlic cloves close-up"),
-    // Existing 300 px catalogue photograph, used only in a small circle.
-    thumb: "/images/products/garlic.webp",
+    // Wide pill hero (21:9).
+    hero: {
+      file: `${dir}/fresh-garlic-hero.webp`,
+      alt: "Fresh white garlic bulbs and loose cloves on a stone surface with parsley",
+      label: "Fresh garlic bulbs",
+    },
+    // Product Overview, in the circle frame.
+    detail: {
+      file: `${dir}/fresh-garlic-bulbs-quality.webp`,
+      alt: "Firm white garlic bulbs, one opened to show its cloves",
+      label: "Garlic bulbs close-up",
+    },
   },
   sections: [
     { type: "hero", variant: "centered" },
@@ -88,6 +153,9 @@ export const garlic: AgriProduct = {
     { type: "features", variant: "numbered" },
     { type: "uses", variant: "columns" },
     { type: "specs", variant: "tiles" },
+    { type: "storage" },
+    { type: "faq", variant: "split" },
+    // The Blog section renders automatically just before the contact section.
     { type: "contact", variant: "centered" },
   ],
 };

@@ -27,6 +27,8 @@ export interface ExportProduct {
   /** One line for menus and cards. */
   summary: string;
   description: string;
+  /** Search-result description, when the generic one is not specific enough. */
+  seoDescription?: string;
   forms: readonly string[];
   specifications: readonly { label: string; value: string }[];
   packaging: readonly string[];
@@ -51,6 +53,8 @@ export const exportProducts: readonly ExportProduct[] = [
     summary: "Fine green powder from dried moringa leaves",
     description:
       "Moringa powder is made from the leaves of Moringa oleifera, dried and milled into a fine, bright green powder. It is widely used as a plant-based ingredient in supplements, beverages and fortified foods.",
+    seoDescription:
+      "Bulk moringa leaf powder (Moringa oleifera) exported from India for food, beverage and supplement brands. 500 kg MOQ; specification sheet and quotes on request.",
     forms: ["Fine leaf powder", "Coarse leaf powder", "Dried leaf (cut) on request"],
     specifications: [
       { label: "Botanical source", value: "Moringa oleifera" },

@@ -43,6 +43,8 @@ export function OnionAbout() {
               slot={onionImages.freshOnions}
               tone="warm"
               sizes="(min-width: 1024px) 30vw, 100vw"
+              // Portrait crop of a landscape photo: centre on the knife and onions.
+              mediaClassName="object-[42%_center]"
               className="aspect-[4/5] w-full rounded-[1.5rem_7rem_1.5rem_7rem] sm:aspect-[16/11] lg:aspect-[4/5]"
             />
           </ClipReveal>
@@ -150,7 +152,7 @@ export function OnionAbout() {
           <Reveal variant="rise" delay={0.1} className="lg:col-span-5">
             <div className="h-full rounded-[1.75rem] bg-forest p-5 text-white sm:p-7">
               <p className={cn(label, "text-highlight-inverse")}>Nutritional information</p>
-              <h3 className={cn(subHeading, "mt-2")}>Onion Powder Nutritional Profile</h3>
+              <h3 className={cn(subHeading, "mt-2 text-white")}>Onion Powder Nutritional Profile</h3>
               <table className="mt-5 w-full border-collapse text-[0.9375rem]">
                 <caption className="pb-2 text-left text-[0.8125rem] text-white/70">
                   Approximate values per 100 g

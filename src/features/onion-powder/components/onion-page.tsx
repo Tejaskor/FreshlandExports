@@ -1,4 +1,5 @@
 import type { Crumb } from "@/components/ui/breadcrumbs";
+import { ProductBlog } from "@/features/products/components/product-blog";
 import { exportCategories, type ExportProduct } from "@/features/products/export-catalogue";
 import { OnionAbout } from "@/features/onion-powder/components/onion-about";
 import { OnionApplications } from "@/features/onion-powder/components/onion-applications";
@@ -8,8 +9,8 @@ import { OnionHero } from "@/features/onion-powder/components/onion-hero";
 
 /**
  * Dedicated page for Onion Powder (/products/onion-powder): warm, culinary
- * and light-led, in five sections — Hero · About · Applications · Product
- * Details · Contact. Uses the site typography; shares building blocks with the
+ * and light-led, in six sections — Hero · About · Applications · Product
+ * Details · Blog · Contact. Uses the site typography; shares building blocks with the
  * Moringa page, but not its compositions.
  */
 export function OnionPage({ product }: { product: ExportProduct }) {
@@ -27,6 +28,7 @@ export function OnionPage({ product }: { product: ExportProduct }) {
       <OnionAbout />
       <OnionApplications />
       <OnionDetails />
+      <ProductBlog slug={product.slug} productName={product.name} className="bg-white" accentClassName="text-rust" />
       <OnionContact productName={product.name} />
     </>
   );

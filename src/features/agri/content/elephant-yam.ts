@@ -1,8 +1,9 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
-// TEMPORARY content — replace with final product copy.
+// Size, grade, packaging, origin and supply stay qualified until confirmed.
 const slug = "elephant-yam";
+const dir = "/images/products/Agricultural Products/Elephant Yam";
 
 export const elephantYam: AgriProduct = {
   slug,
@@ -12,73 +13,134 @@ export const elephantYam: AgriProduct = {
   hero: {
     eyebrow: "Fresh Agricultural Products",
     title: "Elephant Yam",
-    tagline: "A hearty tuber with deep culinary roots.",
-    body: "Large, firm corms selected for size and condition, supplied to distributors, food processors and food-service buyers.",
+    tagline: "A Hearty Tuber, Carefully Selected for Bulk Supply",
+    body: "Fresh elephant yam selected according to size, condition and buyer requirements, supplied for wholesale, food-service and food-processing applications.",
     highlights: ["Selected tubers", "Firm and well-cured", "Bulk supply available"],
   },
   intro: {
-    eyebrow: "About Elephant Yam",
+    eyebrow: "Product Overview",
     heading: "Grounded in Tradition",
-    statement: "Earthy, starchy and remarkably versatile in the kitchen.",
+    statement: "Fresh whole tubers with dense, firm and starchy flesh.",
     body: [
-      "Elephant yam (Amorphophallus paeoniifolius) is a large tuber with a rough brown skin and dense, pale flesh, used widely in South and Southeast Asian cooking.",
-      "It is prized for its hearty texture in curries, fries and traditional preparations. Final variety and size details will be added here.",
+      "Elephant yam, also known as elephant foot yam (Amorphophallus paeoniifolius), is supplied as fresh whole tubers with a rough, natural brown skin and dense, firm, starchy flesh that is cream to pinkish depending on variety.",
+      "It is a familiar ingredient in traditional regional cooking, and we supply it in bulk with size, quantity and packing arranged according to buyer requirements.",
     ],
     highlights: [
       { label: "Product", value: "Elephant yam" },
-      { label: "Type", value: "Fresh tuber" },
-      { label: "Skin", value: "Rough, brown" },
-      { label: "Flesh", value: "Dense, cream to pink" },
-      { label: "Texture", value: "Firm and starchy" },
-      { label: "Use", value: "Cooking and processing" },
+      { label: "Type", value: "Fresh whole tuber" },
+      { label: "Skin", value: "Rough, natural brown" },
+      { label: "Flesh", value: "Cream to pinkish, depending on variety" },
+      { label: "Texture", value: "Dense, firm and starchy" },
+      { label: "Supply", value: "Bulk, as per buyer requirements" },
     ],
   },
   features: {
-    eyebrow: "Product Features",
+    eyebrow: "Key Product Features",
     heading: "Built for Hearty Cooking",
     items: [
-      { title: "Substantial Size", text: "Large tubers that yield generous portions for kitchens and processors.", icon: "layers" },
-      { title: "Firm Texture", text: "Holds its shape through frying, roasting and slow cooking.", icon: "shield" },
-      { title: "Traditional Favourite", text: "A familiar ingredient across regional cuisines.", icon: "sprout" },
-      { title: "Processing Ready", text: "Suited to cutting, frying and ready-meal preparation.", icon: "flask" },
-      { title: "Export Packing", text: "Packed to suit the destination and transit time.", icon: "globe" },
+      { title: "Substantial Size", text: "Large tubers suitable for commercial kitchens and food-processing applications.", icon: "layers" },
+      { title: "Firm Texture", text: "Dense, firm flesh suitable for cooking and processing.", icon: "shield" },
+      { title: "Traditional Favourite", text: "Used in traditional regional culinary preparations.", icon: "sprout" },
+      { title: "Processing Ready", text: "Suitable for cutting, preparation and food-processing applications.", icon: "flask" },
+      { title: "Export Packing", text: "Packed according to buyer and shipment requirements.", icon: "globe" },
     ],
   },
   uses: {
     eyebrow: "Applications",
     heading: "Where Elephant Yam Works Best",
-    intro: "Temporary overview of typical uses for elephant yam.",
+    intro: "How commercial buyers use elephant yam, from kitchens to processing lines.",
     groups: [
-      { title: "Curries & Gravies", text: "Adds body to slow-cooked dishes.", items: ["Curries", "Stews", "Gravies"] },
-      { title: "Fried & Roasted", text: "Crisp outside, tender inside.", items: ["Fries", "Roasts", "Cutlets"] },
-      { title: "Traditional Dishes", text: "A staple of regional recipes.", items: ["Festive dishes", "Mixed vegetables"] },
-      { title: "Food Processing", text: "For ready-to-cook and frozen lines.", items: ["Cut and frozen", "Ready meals", "Snacks"] },
+      { title: "Curry & Gravy", text: "Suitable for traditional curry and gravy preparations.", items: ["Curries", "Stews", "Gravies"] },
+      { title: "Fried & Roasted", text: "Used in fried, roasted and other cooked preparations.", items: ["Fries", "Roasts", "Cutlets"] },
+      { title: "Traditional Dishes", text: "A versatile ingredient in regional culinary recipes.", items: ["Festive dishes", "Mixed vegetables"] },
+      { title: "Food Processing", text: "Suitable for commercial preparation and processing applications.", items: ["Cut and frozen", "Ready meals", "Snacks"] },
     ],
   },
   specs: {
-    eyebrow: "Product Details",
+    eyebrow: "Product Specifications",
     heading: "Elephant Yam Specifications",
-    rows: freshSpecs(
-      [
-        { label: "Product Name", value: "Elephant Yam" },
-        { label: "Product Type", value: "Fresh tuber" },
-        { label: "Appearance", value: "Large, rounded corms with rough brown skin" },
-        { label: "Flesh", value: "Cream to pinkish, varies by variety" },
-      ],
-      [{ label: "Storage", value: "Cool, dry and well-ventilated" }],
-    ),
+    rows: [
+      { label: "Product Name", value: "Elephant Yam" },
+      { label: "Product Type", value: "Fresh Tuber" },
+      { label: "Appearance", value: "Rough brown outer skin" },
+      { label: "Form", value: "Whole fresh tuber" },
+      { label: "Colour", value: "Cream to pinkish flesh, depending on variety" },
+      { label: "Texture", value: "Dense, firm and starchy" },
+      { label: "Size / Grade", value: "As per buyer requirements" },
+      { label: "Packaging", value: "As per buyer requirements" },
+      { label: "Origin", value: "India, subject to confirmation" },
+      { label: "Supply", value: "Subject to seasonal availability" },
+      { label: "Storage", value: "Cool, dry and well-ventilated" },
+    ],
     note: specsNote,
+  },
+  storage: {
+    heading: "Storage & Handling",
+    text: "Careful storage and handling keep tubers firm and sound from packing to delivery.",
+    points: [
+      "Store in a cool, dry and well-ventilated environment",
+      "Protect tubers from excess moisture",
+      "Handle carefully to minimise physical damage",
+      "Avoid unsuitable storage conditions during handling and transportation",
+      "Follow buyer-specific storage and handling requirements",
+    ],
+  },
+  faqs: {
+    eyebrow: "FAQ",
+    heading: "Elephant Yam Questions",
+    items: [
+      {
+        question: "What type of Elephant Yam do you supply?",
+        answer:
+          "We supply fresh elephant yam, also called elephant foot yam (Amorphophallus paeoniifolius), with rough brown skin and cream to pinkish flesh depending on variety. Variety and availability are confirmed with each enquiry.",
+      },
+      {
+        question: "What form is Elephant Yam supplied in?",
+        answer: "Elephant yam is supplied as whole fresh tubers.",
+      },
+      {
+        question: "What sizes are available?",
+        answer:
+          "Size and grade are supplied as per buyer requirements. Share the size you need and we will confirm availability with your quotation.",
+      },
+      {
+        question: "What is the minimum order quantity?",
+        answer: "The minimum order quantity for elephant yam is 500 KG.",
+      },
+      {
+        question: "How is Elephant Yam packed?",
+        answer: "Packaging is arranged as per buyer requirements and the needs of the shipment, and is confirmed with each quotation.",
+      },
+      {
+        question: "How should Elephant Yam be stored?",
+        answer:
+          "Store tubers in a cool, dry and well-ventilated environment, protect them from excess moisture, and handle them carefully to avoid physical damage.",
+      },
+      {
+        question: "Is Elephant Yam suitable for food processing?",
+        answer:
+          "Yes. Its dense, firm flesh is suitable for cutting, preparation and commercial food-processing applications such as ready meals and frozen lines.",
+      },
+    ],
   },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Bring Elephant Yam to Your Market",
-    body: "Share your required size, quantity and destination, and we will reply with availability and pricing.",
+    body: "Share your required quantity, quality specifications and destination market, and our team will help with availability and quotation.",
   },
   images: {
-    // Stage hero — whole and halved elephant yam on a dark earthy ground (4:5).
-    hero: img(slug, "hero", "Whole and halved elephant yam on a dark earthy surface", "Elephant yam, whole and cut"),
-    // Detail — cut surface texture of elephant yam (4:5).
-    detail: img(slug, "detail", "Cut elephant yam showing its dense flesh", "Elephant yam cut surface"),
+    // Stage hero (4:5).
+    hero: {
+      file: `${dir}/elephant-yam-hero.webp`,
+      alt: "Whole elephant yam tubers with rough brown skin beside a halved tuber showing its pale flesh",
+      label: "Elephant yam, whole and cut",
+    },
+    // Applications list image (4:3, 4:5 on desktop).
+    detail: {
+      file: `${dir}/elephant-yam-culinary-applications.webp`,
+      alt: "Cubed elephant yam beside a bowl of elephant yam curry and a halved tuber",
+      label: "Elephant yam in cooking",
+    },
   },
   sections: [
     { type: "hero", variant: "stage" },
@@ -86,6 +148,10 @@ export const elephantYam: AgriProduct = {
     { type: "features", variant: "bento" },
     { type: "uses", variant: "list" },
     { type: "specs", variant: "sheet" },
+    // MOQ renders automatically after the specifications.
+    { type: "storage" },
+    { type: "faq", variant: "split" },
+    // The Blog section renders automatically just before the contact section.
     { type: "contact", variant: "split" },
   ],
 };

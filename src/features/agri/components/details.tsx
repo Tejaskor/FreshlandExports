@@ -33,7 +33,17 @@ export function Process({ product }: { product: AgriProduct }) {
   return (
     <section aria-labelledby="process-heading" className="bg-white py-14 lg:py-20">
       <Container>
-        <SectionHeader id="process-heading" eyebrow={process.eyebrow} heading={process.heading} align="start" />
+        <SectionHeader id="process-heading" eyebrow={process.eyebrow} heading={process.heading} intro={process.note} align="start" />
+        {/* Optional wide photograph above the steps. */}
+        {process.image && (
+          <Reveal variant="unveil" className="mt-8 lg:mt-10">
+            <ProductImage
+              slot={process.image}
+              sizes="(min-width: 1024px) 80vw, 100vw"
+              className="aspect-[16/9] w-full rounded-[2rem] sm:aspect-[21/8]"
+            />
+          </Reveal>
+        )}
         <div className="relative mt-10">
           <span aria-hidden="true" className="absolute top-[0.6875rem] right-0 left-0 hidden h-0.5 bg-[var(--p-soft)] lg:block" />
           <span aria-hidden="true" className="absolute top-2 bottom-2 left-[0.6875rem] w-0.5 bg-[var(--p-soft)] lg:hidden" />
@@ -112,7 +122,7 @@ function EnquiryNote({ inverse = false }: { inverse?: boolean }) {
         Request Specifications
       </AnchorButton>
       <p className="max-w-xs text-[0.8125rem] leading-relaxed">
-        Grades, sizing, packaging and minimum order are confirmed with each enquiry.
+        Grades, sizing and packaging are confirmed with each enquiry.
       </p>
     </div>
   );
@@ -132,7 +142,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
               <dl className="mt-8 grid gap-x-10 sm:grid-cols-2">
                 {specs.rows.map((row) => (
                   <div key={row.label} className="grid gap-1 border-t border-white/12 py-3 sm:grid-cols-[9rem_1fr] sm:gap-4">
-                    <dt className={cn(label, "text-white/55 sm:pt-1")}>{row.label}</dt>
+                    <dt className={cn(label, "text-sage-200 sm:pt-1")}>{row.label}</dt>
                     <dd className="text-[0.9375rem]">
                       <SpecValue row={row} inverse />
                     </dd>
@@ -203,7 +213,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
           <div className="flex flex-col gap-6 lg:col-span-5">
             <Reveal variant="unveil">
               <ProductImage
-                slot={images.detail}
+                slot={images.specs ?? images.detail}
                 compact
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="aspect-[16/10] w-full rounded-[1.75rem]"

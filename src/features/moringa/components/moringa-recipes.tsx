@@ -73,7 +73,7 @@ export function RecipesPanel({ className }: { className?: string }) {
             <li key={recipe.id}>
               <article
                 className={cn(
-                  "grid grid-cols-[5.5rem_1fr] items-start gap-5 bg-white p-5 sm:grid-cols-[7rem_1fr] sm:p-6",
+                  "grid grid-cols-[6rem_1fr] items-start gap-4 bg-white p-5 sm:grid-cols-[8.5rem_1fr] sm:gap-6 sm:p-6",
                   compactShapes[index],
                 )}
               >
@@ -82,8 +82,12 @@ export function RecipesPanel({ className }: { className?: string }) {
                   tone="sage"
                   bare
                   framed={false}
-                  sizes="7rem"
-                  className="aspect-square w-full rounded-full ring-4 ring-cream-warm"
+                  sizes="(min-width: 640px) 9rem, 6rem"
+                  className="aspect-square w-full rounded-2xl ring-4 ring-cream-warm shadow-xs"
+                  mediaClassName={cn(
+                    recipe.image === "herbalDrink" ? "object-[62%_center]" : "object-center",
+                    "transition-transform duration-700 hover:scale-105",
+                  )}
                 />
                 <div className="min-w-0">
                   <RecipeMeta recipe={recipe} />
@@ -122,6 +126,7 @@ function FeaturedRecipe({ recipe }: { recipe: Recipe }) {
           tone="sage"
           sizes="(min-width: 1024px) 55vw, 100vw"
           className="aspect-[5/4] w-full rounded-[3rem_3rem_3rem_0.75rem] lg:rounded-[5rem_3rem_3rem_0.75rem]"
+          mediaClassName="object-center"
         />
       </Reveal>
 

@@ -3,8 +3,8 @@ import type { Faq } from "@/features/moringa/data";
 
 /**
  * Shared helpers for the fruit landing pages (TEMPORARY content). Values
- * that depend on season, variety or order stay qualified until confirmed;
- * no MOQ is stated because none is confirmed for fruits.
+ * that depend on season, variety or order stay qualified until confirmed.
+ * Fruit MOQs live in features/products/moq.ts.
  */
 
 export const fruitsCategory = "Fruits";

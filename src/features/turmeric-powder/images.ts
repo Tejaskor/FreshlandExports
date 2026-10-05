@@ -3,13 +3,12 @@ import type { MoringaImage } from "@/features/moringa/images";
 /**
  * Image slots for the Turmeric Powder page.
  *
- * No photography yet: each slot renders a labelled placeholder (ImageSlot)
- * until a file is saved at `public` + `file`, which then replaces it at
- * build time with no code change. The comment above each slot describes the
- * image needed and gives a generation prompt.
+ * Each slot points at the page's photography in public/images/products/
+ * Turmeric Powder/. If a file goes missing, ImageSlot falls back to a
+ * labelled placeholder. The comment above each slot gives its original brief.
  */
 
-const dir = "/images/products/turmeric";
+const dir = "/images/products/Turmeric Powder";
 
 export const turmericImages = {
   // Turmeric powder product photograph — hero, arch-shaped (portrait 4:5).
@@ -18,8 +17,8 @@ export const turmericImages = {
   // beside it, warm cream background, soft golden light, no text or logo,
   // portrait 4:5."
   hero: {
-    file: `${dir}/turmeric-powder-hero-bowl.webp`,
-    alt: "Golden turmeric powder in a ceramic bowl with fresh turmeric rhizomes",
+    file: `${dir}/turmeric-powder-hero.webp`,
+    alt: "Golden turmeric powder in a ceramic bowl beside fresh and halved turmeric rhizomes and a wooden spoon",
     label: "Turmeric powder product photograph",
   },
 
@@ -28,8 +27,8 @@ export const turmericImages = {
   // cut to show the bright orange interior, on a cream linen surface, soft
   // natural light, no text or logo, landscape 16:10."
   rhizomes: {
-    file: `${dir}/turmeric-fresh-rhizomes.webp`,
-    alt: "Fresh turmeric rhizomes, some cut open to show the orange interior",
+    file: `${dir}/turmeric-roots-powder.webp`,
+    alt: "Fresh turmeric roots, some cut open to show the orange interior, beside a wooden bowl of turmeric powder",
     label: "Fresh turmeric rhizomes",
   },
 
@@ -38,8 +37,8 @@ export const turmericImages = {
   // a golden curry and a cup of golden milk alongside, warm kitchen light,
   // cream and forest-green palette, no text or logo, portrait 3:4."
   culinary: {
-    file: `${dir}/turmeric-powder-culinary-use.webp`,
-    alt: "Turmeric powder being stirred into a golden curry, with golden milk alongside",
+    file: `${dir}/turmeric-powder-food-applications.webp`,
+    alt: "A bowl of turmeric powder with a vegetable stir-fry, a glass of golden milk and fresh turmeric roots",
     label: "Turmeric powder in culinary use",
   },
 } satisfies Record<string, MoringaImage>;

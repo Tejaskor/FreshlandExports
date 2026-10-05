@@ -83,6 +83,7 @@ export const blackPepper: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Seasoning, blends, food processing",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -93,7 +94,7 @@ export const blackPepper: AgriProduct = {
       { question: "Do you supply whole or ground pepper?", answer: "This page covers whole peppercorns; other forms can be discussed with our team." },
       { question: "How is grade specified?", answer: "Grade and quality parameters are confirmed with each quotation." },
       { question: "How should peppercorns be stored?", answer: "In airtight packaging in a cool, dry place, away from light." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

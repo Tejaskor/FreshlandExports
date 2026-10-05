@@ -1,84 +1,100 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
-// TEMPORARY content — replace with final product copy.
+// Variety, size, grade, packaging, origin and supply stay qualified until confirmed.
 const slug = "green-chili";
+const dir = "/images/products/Agricultural Products/Green Chili";
 
 export const greenChili: AgriProduct = {
   slug,
-  name: "Green Chili",
+  name: "Green Chilli",
   // Deep green and fresh leaf green, with the brand rust as a restrained accent.
   theme: { accent: "#2E6F3A", deep: "#123D22", tint: "#F2F6EF", soft: "#CFE3C4" },
   hero: {
     eyebrow: "Fresh Agricultural Products",
-    title: "Green Chili",
-    tagline: "Fresh heat, vibrant colour.",
-    body: "Fresh green chilies selected for colour, firmness and pungency, supplied to fresh markets, food processors and food-service buyers.",
-    highlights: ["Bright green pods", "Selected for firmness", "Bulk supply available"],
+    title: "Green Chilli",
+    tagline: "Fresh Heat, Vibrant Colour, Carefully Selected.",
+    body: "Fresh green chillies selected for colour, firmness and appearance, supplied for wholesale, food-service and food-processing requirements.",
+    highlights: ["Fresh & Firm", "Selected for Colour & Quality", "Bulk Supply Available"],
+    compact: true,
   },
   intro: {
-    eyebrow: "About Green Chili",
-    heading: "A Spark in Every Kitchen",
-    statement: "Sharp, fresh heat that lifts everyday cooking.",
+    eyebrow: "Product Overview",
+    heading: "Fresh Green Chilli, Selected for Supply",
+    statement: "Fresh green chillies selected for their colour, firmness, appearance and overall condition.",
     body: [
-      "Green chilies are harvested before they ripen, giving them a bright colour and a fresh, sharp heat.",
-      "They are used in cuisines around the world — raw, cooked, pickled and processed. Final variety and pungency information will be added here.",
+      "Suitable for wholesale, food-service and commercial applications, with selection based on buyer requirements and availability.",
     ],
     highlights: [
-      { label: "Product", value: "Fresh green chili" },
-      { label: "Type", value: "Fresh vegetable" },
-      { label: "Colour", value: "Bright green" },
-      { label: "Shape", value: "Slender pods" },
-      { label: "Heat", value: "Varies by variety" },
-      { label: "Use", value: "Cooking and processing" },
+      { label: "Product", value: "Fresh Green Chilli" },
+      { label: "Type", value: "Fresh Vegetable" },
+      { label: "Appearance", value: "Slender, glossy green pods" },
+      { label: "Colour", value: "Bright to deep green, depending on variety" },
+      { label: "Form", value: "Whole fresh pods" },
+      { label: "Flavour", value: "Fresh, pungent heat" },
+      { label: "Use", value: "Cooking and food processing" },
+      { label: "Origin", value: "India, subject to confirmation" },
     ],
   },
-  features: { eyebrow: "Features", heading: "Green Chili Features", items: [] },
+  features: { eyebrow: "Features", heading: "Green Chilli Features", items: [] },
   uses: {
     eyebrow: "Applications",
-    heading: "Where Green Chilies Go",
-    intro: "Temporary overview of typical green chili uses.",
+    heading: "Where Green Chillies Go",
+    intro: "How wholesale, food-service and processing buyers use fresh green chillies.",
     groups: [
-      { title: "Everyday Cooking", text: "Fresh heat for daily meals.", items: ["Curries", "Stir-fries", "Dals", "Chutneys"] },
-      { title: "Pickles & Sauces", text: "A classic base for condiments.", items: ["Pickles", "Hot sauces", "Chili pastes"] },
-      { title: "Food Processing", text: "For seasoning and ready-meal lines.", items: ["Ready meals", "Frozen mixes", "Seasonings"] },
-      { title: "Food Service", text: "A staple garnish and ingredient.", items: ["Restaurants", "Catering", "Street food"] },
+      { title: "Everyday Cooking", items: ["Curries", "Stir-fries", "Chutneys"] },
+      { title: "Pickles & Sauces", items: ["Pickled chilli", "Chilli sauces", "Relishes"] },
+      { title: "Food Processing", items: ["Sauces", "Chutneys", "Prepared foods"] },
+      { title: "Food Service", items: ["Restaurants", "Catering", "Commercial kitchens"] },
     ],
   },
   specs: {
-    eyebrow: "Product Details",
-    heading: "Green Chili Specifications",
-    rows: freshSpecs(
-      [
-        { label: "Product Name", value: "Fresh Green Chili" },
-        { label: "Product Type", value: "Fresh vegetable" },
-        { label: "Appearance", value: "Slender, glossy pods" },
-        { label: "Pungency", value: "To be confirmed", pending: true },
-      ],
-      [{ label: "Storage", value: "Cool, well-ventilated conditions" }],
-    ),
-    note: specsNote,
+    eyebrow: "Product Specifications",
+    heading: "Green Chilli Specifications",
+    rows: [
+      { label: "Product Name", value: "Fresh Green Chilli" },
+      { label: "Product Type", value: "Fresh Vegetable" },
+      { label: "Appearance", value: "Slender, glossy green pods" },
+      { label: "Colour", value: "Bright to deep green, depending on variety" },
+      { label: "Form", value: "Whole fresh pods" },
+      { label: "Size / Grade", value: "As per buyer requirements" },
+      { label: "Packaging", value: "As per buyer requirements" },
+      { label: "Origin", value: "India, subject to confirmation" },
+      { label: "Supply", value: "Subject to seasonal availability" },
+      { label: "Storage", value: "Cool, dry and well-ventilated conditions" },
+      { label: "Shelf Life", value: "Subject to product grade, storage and handling conditions" },
+      { label: "Heat Level", value: "Varies by variety" },
+    ],
+    note: "Final specifications, variety, grading and packaging can be confirmed according to buyer requirements and destination-market needs.",
   },
   quality: {
-    heading: "Handled with Care",
-    text: "Temporary quality notes — replace with confirmed handling details.",
+    heading: "Careful Handling from Selection to Dispatch",
+    text: "Quality is maintained through careful selection, sorting and preparation according to buyer and shipment requirements.",
     points: [
       "Selected for colour and firmness",
-      "Sorted to remove damaged pods",
-      "Packed in ventilated packaging",
-      "Specifications confirmed per order",
+      "Damaged or unsuitable pods removed during sorting",
+      "Packed according to buyer requirements",
+      "Handled carefully during preparation and dispatch",
+      "Specifications confirmed before order",
     ],
   },
   cta: {
     eyebrow: "Export Enquiry",
-    heading: "Add Fresh Heat to Your Supply",
-    body: "Share your variety, quantity and destination, and we will reply with availability and pricing.",
+    heading: "Bring Fresh Green Chilli to Your Market",
+    body: "Share your required quantity, quality specifications and destination, and our team will respond with availability and a quotation.",
   },
   images: {
-    // Diagonal hero — a heap of fresh green chilies (5:6).
-    hero: img(slug, "hero", "A heap of fresh green chilies", "Fresh green chilies"),
-    // Detail — green chilies with a few sliced open (4:3).
-    detail: img(slug, "detail", "Green chilies, a few sliced open", "Sliced green chilies"),
+    // Diagonal hero (4:3, 5:6 on desktop).
+    hero: {
+      file: `${dir}/green-chilli-hero.webp`,
+      alt: "A heap of fresh green chillies with leaves on a wooden table beside the field",
+      label: "Fresh green chillies",
+    },
+    // Applications tabs.
+    detail: {
+      file: `${dir}/green-chilli-applications.webp`,
+      alt: "Fresh green chillies, some sliced, beside a pan of potatoes cooked with green chilli",
+      label: "Green chillies in cooking",
+    },
   },
   sections: [
     { type: "hero", variant: "diagonal" },

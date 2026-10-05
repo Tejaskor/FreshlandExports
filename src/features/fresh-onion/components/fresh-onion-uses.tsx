@@ -23,7 +23,7 @@ export function FreshOnionUses() {
         <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal variant="rise">
-              <RuledEyebrow tone="inverse">One Vegetable, Endless Possibilities</RuledEyebrow>
+              <RuledEyebrow tone="inverse">Applications</RuledEyebrow>
             </Reveal>
             <RevealLines as="h2" id="uses-heading" className={cn(type.section, "mt-5 text-white")}>
               <Line>Discover the Many Ways</Line>
@@ -34,8 +34,8 @@ export function FreshOnionUses() {
           </div>
           <Reveal variant="rise" delay={0.1} className="lg:col-span-4 lg:col-start-9">
             <p className="text-[1rem] leading-relaxed text-white/75">
-              From everyday cooking to commercial food production, fresh onions bring flavour and
-              texture to countless dishes.
+              From home kitchens to food factories and restaurants, fresh onions are a staple for
+              every kind of food business we supply.
             </p>
           </Reveal>
         </div>
@@ -61,7 +61,7 @@ export function FreshOnionUses() {
                   </span>
                 </div>
                 <figcaption className="mt-5">
-                  <h3 className="font-display text-heading leading-tight">{use.title}</h3>
+                  <h3 className="font-display text-heading leading-tight text-white">{use.title}</h3>
                   <ul aria-label={`${use.title} applications`} className="mt-3 flex flex-wrap gap-2">
                     {use.items.map((item) => (
                       <li

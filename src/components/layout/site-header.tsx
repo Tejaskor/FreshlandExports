@@ -12,8 +12,15 @@ import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/p
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
 import { primaryNav, siteConfig } from "@/config/site";
+import { BrochureButton } from "@/features/brochure/brochure-button";
 import { productMenu, type ProductMenuGroupId } from "@/features/products/export-catalogue";
 import { cn } from "@/lib/utils";
+
+/** Subtle outlined brochure button: forest outline, a rust download icon. */
+const brochureButton =
+  "group/brochure inline-flex h-12 items-center gap-2 rounded-full border border-forest/30 px-5 text-[0.9375rem] font-medium whitespace-nowrap text-forest " +
+  "transition-colors duration-300 hover:border-forest hover:bg-forest hover:text-white " +
+  "focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -87,13 +94,7 @@ export function SiteHeader() {
               );
 
               return item.hasMenu ? (
-                <ProductsMenu
-                  key={item.href}
-                  label={item.label}
-                  href={item.href}
-                  linkClassName={linkClassName}
-                  current={isActive(item.href)}
-                />
+                <ProductsMenu key={item.href} label={item.label} linkClassName={linkClassName} />
               ) : (
                 <li key={item.href}>
                   <Link
@@ -110,13 +111,11 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/search"
-            aria-label="Search"
-            className="flex size-10 items-center justify-center rounded-full text-forest transition-colors duration-300 hover:bg-sage-100 hover:text-leaf"
-          >
-            <Icon name="search" className="size-[1.3rem]" />
-          </Link>
+          {/* Brochure: in the bar from sm, inside the mobile menu below that. */}
+          <BrochureButton source="header_brochure" className={cn(brochureButton, "hidden sm:inline-flex")}>
+            <Icon name="download" className="size-4 text-rust transition-colors duration-300 group-hover/brochure:text-white" strokeWidth={2} />
+            Brochure
+          </BrochureButton>
 
           <Button href="/contact" variant="forest" size="md" className="hidden text-[0.9375rem] sm:inline-flex">
             Get a Quote
@@ -145,26 +144,39 @@ export function SiteHeader() {
             <ul className="divide-y divide-line">
               {primaryNav.map((item, index) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={closeMenu}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                    className="flex items-baseline gap-4 py-5 transition-colors duration-300 hover:text-leaf"
-                  >
-                    <span className="type-label text-[0.75rem] text-ink-faint">
-                      {(index + 1).toString().padStart(2, "0")}
-                    </span>
-                    <span>
-                      <span className="block font-display text-[1.625rem] text-forest">
-                        {item.label}
-                      </span>
-                      {item.hint && (
-                        <span className="mt-1 block text-[0.9375rem] text-ink-muted">
-                          {item.hint}
+                  {(() => {
+                    const row = (
+                      <>
+                        <span className="type-label text-[0.75rem] text-ink-faint">
+                          {(index + 1).toString().padStart(2, "0")}
                         </span>
-                      )}
-                    </span>
-                  </Link>
+                        <span>
+                          <span className="block font-display text-[1.625rem] text-forest">
+                            {item.label}
+                          </span>
+                          {item.hint && (
+                            <span className="mt-1 block text-[0.9375rem] text-ink-muted">
+                              {item.hint}
+                            </span>
+                          )}
+                        </span>
+                      </>
+                    );
+                    // Products is a heading for the product links beneath it,
+                    // not a link to /products.
+                    return item.hasMenu ? (
+                      <div className="flex items-baseline gap-4 py-5">{row}</div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={closeMenu}
+                        aria-current={isActive(item.href) ? "page" : undefined}
+                        className="flex items-baseline gap-4 py-5 transition-colors duration-300 hover:text-leaf"
+                      >
+                        {row}
+                      </Link>
+                    );
+                  })()}
 
                   {/* Product pages, listed under Products (links can't nest,
                       so they follow the row rather than sit inside it). */}
@@ -270,7 +282,15 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <Button href="/contact" variant="forest" className="mt-10 w-full sm:hidden">
+          <BrochureButton
+            source="header_brochure"
+            onClick={closeMenu}
+            className={cn(brochureButton, "mt-10 w-full justify-center sm:hidden")}
+          >
+            <Icon name="download" className="size-4 text-rust transition-colors duration-300 group-hover/brochure:text-white" strokeWidth={2} />
+            Brochure
+          </BrochureButton>
+          <Button href="/contact" variant="forest" className="mt-3 w-full sm:hidden">
             Get a Quote
           </Button>
         </Container>

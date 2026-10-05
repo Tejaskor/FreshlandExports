@@ -63,6 +63,8 @@ export function OnionApplications() {
                 tone="warm"
                 framed={false}
                 sizes="(min-width: 1024px) 40vw, 100vw"
+                // Square photo in a 4:3 frame: keep the sprinkling hand and the bowl.
+                mediaClassName="object-[center_45%]"
                 className="h-full w-full"
               />
             </Parallax>
@@ -78,7 +80,7 @@ export function OnionApplications() {
             <p className="type-label text-highlight-inverse">
               Simple to use, easy to enjoy
             </p>
-            <h3 className={cn(subHeading, "mt-2")}>How to Use Onion Powder</h3>
+            <h3 className={cn(subHeading, "mt-2 text-white")}>How to Use Onion Powder</h3>
             <p className="mt-3 max-w-2xl text-[0.9375rem] leading-relaxed text-white/75">
               Its fine texture mixes easily with liquids, sauces, and dry seasonings, so it fits
               into everyday recipes with minimal preparation.
@@ -123,7 +125,7 @@ export function OnionApplications() {
               <p className="type-label text-highlight-inverse">
                 Powering the food industry
               </p>
-              <h3 className={cn(subHeading, "mt-2")}>Industrial Applications</h3>
+              <h3 className={cn(subHeading, "mt-2 text-white")}>Industrial Applications</h3>
             </div>
             <p className="max-w-md text-[0.9375rem] leading-relaxed text-white/75">
               Widely used for its concentrated flavour, convenient format, and versatility.
@@ -138,6 +140,8 @@ export function OnionApplications() {
                 tone="warm"
                 compact
                 sizes="(min-width: 1024px) 30vw, 100vw"
+                // Wide and tall crops both keep the powder bowl and jars in view.
+                mediaClassName="object-[62%_58%]"
                 className="aspect-[16/9] h-full w-full rounded-[1.5rem] lg:aspect-auto lg:min-h-[14rem]"
               />
             </Reveal>

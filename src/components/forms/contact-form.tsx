@@ -154,9 +154,11 @@ export function ContactForm({
           <label className="block">
             <span className="sr-only">Country</span>
             <select
-              {...describe("country")}
               // Keyed so a restored value is applied after React resets the form.
+              // The key must precede the spread, or React reads the options as a
+              // keyless list.
               key={values?.country ?? ""}
+              {...describe("country")}
               name="country"
               autoComplete="country-name"
               defaultValue={values?.country ?? ""}

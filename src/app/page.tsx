@@ -1,4 +1,5 @@
 import { BrandStory } from "@/features/home/components/brand-story";
+import { BrochureCta } from "@/features/home/components/brochure-cta";
 import { Contact } from "@/features/home/components/contact";
 import { FeaturedProducts } from "@/features/home/components/featured-products";
 import { Hero } from "@/features/home/components/hero";
@@ -24,6 +25,7 @@ export default function HomePage() {
       <BrandStory />
       <FeaturedProducts />
       <Sustainability />
+      <BrochureCta />
       <Contact />
     </>
   );

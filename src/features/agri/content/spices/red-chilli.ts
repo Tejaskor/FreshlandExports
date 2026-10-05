@@ -73,6 +73,7 @@ export const redChilli: AgriProduct = {
         storage: "Cool, dry, away from light",
         applications: "Spice blends, sauces, seasonings",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -88,7 +89,7 @@ export const redChilli: AgriProduct = {
       { question: "Can you supply stemless chillies?", answer: "Yes — whole chillies are available with or without stems." },
       { question: "How is heat level specified?", answer: "Pungency and colour values vary by variety and are shared with each quotation." },
       { question: "Do you supply crushed or powdered chilli?", answer: "Crushed and powdered forms are available on request." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

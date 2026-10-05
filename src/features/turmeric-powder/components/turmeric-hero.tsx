@@ -70,6 +70,8 @@ export function TurmericHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                   priority
                   framed={false}
                   sizes="(min-width: 1024px) 24rem, 20rem"
+                  // Landscape photo in a portrait arch: centre on the bowl.
+                  mediaClassName="object-[64%_center]"
                   className="h-full w-full"
                 />
               </Parallax>

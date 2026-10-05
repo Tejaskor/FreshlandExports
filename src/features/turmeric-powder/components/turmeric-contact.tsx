@@ -36,7 +36,7 @@ export function TurmericContact({ productName }: { productName: string }) {
           <RevealLines
             as="h2"
             id="cta-heading"
-            className="mt-6 font-display text-display"
+            className="mt-6 font-display text-display text-white"
           >
             <Line>{turmericCta.heading[0]}</Line>
             <Line>

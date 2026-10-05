@@ -44,7 +44,8 @@ export type HeroVariant =
   | "elongated"
   | "blob"
   | "duo"
-  | "orbit";
+  | "orbit"
+  | "editorial";
 
 /** One section of a page, in order. Five to seven per product. */
 export type SectionSpec =
@@ -75,6 +76,12 @@ export type AgriProduct = {
     tagline: string;
     body: string;
     highlights: readonly string[];
+    /** Tighter vertical rhythm in the hero copy (title, tagline, body, buttons, highlights). */
+    compact?: boolean;
+    /** Editorial hero: small badge over the photograph. */
+    badge?: string;
+    /** Editorial hero: floating information card beside the photograph. */
+    card?: { title: string; text: string };
     /** Second hero button: "Explore Our Product" (default) or "Enquire Now". */
     secondary?: "explore" | "enquire";
   };
@@ -88,7 +95,7 @@ export type AgriProduct = {
   };
   features: { eyebrow: string; heading: string; items: readonly Feature[] };
   uses: { eyebrow: string; heading: string; intro: string; groups: readonly UseGroup[] };
-  process?: { eyebrow: string; heading: string; steps: readonly Step[] };
+  process?: { eyebrow: string; heading: string; steps: readonly Step[]; note?: string; image?: ImageSlotData };
   specs: { eyebrow: string; heading: string; rows: readonly SpecRow[]; note: string };
   quality?: { heading: string; text: string; points: readonly string[] };
   /** Varieties showcase (e.g. mango varieties). */
@@ -108,6 +115,8 @@ export type AgriProduct = {
   images: {
     hero: ImageSlotData;
     detail: ImageSlotData;
+    /** Specifications photograph; falls back to `detail`. */
+    specs?: ImageSlotData;
     /** Extra photographs used by collage / elongated heroes and galleries. */
     extra?: readonly ImageSlotData[];
     /** An existing small photograph (≤300 px) for a small circular slot. */

@@ -34,6 +34,16 @@ const radii = [
   "rounded-[1.25rem_3.5rem_1.25rem_1.25rem]",
 ];
 
+/** Image object positions tailored to frame each application product clearly. */
+const itemMediaPositions = [
+  "object-[center_38%]", // 01 Health Food Products
+  "object-[center_32%]", // 02 Functional Beverages
+  "object-center",        // 03 Bakery Products
+  "object-[center_55%]", // 04 Nutritional Snacks
+  "object-[center_45%]", // 05 Herbal Blends
+  "object-[center_35%]", // 06 Food Supplements
+];
+
 /**
  * Applications & Recipes: the commercial uses as an irregular photo grid on
  * deep green, then the recipes and everyday uses on a cream panel below —
@@ -43,7 +53,7 @@ export function MoringaApplications() {
   return (
     <section
       aria-labelledby="applications-heading"
-      className="relative isolate overflow-hidden bg-forest-deep py-12 text-white lg:py-20"
+      className="relative isolate overflow-hidden bg-forest-deep py-12 text-cream lg:py-20"
     >
       <MoringaSprig
         variant="line"
@@ -54,17 +64,17 @@ export function MoringaApplications() {
         <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal variant="rise">
-              <RuledEyebrow tone="inverse">Applications</RuledEyebrow>
+              <RuledEyebrow tone="inverse" className="text-sage-300">Applications</RuledEyebrow>
             </Reveal>
-            <RevealLines as="h2" id="applications-heading" className={cn(type.section, "mt-6 text-white")}>
+            <RevealLines as="h2" id="applications-heading" className={cn(type.section, "mt-6 text-cream")}>
               <Line>More Than Just</Line>
               <Line>
-                a <span className="text-highlight-inverse">Superfood</span>
+                a <span className="text-leaf-bright">Superfood</span>
               </Line>
             </RevealLines>
           </div>
           <Reveal variant="rise" delay={0.2} className="lg:col-span-4 lg:col-start-9">
-            <p className={cn(type.lead, "text-white/75")}>
+            <p className={cn(type.lead, "text-sage-100")}>
               A versatile green ingredient for manufacturers, supplied in bulk to your
               specification.
             </p>
@@ -79,7 +89,12 @@ export function MoringaApplications() {
         >
           {applications.map((item, index) => (
             <li key={item.title} className={tiles[index]}>
-              <article className={cn("group relative h-full overflow-hidden", radii[index])}>
+              {/* Each tile opens the quote form, as its arrow promises. */}
+              <a
+                href="#quote-form"
+                aria-label={`${item.title}: ${item.text} Request a quote`}
+                className={cn("group relative block h-full overflow-hidden", radii[index])}
+              >
                 <ImageSlot
                   image={item.image}
                   tone="dark"
@@ -87,31 +102,34 @@ export function MoringaApplications() {
                   framed={false}
                   sizes="(min-width: 1024px) 45vw, (min-width: 640px) 50vw, 100vw"
                   className="absolute inset-0"
-                  mediaClassName="transition-[scale] duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.06]"
+                  mediaClassName={cn(
+                    itemMediaPositions[index],
+                    "transition-[scale] duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.06]",
+                  )}
                 />
-                {/* Veil keeps the caption legible over any photograph. */}
+                {/* Subtle bottom gradient veil keeps the caption legible while leaving the photograph clear and bright. */}
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest-deep/10 to-transparent"
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-forest-deep/95 via-forest-deep/50 to-transparent"
                 />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 sm:p-5">
-                  <div>
-                    <span className="font-display text-[0.875rem] font-medium text-highlight-inverse">
+                  <div className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+                    <span className="font-display text-[0.875rem] font-medium text-sage-300">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mt-1 font-display text-heading leading-[1.05] text-white">
+                    <h3 className="mt-1 font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-[1.05] text-cream">
                       {item.title}
                     </h3>
-                    <p className="mt-1 text-[0.8125rem] text-white/70">{item.text}</p>
+                    <p className="mt-1 text-[0.8125rem] text-sage-100">{item.text}</p>
                   </div>
                   <span
                     aria-hidden="true"
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/25 text-white transition-[background-color,border-color,color,rotate] duration-500 ease-[var(--ease-out-expo)] group-hover:-rotate-45 group-hover:border-leaf-bright group-hover:bg-leaf-bright group-hover:text-forest-deep"
+                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 text-cream transition-[background-color,border-color,color,rotate] duration-500 ease-[var(--ease-out-expo)] group-hover:-rotate-45 group-hover:border-leaf-bright group-hover:bg-leaf-bright group-hover:text-forest-deep"
                   >
                     <Icon name="arrow-right" className="size-4" />
                   </span>
                 </div>
-              </article>
+              </a>
             </li>
           ))}
         </Reveal>

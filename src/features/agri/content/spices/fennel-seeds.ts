@@ -74,6 +74,7 @@ export const fennelSeeds: AgriProduct = {
         storage: "Cool, dry, airtight, away from light",
         applications: "Blends, baking, meats, teas",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -89,7 +90,7 @@ export const fennelSeeds: AgriProduct = {
       { question: "What does fennel taste like?", answer: "Sweet and fresh, with an aroma similar to anise." },
       { question: "How is grade specified?", answer: "Grade and quality parameters are confirmed with each quotation." },
       { question: "Is fennel the same as anise?", answer: "No — they are different plants, though fennel has a similar sweet, anise-like aroma." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

@@ -167,14 +167,10 @@ const DEFAULT_GROUP: ProductMenuGroupId = "powders";
  */
 export function ProductsMenu({
   label,
-  href,
   linkClassName,
-  current,
 }: {
   label: string;
-  href: string;
   linkClassName: string;
-  current: boolean;
 }) {
   const pathname = usePathname();
   const panelId = useId();
@@ -261,29 +257,33 @@ export function ProductsMenu({
         {/* Hover bridge: carries the pointer from "Products" down to the
             panel, which hangs from the header's bottom edge. */}
         <span aria-hidden="true" className="absolute inset-x-0 top-full h-10" />
-        <Link href={href} onClick={dismiss} aria-current={current ? "page" : undefined} className={linkClassName}>
-          {label}
-        </Link>
+        {/* "Products" only opens the menu — the label and its chevron are one
+            toggle, not a link to /products. The pages are inside the menu. */}
         <button
           ref={buttonRef}
           type="button"
           aria-expanded={open}
           aria-controls={panelId}
-          aria-label={`${label} menu`}
           onClick={() => {
             if (!open) setActiveId(DEFAULT_GROUP);
             setOpenedOn((value) => (value ? null : pathname));
           }}
-          className="flex size-7 items-center justify-center rounded-full text-ink transition-colors duration-300 hover:bg-sage-100 hover:text-forest"
+          className={cn(linkClassName, "group/trigger cursor-pointer gap-0.5")}
         >
-          <Icon
-            name="chevron-down"
-            className={cn(
-              "size-4 transition-transform duration-300",
-              armed && "group-hover/menu:rotate-180",
-              open && "rotate-180",
-            )}
-          />
+          {label}
+          <span
+            aria-hidden="true"
+            className="flex size-7 items-center justify-center rounded-full text-ink transition-colors duration-300 group-hover/trigger:bg-sage-100 group-hover/trigger:text-forest"
+          >
+            <Icon
+              name="chevron-down"
+              className={cn(
+                "size-4 transition-transform duration-300",
+                armed && "group-hover/menu:rotate-180",
+                open && "rotate-180",
+              )}
+            />
+          </span>
         </button>
       </div>
 

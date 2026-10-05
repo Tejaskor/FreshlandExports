@@ -1,16 +1,13 @@
 import type { MoringaImage } from "@/features/moringa/images";
 
 /**
- * Image slots for the Fresh Onion page.
- *
- * No photography yet (the existing /images/products/onion.webp is 300 px,
- * too small for these sizes): each slot renders a labelled placeholder
- * until a file is saved at `public` + `file`, which then replaces it at
- * build time with no code change. The comment above each slot describes the
- * image needed and gives a generation prompt.
+ * Image slots for the Fresh Onion page, one photograph per section from
+ * public/images/products/Agricultural Products/Onion/. No photograph is used
+ * twice. If a file goes missing, ImageSlot falls back to a labelled
+ * placeholder. The comment above each slot gives its original brief.
  */
 
-const dir = "/images/products/fresh-onion";
+const dir = "/images/products/Agricultural Products/Onion";
 
 export const freshOnionImages = {
   // Hero — large fresh red and white onion photograph (landscape 5:4).
@@ -18,8 +15,8 @@ export const freshOnionImages = {
   // few cut in half showing their rings, with fresh green onion leaves, on a
   // pale sage surface, soft natural light, no text or logo, landscape 5:4."
   hero: {
-    file: `${dir}/fresh-onion-hero-red-white.webp`,
-    alt: "Fresh red and white onions, some cut in half, with green onion leaves",
+    file: `${dir}/fresh-onions-hero.webp`,
+    alt: "A heap of fresh red onions with dry papery skins on a woven basket",
     label: "Fresh red & white onions",
   },
 
@@ -28,8 +25,8 @@ export const freshOnionImages = {
   // their natural green leaves attached, soil-dusted skins, warm daylight,
   // no text or logo, portrait 4:5."
   closeUp: {
-    file: `${dir}/fresh-onion-closeup-leaves.webp`,
-    alt: "Close-up of freshly harvested onions with natural green leaves",
+    file: `${dir}/fresh-onion-selection.webp`,
+    alt: "Fresh red onions laid out on sorting trays for selection",
     label: "Fresh onions with leaves",
   },
 
@@ -38,8 +35,8 @@ export const freshOnionImages = {
   // woven basket on a kitchen counter, natural light, no text or logo,
   // landscape 16:10."
   wholeOnions: {
-    file: `${dir}/fresh-onion-use-whole.webp`,
-    alt: "Whole fresh red and white onions in a basket",
+    file: `${dir}/fresh-onions-culinary.webp`,
+    alt: "Sliced red onions on a chopping board beside a pan of cooked onion and vegetables",
     label: "Fresh onions",
   },
 
@@ -48,8 +45,8 @@ export const freshOnionImages = {
   // rings, tomato, cucumber and herbs in a ceramic bowl, bright daylight,
   // no text or logo, landscape 16:10."
   salad: {
-    file: `${dir}/fresh-onion-use-salad.webp`,
-    alt: "Fresh salad with sliced red onion rings",
+    file: `${dir}/fresh-onions-salads.webp`,
+    alt: "A fresh salad with red onion rings, tomato, cucumber and lettuce",
     label: "Onion salad",
   },
 
@@ -58,8 +55,8 @@ export const freshOnionImages = {
   // chopping board with a chef's knife, clean kitchen setting, soft light,
   // no text or logo, landscape 16:10."
   sliced: {
-    file: `${dir}/fresh-onion-use-sliced.webp`,
-    alt: "Sliced and diced onions on a chopping board",
+    file: `${dir}/fresh-onions-food-processing.webp`,
+    alt: "Whole, sliced and diced red onions on steel trays in a food-processing kitchen",
     label: "Sliced onions",
   },
 
@@ -68,8 +65,8 @@ export const freshOnionImages = {
   // caramelised onions in a copper bowl, warm light, no text or logo,
   // landscape 16:10."
   cooked: {
-    file: `${dir}/fresh-onion-use-cooked-dish.webp`,
-    alt: "Curry topped with caramelised onions",
+    file: `${dir}/fresh-onions-food-service.webp`,
+    alt: "Sliced onions in steel trays prepared in a commercial kitchen",
     label: "Cooked dish with onions",
   },
 
@@ -78,8 +75,15 @@ export const freshOnionImages = {
   // in a mesh bag beside a small heap of loose onions, plain cream
   // background, studio lighting, no text or logo, landscape 16:10."
   display: {
-    file: `${dir}/fresh-onion-product-display.webp`,
-    alt: "Graded fresh red onions for product display",
+    file: `${dir}/fresh-onion-quality-inspection.webp`,
+    alt: "Firm fresh red onions, whole and halved, laid out for quality inspection",
     label: "Fresh onions — product display",
+  },
+
+  // Storage & Handling — onions in ventilated crates in a storage shed (16:10).
+  storage: {
+    file: `${dir}/fresh-onion-storage-handling.webp`,
+    alt: "Fresh red onions stored in ventilated wooden crates in a storage shed",
+    label: "Onion storage and handling",
   },
 } satisfies Record<string, MoringaImage>;

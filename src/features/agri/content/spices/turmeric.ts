@@ -98,6 +98,7 @@ export const turmeric: AgriProduct = {
         storage: "Cool, dry, away from light",
         applications: "Grinding, spice blends, food processing",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -108,7 +109,7 @@ export const turmeric: AgriProduct = {
       { question: "What forms of turmeric do you supply?", answer: "Dried fingers and bulbs, polished or unpolished. Turmeric powder has its own product page." },
       { question: "Can you share curcumin content?", answer: "Quality parameters such as curcumin content are shared with each quotation." },
       { question: "How should whole turmeric be stored?", answer: "Keep it in a cool, dry place away from light and moisture." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

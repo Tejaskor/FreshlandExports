@@ -83,6 +83,7 @@ export const mustardSeeds: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Tempering, pickles, condiments",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -98,7 +99,7 @@ export const mustardSeeds: AgriProduct = {
       { question: "Which types of mustard seed do you supply?", answer: "Seed type (yellow, brown or black) will be confirmed here; our team can advise with each enquiry." },
       { question: "Are the seeds suitable for condiments?", answer: "Yes — mustard seeds are the base of prepared mustard and sauces." },
       { question: "Why do mustard seeds taste different when cooked?", answer: "Whole seeds tempered in hot oil turn mild and nutty; crushing releases their sharp, pungent heat." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

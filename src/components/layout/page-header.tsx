@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Line, RevealLines } from "@/animations/reveal-lines";
@@ -12,11 +14,14 @@ export function PageHeader({
   eyebrow,
   title,
   lead,
+  children,
 }: {
   eyebrow: string;
   /** Rendered as the page's single h1, split into masked lines. */
   title: readonly string[];
   lead: string;
+  /** Optional content under the lead, such as a row of highlights. */
+  children?: ReactNode;
 }) {
   return (
     <Section aria-labelledby="page-heading" className="bg-cream pt-40 lg:pt-48">
@@ -34,6 +39,8 @@ export function PageHeader({
         <Reveal delay={0.2} variant="rise">
           <p className="mt-8 max-w-xl text-lead text-ink-muted">{lead}</p>
         </Reveal>
+
+        {children}
       </Container>
     </Section>
   );

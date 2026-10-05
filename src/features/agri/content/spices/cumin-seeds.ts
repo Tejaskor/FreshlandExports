@@ -88,6 +88,7 @@ export const cuminSeeds: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Tempering, spice blends, seasonings",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -103,7 +104,7 @@ export const cuminSeeds: AgriProduct = {
       { question: "Are the seeds cleaned?", answer: "Seeds are machine-cleaned, with sortex cleaning available on request." },
       { question: "Do you supply ground cumin?", answer: "Ground cumin is available on request." },
       { question: "How is purity specified?", answer: "Purity and moisture are confirmed with each quotation." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

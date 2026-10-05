@@ -5,7 +5,6 @@ import { Icon } from "@/components/ui/icon";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { WaveDivider } from "@/components/ui/wave-divider";
 import { FaqBlock } from "@/features/moringa/components/moringa-faq";
 import { ImageSlot } from "@/features/moringa/components/image-slot";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
@@ -21,7 +20,7 @@ import { cn } from "@/lib/utils";
 /**
  * Product Details — everything a buyer checks before asking for a quote, in
  * reading order: how it is made and what each lot ships with, the data sheet
- * and minimum order, then the FAQs. Ends in the wave into the Contact band.
+ * and minimum order, then the FAQs. The Blog section follows.
  */
 export function MoringaDetails() {
   return (
@@ -53,7 +52,8 @@ export function MoringaDetails() {
                 image="packaging"
                 tone="sage"
                 sizes="(min-width: 1024px) 40vw, 100vw"
-                className="aspect-[16/10] w-full rounded-[1.5rem_4rem_1.5rem_1.5rem]"
+                className="aspect-[4/3] w-full rounded-[1.5rem_4rem_1.5rem_1.5rem]"
+                mediaClassName="object-cover object-center"
               />
             </ClipReveal>
             <Reveal variant="rise">
@@ -64,9 +64,6 @@ export function MoringaDetails() {
       </Container>
 
       <FaqBlock className="mt-12 border-t border-line pt-12 pb-14 lg:mt-14 lg:pt-14 lg:pb-20" />
-
-      {/* Flows into the Contact band's forest green. */}
-      <WaveDivider fill="text-forest" />
     </section>
   );
 }
@@ -114,7 +111,7 @@ function ProcessTimeline() {
                   framed={false}
                   sizes="7rem"
                   className="size-16 rounded-full ring-[5px] ring-white transition-[box-shadow] duration-500 group-hover:ring-leaf-bright/60 lg:size-28"
-                  mediaClassName="transition-[scale] duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.08]"
+                  mediaClassName="object-center transition-[scale] duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.08]"
                 />
                 <span
                   aria-hidden="true"
@@ -172,17 +169,17 @@ function QualityStrip() {
 /** Deep-green data sheet. Pending values are flagged, not guessed. */
 function DataSheet() {
   return (
-    <div className="relative h-full overflow-hidden rounded-[2rem_0.75rem_2rem_2rem] bg-forest-deep p-6 text-white shadow-[var(--shadow-panel)] sm:p-8">
+    <div className="relative h-full overflow-hidden rounded-[2rem_0.75rem_2rem_2rem] bg-forest-deep p-6 text-cream shadow-[var(--shadow-panel)] sm:p-8">
       <MoringaSprig
         variant="line"
         className="absolute -top-8 -right-10 h-56 w-auto rotate-[30deg] text-white/[0.08]"
       />
 
       <div className="relative flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 border-b border-white/15 pb-5">
-        <h3 id="specs-heading" className="font-display text-[1.6rem] leading-none font-medium">
+        <h3 id="specs-heading" className="font-display text-[1.6rem] leading-none font-medium text-cream">
           Product Specifications
         </h3>
-        <p className="type-label text-highlight-inverse">
+        <p className="type-label text-sage-300">
           Moringa · Powder
         </p>
       </div>
@@ -193,17 +190,17 @@ function DataSheet() {
             key={row.label}
             className="grid gap-1 py-2.5 sm:grid-cols-[10rem_1fr] sm:items-baseline sm:gap-6"
           >
-            <dt className="type-label text-white/55">
+            <dt className="type-label text-sage-300">
               {row.label}
             </dt>
             <dd>
               {row.pending ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-highlight-inverse/50 px-3 py-0.5 text-[0.8125rem] text-highlight-inverse">
-                  <span aria-hidden="true" className="size-1.5 rounded-full bg-highlight-inverse" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-leaf-bright/60 px-3 py-0.5 text-[0.8125rem] text-leaf-bright">
+                  <span aria-hidden="true" className="size-1.5 rounded-full bg-leaf-bright" />
                   {row.value}
                 </span>
               ) : (
-                <span className="font-display text-heading leading-tight">{row.value}</span>
+                <span className="font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-tight text-cream">{row.value}</span>
               )}
             </dd>
           </div>
@@ -250,7 +247,7 @@ function MoqCard() {
         </span>
 
         <div className="min-w-0">
-          <p className="type-label text-leaf">
+          <p className="type-label text-[0.8125rem] text-leaf sm:text-[0.875rem]">
             {moringaMoq.label}
           </p>
           <h3

@@ -105,4 +105,11 @@ export const certificates: readonly Certificate[] = [
       "The Zero Defect Zero Effect programme recognizes eligible businesses for their performance against the applicable quality and environmental criteria.",
     logo: { src: `${dir}/Zed Certification.png`, alt: "MSME ZED certification logo" },
   },
+  {
+    title: "IEC Code Registration",
+    description:
+      "Import Export Code registration with India's Directorate General of Foreign Trade, which supports import and export activities from India.",
+    // The mark lives with the homepage certification marks (not copied here).
+    logo: { src: "/images/home/hero/ICE-Certificate.png", alt: "IEC Code (Import Export Code) registration mark" },
+  },
 ];

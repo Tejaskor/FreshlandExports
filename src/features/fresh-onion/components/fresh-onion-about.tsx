@@ -55,12 +55,14 @@ export function FreshOnionAbout() {
 
         <ClipReveal from="up" className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
           <div className="mask-organic overflow-hidden shadow-[var(--shadow-figure)]">
-            {/* About — close-up of fresh onions with natural leaves. */}
+            {/* Product Overview — fresh onions on sorting trays. */}
             <ImageSlot
               slot={freshOnionImages.closeUp}
               tone="sage"
               framed={false}
               sizes="(min-width: 1024px) 38vw, 90vw"
+              // Landscape photo in a portrait frame: centre on the sorted onions.
+              mediaClassName="object-[62%_center]"
               className="aspect-[4/5] w-full"
             />
           </div>

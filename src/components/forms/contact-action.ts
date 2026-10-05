@@ -7,6 +7,7 @@ import {
   readContact,
   validateContact,
 } from "@/components/forms/contact-schema";
+import { postToWebhook } from "@/components/forms/webhook";
 
 /**
  * Receives a contact enquiry. Re-validates everything the browser checked,
@@ -37,32 +38,7 @@ export async function submitContact(
   }
 }
 
-/**
- * Hands the enquiry to CONTACT_WEBHOOK_URL as JSON — any form backend, CRM,
- * Zapier/Make hook or email relay that accepts a POST works without adding a
- * dependency here.
- *
- * Without a webhook, development logs the enquiry so the flow can be tested
- * end to end; production refuses rather than report success for a message
- * nobody will ever receive.
- */
+/** Delivers the enquiry through the shared form webhook. */
 async function deliverEnquiry(enquiry: ContactValues) {
-  const url = process.env.CONTACT_WEBHOOK_URL;
-
-  if (!url) {
-    if (process.env.NODE_ENV !== "production") {
-      console.info("[contact] CONTACT_WEBHOOK_URL is not set; enquiry logged only:", enquiry);
-      return;
-    }
-    throw new Error("CONTACT_WEBHOOK_URL is not configured");
-  }
-
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...enquiry, submittedAt: new Date().toISOString() }),
-    signal: AbortSignal.timeout(10_000),
-  });
-
-  if (!response.ok) throw new Error(`Webhook responded ${response.status}`);
+  await postToWebhook("contact", enquiry);
 }

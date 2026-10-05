@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SkipLink } from "@/components/layout/skip-link";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { BrochureProvider } from "@/features/brochure/brochure-provider";
 import { siteConfig } from "@/config/site";
 import { organizationJsonLd } from "@/lib/seo";
 
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColor,
-  colorScheme: "dark",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
@@ -80,12 +81,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <SmoothScrollProvider>
-          <SkipLink />
-          <SiteHeader />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          {/* One brochure popup for the whole site; buttons open it from anywhere. */}
+          <BrochureProvider>
+            <SkipLink />
+            <SiteHeader />
+            <main id="main" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </BrochureProvider>
         </SmoothScrollProvider>
 
         <script

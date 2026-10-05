@@ -82,6 +82,7 @@ export const greenCardamom: AgriProduct = {
         storage: "Cool, dry, airtight, away from light",
         applications: "Beverages, desserts, blends",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -92,7 +93,7 @@ export const greenCardamom: AgriProduct = {
       { question: "How is cardamom graded?", answer: "Pod size, colour and grade are confirmed with each quotation." },
       { question: "How should cardamom be stored?", answer: "Keep pods whole in airtight packaging, away from heat and light, to preserve the aroma." },
       { question: "Is green cardamom the same as black cardamom?", answer: "No — they are different spices. This page covers green cardamom." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

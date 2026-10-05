@@ -66,6 +66,9 @@ function HeroCopy({
   titleSize?: string;
 }) {
   const { hero } = product;
+  // Compact: the title keeps a tight line height (a following font-size class
+  // would otherwise drop it) and the gaps below run 16–24px.
+  const compact = hero.compact;
   return (
     <div className={cn(center && "mx-auto max-w-3xl text-center")}>
       <Reveal variant="settle">
@@ -76,7 +79,7 @@ function HeroCopy({
       <RevealLines
         as="h1"
         id="product-heading"
-        className={cn(titleClass, titleSize, "mt-6", inverse ? "text-white" : "text-[var(--p-deep)]")}
+        className={cn(titleClass, titleSize, compact ? "mt-5 leading-none" : "mt-6", inverse ? "text-white" : "text-[var(--p-deep)]")}
         delay={0.1}
         intro
       >
@@ -85,7 +88,7 @@ function HeroCopy({
       <Reveal delay={0.3} variant="rise">
         <p
           className={cn(
-            "mt-5 font-display text-title",
+            compact ? "mt-4 font-display text-title" : "mt-5 font-display text-title",
             inverse ? "text-[var(--p-soft)]" : "text-[var(--p-accent)]",
           )}
         >
@@ -95,7 +98,7 @@ function HeroCopy({
       <Reveal delay={0.4} variant="rise">
         <p
           className={cn(
-            "mt-5 max-w-xl text-[1rem] leading-relaxed",
+            compact ? "mt-4 max-w-xl text-[1rem] leading-relaxed" : "mt-5 max-w-xl text-[1rem] leading-relaxed",
             center && "mx-auto",
             inverse ? "text-white/80" : "text-ink-muted",
           )}
@@ -106,7 +109,7 @@ function HeroCopy({
       <Reveal
         delay={0.5}
         variant="rise"
-        className={cn("mt-8 flex flex-wrap items-center gap-3 sm:gap-4", center && "justify-center")}
+        className={cn(compact ? "mt-6" : "mt-8", "flex flex-wrap items-center gap-3 sm:gap-4", center && "justify-center")}
       >
         <HeroButtons product={product} inverse={inverse} />
       </Reveal>
@@ -149,19 +152,25 @@ function Highlights({
 function LightHero({
   crumbs,
   className,
+  compact = false,
   children,
 }: {
   crumbs: readonly Crumb[];
   className?: string;
+  /** Tighter bottom padding and breadcrumb gap. The top padding clears the fixed header. */
+  compact?: boolean;
   children: ReactNode;
 }) {
   return (
-    <section aria-labelledby="product-heading" className={cn("relative overflow-hidden pt-28 pb-14 lg:pt-32 lg:pb-20", className)}>
+    <section
+      aria-labelledby="product-heading"
+      className={cn("relative overflow-hidden pt-28 lg:pt-32", compact ? "pb-10 lg:pb-14" : "pb-14 lg:pb-20", className)}
+    >
       <Container className="relative">
         <Reveal variant="rise">
           <Breadcrumbs items={crumbs} />
         </Reveal>
-        <div className="mt-8 lg:mt-10">{children}</div>
+        <div className={compact ? "mt-5 lg:mt-6" : "mt-8 lg:mt-10"}>{children}</div>
       </Container>
     </section>
   );
@@ -198,6 +207,71 @@ export function Hero({
                 className={cn(shapes.leaf.aspect, shapes.leaf.radius, "w-full shadow-[var(--shadow-figure)]")}
               />
             </ClipReveal>
+          </div>
+        </LightHero>
+      );
+
+    /* Editorial two-column hero: copy left; on the right a large rounded
+       photograph on a soft tinted panel, with a badge over its top-right
+       corner and a floating information card at its lower left. On mobile the
+       card sits below the photograph so it covers none of it. */
+    case "editorial":
+      return (
+        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+          {/* Two tracks with one gap (not 12 columns of gaps), so the copy
+              column has room for the title on a single line. */}
+          <div className="grid items-center gap-12 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-10 xl:gap-16">
+            {/* The title is sized to this column (cqi): "Fresh Cucumber" is
+                about 8.1em wide, so 11.6cqi keeps it on one line without
+                overflowing, and leading-none keeps it compact if it wraps. */}
+            <div className="@container">
+              <HeroCopy product={product} titleSize="text-[clamp(2.5rem,11.6cqi,5.25rem)] leading-none" />
+              <Highlights items={hero.highlights} className="mt-8" />
+            </div>
+
+            <div className="relative">
+              {/* Soft panel behind the photograph, offset for depth. */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 translate-x-3 translate-y-3 rounded-[2.25rem] bg-[var(--p-soft)]/55 sm:translate-x-5 sm:translate-y-5"
+              />
+              <ClipReveal from="up" className="relative">
+                <div className="relative">
+                  <ProductImage
+                    slot={images.hero}
+                    priority
+                    sizes="(min-width: 1024px) 55vw, 100vw"
+                    className="aspect-[16/10] w-full rounded-[2rem] shadow-[var(--shadow-figure)]"
+                  />
+                  {hero.badge && (
+                    <span className="absolute top-4 right-4 rounded-full bg-white/95 px-3.5 py-1.5 text-[0.75rem] font-semibold tracking-[0.02em] text-[var(--p-deep)] shadow-[var(--shadow-card)] sm:top-5 sm:right-5 sm:text-[0.8125rem]">
+                      {hero.badge}
+                    </span>
+                  )}
+                </div>
+              </ClipReveal>
+
+              {hero.card && (
+                <Reveal
+                  variant="rise"
+                  delay={0.4}
+                  className="relative mt-5 sm:absolute sm:-bottom-7 sm:left-6 sm:mt-0 lg:-left-8"
+                >
+                  <div className="flex items-center gap-3.5 rounded-2xl bg-white p-4 pr-6 shadow-[var(--shadow-lift)]">
+                    <span
+                      aria-hidden="true"
+                      className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[var(--p-tint)] text-[var(--p-deep)]"
+                    >
+                      <Icon name="sprout" className="size-5" />
+                    </span>
+                    <span>
+                      <span className="block font-display text-heading leading-tight text-forest">{hero.card.title}</span>
+                      <span className="mt-0.5 block text-[0.8125rem] text-ink-muted">{hero.card.text}</span>
+                    </span>
+                  </div>
+                </Reveal>
+              )}
+            </div>
           </div>
         </LightHero>
       );
@@ -304,7 +378,7 @@ export function Hero({
     /* Energetic split: the photograph cut on a diagonal edge. */
     case "diagonal":
       return (
-        <LightHero crumbs={crumbs} className="bg-white">
+        <LightHero crumbs={crumbs} className="bg-white" compact={hero.compact}>
           <div
             aria-hidden="true"
             className={cn(
@@ -312,10 +386,13 @@ export function Hero({
               reverse ? "left-0 [clip-path:polygon(0_0,100%_0,82%_100%,0_100%)]" : "right-0 [clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)]",
             )}
           />
-          <div className="relative grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-            <div className={cn("lg:col-span-6", reverse && "lg:order-2")}>
+          <div className={cn("relative grid gap-12 lg:grid-cols-12 lg:gap-10", hero.compact ? "items-center lg:items-start" : "items-center")}>
+            {/* Compact: the copy starts just below the top of the tall photograph
+                rather than being centred on it, so no empty band opens above it;
+                its centre still sits close to the photograph's centre. */}
+            <div className={cn("lg:col-span-6", hero.compact && "lg:pt-8", reverse && "lg:order-2")}>
               <HeroCopy product={product} />
-              <Highlights items={hero.highlights} className="mt-8" />
+              <Highlights items={hero.highlights} className={hero.compact ? "mt-6" : "mt-8"} />
             </div>
             <ClipReveal from={reverse ? "up" : "left"} className={cn("lg:col-span-6", reverse && "lg:order-1")}>
               <ProductImage

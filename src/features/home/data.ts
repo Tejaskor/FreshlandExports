@@ -45,6 +45,7 @@ export const certifications: readonly {
   { name: "Halal India", image: "/images/home/hero/Halal India.png", width: 1254, height: 1254 },
   { name: "KBD", image: "/images/home/hero/KBD.png", width: 566, height: 541 },
   { name: "ZED Certification", image: "/images/home/hero/Zed Certification.png", width: 600, height: 497 },
+  { name: "IEC Code", image: "/images/home/hero/ICE-Certificate.png", width: 971, height: 257 },
 ] as const;
 
 export const stats: readonly { value: string; label: string }[] = [

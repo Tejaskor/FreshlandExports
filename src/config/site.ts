@@ -90,7 +90,8 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       ...(featureFlags.signatureIngredients
         ? [{ label: "Our Signature Ingredients", href: "/signature-ingredients" }]
         : []),
-      { label: "Journal", href: "/journal" },
+      // No journal route yet — the Resources page holds the articles.
+      { label: "Journal", href: "/resources" },
       { label: "Contact Us", href: "/contact" },
     ],
   },

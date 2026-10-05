@@ -211,7 +211,7 @@ export function Features({
                 <span className="flex size-11 items-center justify-center rounded-full bg-white/10 text-[var(--p-soft)]">
                   <Icon name={item.icon ?? "sprout"} className="size-5" />
                 </span>
-                <h3 className="mt-5 font-display text-heading">{item.title}</h3>
+                <h3 className="mt-5 font-display text-heading text-white">{item.title}</h3>
                 <p className="mt-2 text-[0.875rem] leading-relaxed text-white/70">{item.text}</p>
               </li>
             ))}
@@ -235,7 +235,7 @@ export function Features({
                   <Icon name={lead.icon ?? "sprout"} className="size-6" />
                 </span>
                 <div className="mt-10">
-                  <h3 className="font-display text-title">{lead.title}</h3>
+                  <h3 className="font-display text-title text-white">{lead.title}</h3>
                   <p className="mt-3 max-w-md text-[1rem] leading-relaxed text-white/80">{lead.text}</p>
                 </div>
               </article>

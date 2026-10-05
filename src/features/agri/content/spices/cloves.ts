@@ -84,6 +84,7 @@ export const cloves: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Blends, baking, meats, beverages",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -99,7 +100,7 @@ export const cloves: AgriProduct = {
       { question: "Do you supply ground cloves?", answer: "This page covers whole cloves; other forms can be discussed with our team." },
       { question: "How is quality specified?", answer: "Grade and quality parameters are confirmed with each quotation." },
       { question: "How should cloves be stored?", answer: "In airtight packaging in a cool, dry place, protected from light and moisture." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

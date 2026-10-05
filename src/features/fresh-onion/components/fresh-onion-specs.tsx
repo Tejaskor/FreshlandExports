@@ -25,7 +25,7 @@ export function FreshOnionSpecs() {
     <section aria-labelledby="specs-heading" className="bg-white py-14 lg:py-20">
       <Container>
         <Reveal variant="rise">
-          <RuledEyebrow>Product Details</RuledEyebrow>
+          <RuledEyebrow>Product Specifications</RuledEyebrow>
         </Reveal>
         <RevealLines as="h2" id="specs-heading" className={cn(type.section, "mt-5 text-forest")}>
           <Line>
@@ -68,7 +68,7 @@ export function FreshOnionSpecs() {
           {/* --- Photograph + MOQ --------------------------------------------- */}
           <div className="flex flex-col gap-6 lg:col-span-5">
             <ClipReveal from="up">
-              {/* Specifications — fresh onions for product display. */}
+              {/* Specifications — onions laid out for quality inspection. */}
               <ImageSlot
                 slot={freshOnionImages.display}
                 tone="light"
@@ -86,7 +86,7 @@ export function FreshOnionSpecs() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="type-label text-leaf">
+                    <p className="type-label text-[0.8125rem] text-leaf sm:text-[0.875rem]">
                       {freshOnionMoq.label}
                     </p>
                     <h3 id="moq-heading" className="mt-1.5 font-display leading-none font-medium text-forest">
@@ -133,6 +133,13 @@ export function FreshOnionSpecs() {
         <Reveal variant="rise" className="mt-6 lg:mt-8">
           <div className="grid gap-5 rounded-[1.75rem] bg-sage-50 p-6 sm:p-8 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-4">
+              <ImageSlot
+                slot={freshOnionImages.storage}
+                tone="light"
+                compact
+                sizes="(min-width: 1024px) 28vw, 100vw"
+                className="mb-5 aspect-[16/10] w-full rounded-[1.25rem]"
+              />
               <h3 className="font-display text-title leading-tight text-forest">
                 {freshOnionStorage.heading}
               </h3>

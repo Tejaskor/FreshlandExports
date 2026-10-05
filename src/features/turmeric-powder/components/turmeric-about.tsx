@@ -108,7 +108,7 @@ export function TurmericAbout() {
             <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-4">
                 <p className={cn(label, "text-[var(--t-gold)]")}>Potential health benefits</p>
-                <h3 className={cn(subHeading, "mt-2")}>{turmericBenefits.heading}</h3>
+                <h3 className={cn(subHeading, "mt-2 text-white")}>{turmericBenefits.heading}</h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-white/75">{turmericBenefits.intro}</p>
                 <p className="mt-5 flex items-start gap-3 rounded-xl border border-white/15 p-4 text-[0.8125rem] leading-relaxed text-white/80">
                   <span

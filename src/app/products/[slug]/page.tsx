@@ -57,10 +57,14 @@ export async function generateMetadata({ params }: Params) {
 
   const exportProduct = findExportProduct(slug);
   if (exportProduct) {
+    const media = exportProductMedia(exportProduct);
     return createMetadata({
       title: exportProduct.name,
-      description: `${exportProduct.name} from India — ${exportProduct.summary.toLowerCase()}. ${exportCategories[exportProduct.category].name} from Freshland Exports; specifications, packaging and quotes on request.`,
+      description:
+        exportProduct.seoDescription ??
+        `${exportProduct.name} from India — ${exportProduct.summary.toLowerCase()}. ${exportCategories[exportProduct.category].name} from Freshland Exports; specifications, packaging and quotes on request.`,
       path: exportProductHref(exportProduct.slug),
+      image: media.image ? { url: media.image, alt: media.alt } : undefined,
     });
   }
 

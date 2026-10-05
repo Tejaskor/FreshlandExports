@@ -1,8 +1,9 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
-// TEMPORARY content — replace with final product copy.
+// Variety, size, grade, packaging, origin and supply stay qualified until confirmed.
 const slug = "cucumber";
+const dir = "/images/products/Agricultural Products/Cucumber";
 
 export const cucumber: AgriProduct = {
   slug,
@@ -12,93 +13,135 @@ export const cucumber: AgriProduct = {
   hero: {
     eyebrow: "Fresh Agricultural Products",
     title: "Fresh Cucumber",
-    tagline: "Cool, crisp and naturally refreshing.",
-    body: "Fresh cucumbers selected for firmness, colour and length, supplied to retail, wholesale and food-service buyers.",
-    highlights: ["Firm and fresh", "Uniform selection", "Bulk supply available"],
+    tagline: "Cool, Crisp and Carefully Selected.",
+    body: "Fresh whole cucumbers selected for firmness, colour and appearance, supplied for wholesale, food-service and bulk buyers.",
+    highlights: ["Firm and fresh", "Selected to buyer requirements", "Bulk supply available"],
+    badge: "Fresh • Firm • Export Ready",
+    card: { title: "Fresh Agricultural Produce", text: "Selected for bulk supply" },
   },
   intro: {
-    eyebrow: "About Our Cucumbers",
-    heading: "Refreshingly Simple",
-    statement: "A crisp, hydrating vegetable for salads and more.",
+    eyebrow: "Product Overview",
+    heading: "Freshness You Can See and Feel",
+    statement: "Fresh cucumbers selected for their firm texture, fresh green appearance and overall condition.",
     body: [
-      "Cucumbers are prized for their crisp texture and mild, refreshing taste.",
-      "Final variety and sizing details will be added here.",
+      "We supply fresh whole cucumbers with a firm, crisp texture and a fresh green appearance. They are suitable for wholesale, food-service and commercial applications, with size and selection based on buyer requirements.",
+      "Cucumbers are available for wholesale and bulk supply.",
     ],
     highlights: [
-      { label: "Product", value: "Fresh cucumber" },
-      { label: "Type", value: "Fresh vegetable" },
-      { label: "Shape", value: "Long and cylindrical" },
-      { label: "Colour", value: "Green" },
+      { label: "Product", value: "Fresh whole cucumbers" },
+      { label: "Texture", value: "Firm and crisp" },
+      { label: "Appearance", value: "Fresh green" },
+      { label: "Selection", value: "As per buyer requirements" },
     ],
   },
   features: {
-    eyebrow: "Why Choose Cucumbers",
+    eyebrow: "Key Product Qualities",
     heading: "Fresh Qualities That Matter",
     items: [
-      { title: "Crisp Bite", text: "A firm, crunchy texture enjoyed raw." },
-      { title: "Mild Taste", text: "A clean flavour that pairs with almost anything." },
-      { title: "Uniform Selection", text: "Selected for consistent length and colour." },
-      { title: "Retail Appeal", text: "Attractive for fresh-produce shelves." },
-      { title: "Pickling", text: "Suited to pickles and preserves." },
-      { title: "Food Service", text: "A salad and garnish staple." },
+      { title: "Crisp Texture", text: "Firm, crunchy texture suited to fresh consumption." },
+      { title: "Mild Taste", text: "A clean flavour that pairs well with a wide range of foods." },
+      { title: "Uniform Selection", text: "Selected for consistent length, appearance and condition according to buyer requirements." },
+      { title: "Retail Appeal", text: "Suitable for fresh-produce retail and wholesale markets." },
+      { title: "Pickling", text: "Suitable for pickling and preservation applications." },
+      { title: "Food Service", text: "Suitable for salads, garnishes and commercial food-service use." },
     ],
   },
   uses: {
     eyebrow: "Applications",
     heading: "Everyday Uses",
-    intro: "Temporary overview of typical cucumber uses.",
+    intro: "How retail, food-service and processing buyers use fresh cucumbers.",
     groups: [
-      { title: "Salads", items: ["Garden salads", "Raita", "Salsas"] },
-      { title: "Fresh Snacks", items: ["Sliced sticks", "Sandwiches", "Wraps"] },
-      { title: "Pickling", items: ["Pickles", "Relishes", "Preserves"] },
-      { title: "Beverages", items: ["Infused water", "Juices", "Smoothies"] },
+      { title: "Salads", items: ["Garden salads", "Raita", "Salsas"], image: { file: `${dir}/fresh-cucumber-salads.webp`, alt: "A bowl of salad with sliced cucumber, tomato, red onion and carrot", label: "Cucumber salad" } },
+      { title: "Fresh Snacks", items: ["Sliced sticks", "Sandwiches", "Wraps"], image: { file: `${dir}/fresh-cucumber-snacks.webp`, alt: "Cucumber sticks and slices on a plate with a yoghurt dip", label: "Cucumber snacks" } },
+      { title: "Pickling", items: ["Pickles", "Relishes", "Preserves"], image: { file: `${dir}/fresh-cucumber-pickling.webp`, alt: "A jar of pickled cucumbers beside sliced cucumbers, garlic and spices", label: "Pickled cucumbers" } },
+      { title: "Beverages", items: ["Infused water", "Juices", "Smoothies"], image: { file: `${dir}/fresh-cucumber-beverages.webp`, alt: "Glasses of cucumber-infused water with mint", label: "Cucumber beverages" } },
     ],
   },
   process: {
-    eyebrow: "From Field to Shipment",
+    eyebrow: "Preparation & Supply",
     heading: "How We Prepare Cucumbers",
+    image: { file: `${dir}/fresh-cucumber-sorting-packing.webp`, alt: "Fresh cucumbers sorted on a table beside a wooden crate", label: "Cucumber sorting and packing" },
+    note: "Typical preparation steps may include harvesting, sorting, cleaning and packing according to buyer and shipment requirements.",
     steps: [
-      { title: "Harvesting", text: "Picked at the right size and firmness." },
-      { title: "Sorting", text: "Sorted by length, colour and condition." },
-      { title: "Cleaning", text: "Gently cleaned and dried." },
-      { title: "Packing", text: "Packed to buyer requirements for transit." },
+      { title: "Harvesting", text: "Picked at the appropriate size and firmness." },
+      { title: "Sorting", text: "Sorted according to length, colour and condition." },
+      { title: "Cleaning", text: "Gently cleaned and prepared for supply." },
+      { title: "Packing", text: "Packed according to buyer and shipment requirements." },
     ],
   },
   specs: {
-    eyebrow: "Product Details",
+    eyebrow: "Product Specifications",
     heading: "Cucumber Specifications",
-    rows: freshSpecs(
-      [
-        { label: "Product Name", value: "Fresh Cucumber" },
-        { label: "Product Type", value: "Fresh vegetable" },
-        { label: "Appearance", value: "Long, cylindrical, firm" },
-        { label: "Colour", value: "Green, varies by variety" },
-      ],
-      [{ label: "Storage", value: "Cool, humid conditions; avoid chilling injury" }],
-    ),
+    rows: [
+      { label: "Product Name", value: "Fresh Cucumber" },
+      { label: "Product Type", value: "Fresh Vegetable" },
+      { label: "Appearance", value: "Long, cylindrical, firm" },
+      { label: "Colour", value: "Green, subject to variety" },
+      { label: "Size / Grade", value: "As per buyer requirements" },
+      { label: "Packaging", value: "As per buyer requirements" },
+      { label: "Origin", value: "India, subject to confirmation" },
+      { label: "Supply", value: "Subject to seasonal availability" },
+      { label: "Storage", value: "Cool, dry and well-ventilated conditions; avoid chilling injury" },
+    ],
     note: specsNote,
+  },
+  storage: {
+    heading: "Storage & Handling",
+    text: "Cucumbers stay firm and fresh when they are kept cool and handled with care.",
+    points: [
+      "Store under appropriate cool storage conditions",
+      "Protect cucumbers from physical damage during handling",
+      "Maintain suitable humidity and ventilation",
+      "Avoid unsuitable temperatures that may cause chilling injury",
+      "Handle carefully during loading, transportation and unloading",
+      "Follow buyer-specific storage and transportation requirements",
+    ],
+  },
+  faqs: {
+    eyebrow: "FAQ",
+    heading: "Cucumber Questions",
+    items: [
+      { question: "What type of fresh cucumber do you supply?", answer: "Fresh whole cucumbers selected according to buyer requirements." },
+      { question: "What sizes or grades are available?", answer: "Size and grade can be supplied according to buyer requirements and availability." },
+      { question: "What is the minimum order quantity?", answer: "500 KG." },
+      { question: "How are cucumbers packed?", answer: "Packaging can be arranged according to buyer and shipment requirements." },
+      {
+        question: "How should fresh cucumbers be stored?",
+        answer: "Store under appropriate cool conditions with suitable humidity and ventilation while avoiding chilling injury.",
+      },
+      {
+        question: "Are cucumbers suitable for food-service applications?",
+        answer: "Yes. Cucumbers can be used for salads, garnishes, snacks and other food-service preparations.",
+      },
+      {
+        question: "Can buyers request specific requirements?",
+        answer: "Yes. Buyers can communicate their quantity, quality, size and packaging requirements when requesting a quotation.",
+      },
+    ],
   },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Bring Fresh Cucumbers to Your Buyers",
-    body: "Tell us your market, size and quantity, and we will reply with availability and a quotation.",
+    body: "Tell us your required quantity, size and quality requirements, and our team will help with availability and quotation.",
   },
   images: {
-    // Elongated hero — a single long cucumber, portrait (9:19).
-    hero: img(slug, "hero", "A long fresh cucumber on a pale sage background", "Whole cucumber"),
-    // Detail — sliced cucumber rounds (16:10).
-    detail: img(slug, "detail", "Fresh cucumber slices", "Sliced cucumber"),
-    extra: [
-      // Second tall image — cucumbers with leaves and flowers, portrait (9:19).
-      img(slug, "hero-2", "Cucumbers on the vine with leaves", "Cucumbers on the vine"),
-    ],
+    hero: { file: `${dir}/fresh-cucumber-hero.webp`, alt: "Fresh green cucumbers, one sliced, on a wooden surface beside the vine", label: "Fresh cucumbers" },
+    // Product Overview.
+    detail: { file: `${dir}/fresh-cucumber-quality.webp`, alt: "Whole and sliced fresh green cucumbers", label: "Cucumber quality" },
+    // Specifications, beside the table.
+    specs: { file: `${dir}/fresh-cucumber-quality-inspection.webp`, alt: "Rows of fresh cucumbers laid out on a table for inspection", label: "Cucumber quality inspection" },
   },
   sections: [
-    { type: "hero", variant: "elongated" },
+    { type: "hero", variant: "editorial" },
+    { type: "intro", variant: "overlap" },
     { type: "features", variant: "numbered" },
-    { type: "uses", variant: "columns" },
+    { type: "uses", variant: "gallery" },
     { type: "process" },
     { type: "specs", variant: "table" },
+    // MOQ renders automatically after the specifications.
+    { type: "storage" },
+    { type: "faq", variant: "split" },
+    // The Blog section renders automatically just before the contact section.
     { type: "contact", variant: "card" },
   ],
 };

@@ -55,7 +55,7 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
               {/* Copy */}
               <div className="relative z-10 max-w-xl min-[1441px]:max-w-none">
                 <Reveal variant="settle">
-                  <RuledEyebrow tone="inverse">{moringaHero.eyebrow}</RuledEyebrow>
+                  <RuledEyebrow tone="inverse" className="text-sage-300">{moringaHero.eyebrow}</RuledEyebrow>
                 </Reveal>
 
                 <RevealLines
@@ -63,7 +63,7 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                   id="moringa-heading"
                   className={cn(
                     type.main,
-                    "mt-7 text-white",
+                    "mt-7 text-cream",
                     // Large screens: fixed four-line layout, never re-wrapped.
                     // Fraunces sets "Nature's Green" at ~7.2em; capped at 5.75rem it
                   // stays inside the ~697px column.
@@ -79,13 +79,13 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                     <span className="min-[1441px]:block">{moringaHero.lines[1]}</span>
                   </Line>
                   <Line>
-                    <span className="text-highlight-inverse">{moringaHero.lines[2]}</span>
+                    <span className="text-leaf-bright">{moringaHero.lines[2]}</span>
                   </Line>
                   <Line>{moringaHero.lines[3]}</Line>
                 </RevealLines>
 
                 <Reveal delay={0.45} variant="rise">
-                  <p className={cn(type.lead, "mt-7 max-w-md text-white/80")}>{moringaHero.body}</p>
+                  <p className={cn(type.lead, "mt-7 max-w-md text-sage-100")}>{moringaHero.body}</p>
                 </Reveal>
 
                 <Reveal delay={0.55} variant="rise" className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
@@ -96,7 +96,7 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                     href="#quote-form"
                     size="lg"
                     variant="outline"
-                    className="border-white/30 bg-transparent font-semibold text-white hover:border-highlight-inverse hover:text-highlight-inverse"
+                    className="border-white/40 bg-transparent font-semibold text-cream hover:border-leaf-bright hover:text-leaf-bright"
                   >
                     Request a Quote
                   </AnchorButton>
@@ -111,10 +111,10 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                 >
                   {moringaHero.facts.map((fact) => (
                     <div key={fact.label} className="px-4 first:pl-0">
-                      <dt className="type-label text-white/55">
+                      <dt className="type-label text-sage-300">
                         {fact.label}
                       </dt>
-                      <dd className="mt-1.5 font-display text-heading leading-tight text-white">
+                      <dd className="mt-1.5 font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-tight text-cream">
                         {fact.value}
                       </dd>
                     </div>
@@ -143,6 +143,7 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                       framed={false}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       className="h-full w-full"
+                      mediaClassName="object-center"
                     />
                   </Parallax>
                 </Reveal>
@@ -158,7 +159,7 @@ export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
                 <Reveal variant="sweep-left" delay={0.8} className="absolute top-4 right-2 sm:top-8 lg:-right-2">
                   <span
                     className={cn(
-                      "inline-flex items-center gap-2 rounded-full border border-white/15 bg-forest/80 px-4 py-2 text-[0.8125rem] text-white backdrop-blur-sm",
+                      "inline-flex items-center gap-2 rounded-full border border-white/25 bg-forest/90 px-4 py-2 text-[0.8125rem] text-sage-100 backdrop-blur-sm",
                       styles.float,
                     )}
                   >

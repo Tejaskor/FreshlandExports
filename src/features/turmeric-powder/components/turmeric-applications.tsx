@@ -90,7 +90,7 @@ export function TurmericApplications() {
                 <p className="type-label text-[var(--t-gold)]">
                   Beyond the kitchen
                 </p>
-                <h3 className="mt-2 font-display text-title leading-[1.05]">
+                <h3 className="mt-2 font-display text-title leading-[1.05] text-white">
                   Turmeric Powder Across Industries
                 </h3>
               </div>

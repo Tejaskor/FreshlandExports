@@ -70,7 +70,7 @@ export function FreshOnionHero({ crumbs }: { crumbs: readonly Crumb[] }) {
 
           <div className="relative lg:col-span-6">
             <ClipReveal from="left" duration={1.2} className="overflow-hidden rounded-[2.5rem_2.5rem_2.5rem_0.75rem] shadow-[var(--shadow-figure)]">
-              {/* Hero — large fresh red and white onion photograph. */}
+              {/* Hero — fresh red onions. */}
               <ImageSlot
                 slot={freshOnionImages.hero}
                 tone="sage"

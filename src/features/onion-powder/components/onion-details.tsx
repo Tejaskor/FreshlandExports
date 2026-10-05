@@ -5,6 +5,8 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
+import { MoqPanel } from "@/features/products/components/moq-panel";
+import { findMoq } from "@/features/products/moq";
 import { type } from "@/features/moringa/styles";
 import {
   onionFaqs,
@@ -125,7 +127,7 @@ export function OnionDetails() {
             <Reveal variant="rise" delay={0.1}>
               <div className="rounded-[1.75rem_0.5rem_1.75rem_1.75rem] bg-forest p-5 text-white sm:p-7">
                 <p className={cn(label, "text-highlight-inverse")}>Freshland Exports — Global Supply</p>
-                <h3 className={cn(subHeading, "mt-2")}>{onionSupply.heading}</h3>
+                <h3 className={cn(subHeading, "mt-2 text-white")}>{onionSupply.heading}</h3>
                 <p className="mt-3 text-[0.875rem] leading-relaxed text-white/75">{onionSupply.body}</p>
                 <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                   {onionSupply.highlights.map((item) => (
@@ -141,6 +143,11 @@ export function OnionDetails() {
               </div>
             </Reveal>
           </div>
+        </div>
+
+        {/* --- Minimum order quantity -------------------------------------- */}
+        <div className="mt-10 lg:mt-12">
+          <MoqPanel value={findMoq("onion-powder")} className="bg-white" accentClassName="text-forest" />
         </div>
 
         {/* --- FAQs --------------------------------------------------------- */}

@@ -4,6 +4,8 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
 import { footerNav, legalNav, siteConfig } from "@/config/site";
+import { BrochureButton } from "@/features/brochure/brochure-button";
+import { cn } from "@/lib/utils";
 
 const contactRows = [
   { icon: "mail" as const, label: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
@@ -15,14 +17,16 @@ const contactRows = [
   },
 ];
 
-/** Server component — no interactivity, so no JavaScript ships for it. */
+const footerLink = "text-[0.8125rem] text-ink-muted transition-colors duration-300 hover:text-leaf";
+
+/** Server component; only the brochure button hydrates. */
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="mt-auto border-t border-line bg-cream">
       <Container className="py-8 lg:py-9">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr] lg:gap-10">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.2fr] lg:gap-8">
           <div className="max-w-xs">
             <Logo />
             <p className="mt-3 text-[0.8125rem] text-ink-muted">{siteConfig.tagline}</p>
@@ -63,6 +67,28 @@ export function SiteFooter() {
               </ul>
             </nav>
           ))}
+
+          {/* Resources — the brochure item opens the shared lead popup. */}
+          <nav aria-label="Resources">
+            <h2 className="text-[0.875rem] font-sans font-medium text-forest">Resources</h2>
+            <ul className="mt-3 space-y-1">
+              <li>
+                <Link href="/r-and-d" className={footerLink}>
+                  Knowledge Center
+                </Link>
+              </li>
+              <li>
+                <BrochureButton source="footer_brochure" className={cn(footerLink, "text-left")}>
+                  Brochure
+                </BrochureButton>
+              </li>
+              <li>
+                <Link href="/contact" className={footerLink}>
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
           <div>
             <h2 className="text-[0.875rem] font-sans font-medium text-forest">

@@ -1,4 +1,5 @@
 import type { Crumb } from "@/components/ui/breadcrumbs";
+import { ProductBlog } from "@/features/products/components/product-blog";
 import { exportCategories, type ExportProduct } from "@/features/products/export-catalogue";
 import { TurmericAbout } from "@/features/turmeric-powder/components/turmeric-about";
 import { TurmericApplications } from "@/features/turmeric-powder/components/turmeric-applications";
@@ -9,8 +10,8 @@ import turmeric from "@/features/turmeric-powder/turmeric.module.css";
 
 /**
  * Dedicated page for Turmeric Powder (/products/turmeric-powder): golden and
- * botanical, in five sections — Hero · About · Applications · Product
- * Details · Contact. Uses the site typography; shares building blocks with the
+ * botanical, in six sections — Hero · About · Applications · Product
+ * Details · Blog · Contact. Uses the site typography; shares building blocks with the
  * Moringa page, adding its own muted gold palette.
  */
 export function TurmericPage({ product }: { product: ExportProduct }) {
@@ -28,6 +29,7 @@ export function TurmericPage({ product }: { product: ExportProduct }) {
       <TurmericAbout />
       <TurmericApplications />
       <TurmericDetails />
+      <ProductBlog slug={product.slug} productName={product.name} className="bg-[var(--t-pale)]" accentClassName="text-rust" />
       <TurmericContact productName={product.name} />
     </div>
   );

@@ -62,6 +62,7 @@ export function MoringaAbout() {
                   framed={false}
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   className="h-full w-full"
+                  mediaClassName="object-center"
                 />
               </Parallax>
             </ClipReveal>
@@ -70,9 +71,9 @@ export function MoringaAbout() {
               delay={0.3}
               className="relative -mt-10 ml-4 max-w-xs sm:ml-8 lg:absolute lg:-bottom-8 lg:-left-8 lg:ml-0"
             >
-              <figure className="flex items-start gap-3 rounded-[1.5rem_0.5rem_1.5rem_1.5rem] bg-forest p-5 text-white shadow-[var(--shadow-lift)]">
-                <MoringaSprig className="h-10 w-auto shrink-0 text-highlight-inverse" />
-                <figcaption className="font-display text-heading leading-snug">
+              <figure className="flex items-start gap-3 rounded-[1.5rem_0.5rem_1.5rem_1.5rem] bg-forest p-5 text-cream shadow-[var(--shadow-lift)]">
+                <MoringaSprig className="h-10 w-auto shrink-0 text-leaf-bright" />
+                <figcaption className="font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-snug text-cream">
                   {moringaIntro.caption}
                 </figcaption>
               </figure>
@@ -93,6 +94,7 @@ export function MoringaAbout() {
                   framed={false}
                   sizes="6rem"
                   className="size-20 shrink-0 rounded-full ring-4 ring-cream-warm sm:size-24"
+                  mediaClassName="object-cover object-center"
                 />
                 <h3 id="nutrition-heading" className={cn(panelHeading, "text-forest")}>
                   Nature&apos;s <span className="text-leaf">Nutritional</span> Treasure
@@ -127,26 +129,26 @@ export function MoringaAbout() {
 
           {/* Health benefits */}
           <Reveal variant="rise" delay={0.1} className="h-full">
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-forest p-5 text-white sm:p-7">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-forest p-5 text-cream sm:p-7">
               <MoringaSprig
                 variant="line"
                 className="absolute -top-10 -right-12 h-56 w-auto rotate-[30deg] text-white/[0.07]"
               />
-              <h3 id="benefits-heading" className={cn(panelHeading, "relative text-white")}>
-                Goodness in Every <span className="text-highlight-inverse">Spoonful</span>
+              <h3 id="benefits-heading" className={cn(panelHeading, "relative text-cream")}>
+                Goodness in Every <span className="text-leaf-bright">Spoonful</span>
               </h3>
 
               <ul className="relative mt-5 mb-5 grid gap-x-6 gap-y-4 sm:grid-cols-2">
                 {benefits.map((benefit, index) => (
                   <li key={benefit.title} className="flex gap-3">
-                    <span className="font-display text-[0.8125rem] font-medium text-highlight-inverse">
+                    <span className="font-display text-[0.8125rem] font-medium text-leaf-bright">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>
-                      <span className="block font-display text-heading leading-tight">
+                      <span className="block font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-tight text-cream">
                         {benefit.title}
                       </span>
-                      <span className="mt-1 block text-[0.8125rem] leading-relaxed text-white/70">
+                      <span className="mt-1 block text-[0.8125rem] leading-relaxed text-sage-200">
                         {benefit.text}
                       </span>
                     </span>
@@ -154,10 +156,10 @@ export function MoringaAbout() {
                 ))}
               </ul>
 
-              <p className="relative mt-auto flex items-start gap-3 border-t border-white/15 pt-4 text-[0.75rem] leading-relaxed text-white/70">
+              <p className="relative mt-auto flex items-start gap-3 border-t border-white/15 pt-4 text-[0.75rem] leading-relaxed text-sage-200">
                 <span
                   aria-hidden="true"
-                  className="mt-px flex size-5 shrink-0 items-center justify-center rounded-full border border-highlight-inverse/60 font-display text-[0.6875rem] font-medium text-highlight-inverse"
+                  className="mt-px flex size-5 shrink-0 items-center justify-center rounded-full border border-leaf-bright/60 font-display text-[0.6875rem] font-medium text-leaf-bright"
                 >
                   i
                 </span>

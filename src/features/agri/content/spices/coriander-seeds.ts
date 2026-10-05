@@ -74,6 +74,7 @@ export const corianderSeeds: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Blends, pickling, baking",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -89,7 +90,7 @@ export const corianderSeeds: AgriProduct = {
       { question: "Do you supply split coriander?", answer: "Yes — whole and split seeds are available, with ground coriander on request." },
       { question: "How are the seeds cleaned?", answer: "Seeds are machine-cleaned, with sortex cleaning available on request." },
       { question: "What does coriander seed taste like?", answer: "Mild, warm and citrusy, with a gentle sweetness — quite different from the fresh coriander leaf." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",

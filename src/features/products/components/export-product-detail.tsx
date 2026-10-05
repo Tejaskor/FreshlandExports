@@ -20,6 +20,7 @@ import {
   exportInformation,
   exportProductHref,
 } from "@/features/products/export-catalogue";
+import { ProductBlog } from "@/features/products/components/product-blog";
 import type { MediaSlot } from "@/types/media";
 
 type Related = { product: ExportProduct; media: MediaSlot };
@@ -204,6 +205,8 @@ export function ExportProductDetail({
           </div>
         </Container>
       </Section>
+
+      <ProductBlog slug={product.slug} productName={product.name} className="bg-cream" />
 
       {/* --- Quote --------------------------------------------------------- */}
       <Section

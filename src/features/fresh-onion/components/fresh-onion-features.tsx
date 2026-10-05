@@ -8,14 +8,15 @@ import { type } from "@/features/moringa/styles";
 import { cn } from "@/lib/utils";
 
 /**
- * Why Choose Fresh Onions: an editorial bento rather than six equal cards —
- * the first feature large on forest green, four compact cards beside it,
- * and the last as a full-width strip.
+ * Key Features: an editorial bento rather than equal cards — the first
+ * feature large on forest green, compact cards beside it, and the last as a
+ * full-width strip. With two compact cards each spans the full width beside
+ * the lead card, so the grid stays filled.
  */
 export function FreshOnionFeatures() {
   const [lead, ...rest] = freshOnionFeatures;
-  const middle = rest.slice(0, 4);
-  const closing = rest[4];
+  const middle = rest.slice(0, -1);
+  const closing = rest[rest.length - 1];
 
   return (
     <section aria-labelledby="features-heading" className="bg-cream py-14 lg:py-20">
@@ -23,12 +24,12 @@ export function FreshOnionFeatures() {
         <div className="grid gap-4 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <Reveal variant="rise">
-              <RuledEyebrow>Product Features</RuledEyebrow>
+              <RuledEyebrow>Key Features</RuledEyebrow>
             </Reveal>
             <RevealLines as="h2" id="features-heading" className={cn(type.section, "mt-5 text-forest")}>
-              <Line>A Versatile Essential</Line>
+              <Line>Why Buyers Choose</Line>
               <Line>
-                for <span className="text-leaf">Every Kitchen</span>
+                Our <span className="text-leaf">Fresh Onions</span>
               </Line>
             </RevealLines>
           </div>
@@ -48,7 +49,7 @@ export function FreshOnionFeatures() {
                 <Icon name={lead.icon} className="size-6" />
               </span>
               <div className="mt-10">
-                <h3 className="font-display text-title leading-[1.05]">
+                <h3 className="font-display text-title leading-[1.05] text-white">
                   {lead.title}
                 </h3>
                 <p className="mt-3 max-w-md text-[1rem] leading-relaxed text-white/80">{lead.text}</p>
@@ -57,7 +58,7 @@ export function FreshOnionFeatures() {
           </li>
 
           {middle.map((feature, index) => (
-            <li key={feature.title}>
+            <li key={feature.title} className={cn(middle.length === 2 && "lg:col-span-2")}>
               <article className="group h-full rounded-[1.5rem] border border-line-strong bg-white p-6 transition-[border-color,translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-leaf/50 hover:shadow-[var(--shadow-card)]">
                 <div className="flex items-center justify-between">
                   <span className="flex size-10 items-center justify-center rounded-full bg-sage-100 text-forest transition-colors duration-500 group-hover:bg-leaf group-hover:text-white">
@@ -84,7 +85,7 @@ export function FreshOnionFeatures() {
               </h3>
               <p className="text-[0.9375rem] leading-relaxed text-ink-muted sm:flex-1">{closing.text}</p>
               <span aria-hidden="true" className="font-display text-[0.875rem] font-medium text-rust/70 sm:ml-auto">
-                06
+                {String(freshOnionFeatures.length).padStart(2, "0")}
               </span>
             </article>
           </li>

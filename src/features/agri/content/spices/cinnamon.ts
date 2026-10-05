@@ -82,6 +82,7 @@ export const cinnamon: AgriProduct = {
         storage: "Cool, dry, airtight",
         applications: "Baking, beverages, blends",
       },
+      slug,
     ),
     note: spiceSpecsNote,
   },
@@ -92,7 +93,7 @@ export const cinnamon: AgriProduct = {
       { question: "Which type of cinnamon do you supply?", answer: "The species and grade will be confirmed here; our team can advise with each enquiry." },
       { question: "Do you supply cinnamon powder?", answer: "This page covers quills and bark; other forms can be discussed with our team." },
       { question: "How should cinnamon be stored?", answer: "In airtight packaging in a cool, dry place, away from light." },
-    ]),
+    ], slug),
   },
   cta: {
     eyebrow: "Export Enquiry",
