@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
-import { FeaturedCard, NavDropdown } from "@/components/layout/nav-dropdown";
+import { NavDropdown } from "@/components/layout/nav-dropdown";
 import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/products-menu";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
@@ -41,6 +41,17 @@ export function SiteHeader() {
 
   // Mobile menu: the one product category currently expanded.
   const [mobileGroup, setMobileGroup] = useState<ProductMenuGroupId | null>(null);
+  // Mobile menu: the one section (Products or Resources, by href) currently
+  // expanded. Opening one closes the other; closing Products also folds its
+  // open category, so it reopens clean.
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
+  const toggleSection = (href: string) => {
+    setMobileSection((current) => (current === href ? null : href));
+    setMobileGroup(null);
+  };
+
+  // Mobile menu scrolled past its top: the bar behind the logo turns solid.
+  const [menuScrolled, setMenuScrolled] = useState(false);
 
   const closeMenu = () => setOpenedOn(null);
   const toggleMenu = () => setOpenedOn((current) => (current ? null : pathname));
@@ -79,6 +90,19 @@ export function SiteHeader() {
           : "border-b border-transparent bg-transparent py-5 [--header-pb:1.25rem]",
       )}
     >
+      {/* Solid bar for the open mobile menu. The page is locked at the top
+          while the menu is open, so the header never condenses; and the menu
+          (z-0) paints over the header's own background. This layer sits
+          between the menu and the logo row (z-10) and fades in once the menu
+          scrolls, matching the condensed bar. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-0 z-[5] border-b border-line bg-white shadow-[0_1px_12px_rgb(13_44_30/0.06)] transition-opacity duration-300 xl:hidden",
+          menuOpen && menuScrolled ? "opacity-100" : "opacity-0",
+        )}
+      />
+
       {/* The shared content shell (90rem), so the logo and actions line up
           with every section's content edges below. */}
       <Container className="relative z-10 flex items-center justify-between gap-6">
@@ -151,10 +175,18 @@ export function SiteHeader() {
         </div>
       </Container>
 
+      {/* The menu scrolls on its own while the page is locked. Lenis is
+          stopped while the menu is open, and a stopped Lenis cancels every
+          wheel and touch scroll — data-lenis-prevent exempts this panel so
+          its last items and CTAs stay reachable. overscroll-contain keeps the
+          gesture from chaining to the page, and the bottom padding clears
+          the home indicator on notched phones. */}
       <div
         id="primary-menu"
         hidden={!menuOpen}
-        className="fixed inset-x-0 top-0 z-0 h-dvh overflow-y-auto bg-cream pt-24 pb-12 xl:hidden"
+        data-lenis-prevent
+        onScroll={(event) => setMenuScrolled(event.currentTarget.scrollTop > 8)}
+        className="fixed inset-x-0 top-0 z-0 h-dvh max-h-dvh overflow-y-auto overscroll-contain bg-cream pt-24 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.5rem))] xl:hidden"
       >
         <Container>
           <nav aria-label="Primary mobile">
@@ -162,28 +194,34 @@ export function SiteHeader() {
               {primaryNav.map((item, index) => (
                 <li key={item.href}>
                   {(() => {
+                    // Label only: no index number or hint line in the mobile menu.
                     const row = (
-                      <>
-                        <span className="type-label text-[0.75rem] text-ink-faint">
-                          {(index + 1).toString().padStart(2, "0")}
-                        </span>
-                        <span>
-                          <span className="block font-display text-[1.625rem] text-forest">
-                            {item.label}
-                          </span>
-                          {item.hint && (
-                            <span className="mt-1 block text-[0.9375rem] text-ink-muted">
-                              {item.hint}
-                            </span>
-                          )}
-                        </span>
-                      </>
+                      <span className="block font-display text-[1.375rem] text-forest">{item.label}</span>
                     );
                     // Products and Resources are headings for the links
                     // beneath them, not links themselves.
-                    return item.hasMenu || item.links ? (
-                      <div className="flex items-baseline gap-4 py-5">{row}</div>
-                    ) : (
+                    if (item.hasMenu || item.links) {
+                      const sectionOpen = mobileSection === item.href;
+                      return (
+                        <button
+                          type="button"
+                          aria-expanded={sectionOpen}
+                          aria-controls={`mobile-section-${index}`}
+                          onClick={() => toggleSection(item.href)}
+                          className="flex w-full items-baseline gap-4 py-5 text-left transition-colors duration-300 hover:text-leaf"
+                        >
+                          {row}
+                          <Icon
+                            name="chevron-down"
+                            className={cn(
+                              "ml-auto size-5 shrink-0 self-center text-ink-muted transition-transform duration-300",
+                              sectionOpen && "rotate-180 text-rust",
+                            )}
+                          />
+                        </button>
+                      );
+                    }
+                    return (
                       <Link
                         href={item.href}
                         onClick={closeMenu}
@@ -195,141 +233,142 @@ export function SiteHeader() {
                     );
                   })()}
 
-                  {/* Resources links, listed under their heading. */}
-                  {item.links && (
-                    <div className="grid gap-3 pb-6 pl-4 sm:pl-10">
-                      <ul>
-                        {item.links.map((link) => (
-                          <li key={link.href}>
-                            <Link
-                              href={link.href}
-                              onClick={closeMenu}
-                              aria-current={pathname === link.href ? "page" : undefined}
-                              className={cn(
-                                "group/item block rounded-xl border border-line/60 px-4 py-3 transition-colors duration-200",
-                                isActive(link.href) ? "bg-section" : "bg-white/70 hover:bg-section",
-                              )}
-                            >
-                              <span className="flex items-center gap-2 text-[0.9375rem] font-semibold text-forest">
-                                <span className={menuUnderline.item(isActive(link.href))}>{link.label}</span>
-                                <Icon name="arrow-right" className="size-3.5 text-rust" />
-                              </span>
-                              {link.description && (
-                                <span className="mt-1 block text-[0.8125rem] leading-relaxed text-ink-muted">
-                                  {link.description}
-                                </span>
-                              )}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                      {item.featured && (
-                        <FeaturedCard
-                          feature={item.featured}
-                          onSelect={closeMenu}
-                          sizes="(min-width: 640px) 24rem, 100vw"
-                          className="max-w-sm"
-                        />
+                  {/* The section's links, folded until its heading is tapped. */}
+                  {(item.hasMenu || item.links) && (
+                    <div
+                      id={`mobile-section-${index}`}
+                      inert={mobileSection !== item.href}
+                      className={cn(
+                        "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out-expo)]",
+                        mobileSection === item.href ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
                       )}
-                    </div>
-                  )}
+                    >
+                      <div className="min-h-0 overflow-hidden">
+                        {/* Resources links, listed under their heading. */}
+                        {item.links && (
+                          <div className="grid gap-3 pb-6 pl-4 sm:pl-10">
+                            <ul>
+                              {item.links.map((link) => (
+                                <li key={link.href}>
+                                  <Link
+                                    href={link.href}
+                                    onClick={closeMenu}
+                                    aria-current={pathname === link.href ? "page" : undefined}
+                                    className={cn(
+                                      "group/item block rounded-xl border border-line/60 px-4 py-3 transition-colors duration-200",
+                                      isActive(link.href) ? "bg-section" : "bg-white/70 hover:bg-section",
+                                    )}
+                                  >
+                                    <span className="flex items-center gap-2 text-[0.9375rem] font-semibold text-forest">
+                                      <span className={menuUnderline.item(isActive(link.href))}>{link.label}</span>
+                                      <Icon name="arrow-right" className="size-3.5 text-rust" />
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
 
-                  {/* Product pages, listed under Products (links can't nest,
-                      so they follow the row rather than sit inside it). */}
-                  {item.hasMenu && (
-                    <div className="pb-6 pl-4 pt-1 sm:pl-10">
-                      {/* Click-to-expand categories; one open at a time,
-                          products listed directly beneath it. */}
-                      <ul className="divide-y divide-line/60 overflow-hidden rounded-xl border border-line/60 bg-white/70">
-                        {productMenu.map((group) => {
-                          const expanded = mobileGroup === group.id;
-                          const listId = `mobile-products-${group.id}`;
-                          return (
-                            <li key={group.id}>
-                              <button
-                                type="button"
-                                aria-expanded={expanded}
-                                aria-controls={listId}
-                                onClick={() => setMobileGroup(expanded ? null : group.id)}
-                                className={cn(
-                                  "group/cat flex w-full items-center gap-3 px-3 py-3 text-left transition-colors duration-200 sm:px-4",
-                                  expanded ? "bg-section text-forest" : "text-ink hover:bg-section/70",
-                                )}
-                              >
-                                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-leaf-bright/10 text-leaf-bright ring-1 ring-leaf-bright/20">
-                                  <Icon name={group.icon} className="size-3.5" />
-                                </span>
-                                <span className="flex-1 text-[0.9375rem] font-semibold text-forest">
-                                  <span className={menuUnderline.category(expanded)}>{group.title}</span>
-                                </span>
-                                <span className="text-[0.75rem] text-ink-muted">{group.items.length}</span>
-                                <Icon
-                                  name="chevron-down"
-                                  className={cn(
-                                    "size-4 text-ink-muted transition-transform duration-300",
-                                    expanded && "rotate-180 text-rust",
-                                  )}
-                                />
-                              </button>
-                              <div
-                                id={listId}
-                                inert={!expanded}
-                                className={cn(
-                                  "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out-expo)]",
-                                  expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-                                )}
-                              >
-                                <ul className="grid min-h-0 grid-cols-1 gap-x-2 gap-y-1 overflow-hidden px-2 min-[480px]:grid-cols-2 sm:px-3">
-                                  {group.items.map((product, index) => {
-                                    const here = pathname === product.href;
-                                    return (
-                                      <li
-                                        key={product.href}
+                        {/* Product pages, listed under Products (links can't nest,
+                            so they follow the row rather than sit inside it). */}
+                        {item.hasMenu && (
+                          <div className="pb-6 pl-4 pt-1 sm:pl-10">
+                            {/* Click-to-expand categories; one open at a time,
+                                products listed directly beneath it. */}
+                            <ul className="divide-y divide-line/60 overflow-hidden rounded-xl border border-line/60 bg-white/70">
+                              {productMenu.map((group) => {
+                                const expanded = mobileGroup === group.id;
+                                const listId = `mobile-products-${group.id}`;
+                                return (
+                                  <li key={group.id}>
+                                    <button
+                                      type="button"
+                                      aria-expanded={expanded}
+                                      aria-controls={listId}
+                                      onClick={() => setMobileGroup(expanded ? null : group.id)}
+                                      className={cn(
+                                        "group/cat flex w-full items-center gap-3 px-3 py-3 text-left transition-colors duration-200 sm:px-4",
+                                        expanded ? "bg-section text-forest" : "text-ink hover:bg-section/70",
+                                      )}
+                                    >
+                                      <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-leaf-bright/10 text-leaf-bright ring-1 ring-leaf-bright/20">
+                                        <Icon name={group.icon} className="size-3.5" />
+                                      </span>
+                                      <span className="flex-1 text-[0.9375rem] font-semibold text-forest">
+                                        <span className={menuUnderline.category(expanded)}>{group.title}</span>
+                                      </span>
+                                      <span className="text-[0.75rem] text-ink-muted">{group.items.length}</span>
+                                      <Icon
+                                        name="chevron-down"
                                         className={cn(
-                                          index === 0 && "pt-2",
-                                          index === 1 && "min-[480px]:pt-2",
-                                          "last:pb-3",
-                                          index === group.items.length - 2 && "min-[480px]:pb-3",
+                                          "size-4 text-ink-muted transition-transform duration-300",
+                                          expanded && "rotate-180 text-rust",
                                         )}
-                                      >
-                                        <Link
-                                          href={product.href}
-                                          onClick={closeMenu}
-                                          aria-current={here ? "page" : undefined}
-                                          className={cn(
-                                            "group/item flex items-center gap-2.5 rounded-lg p-1.5 text-[0.875rem] transition-colors duration-200",
-                                            here
-                                              ? "bg-section font-semibold text-forest"
-                                              : "text-ink hover:bg-section hover:text-forest",
-                                          )}
-                                        >
-                                          <ProductThumb
-                                            image={product.image}
-                                            sizeClassName="size-7 rounded-md"
-                                            sizes="28px"
-                                          />
-                                          <span className="leading-snug">
-                                            <span className={menuUnderline.item(here)}>{product.label}</span>
-                                          </span>
-                                        </Link>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              </div>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                      <div className="mt-4">
-                        <Link
-                          href="/products"
-                          onClick={closeMenu}
-                          className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-forest transition-colors hover:text-leaf"
-                        >
-                          View All Products
-                          <Icon name="arrow-right" className="size-3.5" />
-                        </Link>
+                                      />
+                                    </button>
+                                    <div
+                                      id={listId}
+                                      inert={!expanded}
+                                      className={cn(
+                                        "grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out-expo)]",
+                                        expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+                                      )}
+                                    >
+                                      <ul className="grid min-h-0 grid-cols-1 gap-x-2 gap-y-1 overflow-hidden px-2 min-[480px]:grid-cols-2 sm:px-3">
+                                        {group.items.map((product, index) => {
+                                          const here = pathname === product.href;
+                                          return (
+                                            <li
+                                              key={product.href}
+                                              className={cn(
+                                                index === 0 && "pt-2",
+                                                index === 1 && "min-[480px]:pt-2",
+                                                "last:pb-3",
+                                                index === group.items.length - 2 && "min-[480px]:pb-3",
+                                              )}
+                                            >
+                                              <Link
+                                                href={product.href}
+                                                onClick={closeMenu}
+                                                aria-current={here ? "page" : undefined}
+                                                className={cn(
+                                                  "group/item flex items-center gap-2.5 rounded-lg p-1.5 text-[0.875rem] transition-colors duration-200",
+                                                  here
+                                                    ? "bg-section font-semibold text-forest"
+                                                    : "text-ink hover:bg-section hover:text-forest",
+                                                )}
+                                              >
+                                                <ProductThumb
+                                                  image={product.image}
+                                                  sizeClassName="size-7 rounded-md"
+                                                  sizes="28px"
+                                                />
+                                                <span className="leading-snug">
+                                                  <span className={menuUnderline.item(here)}>{product.label}</span>
+                                                </span>
+                                              </Link>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                            <div className="mt-4">
+                              <Link
+                                href="/products"
+                                onClick={closeMenu}
+                                className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-forest transition-colors hover:text-leaf"
+                              >
+                                View All Products
+                                <Icon name="arrow-right" className="size-3.5" />
+                              </Link>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

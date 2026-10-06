@@ -26,8 +26,11 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-line bg-cream">
       <Container className="py-8 lg:py-9">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.2fr] lg:gap-8">
-          <div className="max-w-xs">
+        {/* Five columns from xl. Between lg and xl the brand column would be
+            narrower than the logo, so it takes its own row above the four
+            link columns instead of running into Quick Links. */}
+        <div className="grid gap-10 lg:grid-cols-4 lg:gap-8 xl:grid-cols-[1.3fr_1fr_1fr_1fr_1.2fr]">
+          <div className="max-w-xs lg:col-span-4 lg:max-w-none xl:col-span-1 xl:max-w-xs">
             <Logo />
             <p className="mt-3 text-[0.8125rem] text-ink-muted">{siteConfig.tagline}</p>
 

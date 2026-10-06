@@ -178,10 +178,11 @@ export function NavDropdown({
 }
 
 /**
- * The featured card in the Resources panel and the mobile menu: an existing
- * site photograph, a label, title, summary and CTA, all one link.
+ * The featured card in the desktop Resources panel (the off-canvas menu shows
+ * the links only): an existing site photograph, a label, title, summary and
+ * CTA, all one link.
  */
-export function FeaturedCard({
+function FeaturedCard({
   feature,
   onSelect,
   sizes,
