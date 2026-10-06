@@ -17,10 +17,14 @@ import { BrochureButton } from "@/features/brochure/brochure-button";
 import { productMenu, type ProductMenuGroupId } from "@/features/products/export-catalogue";
 import { cn } from "@/lib/utils";
 
-/** Subtle outlined brochure button: forest outline, a rust download icon. */
+/**
+ * Brochure button in the hero CTA's colours (Button's primary variant): rust,
+ * a step darker on hover, white text and icon. The border keeps the button's
+ * original size and follows the fill.
+ */
 const brochureButton =
-  "group/brochure inline-flex h-12 items-center gap-2 rounded-full border border-forest/30 px-5 text-[0.9375rem] font-medium whitespace-nowrap text-forest " +
-  "transition-colors duration-300 hover:border-forest hover:bg-forest hover:text-white " +
+  "group/brochure inline-flex h-12 items-center gap-2 rounded-full border border-rust bg-rust px-5 text-[0.9375rem] font-medium whitespace-nowrap text-white " +
+  "transition-[background-color,color,border-color,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:border-rust-deep hover:bg-rust-deep " +
   "focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none";
 
 export function SiteHeader() {
@@ -120,7 +124,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           {/* Brochure: in the bar from sm, inside the mobile menu below that. */}
           <BrochureButton source="header_brochure" className={cn(brochureButton, "hidden sm:inline-flex")}>
-            <Icon name="download" className="size-4 text-rust transition-colors duration-300 group-hover/brochure:text-white" strokeWidth={2} />
+            <Icon name="download" className="size-4 text-white" strokeWidth={2} />
             Brochure
           </BrochureButton>
 
@@ -323,7 +327,7 @@ export function SiteHeader() {
             onClick={closeMenu}
             className={cn(brochureButton, "mt-10 w-full justify-center sm:hidden")}
           >
-            <Icon name="download" className="size-4 text-rust transition-colors duration-300 group-hover/brochure:text-white" strokeWidth={2} />
+            <Icon name="download" className="size-4 text-white" strokeWidth={2} />
             Brochure
           </BrochureButton>
           <Button href="/contact" variant="forest" className="mt-3 w-full sm:hidden">
