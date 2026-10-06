@@ -73,8 +73,13 @@ export function Reveal({
 
           const targets = stagger !== undefined ? Array.from(root.children) : root;
 
+          // Below the desktop breakpoint layouts stack to full width, so a
+          // lateral sweep would start the block partly off-screen and widen
+          // the page until it plays. Sweeps rise into place there instead.
+          const entrance = !desktop && variant.startsWith("sweep") ? "rise" : variant;
+
           gsap.from(targets, {
-            ...vocabulary[variant](amplitude(desktop)),
+            ...vocabulary[entrance](amplitude(desktop)),
             duration: DURATION.base,
             delay,
             stagger,

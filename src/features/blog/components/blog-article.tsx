@@ -7,136 +7,179 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { siteConfig } from "@/config/site";
+import { ArticleToc } from "@/features/blog/components/article-toc";
 import { BlogCard, blogGrid } from "@/features/blog/components/blog-card";
-import { type BlogPost, blogPath, relatedPosts, toCardData } from "@/features/blog/data";
+import {
+  type BlogPost,
+  articleOutline,
+  blogListHref,
+  readingMinutes,
+  relatedPosts,
+  toCardData,
+} from "@/features/blog/data";
 import { formatPublished } from "@/features/blog/meta";
 import { productBlogs } from "@/features/products/blog";
 
+/** Headings clear the fixed header when reached by a hash link or the TOC. */
+const anchorClearance = "scroll-mt-28";
+
+const metaDivider = <span aria-hidden="true" className="h-3 w-px bg-line-strong" />;
+
 /**
- * One Blog article: masthead with topic, category and date, the featured
- * photograph, the text, the product it belongs to, a quote prompt, and
- * further reading.
+ * One Blog article: the text on the left with its title, details, photograph
+ * and sections; on the right a table of contents built from the article's own
+ * headings, sticky while the article scrolls past. On phones the contents
+ * fold into a compact panel above the text. Related reading and a quote
+ * prompt follow the article.
  */
 export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly Crumb[] }) {
+  const { sections, toc } = articleOutline(post);
   const related = relatedPosts(post);
   const sameProduct = related.every((other) => other.product.slug === post.product.slug);
   const productPhoto = productBlogs[post.product.slug];
+  const minutes = readingMinutes(post);
 
   return (
     <>
-      <article aria-labelledby="article-heading">
-        {/* --- Masthead ------------------------------------------------------ */}
-        <header className="bg-cream pt-32 pb-10 lg:pt-40 lg:pb-14">
-          <Container>
-            <Breadcrumbs items={crumbs} />
+      <div className="bg-cream pt-28 pb-16 lg:pt-32 lg:pb-24">
+        <Container>
+          <Breadcrumbs items={crumbs} />
 
-            <div className="mt-8 max-w-3xl lg:mt-10">
-              <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.8125rem] text-ink-muted">
-                <span className="type-label font-semibold text-rust">{post.topic}</span>
-                <span aria-hidden="true" className="h-3 w-px bg-line-strong" />
-                <span>{post.category}</span>
-                <span aria-hidden="true" className="h-3 w-px bg-line-strong" />
-                <time dateTime={post.published}>{formatPublished(post.published, "day")}</time>
-              </p>
-              <h1 id="article-heading" className="mt-5 font-display text-display text-balance text-forest">
-                {post.title}
-              </h1>
-              <p className="mt-6 text-lead text-ink-muted">{post.description}</p>
-            </div>
-          </Container>
-        </header>
-
-        {/* Cream above the photograph's midline, white below, edge to edge. */}
-        <div className="bg-[linear-gradient(to_bottom,var(--color-cream)_50%,white_50%)]">
-          <Container>
-            <Figure
-              image={post.image.src}
-              alt={post.image.alt}
-              art={post.art}
-              priority
-              sizes="(min-width: 1440px) 1280px, 100vw"
-              className="aspect-[16/9] w-full rounded-xl lg:aspect-[21/9]"
-            />
-          </Container>
-        </div>
-
-        {/* --- Text and product ------------------------------------------- */}
-        <div className="bg-white">
-          <Container className="grid gap-12 pt-12 pb-16 lg:grid-cols-12 lg:gap-8 lg:pt-16 lg:pb-24">
-            <div className="lg:col-span-7 lg:col-start-2">
-              <div className="space-y-9">
-                {post.body.map((section) => (
-                  <section key={section.heading}>
-                    <h2 className="font-display text-[clamp(1.375rem,1.2rem+0.5vw,1.625rem)] leading-snug font-semibold text-forest">
-                      {section.heading}
-                    </h2>
-                    <p className="mt-3 text-[1.0625rem] leading-[1.75] text-ink-muted">{section.text}</p>
-                  </section>
-                ))}
-              </div>
-
-              {/* Quote prompt */}
-              <div className="mt-12 rounded-xl border border-line bg-cream-warm p-6 sm:p-8">
-                <p className="font-display text-[1.375rem] leading-snug font-semibold text-forest">
-                  Sourcing {post.product.name.toLowerCase()} in bulk?
+          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_15rem] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-10 xl:gap-14">
+            {/* --- Article ------------------------------------------------- */}
+            <article
+              aria-labelledby="article-heading"
+              className="min-w-0 rounded-xl border border-line bg-white p-5 sm:p-8 lg:p-10"
+            >
+              <header>
+                <Link
+                  href={blogListHref({ category: post.category })}
+                  className="type-label font-semibold text-rust transition-colors duration-300 hover:text-rust-deep"
+                >
+                  {post.category}
+                </Link>
+                <h1
+                  id="article-heading"
+                  className="mt-4 font-display text-[clamp(1.875rem,1.3rem+2vw,2.75rem)] leading-[1.12] font-semibold tracking-[-0.02em] text-balance text-forest"
+                >
+                  {post.title}
+                </h1>
+                <p className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.8125rem] text-ink-muted">
+                  <span>
+                    By <span className="font-semibold text-forest">{siteConfig.name}</span>
+                  </span>
+                  {metaDivider}
+                  <span>
+                    Published <time dateTime={post.published}>{formatPublished(post.published, "day")}</time>
+                  </span>
+                  {post.updated && post.updated !== post.published && (
+                    <>
+                      {metaDivider}
+                      <span>
+                        Updated <time dateTime={post.updated}>{formatPublished(post.updated, "day")}</time>
+                      </span>
+                    </>
+                  )}
+                  {metaDivider}
+                  <span>{minutes} min read</span>
                 </p>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-muted">
-                  Tell us your requirement, destination and timing, and our team will confirm availability,
-                  specifications and quotation details.
-                </p>
-                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-                  <Button href="/contact" variant="forest" size="md">
-                    Get a Quote
-                  </Button>
+              </header>
+
+              <Figure
+                image={post.image.src}
+                alt={post.image.alt}
+                art={post.art}
+                priority
+                sizes="(min-width: 1280px) 52rem, (min-width: 768px) 60vw, 100vw"
+                className="mt-7 aspect-[16/9] w-full rounded-xl"
+              />
+
+              {/* Phones: the contents fold into a panel above the text. */}
+              <ArticleToc items={toc} variant="collapsible" className="mt-7 md:hidden" />
+
+              {/* Introduction, with a link to the product it belongs to. */}
+              <div className="mt-8 max-w-[44rem]">
+                <p className="text-lead text-ink">{post.description}</p>
+                <p className="mt-4 text-[1rem] leading-[1.75] text-ink-muted">
+                  This guide is part of our{" "}
                   <Link
                     href={post.product.href}
-                    className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-rust-deep transition-colors duration-300 hover:text-rust"
+                    className="font-semibold text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf"
                   >
-                    View {post.product.name}
-                    <Icon name="arrow-right" className="size-3.5" />
-                  </Link>
-                </div>
+                    {post.product.name}
+                  </Link>{" "}
+                  insights — see the product page for specifications, packaging and supply.
+                </p>
               </div>
-            </div>
 
-            {/* Related product */}
-            <aside aria-label="Related product" className="lg:col-span-3 lg:col-start-10">
-              <div className="lg:sticky lg:top-28">
-                <Link
-                  href={post.product.href}
-                  className="group block overflow-hidden rounded-xl border border-line bg-white transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-[var(--shadow-card)] focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none"
-                >
-                  <Figure
-                    image={productPhoto?.image ?? null}
-                    alt=""
-                    art={post.art}
-                    sizes="(min-width: 1024px) 22vw, 100vw"
-                    className="aspect-[4/3] w-full"
-                    mediaClassName="transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
-                  />
-                  <span className="block p-5">
-                    <span className="type-label font-semibold text-ink-faint">Related Product</span>
-                    <span className="mt-2 block font-display text-[1.25rem] font-semibold text-forest">
-                      {post.product.name}
-                    </span>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-rust-deep transition-colors duration-300 group-hover:text-rust">
-                      View Product
-                      <Icon name="arrow-right" className="size-3.5" />
-                    </span>
+              {/* Sections: every heading carries the anchor its TOC entry links to. */}
+              <div className="mt-10 max-w-[44rem] space-y-9">
+                {sections.map((section) => {
+                  const Heading = section.level === 3 ? "h3" : "h2";
+                  return (
+                    <section key={section.id} aria-labelledby={section.id}>
+                      <Heading
+                        id={section.id}
+                        className={
+                          section.level === 3
+                            ? `${anchorClearance} font-display text-[1.25rem] leading-snug font-semibold text-forest`
+                            : `${anchorClearance} font-display text-[clamp(1.375rem,1.2rem+0.5vw,1.625rem)] leading-snug font-semibold text-forest`
+                        }
+                      >
+                        {section.heading}
+                      </Heading>
+                      <p className="mt-3 text-[1.0625rem] leading-[1.75] text-ink-muted">{section.text}</p>
+                    </section>
+                  );
+                })}
+              </div>
+
+              {/* Related product */}
+              <Link
+                href={post.product.href}
+                className="group mt-12 grid max-w-[44rem] overflow-hidden rounded-xl border border-line bg-cream-warm transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-[var(--shadow-card)] focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none sm:grid-cols-[11rem_minmax(0,1fr)]"
+              >
+                <Figure
+                  image={productPhoto?.image ?? null}
+                  alt=""
+                  art={post.art}
+                  sizes="(min-width: 640px) 11rem, 100vw"
+                  className="aspect-[16/9] w-full sm:aspect-auto sm:h-full"
+                  mediaClassName="transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
+                />
+                <span className="block p-5">
+                  <span className="type-label font-semibold text-ink-faint">Related Product</span>
+                  <span className="mt-1.5 block font-display text-[1.25rem] font-semibold text-forest">
+                    {post.product.name}
                   </span>
-                </Link>
+                  <span className="mt-1 block text-[0.875rem] leading-relaxed text-ink-muted">
+                    Specifications, packaging options and bulk supply from Freshland Exports.
+                  </span>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-rust-deep transition-colors duration-300 group-hover:text-rust">
+                    View Product
+                    <Icon name="arrow-right" className="size-3.5" />
+                  </span>
+                </span>
+              </Link>
+            </article>
+
+            {/* --- Table of contents: sticky beside the article, tablet up ---- */}
+            <aside aria-label="Article contents" className="hidden md:block">
+              <div className="sticky top-28">
+                <ArticleToc items={toc} variant="sidebar" />
                 <Link
-                  href={blogPath}
-                  className="mt-5 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-forest transition-colors duration-300 hover:text-leaf"
+                  href={blogListHref({})}
+                  className="mt-5 inline-flex items-center gap-1.5 px-1 text-[0.875rem] font-semibold text-forest transition-colors duration-300 hover:text-leaf"
                 >
-                  <Icon name="arrow-right" className="size-3.5 rotate-180" />
+                  <Icon name="arrow-left" className="size-3.5" />
                   All articles
                 </Link>
               </div>
             </aside>
-          </Container>
-        </div>
-      </article>
+          </div>
+        </Container>
+      </div>
 
       {/* --- Further reading -------------------------------------------- */}
       {related.length > 0 && (
@@ -158,6 +201,33 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
           </Container>
         </section>
       )}
+
+      {/* --- Final CTA --------------------------------------------------- */}
+      <section aria-labelledby="article-cta-heading" className="bg-forest-deep">
+        <Container className="flex flex-col gap-6 py-14 md:flex-row md:items-center md:justify-between lg:py-16">
+          <div className="max-w-xl">
+            <h2 id="article-cta-heading" className="font-display text-title text-cream">
+              Sourcing {post.product.name.toLowerCase()} in bulk?
+            </h2>
+            <p className="mt-3 text-[0.9375rem] leading-relaxed text-sage-200">
+              Tell us your requirement, destination and timing, and our team will confirm availability,
+              specifications and quotation details.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button href="/contact" variant="primary" size="md">
+              Get a Quote
+            </Button>
+            <Link
+              href={post.product.href}
+              className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-cream transition-colors duration-300 hover:text-highlight-inverse"
+            >
+              View {post.product.name}
+              <Icon name="arrow-right" className="size-3.5" />
+            </Link>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

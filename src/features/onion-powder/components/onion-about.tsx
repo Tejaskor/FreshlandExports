@@ -107,7 +107,10 @@ export function OnionAbout() {
         </div>
 
         {/* --- Powder vs fresh + nutrition table ----------------------------- */}
-        <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-12">
+        {/* grid-cols-1 (minmax(0, 1fr)) keeps the stacked column to the screen
+            width, so the nutrition table scrolls in its own wrapper instead
+            of widening the page. */}
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:mt-16 lg:grid-cols-12">
           <Reveal variant="rise" className="lg:col-span-7">
             <div className="h-full rounded-[1.75rem] border border-line-strong p-5 sm:p-7">
               <p className={cn(label, "text-leaf")}>Understanding the difference</p>

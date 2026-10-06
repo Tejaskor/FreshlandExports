@@ -136,7 +136,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           typeof target === "string" ? document.querySelector(target) : target;
 
         if (element instanceof HTMLElement) {
-          window.scrollTo({ top: element.offsetTop + offset });
+          // Page position, not offsetTop (which is relative to the nearest
+          // positioned ancestor).
+          window.scrollTo({ top: element.getBoundingClientRect().top + window.scrollY + offset });
         }
       },
     }),

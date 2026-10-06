@@ -1,7 +1,10 @@
 import type { ArtVariant } from "@/components/media/botanical-art";
 
-/** One headed section of an article's text. */
-export type ArticleSection = { heading: string; text: string };
+/**
+ * One headed section of an article's text. Sections are H2s; `level: 3`
+ * makes one a sub-section (H3) of the section before it.
+ */
+export type ArticleSection = { heading: string; text: string; level?: 2 | 3 };
 export type ArticleBody = readonly ArticleSection[];
 
 export type BlogArticle = {
@@ -14,6 +17,8 @@ export type BlogArticle = {
    * later keep their text in features/blog/bodies instead.
    */
   body?: ArticleBody;
+  /** ISO date of a substantive revision; shown only when set. */
+  updated?: string;
 };
 
 export type ProductBlogEntry = {

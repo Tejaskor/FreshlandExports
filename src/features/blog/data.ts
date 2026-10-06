@@ -48,6 +48,8 @@ export type BlogPost = {
   /** Fallback art for the image frame. */
   art: ArtVariant;
   published: string;
+  /** ISO date of the last substantive revision, when there has been one. */
+  updated?: string;
   product: { slug: string; name: string; href: string };
 };
 
@@ -107,6 +109,7 @@ function buildPosts(): readonly BlogPost[] {
         image,
         art: entry.art,
         published: firstPublished,
+        updated: article.updated,
         product: { slug: productSlug, name, href: exportProductHref(productSlug) },
       };
     });
@@ -164,6 +167,41 @@ export function blogListing({ category, page }: { category?: BlogCategory; page:
   if (!Number.isInteger(page) || page < 1 || page > pageCount) return null;
   const start = (page - 1) * postsPerPage;
   return { posts: posts.slice(start, start + postsPerPage), page, pageCount };
+}
+
+/* --- Article outline --------------------------------------------------- */
+
+export type OutlineItem = { id: string; text: string; level: 2 | 3 };
+
+/**
+ * The article's sections with a unique anchor id each, built from its own
+ * headings — so every article, including ones added later, gets its own
+ * table of contents without any extra data.
+ */
+export function articleOutline(post: BlogPost) {
+  const used = new Map<string, number>();
+  const sections = post.body.map((section) => {
+    const base = slugify(section.heading) || "section";
+    const count = used.get(base) ?? 0;
+    used.set(base, count + 1);
+    return {
+      id: count === 0 ? base : `${base}-${count + 1}`,
+      level: section.level ?? 2,
+      heading: section.heading,
+      text: section.text,
+    };
+  });
+  const toc: OutlineItem[] = sections.map(({ id, heading, level }) => ({ id, text: heading, level }));
+  return { sections, toc };
+}
+
+/** Minutes to read at an unhurried 200 words a minute. */
+export function readingMinutes(post: BlogPost) {
+  const words = [post.description, ...post.body.flatMap((section) => [section.heading, section.text])]
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 export function findBlogPost(slug: string) {
