@@ -3,6 +3,7 @@
  * Imported by layout, SEO helpers, sitemap and robots.
  */
 
+import type { IconName } from "@/components/ui/icon";
 import { featureFlags } from "@/config/features";
 
 export const siteConfig = {
@@ -41,7 +42,21 @@ export const siteConfig = {
   ],
 } as const;
 
-export type NavLink = { label: string; href: string; description?: string };
+export type NavLink = { label: string; href: string; description?: string; icon?: IconName };
+
+/** The featured card beside a dropdown's links. */
+export type NavFeature = {
+  label: string;
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+  /** An existing site photograph. */
+  image: string;
+  alt: string;
+  /** CSS object-position for the crop, e.g. "50% 35%" (default centred). */
+  imagePosition?: string;
+};
 
 export type NavItem = {
   label: string;
@@ -53,6 +68,8 @@ export type NavItem = {
    * link; `href` only keys it and marks it active on those pages.
    */
   links?: readonly NavLink[];
+  /** Featured card shown beside `links`. */
+  featured?: NavFeature;
   /** Short line used in the expanded mobile menu. */
   hint?: string;
 };
@@ -80,15 +97,28 @@ export const primaryNav: readonly NavItem[] = [
   { label: "Knowledge Center", href: "/r-and-d", hint: "Extraction, assay and validation" },
   {
     label: "Resources",
-    href: "/blog",
+    href: "/resources",
     hint: "Insights on products, sourcing and supply",
     links: [
       {
         label: "Blogs",
-        href: "/blog",
-        description: "Insights on agricultural products, sourcing, quality, handling and food applications.",
+        href: "/resources",
+        description: "Buyer guides on agricultural products, fruits and spices — sourcing, quality and handling.",
+        icon: "clipboard",
       },
     ],
+    featured: {
+      label: "Blog",
+      title: "Freshland Exports Blog",
+      description:
+        "Practical guidance on agricultural sourcing, quality checks, storage and handling, and food applications.",
+      cta: "Explore Our Blog",
+      href: "/resources",
+      image: "/images/Resources/Blog/freshland-exports-blog-card.webp",
+      alt: "Growers inspecting fresh herbs, chillies, vegetables and spices laid out in crates at the edge of a farm",
+      // The growers' faces and hands sit above centre; keep them in frame.
+      imagePosition: "50% 35%",
+    },
   },
   {
     label: "Certificates",
@@ -109,7 +139,7 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       ...(featureFlags.signatureIngredients
         ? [{ label: "Our Signature Ingredients", href: "/signature-ingredients" }]
         : []),
-      { label: "Blog", href: "/blog" },
+      { label: "Blog", href: "/resources" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
@@ -143,7 +173,6 @@ export const staticRoutes: readonly string[] = [
   "/r-and-d",
   "/categories",
   "/resources",
-  "/blog",
   "/certificates",
   "/contact",
 ] as const;

@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
  * Product Insights — the product's own three Blog articles, placed on every
  * product page after the FAQs and before the closing contact band, as one row
  * of equal cards (two on tablets, one on phones). Each card opens the full
- * article at /blog/<slug>. Each page passes its own ground and accent so the
+ * article at /resources/<slug>. Each page passes its own ground and accent so the
  * section sits in its palette; `after` takes a divider (such as a wave) flush
  * to the bottom edge. Renders nothing for a product without articles.
  */

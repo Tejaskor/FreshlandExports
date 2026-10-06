@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
-import { NavDropdown } from "@/components/layout/nav-dropdown";
+import { FeaturedCard, NavDropdown } from "@/components/layout/nav-dropdown";
 import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/products-menu";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
@@ -103,7 +103,13 @@ export function SiteHeader() {
               }
               if (item.links) {
                 return (
-                  <NavDropdown key={item.href} label={item.label} links={item.links} linkClassName={linkClassName} />
+                  <NavDropdown
+                    key={item.href}
+                    label={item.label}
+                    links={item.links}
+                    featured={item.featured}
+                    linkClassName={linkClassName}
+                  />
                 );
               }
               return (
@@ -191,31 +197,41 @@ export function SiteHeader() {
 
                   {/* Resources links, listed under their heading. */}
                   {item.links && (
-                    <ul className="pb-6 pl-4 sm:pl-10">
-                      {item.links.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            onClick={closeMenu}
-                            aria-current={pathname === link.href ? "page" : undefined}
-                            className={cn(
-                              "group/item block rounded-xl border border-line/60 px-4 py-3 transition-colors duration-200",
-                              isActive(link.href) ? "bg-section" : "bg-white/70 hover:bg-section",
-                            )}
-                          >
-                            <span className="flex items-center gap-2 text-[0.9375rem] font-semibold text-forest">
-                              <span className={menuUnderline.item(isActive(link.href))}>{link.label}</span>
-                              <Icon name="arrow-right" className="size-3.5 text-rust" />
-                            </span>
-                            {link.description && (
-                              <span className="mt-1 block text-[0.8125rem] leading-relaxed text-ink-muted">
-                                {link.description}
+                    <div className="grid gap-3 pb-6 pl-4 sm:pl-10">
+                      <ul>
+                        {item.links.map((link) => (
+                          <li key={link.href}>
+                            <Link
+                              href={link.href}
+                              onClick={closeMenu}
+                              aria-current={pathname === link.href ? "page" : undefined}
+                              className={cn(
+                                "group/item block rounded-xl border border-line/60 px-4 py-3 transition-colors duration-200",
+                                isActive(link.href) ? "bg-section" : "bg-white/70 hover:bg-section",
+                              )}
+                            >
+                              <span className="flex items-center gap-2 text-[0.9375rem] font-semibold text-forest">
+                                <span className={menuUnderline.item(isActive(link.href))}>{link.label}</span>
+                                <Icon name="arrow-right" className="size-3.5 text-rust" />
                               </span>
-                            )}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                              {link.description && (
+                                <span className="mt-1 block text-[0.8125rem] leading-relaxed text-ink-muted">
+                                  {link.description}
+                                </span>
+                              )}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      {item.featured && (
+                        <FeaturedCard
+                          feature={item.featured}
+                          onSelect={closeMenu}
+                          sizes="(min-width: 640px) 24rem, 100vw"
+                          className="max-w-sm"
+                        />
+                      )}
+                    </div>
                   )}
 
                   {/* Product pages, listed under Products (links can't nest,

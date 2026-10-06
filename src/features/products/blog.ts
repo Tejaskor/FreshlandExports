@@ -10,7 +10,7 @@ export type BlogArticle = {
   title: string;
   description: string;
   /**
-   * The full article, read on its own page at /blog/<slug>. Articles written
+   * The full article, read on its own page at /resources/<slug>. Articles written
    * later keep their text in features/blog/bodies instead.
    */
   body?: ArticleBody;
@@ -37,7 +37,7 @@ const photo = (file: string) => `/images/products/${file}`;
  */
 export const productBlogs: Record<string, ProductBlogEntry> = {
   /* --- Powder products ------------------------------------------------- */
-  // Moringa carries full articles, read in place on the page.
+  // Moringa carries its full articles inline.
   "moringa-powder": {
     // Not the hero photograph, so the image is not repeated on the page.
     image: photo("Moringa Powder/moringa-powder-nutritional-value.webp"),

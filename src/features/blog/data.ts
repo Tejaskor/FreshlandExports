@@ -4,17 +4,18 @@ import { spicesABodies } from "@/features/blog/bodies/spices-a";
 import { spicesBBodies } from "@/features/blog/bodies/spices-b";
 import { vegetablesBodies } from "@/features/blog/bodies/vegetables";
 import { type ArticleImage, articleImages } from "@/features/blog/images";
-import type { BlogCategory } from "@/features/blog/meta";
+import { blogCategories, type BlogCategory } from "@/features/blog/meta";
 import { type ArticleBody, productBlogs } from "@/features/products/blog";
 import { exportProductHref, findExportProduct, productMenu } from "@/features/products/export-catalogue";
 
 /**
  * The Blog: every product article from features/products/blog.ts, given its
- * own page at /blog/<slug>. Product pages, the archive and the article pages
+ * own page at /resources/<slug>. Product pages, the archive and the article pages
  * all read from this one index, so an article is written once.
  */
 
-export const blogPath = "/blog";
+/** The Blog lives under Resources: the listing and every article. */
+export const blogPath = "/resources";
 export const blogPostHref = (slug: string) => `${blogPath}/${slug}`;
 
 export { blogCategories, type BlogCategory } from "@/features/blog/meta";
@@ -120,6 +121,50 @@ function buildPosts(): readonly BlogPost[] {
 }
 
 export const blogPosts = buildPosts();
+
+/**
+ * Newest first, by publication date. Articles published the same day keep
+ * their catalogue order, so the listing is stable from build to build.
+ */
+export const latestPosts: readonly BlogPost[] = blogPosts
+  .map((post, index) => ({ post, index }))
+  .sort((a, b) => b.post.published.localeCompare(a.post.published) || a.index - b.index)
+  .map(({ post }) => post);
+
+/** URL form of a category, e.g. "Quality & Sourcing" → "quality-and-sourcing". */
+export const categorySlug = (category: BlogCategory) => slugify(category);
+
+export function findCategory(slug: string) {
+  return blogCategories.find((category) => categorySlug(category) === slug);
+}
+
+/** Categories that have at least one article, in taxonomy order. */
+export const usedCategories = blogCategories.filter((category) =>
+  blogPosts.some((post) => post.category === category),
+);
+
+export const postsPerPage = 3;
+
+/** The listing URL for a category and page; page 1 and "all" stay implicit. */
+export function blogListHref({ category, page = 1 }: { category?: BlogCategory; page?: number }) {
+  const params = new URLSearchParams();
+  if (category) params.set("category", categorySlug(category));
+  if (page > 1) params.set("page", String(page));
+  const query = params.toString();
+  return query ? `${blogPath}?${query}` : blogPath;
+}
+
+/**
+ * One page of the listing: the newest articles first, optionally narrowed to
+ * a category. Returns null for a page beyond the last.
+ */
+export function blogListing({ category, page }: { category?: BlogCategory; page: number }) {
+  const posts = category ? latestPosts.filter((post) => post.category === category) : latestPosts;
+  const pageCount = Math.max(1, Math.ceil(posts.length / postsPerPage));
+  if (!Number.isInteger(page) || page < 1 || page > pageCount) return null;
+  const start = (page - 1) * postsPerPage;
+  return { posts: posts.slice(start, start + postsPerPage), page, pageCount };
+}
 
 export function findBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
