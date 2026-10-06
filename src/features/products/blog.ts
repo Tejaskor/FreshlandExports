@@ -1,31 +1,30 @@
 import type { ArtVariant } from "@/components/media/botanical-art";
 
+/** One headed section of an article's text. */
+export type ArticleSection = { heading: string; text: string };
+export type ArticleBody = readonly ArticleSection[];
+
 export type BlogArticle = {
   /** Short topic label shown above the title, e.g. "Storage". */
   topic: string;
   title: string;
   description: string;
   /**
-   * The full article. When present it opens in place on the card; without it
-   * the card links to the Resources page.
+   * The full article, read on its own page at /blog/<slug>. Articles written
+   * later keep their text in features/blog/bodies instead.
    */
-  body?: readonly { heading: string; text: string }[];
+  body?: ArticleBody;
 };
 
 export type ProductBlogEntry = {
-  /** The product's own photograph, shown on the featured article. */
+  /** The product's own photograph. Card images are set per article in features/blog/images. */
   image: string | null;
   alt: string;
+  /** Fallback art for the article images. */
   art: ArtVariant;
-  /** The first article is featured; the next two sit beside it. */
+  /** Shown as three cards on the product page, in this order. */
   articles: readonly [BlogArticle, BlogArticle, BlogArticle];
 };
-
-/**
- * Articles without a body live on the Resources page until a dedicated blog
- * route exists; those cards link there.
- */
-export const blogHref = "/resources";
 
 const photo = (file: string) => `/images/products/${file}`;
 

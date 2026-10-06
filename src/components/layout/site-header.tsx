@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import { Logo } from "@/components/ui/logo";
+import { NavDropdown } from "@/components/layout/nav-dropdown";
 import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/products-menu";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
@@ -93,9 +94,15 @@ export function SiteHeader() {
                 isActive(item.href) ? "text-leaf" : "text-ink hover:text-leaf",
               );
 
-              return item.hasMenu ? (
-                <ProductsMenu key={item.href} label={item.label} linkClassName={linkClassName} />
-              ) : (
+              if (item.hasMenu) {
+                return <ProductsMenu key={item.href} label={item.label} linkClassName={linkClassName} />;
+              }
+              if (item.links) {
+                return (
+                  <NavDropdown key={item.href} label={item.label} links={item.links} linkClassName={linkClassName} />
+                );
+              }
+              return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -162,9 +169,9 @@ export function SiteHeader() {
                         </span>
                       </>
                     );
-                    // Products is a heading for the product links beneath it,
-                    // not a link to /products.
-                    return item.hasMenu ? (
+                    // Products and Resources are headings for the links
+                    // beneath them, not links themselves.
+                    return item.hasMenu || item.links ? (
                       <div className="flex items-baseline gap-4 py-5">{row}</div>
                     ) : (
                       <Link
@@ -177,6 +184,35 @@ export function SiteHeader() {
                       </Link>
                     );
                   })()}
+
+                  {/* Resources links, listed under their heading. */}
+                  {item.links && (
+                    <ul className="pb-6 pl-4 sm:pl-10">
+                      {item.links.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            onClick={closeMenu}
+                            aria-current={pathname === link.href ? "page" : undefined}
+                            className={cn(
+                              "group/item block rounded-xl border border-line/60 px-4 py-3 transition-colors duration-200",
+                              isActive(link.href) ? "bg-section" : "bg-white/70 hover:bg-section",
+                            )}
+                          >
+                            <span className="flex items-center gap-2 text-[0.9375rem] font-semibold text-forest">
+                              <span className={menuUnderline.item(isActive(link.href))}>{link.label}</span>
+                              <Icon name="arrow-right" className="size-3.5 text-rust" />
+                            </span>
+                            {link.description && (
+                              <span className="mt-1 block text-[0.8125rem] leading-relaxed text-ink-muted">
+                                {link.description}
+                              </span>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                   {/* Product pages, listed under Products (links can't nest,
                       so they follow the row rather than sit inside it). */}

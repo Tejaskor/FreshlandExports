@@ -12,6 +12,8 @@ type PageMeta = {
   noIndex?: boolean;
   /** Share image for Open Graph and Twitter, as a site-relative path. */
   image?: { url: string; alt: string };
+  /** Marks the page as an article in Open Graph, with its publication date. */
+  article?: { publishedTime: string; section?: string };
 };
 
 /**
@@ -24,6 +26,7 @@ export function createMetadata({
   path = "/",
   noIndex = false,
   image,
+  article,
 }: PageMeta): Metadata {
   const url = absoluteUrl(path, siteConfig.url);
 
@@ -32,7 +35,9 @@ export function createMetadata({
     description,
     alternates: { canonical: url },
     openGraph: {
-      type: "website",
+      ...(article
+        ? { type: "article", publishedTime: article.publishedTime, section: article.section }
+        : { type: "website" }),
       url,
       title,
       description,
@@ -130,5 +135,40 @@ export function productJsonLd({
     brand: { "@type": "Brand", name: siteConfig.name },
     manufacturer: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     countryOfOrigin: "India",
+  };
+}
+
+/**
+ * BlogPosting JSON-LD for a Blog article. Articles carry no byline, so the
+ * organisation is both author and publisher.
+ */
+export function blogPostingJsonLd({
+  title,
+  description,
+  path,
+  image,
+  published,
+  section,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  image: string;
+  published: string;
+  section: string;
+}) {
+  const organization = { "@type": "Organization", name: siteConfig.name, url: siteConfig.url };
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    url: absoluteUrl(path, siteConfig.url),
+    mainEntityOfPage: absoluteUrl(path, siteConfig.url),
+    image: absoluteUrl(image, siteConfig.url),
+    datePublished: published,
+    articleSection: section,
+    author: organization,
+    publisher: organization,
   };
 }

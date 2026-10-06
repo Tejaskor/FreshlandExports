@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig, staticRoutes } from "@/config/site";
 import { findLandingProduct } from "@/features/agri/content";
+import { blogPosts } from "@/features/blog/data";
 import { exportProductHref, exportProducts } from "@/features/products/export-catalogue";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...exportProducts
       .filter((product) => !findLandingProduct(product.slug))
       .map((product) => exportProductHref(product.slug)),
+    ...blogPosts.map((post) => post.href),
   ];
 
   return routes.map((route) => ({

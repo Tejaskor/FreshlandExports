@@ -41,11 +41,18 @@ export const siteConfig = {
   ],
 } as const;
 
+export type NavLink = { label: string; href: string; description?: string };
+
 export type NavItem = {
   label: string;
   href: string;
   /** Renders a caret and, on desktop, signals a future mega-menu. */
   hasMenu?: boolean;
+  /**
+   * A small dropdown of links. The item itself is then a menu button, not a
+   * link; `href` only keys it and marks it active on those pages.
+   */
+  links?: readonly NavLink[];
   /** Short line used in the expanded mobile menu. */
   hint?: string;
 };
@@ -72,6 +79,18 @@ export const primaryNav: readonly NavItem[] = [
   // Formerly "R&D Lab"; the /r-and-d URL is kept so existing links work.
   { label: "Knowledge Center", href: "/r-and-d", hint: "Extraction, assay and validation" },
   {
+    label: "Resources",
+    href: "/blog",
+    hint: "Insights on products, sourcing and supply",
+    links: [
+      {
+        label: "Blogs",
+        href: "/blog",
+        description: "Insights on agricultural products, sourcing, quality, handling and food applications.",
+      },
+    ],
+  },
+  {
     label: "Certificates",
     href: "/certificates",
     hint: "Certifications and registrations we hold",
@@ -90,8 +109,7 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       ...(featureFlags.signatureIngredients
         ? [{ label: "Our Signature Ingredients", href: "/signature-ingredients" }]
         : []),
-      // No journal route yet — the Resources page holds the articles.
-      { label: "Journal", href: "/resources" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
@@ -125,6 +143,7 @@ export const staticRoutes: readonly string[] = [
   "/r-and-d",
   "/categories",
   "/resources",
+  "/blog",
   "/certificates",
   "/contact",
 ] as const;
