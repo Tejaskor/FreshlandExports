@@ -11,6 +11,7 @@ import { Uses } from "@/features/agri/components/uses";
 import type { AgriProduct, SectionSpec } from "@/features/agri/types";
 import { MoqPanel } from "@/features/products/components/moq-panel";
 import { ProductBlog } from "@/features/products/components/product-blog";
+import { RelatedProducts } from "@/features/products/components/related-products";
 import { findMoq } from "@/features/products/moq";
 import { cn } from "@/lib/utils";
 
@@ -85,6 +86,8 @@ export function AgriPage({ product }: { product: AgriProduct }) {
         return <Varieties product={product} />;
       case "faq":
         return <Faq product={product} variant={section.variant} />;
+      case "related":
+        return <RelatedProducts slug={product.slug} className="border-t border-line" />;
       case "contact":
         return (
           <>

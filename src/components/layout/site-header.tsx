@@ -105,16 +105,18 @@ export function SiteHeader() {
 
       {/* The shared content shell (90rem), so the logo and actions line up
           with every section's content edges below. */}
+      {/* Logo, then the link group, then the CTA group pushed to the right
+          edge. The container gap (24px) plus the nav's own margins set the
+          desktop rhythm: ~52px logo → links, at least ~56px links → CTAs. */}
       <Container className="relative z-10 flex items-center justify-between gap-6">
         <Link href="/" aria-label={`${siteConfig.name} — home`} className="shrink-0">
           <Logo priority />
         </Link>
 
-        <nav aria-label="Primary" className="hidden xl:block">
-          {/* Tighter spacing until 85rem, so the full set of labels (including
-              "Our Signature Ingredients" when it is enabled) fits at 1280px.
-              From 2xl the wider bar shares its extra room between the links. */}
-          <ul className="flex items-center gap-6 min-[85rem]:gap-8 2xl:gap-10">
+        <nav aria-label="Primary" className="hidden xl:mr-8 xl:ml-7 xl:block">
+          {/* One compact group: 24px between links, 28px from 85rem. Any spare
+              width goes to the gap before the CTAs, never between links. */}
+          <ul className="flex items-center gap-6 min-[85rem]:gap-7">
             {primaryNav.map((item) => {
               const linkClassName = cn(
                 "flex items-center gap-1.5 text-[1rem] whitespace-nowrap transition-colors duration-300",
@@ -151,11 +153,11 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 xl:ml-auto">
           {/* Brochure: in the bar from sm, inside the mobile menu below that. */}
-          <BrochureButton source="header_brochure" className={cn(brochureButton, "hidden sm:inline-flex")}>
-            <Icon name="download" className="size-4 text-white" strokeWidth={2} />
+          <BrochureButton source="header_brochure" className={cn(brochureButton, "hidden cursor-pointer sm:inline-flex")}>
             Brochure
+            <Icon name="download" className="size-4 text-white" strokeWidth={2} />
           </BrochureButton>
 
           <Button href="/contact" variant="forest" size="md" className="hidden text-[0.9375rem] sm:inline-flex">
@@ -296,9 +298,8 @@ export function SiteHeader() {
                                         <Icon name={group.icon} className="size-3.5" />
                                       </span>
                                       <span className="flex-1 text-[0.9375rem] font-semibold text-forest">
-                                        <span className={menuUnderline.category(expanded)}>{group.title}</span>
+                                        {group.title}
                                       </span>
-                                      <span className="text-[0.75rem] text-ink-muted">{group.items.length}</span>
                                       <Icon
                                         name="chevron-down"
                                         className={cn(

@@ -11,7 +11,7 @@ import { Reveal } from "@/animations/reveal";
 import { ScrollScrub } from "@/animations/scroll-scrub";
 import { Tilt } from "@/animations/tilt";
 import { Section } from "@/components/ui/section";
-import { products } from "@/features/home/data";
+import { featuredProducts } from "@/features/home/data";
 
 export function FeaturedProducts() {
   return (
@@ -49,7 +49,7 @@ export function FeaturedProducts() {
             </div>
           }
         >
-          {products.map((product, index) => (
+          {featuredProducts.map((product, index) => (
             <Reveal
               key={product.href}
               as="article"

@@ -1,9 +1,39 @@
 import type { IconName } from "@/components/ui/icon";
+import type { Category } from "@/features/categories/types";
+import { catalogue, catalogueCategoryHref, catalogueHref, catalogueImage } from "@/features/products/catalogue";
+import type { Product } from "@/features/products/types";
 import type { MediaSlot } from "@/types/media";
 
-// Re-exported so homepage sections keep a single import for their content.
-export { categories } from "@/features/categories/data";
-export { products } from "@/features/products/data";
+/**
+ * "Featured Products" rail: every Powder Products item of the central
+ * catalogue, in catalogue (and header menu) order. A powder added to the
+ * catalogue appears here with no change to this file; one without its own
+ * photograph shows the placeholder art.
+ */
+export const featuredProducts: readonly Product[] = (
+  catalogue.find((category) => category.id === "powders")?.products ?? []
+).map((product) => ({
+  name: product.name,
+  descriptor: product.description,
+  href: catalogueHref(product.slug),
+  image: catalogueImage(product.image),
+  alt: product.alt,
+  art: "powder",
+}));
+
+/**
+ * "Our Categories" rail: one card per category of the central product
+ * catalogue, linking to that category's section on /products. A category
+ * added to the catalogue appears here with no change to this file.
+ */
+export const categories: readonly Category[] = catalogue.map((category) => ({
+  title: category.heading,
+  description: category.summary,
+  href: catalogueCategoryHref(category),
+  image: category.card.image,
+  alt: category.card.alt,
+  art: category.id === "powders" ? "powder" : "field",
+}));
 
 /**
  * Homepage-only content. Catalogue data (products, categories) is owned by

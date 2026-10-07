@@ -25,6 +25,8 @@ const hoverReveal = [
  * label text, so it never shifts the layout. It grows in on hover and
  * keyboard focus of the row, and stays on while the item is active.
  * `box-decoration-clone` keeps it under every line of a wrapped label.
+ * Product rows only: category rows mark hover and selection with their
+ * background tint alone, with no line or accent bar.
  */
 const underlineBase =
   "box-decoration-clone bg-[linear-gradient(#8baf91,#8baf91)] bg-no-repeat " +
@@ -38,14 +40,6 @@ export const menuUnderline = {
       active
         ? "bg-[length:100%_1.5px]"
         : "bg-[length:0%_1.5px] group-hover/item:bg-[length:100%_1.5px] group-focus-visible/item:bg-[length:100%_1.5px]",
-    ),
-  /** Category rows (`group/cat`). */
-  category: (active: boolean) =>
-    cn(
-      underlineBase,
-      active
-        ? "bg-[length:100%_1.5px]"
-        : "bg-[length:0%_1.5px] group-hover/cat:bg-[length:100%_1.5px] group-focus-visible/cat:bg-[length:100%_1.5px]",
     ),
 };
 
@@ -334,21 +328,10 @@ export function ProductsMenu({
                       selected ? "bg-sage-100" : "hover:bg-section/70",
                     )}
                   >
-                    {/* Green accent border on the selected category. */}
-                    <span
-                      aria-hidden="true"
-                      className={cn(
-                        "absolute top-3 bottom-3 left-0 w-1 rounded-full bg-leaf transition-opacity duration-200",
-                        selected ? "opacity-100" : "opacity-0",
-                      )}
-                    />
                     <CategoryCover group={group} selected={selected} />
                     <span className="min-w-0 flex-1">
                       <span className="block text-[1.0625rem] leading-snug font-semibold text-forest">
-                        <span className={menuUnderline.category(selected)}>{group.title}</span>
-                      </span>
-                      <span className="mt-0.5 block text-[0.8125rem] text-ink-muted">
-                        {group.items.length} products
+                        {group.title}
                       </span>
                     </span>
                     <Icon
@@ -368,7 +351,6 @@ export function ProductsMenu({
           <div id={productsId} className="border-l border-line px-7 py-6">
             <p className="flex items-baseline justify-between gap-4 pb-3">
               <span className="font-display text-[1.6rem] leading-tight text-forest">{activeGroup.title}</span>
-              <span className="text-[0.8125rem] text-ink-muted">{activeGroup.items.length} products</span>
             </p>
             <ul
               key={activeGroup.id}

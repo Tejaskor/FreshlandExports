@@ -1,4 +1,5 @@
 import type { IconName } from "@/components/ui/icon";
+import { catalogue, catalogueImage, type CatalogueCategoryId } from "@/features/products/catalogue";
 import type { MediaSlot } from "@/types/media";
 
 /**
@@ -370,7 +371,7 @@ export type ProductMenuItem = {
   image: string | null;
 };
 
-export type ProductMenuGroupId = "powders" | "agricultural" | "fruits" | "spices";
+export type ProductMenuGroupId = CatalogueCategoryId;
 
 export type ProductMenuGroup = {
   id: ProductMenuGroupId;
@@ -382,140 +383,30 @@ export type ProductMenuGroup = {
 };
 
 /**
- * The header's Products menu: four categories, each listing its products by
- * slug, each linking to /products/<slug>. Thumbnails come from
- * /images/dropdown-menu-icons/ (see dropdownIcons below).
+ * The header's Products menu, derived from the central catalogue
+ * (./catalogue.ts): one group per category, each product linking to
+ * /products/<slug>. Thumbnails are the products' own catalogue images — the
+ * same source as every other listing; a product without a photograph keeps
+ * the menu's placeholder icon — no substitute image is used. Category
+ * covers come from /images/dropdown-menu-icons/.
  *
  * Onion / Onion Powder and Turmeric / Turmeric Powder are separate products
  * with separate slugs.
  */
-const menuStructure: readonly {
-  id: ProductMenuGroupId;
-  title: string;
-  icon: IconName;
-  /** Category image file in /images/dropdown-menu-icons/. */
-  coverFile: string;
-  items: readonly (readonly [slug: string, label: string])[];
-}[] = [
-  {
-    id: "powders",
-    title: "Powder Products",
-    icon: "sprout",
-    coverFile: "Powder.png",
-    items: [
-      ["moringa-powder", "Moringa Powder"],
-      ["onion-powder", "Onion Powder"],
-      ["turmeric-powder", "Turmeric Powder"],
-    ],
-  },
-  {
-    id: "agricultural",
-    title: "Agricultural Products",
-    icon: "seedling",
-    coverFile: "Vegetables.png",
-    items: [
-      ["onion", "Onion"],
-      ["garlic", "Garlic"],
-      ["elephant-yam", "Elephant Yam"],
-      ["cabbage", "Cabbage"],
-      ["cucumber", "Cucumber"],
-      ["green-chili", "Green Chili"],
-      ["frozen-peas", "Frozen Peas"],
-      ["okra", "Okra"],
-      ["bitter-gourd", "Bitter Gourd"],
-      ["eggplant", "Eggplant"],
-      ["drumstick", "Drumstick"],
-      ["beans", "Beans"],
-    ],
-  },
-  {
-    id: "fruits",
-    title: "Fruits",
-    icon: "target",
-    coverFile: "fruits.png",
-    items: [
-      ["mango", "Mango"],
-      ["banana", "Banana"],
-      ["grapes", "Grapes"],
-      ["pomegranate", "Pomegranate"],
-      ["orange", "Orange"],
-      ["chikoo", "Chikoo"],
-      ["papaya", "Papaya"],
-      ["guava", "Guava"],
-    ],
-  },
-  {
-    id: "spices",
-    title: "Spices",
-    icon: "layers",
-    coverFile: "Spices.png",
-    items: [
-      ["red-chilli", "Red Chilli"],
-      ["black-pepper", "Black Pepper"],
-      ["cumin-seeds", "Cumin Seeds"],
-      ["coriander-seeds", "Coriander Seeds"],
-      ["green-cardamom", "Green Cardamom"],
-      ["cloves", "Cloves"],
-      ["cinnamon", "Cinnamon"],
-      ["mustard-seeds", "Mustard Seeds"],
-      ["fennel-seeds", "Fennel Seeds"],
-    ],
-  },
-];
-
-/**
- * Dropdown thumbnails in /public/images/dropdown-menu-icons/, by product slug
- * (filenames as supplied, including spaces and capitals). A product missing
- * here keeps the menu's placeholder icon — no substitute image is used.
- */
-const dropdownIcons: Record<string, string> = {
-  "moringa-powder": "Moringa Powder.webp",
-  "onion-powder": "Onion Powder.webp",
-  "turmeric-powder": "Turmeric Powder.webp",
-  onion: "Onion.webp",
-  garlic: "Garlic.webp",
-  "elephant-yam": "Yarn.webp",
-  cabbage: "Cabbage.webp",
-  cucumber: "Cucumber.webp",
-  "green-chili": "Green chilli.webp",
-  "frozen-peas": "Frozen Peas.webp",
-  okra: "Okra.webp",
-  "bitter-gourd": "Bitter Gourd.webp",
-  eggplant: "EggPlant.webp",
-  drumstick: "Drumstick.webp",
-  beans: "Beans.webp",
-  mango: "Mango.webp",
-  banana: "Banana.webp",
-  grapes: "Grapes.webp",
-  pomegranate: "Pomogranate.webp",
-  orange: "Orange.webp",
-  chikoo: "Chikoo.webp",
-  papaya: "Papaya.webp",
-  guava: "Guava.webp",
-  "red-chilli": "Red Chilli.webp",
-  "black-pepper": "Black Pepper.webp",
-  "cumin-seeds": "Cumin Seeds.webp",
-  "coriander-seeds": "Coriander Seeds.webp",
-  "green-cardamom": "Green Cardamom.webp",
-  cloves: "Clove.webp",
-  cinnamon: "Cinnamon.webp",
-  "mustard-seeds": "Mustard Seeds.webp",
-  "fennel-seeds": "Fennel Seeds.webp",
-};
 
 /** Public URL for a dropdown icon; spaces and capitals are encoded safely. */
 const dropdownIcon = (file: string) => `/images/dropdown-menu-icons/${encodeURIComponent(file)}`;
 
-export const productMenu: readonly ProductMenuGroup[] = menuStructure.map((group) => ({
-  id: group.id,
-  title: group.title,
-  icon: group.icon,
-  cover: dropdownIcon(group.coverFile),
-  items: group.items.map(([slug, label]) => ({
-    label,
-    slug,
-    href: exportProductHref(slug),
-    image: dropdownIcons[slug] ? dropdownIcon(dropdownIcons[slug]) : null,
+export const productMenu: readonly ProductMenuGroup[] = catalogue.map((category) => ({
+  id: category.id,
+  title: category.label,
+  icon: category.menu.icon,
+  cover: dropdownIcon(category.cover.file),
+  items: category.products.map((product) => ({
+    label: product.menuLabel ?? product.name,
+    slug: product.slug,
+    href: exportProductHref(product.slug),
+    image: catalogueImage(product.image),
   })),
 }));
 

@@ -1,5 +1,4 @@
 import { CertificatesGrid } from "@/features/certificates/components/certificates-grid";
-import { CertificatesHero } from "@/features/certificates/components/certificates-hero";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -10,10 +9,5 @@ export const metadata = createMetadata({
 });
 
 export default function Page() {
-  return (
-    <>
-      <CertificatesHero />
-      <CertificatesGrid />
-    </>
-  );
+  return <CertificatesGrid />;
 }

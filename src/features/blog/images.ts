@@ -106,6 +106,16 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
 
+  "red-chilli-powder": [labTesting, facility("5"), facility("2")],
+  "black-pepper-powder": [microscope, facility("6"), shot("Black Pepper Powder.webp", "Ground black pepper")],
+  "coriander-seeds-powder": [shipping, fieldCheck, facility("7")],
+  "garlic-powder": [labTesting, facility("4"), facility("6")],
+  "dry-mango-powder": [microscope, harvest, facility("7")],
+  "garam-masala": [inspection, shipping, facility("2")],
+  "white-pepper-powder": [labTesting, facility("5"), shipping],
+  "nutmeg-powder": [microscope, facility("2"), facility("6")],
+  "dry-ginger-powder": [shot("Dry Ginger Powder.webp", "Ginger powder"), facility("5"), shipping],
+  "clove-powder": [microscope, facility("6"), labTesting],
   /* --- Agricultural products ------------------------------------------- */
   onion: [
     {
@@ -232,6 +242,8 @@ export const articleImages: Record<string, Trio> = {
   ],
   "mustard-seeds": [shot("Mustard Seeds.webp", "Mustard seeds"), facility("5"), cultivation],
   "fennel-seeds": [fieldCheck, facility("6"), shot("Fennel Seeds.webp", "Green fennel seeds")],
+  "fenugreek-seeds": [microscope, shot("Fenugreek Seeds.webp", "Golden fenugreek seeds"), facility("7")],
+  "psyllium-seed": [inspection, facility("4"), shipping],
   ginger: [harvest, facility("7"), shot("ginger.webp", "Fresh ginger and ground dried ginger")],
 
   "other-agricultural-products": [

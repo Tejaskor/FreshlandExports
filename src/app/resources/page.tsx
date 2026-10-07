@@ -81,16 +81,6 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
 
       <Container className="grid gap-10 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-8">
-          <p className="mb-5 text-[0.8125rem] text-ink-muted">
-            {category ? (
-              <>
-                Showing <span className="font-semibold text-forest">{category}</span>
-              </>
-            ) : (
-              "Latest articles"
-            )}
-            {listing.pageCount > 1 && ` · Page ${listing.page} of ${listing.pageCount}`}
-          </p>
 
           <ul className="grid gap-6 lg:gap-8">
             {listing.posts.map((post, index) => (

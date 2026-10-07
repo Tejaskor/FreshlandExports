@@ -19,6 +19,10 @@ export type BlogArticle = {
   body?: ArticleBody;
   /** ISO date of a substantive revision; shown only when set. */
   updated?: string;
+  /** The writer's name, shown on the Blog cards once set. Never a placeholder. */
+  author?: string;
+  /** Recorded view count, shown on the Blog cards once set. Never estimated. */
+  views?: number;
 };
 
 export type ProductBlogEntry = {
@@ -178,6 +182,257 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
         title: "Turmeric Powder in Spice Blends, Food Colouring and Beverages",
         description:
           "From curry powders to golden lattes, the industries that rely on turmeric powder and what each looks for.",
+      },
+    ],
+  },
+
+  "red-chilli-powder": {
+    image: null,
+    alt: "Red chilli powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Buying Guide",
+        title: "Red Chilli Powder Buying Guide: Heat, Colour and Grind",
+        description:
+          "Why chilli variety sets heat and colour, and how to judge appearance, grind and packing when buying red chilli powder.",
+      },
+      {
+        topic: "Food Processing",
+        title: "Red Chilli Powder in Sauces, Snacks and Seasoning Blends",
+        description:
+          "How seasoning blenders, sauce makers, snack producers and food service buyers each specify red chilli powder.",
+      },
+      {
+        topic: "Storage",
+        title: "Storing Red Chilli Powder to Keep Its Colour Bright",
+        description:
+          "Why light, heat and moisture fade chilli powder, and how dark, dry and sealed storage protects colour and prevents caking.",
+      },
+    ],
+  },
+  "black-pepper-powder": {
+    image: photo("Black Pepper Powder.webp"),
+    alt: "Ground black pepper",
+    art: "powder",
+    articles: [
+      {
+        topic: "Quality",
+        title: "Ground Black Pepper Quality: Aroma, Grind and Purity",
+        description:
+          "How buyers judge black pepper powder by aroma, colour, grind consistency, purity and packing.",
+      },
+      {
+        topic: "Processing",
+        title: "How Black Peppercorns Are Ground Without Losing Aroma",
+        description:
+          "Cleaning, milling, sieving and packing — the steps that turn peppercorns into aromatic ground pepper.",
+      },
+      {
+        topic: "Applications",
+        title: "Black Pepper Powder in Seasonings, Meat Products and Ready Meals",
+        description:
+          "Where ground black pepper is used across food industries, and what each buyer specifies for grind and cleanliness.",
+      },
+    ],
+  },
+  "coriander-seeds-powder": {
+    image: null,
+    alt: "Coriander seeds powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Export Guide",
+        title: "Coriander Seeds Powder Export Guide: Colour, Aroma and Packing",
+        description:
+          "What importers expect from ground coriander — colour, aroma, fineness, purity and packing for the sea journey.",
+      },
+      {
+        topic: "Sourcing",
+        title: "Sourcing Coriander Powder: From Whole Seed to Ground Spice",
+        description:
+          "How seed selection, cleaning, careful grinding and timing shape the quality of the coriander powder you buy.",
+      },
+      {
+        topic: "Uses",
+        title: "Ground Coriander in Curry Powders, Masalas and Bakery",
+        description:
+          "Why coriander powder is the base of so many spice blends, and how it is used in ready meals, pickles and baking.",
+      },
+    ],
+  },
+  "garlic-powder": {
+    image: null,
+    alt: "Garlic powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Buying Guide",
+        title: "Garlic Powder Buying Guide: Colour, Aroma and Free-Flowing Texture",
+        description:
+          "What colour, smell and texture tell you about a garlic powder sample, and which details to agree on the specification sheet before a first order.",
+      },
+      {
+        topic: "Storage",
+        title: "Stopping Garlic Powder from Caking in Storage and Transit",
+        description:
+          "Why dehydrated garlic draws in moisture, and how packing, container care and warehouse handling keep the powder dry, aromatic and free-flowing.",
+      },
+      {
+        topic: "Food Processing",
+        title: "Garlic Powder in Seasonings, Snack Coatings and Ready Meals",
+        description:
+          "How seasoning makers, snack producers, sauce and ready-meal manufacturers and food service kitchens use garlic powder in place of fresh garlic.",
+      },
+    ],
+  },
+  "dry-mango-powder": {
+    image: null,
+    alt: "Dry mango powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Quality",
+        title: "Dry Mango Powder Quality: Tang, Colour and Freshness",
+        description:
+          "How to judge an amchur sample by its sourness, colour, texture and aroma, and what to agree with your supplier before ordering.",
+      },
+      {
+        topic: "Processing",
+        title: "From Green Mango to Amchur: How Dry Mango Powder Is Made",
+        description:
+          "From unripe green mangoes to a fine, tangy powder — how peeling, slicing, drying, grinding and packing shape the finished amchur.",
+      },
+      {
+        topic: "Applications",
+        title: "Dry Mango Powder (Amchur) in Chaat Masala, Chutneys and Snacks",
+        description:
+          "Why amchur is the dry souring agent of choice for chaat masala, snack seasonings, chutneys, curries and ready meals.",
+      },
+    ],
+  },
+  "garam-masala": {
+    image: null,
+    alt: "Garam masala",
+    art: "powder",
+    articles: [
+      {
+        topic: "Sourcing",
+        title: "Sourcing Garam Masala: Agreeing a Blend Recipe with Your Supplier",
+        description:
+          "There is no single garam masala recipe. How to share a reference, approve samples and agree a blend that stays consistent from lot to lot.",
+      },
+      {
+        topic: "Export Guide",
+        title: "Importing Garam Masala in Bulk: Specifications, Packing and Labelling",
+        description:
+          "The specification, packing, labelling and documents to agree before importing a ground spice blend, and how to protect its aroma in transit.",
+      },
+      {
+        topic: "Uses",
+        title: "How Food Makers Use Garam Masala in Curries, Rice and Marinades",
+        description:
+          "Garam masala in curries, gravies, biryani, marinades and snacks — and why manufacturers, food service and spice brands rely on a ready blend.",
+      },
+    ],
+  },
+  "white-pepper-powder": {
+    image: null,
+    alt: "White pepper powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Quality",
+        title: "White Pepper Powder Quality: Colour, Aroma and Fineness",
+        description:
+          "What to look for in a sample of ground white pepper — an even pale colour, a clean earthy aroma, the right fineness and steady heat.",
+      },
+      {
+        topic: "Applications",
+        title: "Using White Pepper Powder in Sauces, Soups and Seasonings",
+        description:
+          "Why sauce makers, food processors and seasoning blenders choose white pepper for pale products, and how it is used across kitchens and factories.",
+      },
+      {
+        topic: "Export Guide",
+        title: "Importing White Pepper Powder: Specifications and Packing",
+        description:
+          "Specification, sampling, packing and documentation points to settle before importing ground white pepper in bulk.",
+      },
+    ],
+  },
+  "nutmeg-powder": {
+    image: null,
+    alt: "Nutmeg powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Buying Guide",
+        title: "Buying Nutmeg Powder: What to Check in a Sample",
+        description:
+          "Colour, aroma, fineness and paperwork — how to judge a sample of ground nutmeg before placing a bulk order.",
+      },
+      {
+        topic: "Food Processing",
+        title: "Nutmeg Powder in Bakery, Dairy and Beverage Production",
+        description:
+          "How manufacturers use ground nutmeg in baked goods, desserts, drinks, spice blends and savoury foods, and why lot-to-lot consistency matters.",
+      },
+      {
+        topic: "Storage",
+        title: "Storing Nutmeg Powder to Protect Its Aroma",
+        description:
+          "Ground nutmeg loses its warm aroma to air, heat, light and damp. Practical storage and stock rotation steps for bulk buyers.",
+      },
+    ],
+  },
+  "dry-ginger-powder": {
+    image: photo("Dry Ginger Powder.webp"),
+    alt: "Dry ginger powder (sonth)",
+    art: "ginger",
+    articles: [
+      {
+        topic: "Quality",
+        title: "Dry Ginger Powder Quality: Colour, Pungency and Fibre",
+        description:
+          "How to judge sonth from a sample — its colour, warm aroma, peppery heat and how evenly the fibrous rhizome has been milled.",
+      },
+      {
+        topic: "Processing",
+        title: "From Rhizome to Sonth: How Dry Ginger Powder Is Made",
+        description:
+          "Selecting mature rhizomes, peeling, drying, grinding and sieving — the steps that decide the colour and warmth of dry ginger powder.",
+      },
+      {
+        topic: "Export Guide",
+        title: "Exporting Dry Ginger Powder: Packaging, Labelling and Shipping",
+        description:
+          "Moisture-resistant packing, destination labelling, documents and transit care for shipping ginger powder in bulk.",
+      },
+    ],
+  },
+  "clove-powder": {
+    image: null,
+    alt: "Clove powder",
+    art: "powder",
+    articles: [
+      {
+        topic: "Buying Guide",
+        title: "Buying Clove Powder: Aroma, Colour and Purity Checks",
+        description:
+          "Ground cloves hide what whole buds show. How to assess clove powder by aroma, colour, texture and agreed purity specifications.",
+      },
+      {
+        topic: "Storage",
+        title: "Why Clove Powder Loses Aroma Faster Than Whole Cloves",
+        description:
+          "Grinding exposes clove's aromatic oils. The packaging, temperature and stock rotation that keep clove powder at full strength.",
+      },
+      {
+        topic: "Food Processing",
+        title: "Using Clove Powder in Meat, Sauce and Bakery Production",
+        description:
+          "How manufacturers dose ground cloves in sausages, marinades, ketchups and spiced bakes — and keep the flavour consistent lot to lot.",
       },
     ],
   },
@@ -1316,6 +1571,57 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
         title: "Fennel Seeds as Mouth Freshener, in Teas and Baking",
         description:
           "From mukhwas and herbal teas to sausages and breads, the many uses of fennel seeds.",
+      },
+    ],
+  },
+
+  "fenugreek-seeds": {
+    image: photo("Fenugreek Seeds.webp"),
+    alt: "Golden fenugreek seeds",
+    art: "field",
+    articles: [
+      {
+        topic: "Quality",
+        title: "Fenugreek Seeds Quality: Colour, Cleanliness and Seed Condition",
+        description:
+          "How to judge whole fenugreek (methi) seeds for export — even golden colour, clean lots, sound dry seeds and the paperwork to agree.",
+      },
+      {
+        topic: "Applications",
+        title: "Fenugreek Seeds in Curry Powders, Pickles and Seasonings",
+        description:
+          "Where methi seeds earn their place — roasted and ground in masalas, whole in pickles and tempering, and in savoury seasonings.",
+      },
+      {
+        topic: "Storage",
+        title: "Storing Fenugreek Seeds: Moisture, Pests and Aroma",
+        description:
+          "Keeping whole fenugreek seeds dry, pest-free and aromatic in the warehouse and in transit.",
+      },
+    ],
+  },
+  "psyllium-seed": {
+    image: null,
+    alt: "Whole psyllium seed",
+    art: "field",
+    articles: [
+      {
+        topic: "Buying Guide",
+        title: "Buying Psyllium Seed for Husk Processing: What to Check",
+        description:
+          "What husk processors look for in whole psyllium (isabgol) seed — even colour, clean lots, low moisture and clear specifications.",
+      },
+      {
+        topic: "Processing",
+        title: "From Psyllium Seed to Husk: How Whole Seed Is Processed",
+        description:
+          "How whole psyllium seed is cleaned, dehusked, sifted and graded into husk and husk powder for food and fibre applications.",
+      },
+      {
+        topic: "Export Guide",
+        title: "Exporting Psyllium Seed: Documentation, Packing and Labelling",
+        description:
+          "Specifications, testing, moisture-safe packing and destination-market labelling rules for psyllium seed shipments.",
       },
     ],
   },

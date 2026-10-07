@@ -7,6 +7,7 @@ import type { FormEvent, ReactNode } from "react";
 
 import { Icon } from "@/components/ui/icon";
 import { Modal } from "@/components/ui/modal";
+import { ListSelect, MultiSelect } from "@/components/forms/select-fields";
 import { submitBrochureLead } from "@/features/brochure/brochure-action";
 import {
   type BrochureErrors,
@@ -18,7 +19,7 @@ import {
   buyerTypes,
   hasErrors,
   markets,
-  productInterests,
+  productInterestGroups,
   quantities,
   readBrochure,
   validateBrochure,
@@ -87,7 +88,7 @@ export function BrochureDownloadModal({
   // After a submission with problems, move focus to the first one so keyboard
   // and screen-reader users land on it. Runs per submission, not per keystroke.
   const focusFirstError = () =>
-    requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus());
+    requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"], [data-invalid="true"]')?.focus());
 
   useEffect(() => {
     if (state.status === "invalid") focusFirstError();
@@ -135,7 +136,8 @@ export function BrochureDownloadModal({
       labelledBy={`${id}-title`}
       describedBy={`${id}-description`}
       closeLabel="Close brochure form"
-      className="max-w-[60rem] px-0 pt-0 pb-0 text-left sm:px-0"
+      panelClassName="max-w-[60rem] text-left"
+      className="px-0 pt-0 pb-0 text-left sm:px-0"
     >
       <div className="grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <div className="px-5 pt-6 pb-7 sm:px-8 sm:pt-8 sm:pb-8">
@@ -226,111 +228,83 @@ export function BrochureDownloadModal({
                       type="tel"
                       autoComplete="tel"
                       maxLength={brochureLimits.phone}
-                      placeholder="+91 XXXXX XXXXX"
+                      placeholder="Phone Number"
                       className={field}
                     />
                   </Field>
                   <Field label="Country / Market" required htmlFor={`${id}-country`} error={error("country")}>
-                    <select
-                      {...describe("country")}
-                      onChange={() => clearError("country")}
+                    <ListSelect
+                      fieldClassName={field}
+                      id={`${id}-country`}
                       name="country"
-                      autoComplete="country-name"
-                      defaultValue=""
-                      className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
-                    >
-                      <option value="" disabled>
-                        Select country
-                      </option>
-                      {markets.map((market) => (
-                        <option key={market} value={market} className="text-ink">
-                          {market}
-                        </option>
-                      ))}
-                    </select>
+                      options={markets}
+                      placeholder="Select country"
+                      invalid={Boolean(errors.country)}
+                      describedBy={errors.country ? `${id}-country-error` : undefined}
+                      onChange={() => clearError("country")}
+                    />
                   </Field>
                   <Field label="Buyer Type" required htmlFor={`${id}-buyerType`} error={error("buyerType")}>
-                    <select
-                      {...describe("buyerType")}
-                      onChange={() => clearError("buyerType")}
+                    <ListSelect
+                      fieldClassName={field}
+                      id={`${id}-buyerType`}
                       name="buyerType"
-                      defaultValue=""
-                      className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
-                    >
-                      <option value="" disabled>
-                        Select buyer type
-                      </option>
-                      {buyerTypes.map((type) => (
-                        <option key={type} value={type} className="text-ink">
-                          {type}
-                        </option>
-                      ))}
-                    </select>
+                      options={buyerTypes}
+                      placeholder="Select buyer type"
+                      invalid={Boolean(errors.buyerType)}
+                      describedBy={errors.buyerType ? `${id}-buyerType-error` : undefined}
+                      onChange={() => clearError("buyerType")}
+                    />
                   </Field>
                 </div>
 
-                <fieldset
-                  className="mt-4"
-                  aria-invalid={errors.products ? true : undefined}
-                  aria-describedby={errors.products ? `${id}-products-error` : undefined}
-                >
-                  <legend className={labelText}>
-                    Products of Interest <span aria-hidden="true" className="text-rust">*</span>
-                    <span className="sr-only">(required)</span>
-                  </legend>
-                  <div className="flex flex-wrap gap-2">
-                    {productInterests.map((product) => (
-                      <label
-                        key={product}
-                        className="group/chip relative inline-flex cursor-pointer items-center rounded-full border border-line bg-white px-3.5 py-1.5 text-[0.8125rem] text-ink transition-colors duration-300 hover:border-line-strong has-[:checked]:border-forest has-[:checked]:bg-forest has-[:checked]:text-white has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-leaf/40"
-                      >
-                        <input
-                          type="checkbox"
-                          name="products"
-                          value={product}
-                          onChange={() => clearError("products")}
-                          className="sr-only"
-                        />
-                        <Icon name="check" className="mr-1.5 hidden size-3.5 group-has-[:checked]/chip:inline" strokeWidth={2.4} />
-                        {product}
-                      </label>
-                    ))}
+                {/* Products beside quantity whenever the row itself is wide
+                    enough (31rem) for both at full size; stacked otherwise.
+                    The minimums fit each field's placeholder in Inter (products
+                    ~251px, quantity ~214px with its label on one line). */}
+                <div className="@container mt-4">
+                  <div className="grid gap-x-4 gap-y-3.5 @min-[31rem]:grid-cols-[minmax(15.75rem,1.6fr)_minmax(14rem,1fr)] @min-[31rem]:items-start">
+                    <Field label="Products of Interest" required htmlFor={`${id}-products`} error={error("products")}>
+                      <MultiSelect
+                        id={`${id}-products`}
+                        name="products"
+                        label="Products of Interest"
+                        groups={productInterestGroups}
+                        placeholder="Select products or categories"
+                        fieldClassName={field}
+                        invalid={Boolean(errors.products)}
+                        describedBy={errors.products ? `${id}-products-error` : undefined}
+                        onChange={() => clearError("products")}
+                      />
+                    </Field>
+                    <Field label="Expected Purchase Quantity" nowrap htmlFor={`${id}-quantity`} error={error("quantity")}>
+                      <ListSelect
+                        fieldClassName={field}
+                        id={`${id}-quantity`}
+                        name="quantity"
+                        options={quantities}
+                        placeholder="Select quantity (optional)"
+                        invalid={Boolean(errors.quantity)}
+                        describedBy={errors.quantity ? `${id}-quantity-error` : undefined}
+                        onChange={() => clearError("quantity")}
+                      />
+                    </Field>
                   </div>
-                  {error("products")}
-                </fieldset>
-
-                <div className="mt-4 sm:max-w-[calc(50%-0.5rem)]">
-                  <Field label="Expected Purchase Quantity" htmlFor={`${id}-quantity`} error={error("quantity")}>
-                    <select
-                      {...describe("quantity")}
-                      onChange={() => clearError("quantity")}
-                      name="quantity"
-                      defaultValue=""
-                      className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
-                    >
-                      <option value="">Select quantity (optional)</option>
-                      {quantities.map((quantity) => (
-                        <option key={quantity} value={quantity} className="text-ink">
-                          {quantity}
-                        </option>
-                      ))}
-                    </select>
-                  </Field>
                 </div>
 
                 <button
                   type="submit"
                   disabled={pending}
-                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-forest px-6 text-[0.875rem] font-semibold tracking-[0.08em] text-white uppercase transition-colors duration-300 hover:bg-leaf focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-wait disabled:opacity-80 sm:w-auto"
+                  className="mx-auto mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-forest px-6 text-[0.875rem] font-semibold tracking-[0.08em] text-white uppercase transition-colors duration-300 hover:bg-leaf focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-wait disabled:opacity-80 sm:w-fit"
                 >
                   <Icon name="download" className="size-4" strokeWidth={2} />
                   {pending ? "Preparing…" : "Download Brochure"}
                 </button>
 
-                <p role="alert" className="mt-3 text-[0.8125rem] text-rust-deep empty:hidden">
+                <p role="alert" className="mt-3 text-center text-[0.8125rem] text-rust-deep empty:hidden">
                   {state.status === "error" ? state.message : null}
                 </p>
-                <p className="mt-3 text-[0.75rem] text-ink-muted">
+                <p className="mt-3 text-center text-[0.75rem] text-ink-muted">
                   Your information is used only to respond to your enquiry.
                 </p>
               </form>
@@ -354,19 +328,22 @@ export function BrochureDownloadModal({
 function Field({
   label,
   required = false,
+  nowrap = false,
   htmlFor,
   error,
   children,
 }: {
   label: string;
   required?: boolean;
+  /** Keeps the label on one line. */
+  nowrap?: boolean;
   htmlFor: string;
   error: ReactNode;
   children: ReactNode;
 }) {
   return (
     <div>
-      <label htmlFor={htmlFor} className={labelText}>
+      <label id={`${htmlFor}-label`} htmlFor={htmlFor} className={cn(labelText, nowrap && "whitespace-nowrap")}>
         {label}
         {required && (
           <>

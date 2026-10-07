@@ -11,10 +11,16 @@ import {
   type ContactState,
   countries,
   hasErrors,
+  isDetailed,
   limits,
+  markets,
+  productInterestGroups,
+  productSeparator,
+  quantities,
   readContact,
   validateContact,
 } from "@/components/forms/contact-schema";
+import { ListSelect, MultiSelect } from "@/components/forms/select-fields";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -35,7 +41,7 @@ const noFields: ReadonlySet<string> = new Set();
  */
 async function submit(previous: ContactState, formData: FormData): Promise<ContactState> {
   const values = readContact(formData);
-  const errors = validateContact(values);
+  const errors = validateContact(values, isDetailed(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
   try {
@@ -52,11 +58,21 @@ async function submit(previous: ContactState, formData: FormData): Promise<Conta
 export function ContactForm({
   title,
   defaultMessage,
+  variant = "compact",
+  submitLabel = "Send Message",
 }: {
   title: string;
   /** Pre-fills the message, e.g. a quote request naming the product. */
   defaultMessage?: string;
+  /**
+   * "compact" (product pages, homepage): name, email, country, phone, message.
+   * "detailed" (/contact): name, company, email, country / market,
+   * product / category, expected quantity and message.
+   */
+  variant?: "compact" | "detailed";
+  submitLabel?: string;
 }) {
+  const detailed = variant === "detailed";
   const id = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(submit, initialState);
@@ -71,11 +87,29 @@ export function ContactForm({
   const editedFields = edited.state === state ? edited.fields : noFields;
   const errorFor = (name: ContactField) => (editedFields.has(name) ? undefined : errors[name]);
 
+  // A field the visitor changes stops showing its error until the next submit.
+  const markEdited = (name: ContactField) => {
+    if (!errors[name]) return;
+    setEdited((current) => ({
+      state,
+      fields: new Set([...(current.state === state ? current.fields : []), name]),
+    }));
+  };
+
+  // The custom dropdowns keep their own selection; remount them after a
+  // successful send, when React resets the rest of the form.
+  const [previous, setPrevious] = useState(state);
+  const [round, setRound] = useState(0);
+  if (state !== previous) {
+    setPrevious(state);
+    if (state.status === "success") setRound(round + 1);
+  }
+
   // Move focus to the first problem so keyboard and screen-reader users land
   // on it; the error text is linked through aria-describedby.
   useEffect(() => {
     if (state.status !== "invalid") return;
-    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+    formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"], [data-invalid="true"]')?.focus();
   }, [state]);
 
   const describe = (name: ContactField) => ({
@@ -100,114 +134,235 @@ export function ContactForm({
         // browser's tooltips, and the same rules the server applies.
         noValidate
         aria-busy={pending}
-        onInput={(event) => {
-          const name = (event.target as HTMLInputElement).name as ContactField;
-          if (!errors[name]) return;
-          setEdited((current) => ({
-            state,
-            fields: new Set([...(current.state === state ? current.fields : []), name]),
-          }));
-        }}
-        className="rounded-card border border-line bg-white p-5 shadow-[var(--shadow-lift)] sm:p-6"
+        onInput={(event) => markEdited((event.target as HTMLInputElement).name as ContactField)}
+        className={cn(
+          "rounded-card border border-line bg-white p-5 shadow-[var(--shadow-lift)] sm:p-6",
+          // The /contact card ends closer under its button.
+          detailed && "pb-4 sm:pb-5",
+        )}
       >
         <h3 className="text-heading">{title}</h3>
 
         {/* Honeypot — hidden from people and assistive tech, tempting to bots. */}
         <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
           <label>
-            Company
-            <input name="company" type="text" tabIndex={-1} autoComplete="off" />
+            Website
+            <input name="website" type="text" tabIndex={-1} autoComplete="off" />
           </label>
         </div>
 
-        <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
-          <label className="block">
-            <span className="sr-only">Name (required)</span>
-            <input
-              {...describe("name")}
-              name="name"
-              type="text"
-              autoComplete="name"
-              maxLength={limits.name}
-              placeholder="Name*"
-              defaultValue={values?.name}
-              className={field}
-            />
-            {error("name")}
-          </label>
+        {detailed && <input type="hidden" name="variant" value="detailed" />}
 
-          <label className="block">
-            <span className="sr-only">Email (required)</span>
-            <input
-              {...describe("email")}
-              name="email"
-              type="email"
-              autoComplete="email"
-              maxLength={limits.email}
-              placeholder="Email*"
-              defaultValue={values?.email}
-              className={field}
-            />
-            {error("email")}
-          </label>
+        {detailed ? (
+          <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            <label className="block">
+              <span className="sr-only">Full Name (required)</span>
+              <input
+                {...describe("name")}
+                name="name"
+                type="text"
+                autoComplete="name"
+                maxLength={limits.name}
+                placeholder="Full Name*"
+                defaultValue={values?.name}
+                className={field}
+              />
+              {error("name")}
+            </label>
 
-          <label className="block">
-            <span className="sr-only">Country</span>
-            <select
-              // Keyed so a restored value is applied after React resets the form.
-              // The key must precede the spread, or React reads the options as a
-              // keyless list.
-              key={values?.country ?? ""}
-              {...describe("country")}
-              name="country"
-              autoComplete="country-name"
-              defaultValue={values?.country ?? ""}
-              className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
-            >
-              <option value="" disabled>
-                Country
-              </option>
-              {countries.map((country) => (
-                <option key={country} value={country} className="text-ink">
-                  {country}
+            <label className="block">
+              <span className="sr-only">Company Name (required)</span>
+              <input
+                {...describe("company")}
+                name="company"
+                type="text"
+                autoComplete="organization"
+                maxLength={limits.company}
+                placeholder="Company Name*"
+                defaultValue={values?.company}
+                className={field}
+              />
+              {error("company")}
+            </label>
+
+            <label className="block">
+              <span className="sr-only">Business Email (required)</span>
+              <input
+                {...describe("email")}
+                name="email"
+                type="email"
+                autoComplete="email"
+                maxLength={limits.email}
+                placeholder="Business Email*"
+                defaultValue={values?.email}
+                className={field}
+              />
+              {error("email")}
+            </label>
+
+            <div>
+              <label id={`${id}-country-label`} htmlFor={`${id}-country`} className="sr-only">
+                Country / Market (required)
+              </label>
+              <ListSelect
+                key={`country-${round}`}
+                id={`${id}-country`}
+                name="country"
+                options={markets}
+                placeholder="Country / Market*"
+                fieldClassName={field}
+                defaultValue={values?.country}
+                invalid={Boolean(errorFor("country"))}
+                describedBy={errorFor("country") ? `${id}-country-error` : undefined}
+                onChange={() => markEdited("country")}
+              />
+              {error("country")}
+            </div>
+
+            <div>
+              <label id={`${id}-product-label`} htmlFor={`${id}-product`} className="sr-only">
+                Product / Category (required)
+              </label>
+              <MultiSelect
+                key={`product-${round}`}
+                id={`${id}-product`}
+                name="product"
+                label="Product / Category"
+                groups={productInterestGroups}
+                placeholder="Product / Category*"
+                fieldClassName={field}
+                defaultValue={values?.product ? values.product.split(productSeparator) : []}
+                invalid={Boolean(errorFor("product"))}
+                describedBy={errorFor("product") ? `${id}-product-error` : undefined}
+                onChange={() => markEdited("product")}
+              />
+              {error("product")}
+            </div>
+
+            <div>
+              <label id={`${id}-quantity-label`} htmlFor={`${id}-quantity`} className="sr-only">
+                Expected Quantity (optional)
+              </label>
+              <ListSelect
+                key={`quantity-${round}`}
+                id={`${id}-quantity`}
+                name="quantity"
+                options={quantities}
+                placeholder="Expected Quantity"
+                fieldClassName={field}
+                defaultValue={values?.quantity}
+                invalid={Boolean(errorFor("quantity"))}
+                describedBy={errorFor("quantity") ? `${id}-quantity-error` : undefined}
+                onChange={() => markEdited("quantity")}
+              />
+              {error("quantity")}
+            </div>
+
+            <label className="block sm:col-span-2">
+              <span className="sr-only">Message (required)</span>
+              <textarea
+                {...describe("message")}
+                name="message"
+                rows={3}
+                maxLength={limits.message}
+                placeholder="Message*"
+                defaultValue={values?.message ?? defaultMessage}
+                className={cn(field, "h-auto resize-none py-2.5 leading-relaxed")}
+              />
+              {error("message")}
+            </label>
+          </div>
+        ) : (
+          <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            <label className="block">
+              <span className="sr-only">Name (required)</span>
+              <input
+                {...describe("name")}
+                name="name"
+                type="text"
+                autoComplete="name"
+                maxLength={limits.name}
+                placeholder="Name*"
+                defaultValue={values?.name}
+                className={field}
+              />
+              {error("name")}
+            </label>
+
+            <label className="block">
+              <span className="sr-only">Email (required)</span>
+              <input
+                {...describe("email")}
+                name="email"
+                type="email"
+                autoComplete="email"
+                maxLength={limits.email}
+                placeholder="Email*"
+                defaultValue={values?.email}
+                className={field}
+              />
+              {error("email")}
+            </label>
+
+            <label className="block">
+              <span className="sr-only">Country</span>
+              <select
+                // Keyed so a restored value is applied after React resets the form.
+                // The key must precede the spread, or React reads the options as a
+                // keyless list.
+                key={values?.country ?? ""}
+                {...describe("country")}
+                name="country"
+                autoComplete="country-name"
+                defaultValue={values?.country ?? ""}
+                className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
+              >
+                <option value="" disabled>
+                  Country
                 </option>
-              ))}
-            </select>
-            {error("country")}
-          </label>
+                {countries.map((country) => (
+                  <option key={country} value={country} className="text-ink">
+                    {country}
+                  </option>
+                ))}
+              </select>
+              {error("country")}
+            </label>
 
-          <label className="block">
-            <span className="sr-only">Phone number</span>
-            <input
-              {...describe("phone")}
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              maxLength={limits.phone}
-              placeholder="Phone number"
-              defaultValue={values?.phone}
-              className={field}
-            />
-            {error("phone")}
-          </label>
+            <label className="block">
+              <span className="sr-only">Phone number</span>
+              <input
+                {...describe("phone")}
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                maxLength={limits.phone}
+                placeholder="Phone number"
+                defaultValue={values?.phone}
+                className={field}
+              />
+              {error("phone")}
+            </label>
 
-          <label className="block sm:col-span-2">
-            <span className="sr-only">Message (required)</span>
-            <textarea
-              {...describe("message")}
-              name="message"
-              rows={3}
-              maxLength={limits.message}
-              placeholder="Message*"
-              defaultValue={values?.message ?? defaultMessage}
-              className={cn(field, "h-auto resize-none py-3.5 leading-relaxed")}
-            />
-            {error("message")}
-          </label>
-        </div>
+            <label className="block sm:col-span-2">
+              <span className="sr-only">Message (required)</span>
+              <textarea
+                {...describe("message")}
+                name="message"
+                rows={3}
+                maxLength={limits.message}
+                placeholder="Message*"
+                defaultValue={values?.message ?? defaultMessage}
+                className={cn(field, "h-auto resize-none py-3.5 leading-relaxed")}
+              />
+              {error("message")}
+            </label>
+          </div>
+
+        )}
 
         <Button type="submit" disabled={pending} className="mt-4">
-          {pending ? "Sending…" : "Send Message"}
+          {pending ? "Sending…" : submitLabel}
         </Button>
 
         <p role="alert" className="mt-3 text-[0.75rem] text-rust-deep empty:hidden">

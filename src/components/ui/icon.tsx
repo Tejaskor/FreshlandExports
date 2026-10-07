@@ -29,6 +29,8 @@ export type IconName =
   | "molecule"
   | "clipboard"
   | "download"
+  | "user"
+  | "calendar"
   | "linkedin"
   | "instagram"
   | "youtube";
@@ -61,6 +63,8 @@ const strokePaths: Partial<Record<IconName, string>> = {
   molecule: "M12 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm-6 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm12 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM10.8 9.2l-3.6 5.6m6-5.6 3.6 5.6M8.5 17h7",
   clipboard: "M9 4h6v3H9V4Zm-2 1.5H6a1 1 0 0 0-1 1V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1h-1M8.5 12h7m-7 4h4.5",
   download: "M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14",
+  user: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 9v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1",
+  calendar: "M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm-1 4h16M8 4v4m8-4v4",
 };
 
 const filledPaths: Partial<Record<IconName, string>> = {

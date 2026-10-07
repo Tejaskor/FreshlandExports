@@ -17,7 +17,21 @@ const contactRows = [
   },
 ];
 
-const footerLink = "text-[0.8125rem] text-ink-muted transition-colors duration-300 hover:text-leaf";
+/**
+ * Footer links share the header navigation's type and interaction: Inter at
+ * 1rem, regular weight, ink, turning leaf green over 300ms on hover.
+ */
+const footerLink = "text-[1rem] text-ink transition-colors duration-300 hover:text-leaf";
+
+/**
+ * Each platform's own brand colour for its mark. Instagram's gradient can't
+ * fill the single-colour icon, so it takes Instagram's solid brand pink.
+ */
+const socialColor: Record<(typeof siteConfig.social)[number]["icon"], string> = {
+  linkedin: "text-[#0A66C2]",
+  instagram: "text-[#E4405F]",
+  youtube: "text-[#FF0000]",
+};
 
 /** Server component; only the brochure button hydrates. */
 export function SiteFooter() {
@@ -42,7 +56,10 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer noopener"
                     aria-label={item.label}
-                    className="flex size-9 items-center justify-center rounded-full bg-sage-100 text-forest transition-colors duration-300 hover:bg-leaf hover:text-white"
+                    className={cn(
+                      "flex size-9 items-center justify-center rounded-full bg-sage-100 transition-colors duration-300 hover:bg-sage-200",
+                      socialColor[item.icon],
+                    )}
                   >
                     <Icon name={item.icon} className="size-4" />
                   </a>
@@ -59,10 +76,7 @@ export function SiteFooter() {
               <ul className="mt-3 space-y-1">
                 {group.items.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="text-[0.8125rem] text-ink-muted transition-colors duration-300 hover:text-leaf"
-                    >
+                    <Link href={item.href} className={footerLink}>
                       {item.label}
                     </Link>
                   </li>
@@ -78,6 +92,11 @@ export function SiteFooter() {
               <li>
                 <Link href="/r-and-d" className={footerLink}>
                   Knowledge Center
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources" className={footerLink}>
+                  Blog
                 </Link>
               </li>
               <li>
@@ -98,23 +117,27 @@ export function SiteFooter() {
               Contact Details
             </h2>
             <address className="mt-3 space-y-2 not-italic">
-              {contactRows.map((row) => (
-                <div key={row.label} className="flex items-center gap-3">
+              {/* Email and phone rows are one link each, icon included, so the
+                  icon opens the mail client or dialler too. The location has
+                  no map link configured, so it stays plain text. */}
+              {contactRows.map((row) => {
+                const icon = (
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-sage-100 text-forest">
                     <Icon name={row.icon} className="size-3.5" />
                   </span>
-                  {row.href ? (
-                    <a
-                      href={row.href}
-                      className="text-[0.8125rem] text-ink-muted transition-colors duration-300 hover:text-leaf"
-                    >
-                      {row.label}
-                    </a>
-                  ) : (
-                    <span className="text-[0.8125rem] text-ink-muted">{row.label}</span>
-                  )}
-                </div>
-              ))}
+                );
+                return row.href ? (
+                  <a key={row.label} href={row.href} className={cn(footerLink, "flex w-fit items-center gap-3")}>
+                    {icon}
+                    {row.label}
+                  </a>
+                ) : (
+                  <div key={row.label} className="flex items-center gap-3 text-[1rem] text-ink">
+                    {icon}
+                    {row.label}
+                  </div>
+                );
+              })}
             </address>
           </div>
         </div>

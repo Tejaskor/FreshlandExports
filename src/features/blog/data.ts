@@ -1,7 +1,12 @@
 import type { ArtVariant } from "@/components/media/botanical-art";
 import { fruitsBodies } from "@/features/blog/bodies/fruits";
+import { powdersABodies } from "@/features/blog/bodies/powders-a";
+import { powdersBBodies } from "@/features/blog/bodies/powders-b";
+import { powdersCBodies } from "@/features/blog/bodies/powders-c";
+import { powdersDBodies } from "@/features/blog/bodies/powders-d";
 import { spicesABodies } from "@/features/blog/bodies/spices-a";
 import { spicesBBodies } from "@/features/blog/bodies/spices-b";
+import { spicesCBodies } from "@/features/blog/bodies/spices-c";
 import { vegetablesBodies } from "@/features/blog/bodies/vegetables";
 import { type ArticleImage, articleImages } from "@/features/blog/images";
 import { blogCategories, type BlogCategory } from "@/features/blog/meta";
@@ -50,6 +55,10 @@ export type BlogPost = {
   published: string;
   /** ISO date of the last substantive revision, when there has been one. */
   updated?: string;
+  /** Set per article in features/products/blog.ts; absent until known. */
+  author?: string;
+  /** Set per article in features/products/blog.ts; absent until recorded. */
+  views?: number;
   product: { slug: string; name: string; href: string };
 };
 
@@ -57,7 +66,17 @@ export type BlogPost = {
 export type BlogCardData = Pick<BlogPost, "slug" | "href" | "topic" | "category" | "title" | "description" | "image" | "art" | "published">;
 
 /** Bodies for the articles that do not carry theirs inline. */
-const separateBodies = { ...vegetablesBodies, ...fruitsBodies, ...spicesABodies, ...spicesBBodies };
+const separateBodies = {
+  ...vegetablesBodies,
+  ...fruitsBodies,
+  ...spicesABodies,
+  ...spicesBBodies,
+  ...spicesCBodies,
+  ...powdersABodies,
+  ...powdersBBodies,
+  ...powdersCBodies,
+  ...powdersDBodies,
+};
 
 const slugify = (text: string) =>
   text
@@ -110,6 +129,8 @@ function buildPosts(): readonly BlogPost[] {
         art: entry.art,
         published: firstPublished,
         updated: article.updated,
+        author: article.author,
+        views: article.views,
         product: { slug: productSlug, name, href: exportProductHref(productSlug) },
       };
     });

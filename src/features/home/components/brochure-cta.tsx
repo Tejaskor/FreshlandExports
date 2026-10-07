@@ -6,14 +6,10 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { BrochureButton } from "@/features/brochure/brochure-button";
+import { catalogue } from "@/features/products/catalogue";
 
 /** The ranges the brochure covers — matching the product catalogue. */
-const ranges = [
-  { count: "3", label: "Powder Products" },
-  { count: "12", label: "Agricultural Products" },
-  { count: "8", label: "Fruits" },
-  { count: "9", label: "Spices" },
-];
+const ranges = catalogue.map((category) => category.label);
 
 /**
  * Homepage brochure section, above the closing contact band: a deep-forest
@@ -53,9 +49,8 @@ export function BrochureCta() {
 
               <Reveal as="ul" stagger={0.05} variant="rise" delay={0.15} className="mt-7 grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/12 sm:grid-cols-4">
                 {ranges.map((range) => (
-                  <li key={range.label} className="bg-forest-deep px-4 py-3">
-                    <span className="block font-display text-[1.75rem] leading-none text-cream">{range.count}</span>
-                    <span className="mt-1.5 block text-[0.75rem] leading-snug text-sage-200">{range.label}</span>
+                  <li key={range} className="bg-forest-deep px-4 py-3">
+                    <span className="block text-[0.75rem] leading-snug text-sage-200">{range}</span>
                   </li>
                 ))}
               </Reveal>
@@ -63,10 +58,10 @@ export function BrochureCta() {
               <Reveal variant="rise" delay={0.2} className="mt-8">
                 <BrochureButton
                   source="homepage_brochure"
-                  className="inline-flex h-12 items-center gap-2.5 rounded-full bg-cream px-6 text-[0.9375rem] font-semibold text-forest-deep transition-colors duration-300 hover:bg-white focus-visible:ring-2 focus-visible:ring-highlight-inverse focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep focus-visible:outline-none"
+                  className="inline-flex h-12 cursor-pointer items-center gap-2.5 rounded-full bg-cream px-6 text-[0.9375rem] font-semibold text-forest-deep transition-colors duration-300 hover:bg-white focus-visible:ring-2 focus-visible:ring-highlight-inverse focus-visible:ring-offset-2 focus-visible:ring-offset-forest-deep focus-visible:outline-none"
                 >
+                  Download Now
                   <Icon name="download" className="size-4 text-rust" strokeWidth={2} />
-                  Brochure
                 </BrochureButton>
               </Reveal>
             </div>

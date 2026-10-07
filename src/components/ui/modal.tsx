@@ -41,6 +41,7 @@ export function Modal({
   describedBy,
   closeLabel = "Close",
   className,
+  panelClassName,
   children,
 }: {
   open: boolean;
@@ -49,7 +50,10 @@ export function Modal({
   labelledBy: string;
   describedBy?: string;
   closeLabel?: string;
+  /** The scrolling content area: padding and text alignment. */
   className?: string;
+  /** The panel itself: width and the like. */
+  panelClassName?: string;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -105,24 +109,38 @@ export function Modal({
         "open:opacity-100 starting:open:opacity-0",
       )}
     >
+      {/* The panel never grows past the viewport; its content scrolls inside
+          it, so the close button (outside the scrolling area) is always in
+          reach. Lenis is stopped while a modal is open and would cancel wheel
+          and touch scrolling here, so data-lenis-prevent hands the content
+          back to native scrolling; overscroll-contain keeps it from chaining
+          to the page. */}
       <div
         className={cn(
-          "relative max-h-full w-full max-w-md overflow-y-auto rounded-card bg-white px-6 pt-10 pb-8 text-center text-ink shadow-[var(--shadow-panel)] sm:px-10",
+          "relative flex max-h-full w-full max-w-md flex-col overflow-hidden rounded-card bg-white text-center text-ink shadow-[var(--shadow-panel)]",
           // Panel scale, riding the dialog's open state.
           "scale-95 transition-[scale] duration-300 ease-[var(--ease-out-expo)]",
           "group-open:scale-100 starting:group-open:scale-95",
-          className,
+          panelClassName,
         )}
       >
+        <div
+          data-lenis-prevent
+          className={cn(
+            "min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-contain px-6 pt-10 pb-8 sm:px-10",
+            className,
+          )}
+        >
+          {children}
+        </div>
         <button
           type="button"
           aria-label={closeLabel}
           onClick={() => ref.current?.close()}
-          className="absolute top-3.5 right-3.5 flex size-9 items-center justify-center rounded-full text-ink-muted transition-[background-color,color] duration-300 hover:bg-sage-100 hover:text-forest"
+          className="absolute top-3.5 right-3.5 z-10 flex size-9 items-center justify-center rounded-full bg-white/85 text-ink-muted backdrop-blur-sm transition-[background-color,color] duration-300 hover:bg-sage-100 hover:text-forest"
         >
           <Icon name="close" className="size-4" />
         </button>
-        {children}
       </div>
     </dialog>,
     document.body,

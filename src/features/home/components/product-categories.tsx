@@ -17,9 +17,11 @@ export function ProductCategories() {
       <Container>
         <Carousel
           scrollable
+          arrows={false}
+          autoScroll
           label="Product categories"
           heading={
-            <div className="grid flex-1 gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
+            <div className="grid flex-1 gap-6 md:grid-cols-[1.15fr_1fr] md:items-end md:gap-12 lg:gap-20">
               <div>
                 <Reveal variant="rise">
                   <Eyebrow>Our Categories</Eyebrow>
@@ -35,10 +37,11 @@ export function ProductCategories() {
                 </RevealLines>
               </div>
 
-              <Reveal delay={0.2} variant="rise" className="lg:pb-1">
+              <Reveal delay={0.2} variant="rise" className="md:justify-self-end md:pb-1">
                 <p className="max-w-sm text-lead text-ink-muted">
-                  From botanical extracts to functional ingredients, we deliver
-                  nature&rsquo;s goodness for a healthier world.
+                  From fresh agricultural produce and fruits to botanical
+                  powders and whole spices, we connect carefully selected
+                  Indian products with buyers worldwide.
                 </p>
               </Reveal>
             </div>
@@ -50,7 +53,7 @@ export function ProductCategories() {
               as="article"
               variant="unveil"
               delay={index * 0.13}
-              className="group/card w-[82%] shrink-0 snap-start transition-transform duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-2 sm:w-[48%] lg:w-[calc((100%_-_6rem)*0.25)]"
+              className="group/card w-[82%] max-w-[22rem] shrink-0 snap-start transition-transform duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-2 sm:w-[48%] lg:w-[calc((100%_-_6rem)*0.25)] lg:max-w-none lg:min-w-[16.5rem]"
             >
               <Link href={category.href} className="block">
                 <div
@@ -89,8 +92,11 @@ export function ProductCategories() {
                     variant="rise"
                     className="min-w-0"
                   >
-                    <h3 className="text-heading">{category.title}</h3>
-                    <p className="mt-1.5 text-[0.875rem] text-ink-muted lg:text-[0.9375rem]">
+                    {/* text-heading's line height and tracking, one step larger: 17px → 20px. */}
+                    <h3 className="text-[clamp(1.0625rem,0.95rem+0.3vw,1.25rem)] leading-[1.28] tracking-[-0.01em]">
+                      {category.title}
+                    </h3>
+                    <p className="mt-2.5 text-[0.9375rem] leading-[1.55] text-ink-muted lg:text-base xl:text-[1.0625rem]">
                       {category.description}
                     </p>
                   </Reveal>

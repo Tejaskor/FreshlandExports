@@ -4,6 +4,7 @@ import {
   type ContactState,
   type ContactValues,
   hasErrors,
+  isDetailed,
   readContact,
   validateContact,
 } from "@/components/forms/contact-schema";
@@ -19,10 +20,10 @@ export async function submitContact(
 ): Promise<ContactState> {
   // Honeypot: invisible to people, filled in by naive bots. Report success so
   // the bot learns nothing, but deliver nothing.
-  if (formData.get("company")) return { status: "success" };
+  if (formData.get("website")) return { status: "success" };
 
   const values = readContact(formData);
-  const errors = validateContact(values);
+  const errors = validateContact(values, isDetailed(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
   try {

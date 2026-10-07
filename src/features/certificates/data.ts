@@ -22,16 +22,6 @@ export interface Certificate {
   file?: string;
 }
 
-export const certificatesHero = {
-  heading: ["Our Certifications", "& Compliance"],
-  body: "Our commitment to quality, safety and responsible sourcing is reflected in the standards and certifications we follow.",
-  media: {
-    image: `${dir}/Certificate-page-hero-bg.webp`,
-    alt: "",
-    art: "leaf",
-  },
-} as const;
-
 export const certificatesIntro = {
   heading: "Our Certifications",
   body: "Explore the certifications and registrations relevant to our operations and products.",

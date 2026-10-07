@@ -60,6 +60,8 @@ export type SectionSpec =
   | { type: "commercial"; variant: "numbered" | "bento" | "band" | "alternating" }
   | { type: "storage" }
   | { type: "faq"; variant: "split" | "center" }
+  /** Related products from the central catalogue. */
+  | { type: "related" }
   | { type: "contact"; variant: "split" | "band" | "card" | "centered" };
 
 export type ImageShape = "arch" | "circle" | "leaf" | "pill" | "rounded";

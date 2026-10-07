@@ -5,6 +5,7 @@
 
 import type { IconName } from "@/components/ui/icon";
 import { featureFlags } from "@/config/features";
+import { catalogue, catalogueCategoryHref } from "@/features/products/catalogue";
 
 export const siteConfig = {
   name: "Freshland Exports",
@@ -26,6 +27,9 @@ export const siteConfig = {
     "probiotics manufacturer",
   ],
   contact: {
+    // PLACEHOLDER — not Freshland Exports' real details. Replace the email and
+    // phone below with the confirmed ones; the footer, /contact page and form
+    // error messages all read them from here.
     email: "enquiry@freshland-exports.example.com",
     phone: "+91 20 4000 1200",
     address: {
@@ -81,7 +85,6 @@ export const primaryNav: readonly NavItem[] = [
     hasMenu: true,
     hint: "Extracts, powders, enzymes and cultures",
   },
-  { label: "About Us", href: "/about", hint: "Who we are and how we began" },
   { label: "Our Farms", href: "/farms", hint: "Soil, seed and the growers behind it" },
   // Temporarily hidden — see featureFlags.signatureIngredients.
   ...(featureFlags.signatureIngredients
@@ -106,6 +109,12 @@ export const primaryNav: readonly NavItem[] = [
         description: "Buyer guides on agricultural products, fruits and spices — sourcing, quality and handling.",
         icon: "clipboard",
       },
+      {
+        label: "Case Studies",
+        href: "/case-studies",
+        description: "How we work with buyers on sourcing, quality and supply — first studies coming soon.",
+        icon: "target",
+      },
     ],
     featured: {
       label: "Blog",
@@ -120,6 +129,7 @@ export const primaryNav: readonly NavItem[] = [
       imagePosition: "50% 35%",
     },
   },
+  { label: "About Us", href: "/about", hint: "Who we are and how we began" },
   {
     label: "Certificates",
     href: "/certificates",
@@ -144,16 +154,9 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
     ],
   },
   {
+    // The catalogue's own categories, each linking to its section on /products.
     title: "Our Products",
-    items: [
-      { label: "Botanical Extracts", href: "/categories/botanical-extracts" },
-      { label: "Herbal Powders", href: "/categories/herbal-powders" },
-      { label: "Enzymes", href: "/categories/enzymes" },
-      { label: "Probiotics", href: "/categories/probiotics" },
-      // No route of their own yet — point at the catalogue rather than a 404.
-      { label: "Branded Ingredients", href: "/products" },
-      { label: "Custom Solutions", href: "/products" },
-    ],
+    items: catalogue.map((category) => ({ label: category.heading, href: catalogueCategoryHref(category) })),
   },
 ] as const;
 

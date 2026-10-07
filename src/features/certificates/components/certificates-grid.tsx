@@ -12,7 +12,9 @@ export function CertificatesGrid() {
   return (
     <Section
       aria-labelledby="certificates-heading"
-      className="relative isolate overflow-hidden bg-cream-warm pt-4 lg:pt-6 lg:pb-24"
+      // The page has no hero: the top padding clears the fixed header (88px)
+      // with ~24–32px to spare, so the content starts right below it.
+      className="relative isolate overflow-hidden bg-cream-warm pt-28 lg:pt-[7.5rem] lg:pb-24"
     >
       {/* Line-art sprigs at the margins, drifting against the scroll. */}
       <ScrollScrub
@@ -37,7 +39,8 @@ export function CertificatesGrid() {
           <Reveal variant="bloom">
             <Ornament className="mx-auto" />
           </Reveal>
-          <RevealLines as="h2" id="certificates-heading" className="mt-5 text-display" delay={0.05}>
+          {/* The page's only heading now the hero is gone, so it is the h1. */}
+          <RevealLines as="h1" id="certificates-heading" className="mt-5 text-display" delay={0.05} intro>
             <Line>{certificatesIntro.heading}</Line>
           </RevealLines>
           <Reveal delay={0.15} variant="rise">

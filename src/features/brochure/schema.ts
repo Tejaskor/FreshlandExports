@@ -1,3 +1,5 @@
+import { catalogue } from "@/features/products/catalogue";
+
 /**
  * Brochure lead rules, shared by the form (instant feedback) and the server
  * action (the authority — client checks can always be bypassed).
@@ -31,15 +33,19 @@ export const markets = [
   "Other",
 ] as const;
 
-export const productInterests = [
-  "Fresh Agricultural Products",
-  "Fresh Fruits",
-  "Whole Spices",
-  "Moringa Powder",
-  "Onion Powder",
-  "Turmeric Powder",
-  "Multiple Product Categories",
-] as const;
+/**
+ * "Products of Interest" options, from the central product catalogue: each
+ * category, followed by its products. A product added to the catalogue is
+ * offered here (and accepted by the validation below) automatically.
+ */
+export const productInterestGroups: readonly { category: string; products: readonly string[] }[] = catalogue.map(
+  (category) => ({ category: category.heading, products: category.products.map((product) => product.name) }),
+);
+
+export const productInterests: readonly string[] = productInterestGroups.flatMap((group) => [
+  group.category,
+  ...group.products,
+]);
 
 export const buyerTypes = [
   "Importer",
@@ -141,7 +147,7 @@ export function validateBrochure(values: BrochureValues): BrochureErrors {
   if (!(markets as readonly string[]).includes(values.country)) errors.country = "Please select your country or market.";
 
   if (values.products.length === 0) errors.products = "Please select at least one product category.";
-  else if (values.products.some((product) => !(productInterests as readonly string[]).includes(product)))
+  else if (values.products.some((product) => !productInterests.includes(product)))
     errors.products = "Please choose from the listed products.";
 
   if (!(buyerTypes as readonly string[]).includes(values.buyerType)) errors.buyerType = "Please select your buyer type.";

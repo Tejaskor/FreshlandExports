@@ -34,7 +34,7 @@ export function ProductCatalogue() {
   );
 }
 
-/** Sticky-free jump links to each range, with its product count. */
+/** Sticky-free jump links to each range. */
 function CategoryNav() {
   return (
     <nav aria-label="Product ranges" className="border-y border-line bg-white">
@@ -47,7 +47,6 @@ function CategoryNav() {
                 className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-[0.875rem] font-medium text-forest transition-colors duration-300 hover:border-leaf hover:bg-sage-50"
               >
                 {category.heading}
-                <span className="font-mono text-[0.75rem] text-ink-muted">{category.products.length}</span>
               </a>
             </li>
           ))}
@@ -87,7 +86,6 @@ function CategorySection({ category, index }: { category: CatalogueCategory; ind
           </div>
           <Reveal variant="rise" delay={0.1} className="lg:col-span-4 lg:col-start-9">
             <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{category.description}</p>
-            <p className="mt-2 type-label text-leaf">{category.products.length} products</p>
           </Reveal>
         </div>
 
