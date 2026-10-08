@@ -23,49 +23,98 @@ export const moringaHero = {
 export const moringaIntro = {
   eyebrow: "About Moringa",
   body: "Moringa oleifera is a tropical tree valued for its nutritious leaves. The leaves can be dried and ground into a fine green powder, making them easy to incorporate into meals and beverages.",
-  caption: "Native to the Indian subcontinent, moringa is often called the drumstick tree.",
   tags: ["Dried leaves", "Finely milled", "Easy to blend"],
 } as const;
 
-export type Nutrient = { symbol: string; name: string; role: string };
-
-export const nutrients: readonly Nutrient[] = [
-  { symbol: "A", name: "Vitamin A", role: "Vision and immune function" },
-  { symbol: "C", name: "Vitamin C", role: "Collagen production" },
-  { symbol: "Ca", name: "Calcium", role: "Healthy bones and teeth" },
-  { symbol: "Fe", name: "Iron", role: "Oxygen transport" },
-  { symbol: "Pr", name: "Plant Protein", role: "Growth and tissue repair" },
-  { symbol: "Fi", name: "Fibre", role: "Digestive health" },
-];
-
 export type Benefit = { title: string; text: string };
 
-export const benefits: readonly Benefit[] = [
+/**
+ * The six nutrients in the "Nature's Nutritional Treasure" selector. Each
+ * carries its own benefits for the panel beside it: a one-line summary and
+ * three points, phrased as what the nutrient contributes to in general — not
+ * claims for the powder as a treatment. Every entry has the same number of
+ * points so the panel keeps one height whichever nutrient is selected.
+ */
+export type Nutrient = {
+  symbol: string;
+  name: string;
+  role: string;
+  summary: string;
+  benefits: readonly [Benefit, Benefit, Benefit];
+};
+
+export const nutrients: readonly Nutrient[] = [
   {
-    title: "Supports normal immune function",
-    text: "Contains vitamins A and C, which play a role in the normal function of the immune system.",
+    symbol: "A",
+    name: "Vitamin A",
+    role: "Vision and immune function",
+    summary: "Moringa leaves naturally contain carotenoids, which the body converts to vitamin A.",
+    benefits: [
+      { title: "Supports normal vision", text: "Vitamin A contributes to the maintenance of normal vision." },
+      { title: "Supports normal immune function", text: "Vitamin A contributes to the normal function of the immune system." },
+      { title: "Supports normal skin", text: "Vitamin A contributes to the maintenance of normal skin." },
+    ],
   },
   {
-    title: "Provides natural antioxidant compounds",
-    text: "The leaves naturally contain polyphenols and other plant compounds.",
+    symbol: "C",
+    name: "Vitamin C",
+    role: "Collagen production",
+    summary: "Fresh moringa leaves contain vitamin C; the level in the powder depends on drying.",
+    benefits: [
+      { title: "Supports collagen formation", text: "Vitamin C contributes to normal collagen formation for normal skin." },
+      { title: "Supports normal immune function", text: "Vitamin C contributes to the normal function of the immune system." },
+      { title: "Helps iron absorption", text: "Vitamin C increases the absorption of iron from food." },
+    ],
   },
   {
-    title: "Contains dietary fibre",
-    text: "Milling the whole dried leaf keeps its natural fibre in the powder.",
+    symbol: "Ca",
+    name: "Calcium",
+    role: "Healthy bones and teeth",
+    summary: "Moringa leaves are a plant source of calcium.",
+    benefits: [
+      { title: "Supports normal bones", text: "Calcium is needed for the maintenance of normal bones." },
+      { title: "Supports normal teeth", text: "Calcium is needed for the maintenance of normal teeth." },
+      { title: "Supports muscle function", text: "Calcium contributes to normal muscle function." },
+    ],
   },
   {
-    title: "Contributes to bone health",
-    text: "A plant source of calcium, a mineral needed for normal bones.",
+    symbol: "Fe",
+    name: "Iron",
+    role: "Oxygen transport",
+    summary: "Moringa leaves are a plant source of iron.",
+    benefits: [
+      { title: "Supports oxygen transport", text: "Iron contributes to normal oxygen transport in the body." },
+      { title: "Supports energy metabolism", text: "Iron contributes to normal energy-yielding metabolism." },
+      { title: "Supports normal immune function", text: "Iron contributes to the normal function of the immune system." },
+    ],
   },
   {
-    title: "Supports normal energy metabolism",
-    text: "Provides iron, which contributes to normal energy-yielding metabolism.",
+    symbol: "Pr",
+    name: "Plant Protein",
+    role: "Growth and tissue repair",
+    summary: "The dried leaves contain plant protein, a useful addition to plant-based recipes.",
+    benefits: [
+      { title: "Supports muscle", text: "Protein contributes to the maintenance of muscle mass." },
+      { title: "Supports normal bones", text: "Protein contributes to the maintenance of normal bones." },
+      { title: "Plant-based source", text: "Suits plant-based foods, beverages and blends." },
+    ],
   },
   {
-    title: "Provides nutrients important for skin health",
-    text: "Includes vitamins A and C, nutrients involved in maintaining normal skin.",
+    symbol: "Fi",
+    name: "Fibre",
+    role: "Digestive health",
+    summary: "Milling the whole dried leaf keeps its natural fibre in the powder.",
+    benefits: [
+      { title: "Contains dietary fibre", text: "Whole-leaf powder naturally carries the leaf's fibre." },
+      { title: "Part of a balanced diet", text: "Dietary fibre is part of a varied, balanced diet." },
+      { title: "Easy to add", text: "A small spoonful blends into drinks, bakes and bowls." },
+    ],
   },
 ];
+
+/** Shown under the selector: levels depend on the crop and processing. */
+export const nutrientsNote =
+  "Roles shown are what each nutrient does in the body in general. Levels vary by crop and processing and are confirmed on each lot's specification sheet.";
 
 export const benefitsDisclaimer =
   "Moringa powder is a food ingredient, not a medicine. It is not intended to diagnose, treat, cure or prevent any disease and should not replace medical treatment or advice.";
@@ -269,9 +318,3 @@ export const faqs: readonly Faq[] = [
       "Yes. It is used in beverages, bakery, snacks, herbal blends and supplements. We supply bulk quantities, with grade, mesh size and packaging agreed for each order.",
   },
 ];
-
-export const moringaCta = {
-  eyebrow: "Contact",
-  lines: ["Bring Nature's Goodness", "to Your Market"],
-  body: "Looking for bulk moringa powder? Contact Freshland Exports to discuss your product requirements.",
-} as const;

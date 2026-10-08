@@ -172,12 +172,3 @@ export const turmericFaqs: readonly Faq[] = [
   { question: "What is the difference between turmeric powder and curcumin?", answer: "Turmeric powder is a whole spice containing various natural compounds, including curcumin. Curcumin is one specific compound that can be extracted and concentrated from turmeric." },
 ];
 
-export const turmericCta = {
-  eyebrow: "Contact and Export Enquiry",
-  heading: ["Bring the Golden Goodness", "of Turmeric to Your Market"],
-  body: [
-    "Looking for a turmeric powder supplier for your business?",
-    "Connect with Freshland Exports to enquire about our turmeric powder, bulk supply options, packaging, and export specifications.",
-  ],
-  signoff: "Partner with Freshland Exports for your turmeric powder requirements.",
-} as const;

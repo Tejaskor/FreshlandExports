@@ -86,8 +86,20 @@ export type BrochureState =
 
 export const brochureLimits = { name: 80, companyName: 120, email: 254, phone: 20 } as const;
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const PHONE = /^[+()\d\s.-]+$/;
+/**
+ * A practical email check: a local part of letters, digits and . _ % + -
+ * (no leading, trailing or doubled dots), then a domain of dot-separated
+ * labels ending in a 2+ letter TLD. Rejects "test", "test@", "test@gmail",
+ * "test@.com" and "@gmail.com".
+ */
+const EMAIL =
+  /^[A-Za-z0-9_%+-]+(?:\.[A-Za-z0-9_%+-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+/** International numbers: an optional leading +, then digits with spaces, dots, hyphens or brackets. */
+const PHONE = /^\+?[\d\s().-]+$/;
+/** Names in any script: words of letters joined by single spaces, hyphens, apostrophes or dots. */
+const NAME = /^\p{L}[\p{L}\p{M}]*(?:(?: +|['’.-]|\. +)\p{L}[\p{L}\p{M}]*)*\.?$/u;
+/** Company names: letters or digits first, then the punctuation business names use. */
+const COMPANY = /^[\p{L}\p{M}\p{N}][\p{L}\p{M}\p{N} .,&'’()\/+-]*$/u;
 
 const text = (formData: FormData, key: string) => {
   const value = formData.get(key);
@@ -127,20 +139,35 @@ export function readSource(formData: FormData): BrochureSource | "unknown" {
 export function validateBrochure(values: BrochureValues): BrochureErrors {
   const errors: BrochureErrors = {};
 
-  if (values.name.length < 2) errors.name = "Please enter your full name.";
-  else if (values.name.length > brochureLimits.name) errors.name = "Please shorten your name.";
+  // Full name and company are optional; when given they must look like one.
+  if (values.name) {
+    if (values.name.length > brochureLimits.name) errors.name = "Please shorten your name.";
+    else if (values.name.length < 2 || !NAME.test(values.name))
+      errors.name = "Please enter a valid name (letters only).";
+  }
 
-  if (values.companyName.length < 2) errors.companyName = "Please enter your company name.";
-  else if (values.companyName.length > brochureLimits.companyName)
-    errors.companyName = "Please shorten your company name.";
+  if (values.companyName) {
+    if (values.companyName.length > brochureLimits.companyName) errors.companyName = "Please shorten your company name.";
+    else if (values.companyName.length < 2 || !COMPANY.test(values.companyName))
+      errors.companyName = "Please enter a valid company name.";
+  }
 
   if (!values.email) errors.email = "Please enter your business email.";
   else if (values.email.length > brochureLimits.email || !EMAIL.test(values.email))
     errors.email = "Please enter a valid email address.";
 
-  if (values.phone) {
-    const digits = values.phone.replace(/\D/g, "").length;
-    if (!PHONE.test(values.phone) || digits < 7 || values.phone.length > brochureLimits.phone)
+  // Required. 7–15 digits covers international numbers (E.164 allows at most
+  // 15); a number of one repeated digit, such as 0000000, is rejected.
+  if (!values.phone) errors.phone = "Please enter your WhatsApp or phone number.";
+  else {
+    const digits = values.phone.replace(/\D/g, "");
+    if (
+      !PHONE.test(values.phone) ||
+      digits.length < 7 ||
+      digits.length > 15 ||
+      /^(\d)\1+$/.test(digits) ||
+      values.phone.length > brochureLimits.phone
+    )
       errors.phone = "Please enter a valid phone number.";
   }
 

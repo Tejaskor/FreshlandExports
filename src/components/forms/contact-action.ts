@@ -4,7 +4,7 @@ import {
   type ContactState,
   type ContactValues,
   hasErrors,
-  isDetailed,
+  formVariant,
   readContact,
   validateContact,
 } from "@/components/forms/contact-schema";
@@ -23,7 +23,7 @@ export async function submitContact(
   if (formData.get("website")) return { status: "success" };
 
   const values = readContact(formData);
-  const errors = validateContact(values, isDetailed(formData));
+  const errors = validateContact(values, formVariant(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
   try {

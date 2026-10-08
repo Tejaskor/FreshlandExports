@@ -28,7 +28,6 @@ export function OnionHero() {
       />
 
       <Container className="relative">
-
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal variant="settle">
@@ -61,17 +60,13 @@ export function OnionHero() {
               </p>
             </Reveal>
 
-            <Reveal delay={0.45} variant="rise" className="mt-6 max-w-xl space-y-3">
-              {onionHero.body.map((paragraph) => (
-                <p key={paragraph} className="text-[1rem] leading-relaxed text-ink-muted">
-                  {paragraph}
-                </p>
-              ))}
+            <Reveal delay={0.45} variant="rise" className="mt-6 max-w-xl">
+              <p className="text-[1.0625rem] leading-relaxed text-ink-muted">{onionHero.body}</p>
             </Reveal>
 
             <Reveal delay={0.55} variant="rise" className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <AnchorButton href="#about" size="lg" className="font-semibold">
-                Explore Our Product
+              <AnchorButton href="#specifications" size="lg" className="font-semibold">
+                View Specifications
               </AnchorButton>
               <AnchorButton href="#quote-form" size="lg" variant="forest" className="font-semibold">
                 Request a Quote

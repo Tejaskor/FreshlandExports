@@ -11,12 +11,18 @@ import { cn } from "@/lib/utils";
  */
 export function MoqPanel({
   value,
+  body = moqCopy.body,
+  ctaArrow = false,
   className,
   accentClassName = "text-forest",
   iconClassName = "bg-sage-100 text-forest",
 }: {
   /** The quantity, e.g. "500 KG". */
   value: string;
+  /** Replaces the shared one-line description. */
+  body?: string;
+  /** Adds the arrow disc to the quote button. */
+  ctaArrow?: boolean;
   /** Card ground and border. */
   className?: string;
   /** Colour of the label and the quantity. */
@@ -68,8 +74,8 @@ export function MoqPanel({
         </div>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between lg:col-span-7 lg:gap-8">
-          <p className="max-w-md text-[0.9375rem] leading-relaxed text-ink-muted">{moqCopy.body}</p>
-          <AnchorButton href="#quote-form" size="md" className="shrink-0 self-start font-semibold sm:self-auto">
+          <p className="max-w-md text-[0.9375rem] leading-relaxed text-ink-muted">{body}</p>
+          <AnchorButton href="#quote-form" size="md" withArrow={ctaArrow} className="shrink-0 self-start font-semibold sm:self-auto">
             {moqCopy.cta}
           </AnchorButton>
         </div>

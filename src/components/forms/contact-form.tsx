@@ -9,9 +9,10 @@ import { submitContact } from "@/components/forms/contact-action";
 import {
   type ContactField,
   type ContactState,
+  type FormVariant,
   countries,
   hasErrors,
-  isDetailed,
+  formVariant,
   limits,
   markets,
   productInterestGroups,
@@ -24,11 +25,15 @@ import { ListSelect, MultiSelect } from "@/components/forms/select-fields";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-const field =
-  "h-10 w-full rounded-lg border border-line bg-white px-3.5 text-[0.8125rem] text-ink " +
+const baseField =
+  "w-full rounded-lg border border-line bg-white text-ink " +
   "placeholder:text-ink-faint transition-colors duration-300 " +
   "hover:border-line-strong focus:border-leaf focus:outline-none " +
   "aria-invalid:border-rust-deep/70 aria-invalid:focus:border-rust-deep";
+/** Compact and /contact fields. */
+const smallField = `${baseField} h-10 px-3.5 text-[0.8125rem]`;
+/** Product quote fields: a touch larger and easier to read. */
+const quoteField = `${baseField} h-12 px-4 text-[0.9375rem]`;
 
 const initialState: ContactState = { status: "idle" };
 const noFields: ReadonlySet<string> = new Set();
@@ -41,7 +46,7 @@ const noFields: ReadonlySet<string> = new Set();
  */
 async function submit(previous: ContactState, formData: FormData): Promise<ContactState> {
   const values = readContact(formData);
-  const errors = validateContact(values, isDetailed(formData));
+  const errors = validateContact(values, formVariant(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
   try {
@@ -57,22 +62,33 @@ async function submit(previous: ContactState, formData: FormData): Promise<Conta
 
 export function ContactForm({
   title,
+  product,
   defaultMessage,
   variant = "compact",
   submitLabel = "Send Message",
 }: {
-  title: string;
+  /** Card heading; the quote form builds its own from `product`. */
+  title?: string;
+  /** The product a quote form is for: shown in its heading and sent with the lead. */
+  product?: string;
   /** Pre-fills the message, e.g. a quote request naming the product. */
   defaultMessage?: string;
   /**
    * "compact" (product pages, homepage): name, email, country, phone, message.
    * "detailed" (/contact): name, company, email, country / market,
    * product / category, expected quantity and message.
+   * "quote" (a product page's Request a Quote): name, company, email,
+   * country / market, required quantity and an optional message; the
+   * product is fixed by the page.
    */
-  variant?: "compact" | "detailed";
+  variant?: FormVariant;
   submitLabel?: string;
 }) {
   const detailed = variant === "detailed";
+  const quote = variant === "quote";
+  // Both business forms share the detailed field set.
+  const business = detailed || quote;
+  const field = quote ? quoteField : smallField;
   const id = useId();
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction, pending] = useActionState(submit, initialState);
@@ -141,7 +157,7 @@ export function ContactForm({
           detailed && "pb-4 sm:pb-5",
         )}
       >
-        <h3 className="text-heading">{title}</h3>
+        <h3 className="text-heading">{quote ? `Request a Quote for ${product}` : title}</h3>
 
         {/* Honeypot — hidden from people and assistive tech, tempting to bots. */}
         <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
@@ -151,10 +167,11 @@ export function ContactForm({
           </label>
         </div>
 
-        {detailed && <input type="hidden" name="variant" value="detailed" />}
+        {business && <input type="hidden" name="variant" value={variant} />}
+        {quote && <input type="hidden" name="product" value={product ?? ""} />}
 
-        {detailed ? (
-          <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+        {business ? (
+          <div className={cn("grid sm:grid-cols-2", quote ? "mt-5 gap-3" : "mt-4 gap-2.5")}>
             <label className="block">
               <span className="sr-only">Full Name (required)</span>
               <input
@@ -219,36 +236,38 @@ export function ContactForm({
               {error("country")}
             </div>
 
-            <div>
-              <label id={`${id}-product-label`} htmlFor={`${id}-product`} className="sr-only">
-                Product / Category (required)
-              </label>
-              <MultiSelect
-                key={`product-${round}`}
-                id={`${id}-product`}
-                name="product"
-                label="Product / Category"
-                groups={productInterestGroups}
-                placeholder="Product / Category*"
-                fieldClassName={field}
-                defaultValue={values?.product ? values.product.split(productSeparator) : []}
-                invalid={Boolean(errorFor("product"))}
-                describedBy={errorFor("product") ? `${id}-product-error` : undefined}
-                onChange={() => markEdited("product")}
-              />
-              {error("product")}
-            </div>
+            {detailed && (
+              <div>
+                <label id={`${id}-product-label`} htmlFor={`${id}-product`} className="sr-only">
+                  Product / Category (required)
+                </label>
+                <MultiSelect
+                  key={`product-${round}`}
+                  id={`${id}-product`}
+                  name="product"
+                  label="Product / Category"
+                  groups={productInterestGroups}
+                  placeholder="Product / Category*"
+                  fieldClassName={field}
+                  defaultValue={values?.product ? values.product.split(productSeparator) : []}
+                  invalid={Boolean(errorFor("product"))}
+                  describedBy={errorFor("product") ? `${id}-product-error` : undefined}
+                  onChange={() => markEdited("product")}
+                />
+                {error("product")}
+              </div>
+            )}
 
-            <div>
+            <div className={cn(quote && "sm:col-span-2")}>
               <label id={`${id}-quantity-label`} htmlFor={`${id}-quantity`} className="sr-only">
-                Expected Quantity (optional)
+                {quote ? "Required Quantity (required)" : "Expected Quantity (optional)"}
               </label>
               <ListSelect
                 key={`quantity-${round}`}
                 id={`${id}-quantity`}
                 name="quantity"
                 options={quantities}
-                placeholder="Expected Quantity"
+                placeholder={quote ? "Required Quantity*" : "Expected Quantity"}
                 fieldClassName={field}
                 defaultValue={values?.quantity}
                 invalid={Boolean(errorFor("quantity"))}
@@ -259,15 +278,19 @@ export function ContactForm({
             </div>
 
             <label className="block sm:col-span-2">
-              <span className="sr-only">Message (required)</span>
+              <span className="sr-only">{quote ? "Message / Requirements (optional)" : "Message (required)"}</span>
               <textarea
                 {...describe("message")}
                 name="message"
-                rows={3}
+                rows={quote ? 4 : 3}
                 maxLength={limits.message}
-                placeholder="Message*"
+                placeholder={
+                  quote
+                    ? "Tell us your required specifications, packaging preferences, destination or any other requirements."
+                    : "Message*"
+                }
                 defaultValue={values?.message ?? defaultMessage}
-                className={cn(field, "h-auto resize-none py-2.5 leading-relaxed")}
+                className={cn(field, "h-auto resize-none leading-relaxed", quote ? "py-3" : "py-2.5")}
               />
               {error("message")}
             </label>
@@ -361,7 +384,9 @@ export function ContactForm({
 
         )}
 
-        <Button type="submit" disabled={pending} className="mt-4">
+        {quote && error("product")}
+
+        <Button type="submit" disabled={pending} className={cn(quote ? "mt-5 w-full sm:w-auto" : "mt-4")}>
           {pending ? "Sending…" : submitLabel}
         </Button>
 

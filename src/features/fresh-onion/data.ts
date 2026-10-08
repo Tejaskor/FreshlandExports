@@ -160,11 +160,3 @@ export const freshOnionFaqs: readonly FreshOnionFaq[] = [
   },
 ];
 
-export const freshOnionCta = {
-  eyebrow: "Export Enquiry",
-  heading: ["Source Fresh Indian Onions", "for Your Market"],
-  body: [
-    "Looking for a dependable bulk supplier of fresh onions?",
-    "Contact Freshland Exports to discuss availability, quantities, sizes, packaging and your export requirements.",
-  ],
-} as const;

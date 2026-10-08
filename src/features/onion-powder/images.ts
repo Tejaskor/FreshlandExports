@@ -40,14 +40,4 @@ export const onionImages = {
     alt: "Onion powder being sprinkled over a dish of roasted vegetables, with a bowl of onion powder and fresh onions",
     label: "Onion powder in food preparation",
   },
-
-  // Industrial use — onion powder in snack seasoning (landscape 16:9).
-  // Prompt: "Commercial food photography of savoury snacks and crackers being
-  // coated with onion seasoning in a clean production setting, soft light,
-  // no text or logo, landscape 16:9."
-  industrial: {
-    file: `${dir}/onion-powder-industrial-processing.webp`,
-    alt: "Dried onion flakes on steel trays being milled into onion powder and packed into jars",
-    label: "Onion powder in snack seasoning",
-  },
 } satisfies Record<string, MoringaImage>;

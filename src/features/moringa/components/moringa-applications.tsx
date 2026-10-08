@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/container";
-import { Icon } from "@/components/ui/icon";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
@@ -89,12 +88,7 @@ export function MoringaApplications() {
         >
           {applications.map((item, index) => (
             <li key={item.title} className={tiles[index]}>
-              {/* Each tile opens the quote form, as its arrow promises. */}
-              <a
-                href="#quote-form"
-                aria-label={`${item.title}: ${item.text} Request a quote`}
-                className={cn("group relative block h-full overflow-hidden", radii[index])}
-              >
+              <div className={cn("group relative block h-full overflow-hidden", radii[index])}>
                 <ImageSlot
                   image={item.image}
                   tone="dark"
@@ -112,7 +106,7 @@ export function MoringaApplications() {
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-forest-deep/95 via-forest-deep/50 to-transparent"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 sm:p-5">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
                   <div className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
                     <span className="font-display text-[0.875rem] font-medium text-sage-300">
                       {String(index + 1).padStart(2, "0")}
@@ -122,14 +116,8 @@ export function MoringaApplications() {
                     </h3>
                     <p className="mt-1 text-[0.8125rem] text-sage-100">{item.text}</p>
                   </div>
-                  <span
-                    aria-hidden="true"
-                    className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 text-cream transition-[background-color,border-color,color,rotate] duration-500 ease-[var(--ease-out-expo)] group-hover:-rotate-45 group-hover:border-leaf-bright group-hover:bg-leaf-bright group-hover:text-forest-deep"
-                  >
-                    <Icon name="arrow-right" className="size-4" />
-                  </span>
                 </div>
-              </a>
+              </div>
             </li>
           ))}
         </Reveal>

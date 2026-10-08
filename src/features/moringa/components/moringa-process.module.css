@@ -1,0 +1,61 @@
+/*
+ * Leaf-to-powder card: four frames stacked in one small image area, shown
+ * one at a time. They share a 12s cycle, each offset by 3s (--delay); a frame
+ * fades and settles in over ~0.6s, holds, then fades out as the next arrives.
+ * The label under the image uses the same timing.
+ *
+ * Under reduced motion nothing animates and only the first frame shows.
+ */
+
+.frame,
+.label {
+  opacity: 0;
+}
+
+.frame[data-first],
+.label[data-first] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .frame {
+    animation: frame 12s ease-in-out infinite both;
+    animation-delay: var(--delay);
+  }
+
+  .label {
+    animation: label 12s ease-in-out infinite both;
+    animation-delay: var(--delay);
+  }
+}
+
+@keyframes frame {
+  0% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  5%,
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes label {
+  0% {
+    opacity: 0;
+  }
+  5%,
+  25% {
+    opacity: 1;
+  }
+  30%,
+  100% {
+    opacity: 0;
+  }
+}

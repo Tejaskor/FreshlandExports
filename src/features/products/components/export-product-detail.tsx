@@ -12,7 +12,6 @@ import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { Section } from "@/components/ui/section";
-import { siteConfig } from "@/config/site";
 import {
   type ExportProduct,
   exportCategories,
@@ -21,6 +20,7 @@ import {
 } from "@/features/products/export-catalogue";
 import { ProductBlog } from "@/features/products/components/product-blog";
 import type { MediaSlot } from "@/types/media";
+import { QuoteIntro } from "@/features/products/components/quote-intro";
 
 type Related = { product: ExportProduct; media: MediaSlot };
 
@@ -204,38 +204,13 @@ export function ExportProductDetail({
       >
         <Container className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div className="max-w-md">
-            <Reveal variant="rise">
-              <RuledEyebrow>Get a Quote</RuledEyebrow>
-            </Reveal>
-            <RevealLines as="h2" id="quote-heading" className="mt-6 text-display" delay={0.05}>
-              <Line>Request a Quote for</Line>
-              <Line className="text-leaf">{product.name}</Line>
-            </RevealLines>
-            <Reveal delay={0.2} variant="rise">
-              <p className="mt-5 text-lead text-ink-muted">
-                Tell us the grade, quantity and destination you need. Our team will reply with
-                specifications, pricing and availability.
-              </p>
-            </Reveal>
-            <Reveal delay={0.3} variant="rise" className="mt-7 space-y-3 text-[0.9375rem]">
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-3 text-forest transition-colors duration-300 hover:text-leaf"
-              >
-                <Icon name="mail" className="size-4" /> {siteConfig.contact.email}
-              </a>
-              <a
-                href={`tel:${siteConfig.contact.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-forest transition-colors duration-300 hover:text-leaf"
-              >
-                <Icon name="phone" className="size-4" /> {siteConfig.contact.phone}
-              </a>
-            </Reveal>
+            <QuoteIntro productName={product.name} headingId="quote-heading" />
           </div>
 
           <Reveal variant="sweep-right" delay={0.15}>
             <ContactForm
-              title={`Inquiry: ${product.name}`}
+              title={`Request a Quote for ${product.name}`}
+              submitLabel="Request a Quote"
               defaultMessage={`I'd like a quote for ${product.name}. `}
             />
           </Reveal>

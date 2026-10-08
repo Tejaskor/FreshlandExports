@@ -113,11 +113,22 @@ export function BrochureDownloadModal({
     setClientErrors({ ...errors, [name]: undefined });
   };
 
+  // Leaving a typed field checks its format straight away; an empty field
+  // is only flagged on submit, so nothing shows before the visitor engages.
+  const checkOnBlur = (name: BrochureField, form: HTMLFormElement | null) => {
+    if (!form) return;
+    const values = readBrochure(new FormData(form));
+    if (!values[name] || (Array.isArray(values[name]) && values[name].length === 0)) return;
+    const message = validateBrochure(values)[name];
+    if (message) setClientErrors({ ...errors, [name]: message });
+  };
+
   const describe = (name: BrochureField) => ({
     id: `${id}-${name}`,
     "aria-invalid": errors[name] ? true : undefined,
     "aria-describedby": errors[name] ? `${id}-${name}-error` : undefined,
     onInput: () => clearError(name),
+    onBlur: (event: { currentTarget: { form: HTMLFormElement | null } }) => checkOnBlur(name, event.currentTarget.form),
   });
 
   const error = (name: BrochureField) =>
@@ -187,7 +198,7 @@ export function BrochureDownloadModal({
                 </div>
 
                 <div className="grid gap-x-4 gap-y-3.5 sm:grid-cols-2">
-                  <Field label="Full Name" required htmlFor={`${id}-name`} error={error("name")}>
+                  <Field label="Full Name" htmlFor={`${id}-name`} error={error("name")}>
                     <input
                       {...describe("name")}
                       name="name"
@@ -198,7 +209,7 @@ export function BrochureDownloadModal({
                       className={field}
                     />
                   </Field>
-                  <Field label="Company Name" required htmlFor={`${id}-companyName`} error={error("companyName")}>
+                  <Field label="Company Name" htmlFor={`${id}-companyName`} error={error("companyName")}>
                     <input
                       {...describe("companyName")}
                       name="companyName"
@@ -221,7 +232,7 @@ export function BrochureDownloadModal({
                       className={field}
                     />
                   </Field>
-                  <Field label="WhatsApp / Phone" htmlFor={`${id}-phone`} error={error("phone")}>
+                  <Field label="WhatsApp / Phone" required htmlFor={`${id}-phone`} error={error("phone")}>
                     <input
                       {...describe("phone")}
                       name="phone"
