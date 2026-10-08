@@ -1,5 +1,4 @@
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
@@ -16,7 +15,7 @@ import { turmericImages } from "@/features/turmeric-powder/images";
  * a golden arch holding the product photograph, flanked by the introduction
  * and buttons on one side and three key facts on the other.
  */
-export function TurmericHero({ crumbs }: { crumbs: readonly Crumb[] }) {
+export function TurmericHero() {
   return (
     <section
       aria-labelledby="turmeric-heading"
@@ -29,11 +28,8 @@ export function TurmericHero({ crumbs }: { crumbs: readonly Crumb[] }) {
       />
 
       <Container className="relative">
-        <Reveal variant="rise">
-          <Breadcrumbs items={crumbs} />
-        </Reveal>
 
-        <div className="mt-8 text-center lg:mt-10">
+        <div className="text-center">
           <Reveal variant="settle">
             <RuledEyebrow align="center">{turmericHero.subtitle}</RuledEyebrow>
           </Reveal>

@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { Contact } from "@/features/agri/components/contact";
 import { Process, Quality, Specs } from "@/features/agri/components/details";
@@ -23,13 +22,6 @@ import { cn } from "@/lib/utils";
  * always follows the FAQs.
  */
 export function AgriPage({ product }: { product: AgriProduct }) {
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: product.category ?? "Agricultural Products" },
-    { label: product.name },
-  ];
-
   const palette = {
     "--p-accent": product.theme.accent,
     "--p-deep": product.theme.deep,
@@ -42,7 +34,7 @@ export function AgriPage({ product }: { product: AgriProduct }) {
   const render = (section: SectionSpec) => {
     switch (section.type) {
       case "hero":
-        return <Hero product={product} crumbs={crumbs} variant={section.variant} reverse={section.reverse} />;
+        return <Hero product={product} variant={section.variant} reverse={section.reverse} />;
       case "intro":
         return <Intro product={product} variant={section.variant} shape={section.shape} reverse={section.reverse} />;
       case "features":

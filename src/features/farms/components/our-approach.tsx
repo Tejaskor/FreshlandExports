@@ -3,7 +3,7 @@ import { Icon } from "@/components/ui/icon";
 import { BotanicalLines } from "@/components/media/botanical-lines";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { ScrollScrub } from "@/animations/scroll-scrub";
 import { Section } from "@/components/ui/section";
 import { approach } from "@/features/farms/data";
@@ -27,7 +27,7 @@ export function OurApproach() {
       <Container>
         <div className="max-w-2xl">
           <Reveal variant="rise">
-            <RuledEyebrow>{approach.eyebrow}</RuledEyebrow>
+            <Eyebrow>{approach.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines as="h2" id="approach-heading" className="mt-6 text-display" delay={0.05}>
@@ -63,14 +63,9 @@ export function OurApproach() {
                   <h3 className="text-[1.25rem] leading-tight">{card.title}</h3>
                 </div>
 
-                <p className="mt-5 mb-6 text-[0.9375rem] leading-relaxed text-ink-muted">
+                <p className="mt-5 text-[0.9375rem] leading-relaxed text-ink-muted">
                   {card.description}
                 </p>
-
-                <span
-                  aria-hidden="true"
-                  className="mt-auto block h-0.5 w-12 origin-left scale-x-50 rounded-full bg-rust transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
-                />
               </article>
             </div>
           ))}

@@ -5,7 +5,7 @@ import { Figure } from "@/components/media/figure";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { people } from "@/features/farms/data";
 import { cn } from "@/lib/utils";
@@ -80,7 +80,7 @@ export function PeopleBehind() {
 
         <div className="max-w-xl">
           <Reveal variant="rise">
-            <RuledEyebrow>{people.eyebrow}</RuledEyebrow>
+            <Eyebrow>{people.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines as="h2" id="people-heading" className="mt-6 text-display" delay={0.05}>

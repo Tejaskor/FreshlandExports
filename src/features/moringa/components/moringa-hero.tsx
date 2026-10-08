@@ -1,5 +1,4 @@
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
@@ -19,14 +18,9 @@ import { cn } from "@/lib/utils";
  * navigation stays on cream above it. The product image breaks the grid on
  * the right inside an asymmetric organic mask.
  */
-export function MoringaHero({ crumbs }: { crumbs: readonly Crumb[] }) {
+export function MoringaHero() {
   return (
-    <section aria-labelledby="moringa-heading" className="bg-cream pt-24 lg:pt-28">
-      <Container className="pb-4">
-        <Reveal variant="rise">
-          <Breadcrumbs items={crumbs} />
-        </Reveal>
-      </Container>
+    <section aria-labelledby="moringa-heading" className="bg-cream pt-28 lg:pt-32">
 
       <Container width="wide" className="px-3 sm:px-4 lg:px-5">
         <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-forest-deep lg:rounded-[2.5rem]">

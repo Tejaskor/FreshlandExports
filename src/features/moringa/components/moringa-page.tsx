@@ -1,4 +1,3 @@
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { exportCategories, exportProductHref, type ExportProduct } from "@/features/products/export-catalogue";
 import { MoringaAbout } from "@/features/moringa/components/moringa-about";
 import { MoringaApplications } from "@/features/moringa/components/moringa-applications";
@@ -9,7 +8,7 @@ import { ProductBlog } from "@/features/products/components/product-blog";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { faqs } from "@/features/moringa/data";
 import { moringaImages } from "@/features/moringa/images";
-import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/seo";
+import { faqJsonLd, productJsonLd } from "@/lib/seo";
 
 /**
  * Dedicated editorial page for Moringa Powder (/products/moringa-powder).
@@ -22,15 +21,9 @@ import { breadcrumbJsonLd, faqJsonLd, productJsonLd } from "@/lib/seo";
  */
 export function MoringaPage({ product }: { product: ExportProduct }) {
   const category = exportCategories[product.category];
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: category.name, href: `/products#${category.anchor}` },
-    { label: product.name },
-  ];
   const path = exportProductHref(product.slug);
 
-  // Product, breadcrumb and FAQ data for search engines, matching what the
+  // Product and FAQ data for search engines, matching what the
   // page shows.
   const jsonLd = [
     productJsonLd({
@@ -40,13 +33,12 @@ export function MoringaPage({ product }: { product: ExportProduct }) {
       image: moringaImages.hero.file,
       category: category.name,
     }),
-    breadcrumbJsonLd(crumbs, path),
     faqJsonLd(faqs),
   ];
 
   return (
     <>
-      <MoringaHero crumbs={crumbs} />
+      <MoringaHero />
       <MoringaAbout />
       <MoringaApplications />
       <MoringaDetails />

@@ -5,7 +5,7 @@ import { Figure } from "@/components/media/figure";
 import { BotanicalLines } from "@/components/media/botanical-lines";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { network } from "@/features/farms/data";
 
@@ -17,7 +17,7 @@ export function AgriculturalNetwork() {
       <Container className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.4fr] lg:gap-14">
         <div className="max-w-md">
           <Reveal variant="rise">
-            <RuledEyebrow>{network.eyebrow}</RuledEyebrow>
+            <Eyebrow>{network.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines as="h2" id="network-heading" className="mt-6 text-display" delay={0.05}>

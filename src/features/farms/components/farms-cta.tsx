@@ -4,7 +4,7 @@ import { Figure } from "@/components/media/figure";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { farmsCta } from "@/features/farms/data";
 
 /**
@@ -39,7 +39,7 @@ export function FarmsCta() {
       <Container className="py-20 lg:py-28">
         <div className="max-w-xl">
           <Reveal variant="rise">
-            <RuledEyebrow tone="inverse">{farmsCta.eyebrow}</RuledEyebrow>
+            <Eyebrow tone="inverse">{farmsCta.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines

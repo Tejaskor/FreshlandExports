@@ -7,8 +7,8 @@ import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { coreValues } from "@/features/about/data";
 
 /**
- * Four values on hairlines rather than in cards — the section should feel
- * like a principle sheet, not a pricing table.
+ * Four values as open columns rather than boxed cards — the section should
+ * feel like a principle sheet, not a pricing table. Only hover frames one.
  */
 export function CoreValues() {
   return (
@@ -30,18 +30,36 @@ export function CoreValues() {
           className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-x-12"
         >
           {coreValues.values.map((value, index) => (
-            <li key={value.title} className="group relative border-t border-line pt-8">
-              {/* Hover draws a leaf-green stroke over the hairline. */}
-              <span
+            <li key={value.title} className="group relative pt-8">
+              {/* Hover draws a rounded leaf-green outline around the whole
+                  value, clockwise from the top-left corner, and unwinds when
+                  the pointer leaves. The SVG has no viewBox, so the rect is
+                  sized in real pixels and follows the card at every
+                  breakpoint; pathLength=1 lets the dash run 1 → 0 whatever the
+                  perimeter. It sits in the gutter and grid gaps, so the card's
+                  own size and spacing are untouched. Under reduced motion the
+                  outline simply appears. */}
+              <svg
                 aria-hidden="true"
-                className="absolute -top-px left-0 h-px w-full origin-left scale-x-0 bg-leaf transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
-              />
+                className="pointer-events-none absolute -top-3 -left-3 h-[calc(100%+1.5rem)] w-[calc(100%+1.5rem)] overflow-visible text-leaf sm:-top-5 sm:-left-5 sm:h-[calc(100%+2.5rem)] sm:w-[calc(100%+2.5rem)]"
+              >
+                <rect
+                  width="100%"
+                  height="100%"
+                  rx="20"
+                  pathLength={1}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.25}
+                  className="[stroke-dasharray:1] [stroke-dashoffset:1] transition-[stroke-dashoffset] duration-1000 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:[stroke-dashoffset:0] motion-reduce:transition-none"
+                />
+              </svg>
 
               <Reveal variant="bloom" delay={0.3 + index * 0.14}>
-                <span className="flex size-16 items-center justify-center rounded-full bg-sage-100 text-forest transition-[background-color,color] duration-500 ease-[var(--ease-out-expo)] group-hover:bg-leaf group-hover:text-white">
+                <span className="flex size-16 items-center justify-center rounded-full bg-sage-100 text-forest">
                   <Icon
                     name={value.icon}
-                    className="size-7 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-0.5 group-hover:scale-110"
+                    className="size-7"
                   />
                 </span>
               </Reveal>

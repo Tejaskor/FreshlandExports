@@ -298,7 +298,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     heading: "Fresh Fruits",
     description: "Selected Indian fruits supplied for wholesale, food-service and international markets.",
     summary: "Selected fresh fruits for wholesale and international markets.",
-    anchor: "fruits",
+    anchor: "fresh-fruits",
     cover: {
       file: "fruits.png",
       alt: "Fresh mangoes, bananas, oranges, pomegranate, guavas and grapes",
@@ -373,7 +373,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     heading: "Whole Spices",
     description: "Indian spices selected for aroma, appearance and commercial food applications.",
     summary: "Selected spices for flavour, aroma and food applications.",
-    anchor: "spices",
+    anchor: "whole-spices",
     cover: {
       file: "Spices.png",
       alt: "Bowls of whole spices: red chillies, cinnamon, black pepper, cumin, cloves, cardamom and mustard seeds",
@@ -459,8 +459,8 @@ export const catalogue: readonly CatalogueCategory[] = [
         slug: "psyllium-seed",
         name: "Psyllium Seed",
         description: "Whole psyllium (isabgol) seed for husk processing, food and fibre applications.",
-        image: null,
-        alt: "Psyllium seed",
+        image: "psyllium-seeds.webp",
+        alt: "Whole psyllium seeds in a wooden bowl and scoop beside flowering psyllium stalks",
         related: ["fenugreek-seeds", "fennel-seeds", "mustard-seeds", "cumin-seeds"],
       },
     ],

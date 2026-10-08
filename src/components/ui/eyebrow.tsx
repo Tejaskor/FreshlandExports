@@ -11,7 +11,7 @@ export function Eyebrow({ tone = "default", className, ...props }: EyebrowProps)
   return (
     <p
       className={cn(
-        "type-label",
+        "type-eyebrow",
         tone === "inverse" ? "text-white/75" : "text-eyebrow",
         className,
       )}

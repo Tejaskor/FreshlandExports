@@ -1,5 +1,4 @@
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Container } from "@/components/ui/container";
@@ -24,18 +23,7 @@ export function ProductEnquiry({ product }: { product: MenuOnlyProduct }) {
     <>
       <Section aria-labelledby="product-heading" className="bg-cream pt-32 lg:pt-36 lg:pb-20">
         <Container>
-          <Reveal variant="rise">
-            <Breadcrumbs
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Products", href: "/products" },
-                { label: product.groupTitle },
-                { label: product.name },
-              ]}
-            />
-          </Reveal>
-
-          <div className="mt-10 grid items-center gap-12 lg:mt-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
             <div className="max-w-xl">
               <Reveal variant="rise">
                 <RuledEyebrow>{product.groupTitle}</RuledEyebrow>

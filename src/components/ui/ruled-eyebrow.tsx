@@ -2,9 +2,9 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
 
 /**
- * Section marker with a short rust rule — the About page's signature, used
- * on every section so the page reads as one sequence. Centred variants carry
- * a rule on both sides.
+ * Section marker used on every section so each page reads as one sequence.
+ * It once carried a short rust rule; that decoration has been retired, so it
+ * now renders the plain eyebrow, centred when asked.
  */
 export function RuledEyebrow({
   children,
@@ -17,25 +17,9 @@ export function RuledEyebrow({
   tone?: "default" | "inverse";
   className?: string;
 }) {
-  const rule = (
-    <span
-      aria-hidden="true"
-      className={cn("h-px w-8 shrink-0", tone === "inverse" ? "bg-highlight-inverse" : "bg-rust")}
-    />
-  );
-
   return (
-    <Eyebrow
-      tone={tone}
-      className={cn(
-        "flex items-center gap-3",
-        align === "center" && "justify-center",
-        className,
-      )}
-    >
-      {rule}
-      <span>{children}</span>
-      {align === "center" && rule}
+    <Eyebrow tone={tone} className={cn(align === "center" && "text-center", className)}>
+      {children}
     </Eyebrow>
   );
 }

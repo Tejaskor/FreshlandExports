@@ -5,7 +5,7 @@ import { BotanicalLines } from "@/components/media/botanical-lines";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { ourRoots } from "@/features/farms/data";
 
@@ -17,7 +17,7 @@ export function OurRoots() {
       <Container className="grid items-center gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="max-w-xl">
           <Reveal variant="rise">
-            <RuledEyebrow>{ourRoots.eyebrow}</RuledEyebrow>
+            <Eyebrow>{ourRoots.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines as="h2" id="roots-heading" className="mt-6 text-display" delay={0.05}>

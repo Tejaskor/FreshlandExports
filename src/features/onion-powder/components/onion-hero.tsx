@@ -1,5 +1,4 @@
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
@@ -16,7 +15,7 @@ import { cn } from "@/lib/utils";
  * sits directly on it. An oversized two-line title on the left; the product
  * photograph in a circle on the right, ringed like a sliced onion.
  */
-export function OnionHero({ crumbs }: { crumbs: readonly Crumb[] }) {
+export function OnionHero() {
   return (
     <section
       aria-labelledby="onion-heading"
@@ -29,11 +28,8 @@ export function OnionHero({ crumbs }: { crumbs: readonly Crumb[] }) {
       />
 
       <Container className="relative">
-        <Reveal variant="rise">
-          <Breadcrumbs items={crumbs} />
-        </Reveal>
 
-        <div className="mt-8 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-8">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal variant="settle">
               <RuledEyebrow>{onionHero.label}</RuledEyebrow>

@@ -1,5 +1,4 @@
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { ClipReveal } from "@/animations/clip-reveal";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
@@ -16,7 +15,7 @@ import { ImageSlot } from "@/features/moringa/components/image-slot";
  * its lower-left corner. Motion is limited to entrance reveals — no
  * parallax or zoom.
  */
-export function FreshOnionHero({ crumbs }: { crumbs: readonly Crumb[] }) {
+export function FreshOnionHero() {
   return (
     <section
       aria-labelledby="fresh-onion-heading"
@@ -28,11 +27,8 @@ export function FreshOnionHero({ crumbs }: { crumbs: readonly Crumb[] }) {
       />
 
       <Container className="relative">
-        <Reveal variant="rise">
-          <Breadcrumbs items={crumbs} />
-        </Reveal>
 
-        <div className="mt-8 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
             <Reveal variant="settle">
               <RuledEyebrow>{freshOnionHero.eyebrow}</RuledEyebrow>

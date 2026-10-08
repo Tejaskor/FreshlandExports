@@ -11,8 +11,8 @@ import { visionMission } from "@/features/about/data";
 import { cn } from "@/lib/utils";
 
 const tones = {
-  leaf: { disc: "bg-sage-100 text-leaf", rule: "bg-leaf" },
-  rust: { disc: "bg-rust/10 text-rust", rule: "bg-rust" },
+  leaf: { disc: "bg-sage-100 text-leaf" },
+  rust: { disc: "bg-rust/10 text-rust" },
 } as const;
 
 export function VisionMission() {
@@ -81,17 +81,9 @@ export function VisionMission() {
                   </Reveal>
 
                   <h3 className="mt-7 text-[1.625rem] leading-tight">{card.title}</h3>
-                  <p className="mt-3 mb-8 text-[1rem] leading-relaxed text-ink-muted">
+                  <p className="mt-3 text-[1rem] leading-relaxed text-ink-muted">
                     {card.description}
                   </p>
-
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "mt-auto block h-0.5 w-16 origin-left scale-x-50 rounded-full transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100",
-                      tone.rule,
-                    )}
-                  />
                 </article>
               </div>
             );

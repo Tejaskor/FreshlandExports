@@ -1,6 +1,5 @@
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { ProductBlog } from "@/features/products/components/product-blog";
-import { exportCategories, type ExportProduct } from "@/features/products/export-catalogue";
+import type { ExportProduct } from "@/features/products/export-catalogue";
 import { OnionAbout } from "@/features/onion-powder/components/onion-about";
 import { OnionApplications } from "@/features/onion-powder/components/onion-applications";
 import { OnionContact } from "@/features/onion-powder/components/onion-contact";
@@ -14,17 +13,9 @@ import { OnionHero } from "@/features/onion-powder/components/onion-hero";
  * Moringa page, but not its compositions.
  */
 export function OnionPage({ product }: { product: ExportProduct }) {
-  const category = exportCategories[product.category];
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: category.name, href: `/products#${category.anchor}` },
-    { label: product.name },
-  ];
-
   return (
     <>
-      <OnionHero crumbs={crumbs} />
+      <OnionHero />
       <OnionAbout />
       <OnionApplications />
       <OnionDetails />

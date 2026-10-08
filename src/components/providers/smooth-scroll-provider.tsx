@@ -106,12 +106,17 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   }, [reducedMotion]);
 
   // A client navigation replaces the DOM that Lenis and ScrollTrigger have
-  // measured; re-measure both against the new route.
+  // measured; re-measure both against the new route. A URL hash
+  // (/products#whole-spices) lands on its target rather than the top — Lenis
+  // honours the target's scroll-margin-top, which clears the fixed header.
   useEffect(() => {
     const instance = lenisRef.current;
     instance?.resize();
-    instance?.scrollTo(0, { immediate: true });
     ScrollTrigger.refresh();
+
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    const target = hash ? document.getElementById(hash) : null;
+    instance?.scrollTo(target ?? 0, { immediate: true });
   }, [pathname]);
 
   const api = useMemo<SmoothScrollApi>(

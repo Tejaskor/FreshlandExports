@@ -68,7 +68,9 @@ export function WhyChoose() {
           </Reveal>
         </div>
 
-        <Reveal variant="bloom" className="relative">
+        {/* Beside the copy the figure takes 87% of its column, held to the
+            text side so the gap is unchanged; the plinth scales with it. */}
+        <Reveal variant="bloom" className="relative lg:w-[87%] lg:justify-self-start">
           {/* Soft sage plinth offset behind the photograph. */}
           <div
             aria-hidden="true"
@@ -85,7 +87,7 @@ export function WhyChoose() {
               art={whyChoose.media.art}
               // Portrait 9:10 frame on desktop crops a 1.28:1 photo by height,
               // then the parallax overscans ~1.26x.
-              sizes="(min-width: 1024px) min(81vw, 1100px), 130vw"
+              sizes="(min-width: 1024px) min(71vw, 960px), 130vw"
               className="h-full w-full"
               mediaClassName="object-[44%_center] transition-transform duration-[1400ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
             />

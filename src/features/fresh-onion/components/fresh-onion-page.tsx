@@ -1,4 +1,3 @@
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { FreshOnionAbout } from "@/features/fresh-onion/components/fresh-onion-about";
 import { FreshOnionContact } from "@/features/fresh-onion/components/fresh-onion-contact";
 import { FreshOnionFaq } from "@/features/fresh-onion/components/fresh-onion-faq";
@@ -7,7 +6,7 @@ import { FreshOnionHero } from "@/features/fresh-onion/components/fresh-onion-he
 import { FreshOnionSpecs } from "@/features/fresh-onion/components/fresh-onion-specs";
 import { FreshOnionUses } from "@/features/fresh-onion/components/fresh-onion-uses";
 import { ProductBlog } from "@/features/products/components/product-blog";
-import { exportCategories, type ExportProduct } from "@/features/products/export-catalogue";
+import type { ExportProduct } from "@/features/products/export-catalogue";
 
 /**
  * Dedicated page for Fresh Onions (/products/onion) — light, with burgundy
@@ -16,17 +15,9 @@ import { exportCategories, type ExportProduct } from "@/features/products/export
  * other product pages, but not their compositions.
  */
 export function FreshOnionPage({ product }: { product: ExportProduct }) {
-  const category = exportCategories[product.category];
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: category.name, href: `/products#${category.anchor}` },
-    { label: "Fresh Onions" },
-  ];
-
   return (
     <>
-      <FreshOnionHero crumbs={crumbs} />
+      <FreshOnionHero />
       <FreshOnionAbout />
       <FreshOnionFeatures />
       <FreshOnionUses />

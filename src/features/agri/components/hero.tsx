@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import { AnchorButton } from "@/components/ui/anchor-button";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { ClipReveal } from "@/animations/clip-reveal";
 import { Container } from "@/components/ui/container";
@@ -150,14 +149,12 @@ function Highlights({
 
 /** Light hero wrapper: full width, the header's ink navigation sits on it. */
 function LightHero({
-  crumbs,
   className,
   compact = false,
   children,
 }: {
-  crumbs: readonly Crumb[];
   className?: string;
-  /** Tighter bottom padding and breadcrumb gap. The top padding clears the fixed header. */
+  /** Tighter bottom padding. The top padding clears the fixed header. */
   compact?: boolean;
   children: ReactNode;
 }) {
@@ -166,24 +163,17 @@ function LightHero({
       aria-labelledby="product-heading"
       className={cn("relative overflow-hidden pt-28 lg:pt-32", compact ? "pb-10 lg:pb-14" : "pb-14 lg:pb-20", className)}
     >
-      <Container className="relative">
-        <Reveal variant="rise">
-          <Breadcrumbs items={crumbs} />
-        </Reveal>
-        <div className={compact ? "mt-5 lg:mt-6" : "mt-8 lg:mt-10"}>{children}</div>
-      </Container>
+      <Container className="relative">{children}</Container>
     </section>
   );
 }
 
 export function Hero({
   product,
-  crumbs,
   variant,
   reverse = false,
 }: {
   product: AgriProduct;
-  crumbs: readonly Crumb[];
   variant: HeroVariant;
   reverse?: boolean;
 }) {
@@ -194,7 +184,7 @@ export function Hero({
     /* Text beside a leaf-cut photograph on the product tint. */
     case "split":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <div className={cn("lg:col-span-6", reverse && "lg:order-2")}>
               <HeroCopy product={product} />
@@ -217,7 +207,7 @@ export function Hero({
        card sits below the photograph so it covers none of it. */
     case "editorial":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           {/* Two tracks with one gap (not 12 columns of gaps), so the copy
               column has room for the title on a single line. */}
           <div className="grid items-center gap-12 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:gap-10 xl:gap-16">
@@ -279,7 +269,7 @@ export function Hero({
     /* Minimal and centred, with a wide pill photograph below the title. */
     case "centered":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <HeroCopy product={product} center titleSize="text-[clamp(3.25rem,1.6rem+5vw,6.5rem)]" />
           <Reveal variant="unveil" delay={0.3} className="mt-12">
             <ProductImage
@@ -296,12 +286,7 @@ export function Hero({
     /* Framed dark stage in the product's deep shade; photograph left. */
     case "stage":
       return (
-        <section aria-labelledby="product-heading" className="bg-cream pt-24 lg:pt-28">
-          <Container className="pb-4">
-            <Reveal variant="rise">
-              <Breadcrumbs items={crumbs} />
-            </Reveal>
-          </Container>
+        <section aria-labelledby="product-heading" className="bg-cream pt-28 lg:pt-32">
           <Container width="wide" className="px-3 sm:px-4 lg:px-5">
             <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-[var(--p-deep)] lg:rounded-[2.5rem]">
               <div
@@ -331,7 +316,7 @@ export function Hero({
     /* Title row, then a wide panoramic photograph with a highlight bar. */
     case "panoramic":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <Reveal variant="settle">
@@ -378,7 +363,7 @@ export function Hero({
     /* Energetic split: the photograph cut on a diagonal edge. */
     case "diagonal":
       return (
-        <LightHero crumbs={crumbs} className="bg-white" compact={hero.compact}>
+        <LightHero className="bg-white" compact={hero.compact}>
           <div
             aria-hidden="true"
             className={cn(
@@ -413,7 +398,7 @@ export function Hero({
     /* Three photographs in varied shapes beside the copy. */
     case "collage":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-6">
               <HeroCopy product={product} />
@@ -450,7 +435,7 @@ export function Hero({
     /* Two tall, staggered pill photographs — an elongated composition. */
     case "elongated":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
               <HeroCopy product={product} />
@@ -478,7 +463,7 @@ export function Hero({
        with soft circles and a leaf sprig behind it. */
     case "blob":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="relative lg:col-span-7">
               <span
@@ -510,12 +495,7 @@ export function Hero({
     /* Framed dark stage with two overlapping photograph panels. */
     case "duo":
       return (
-        <section aria-labelledby="product-heading" className="bg-cream pt-24 lg:pt-28">
-          <Container className="pb-4">
-            <Reveal variant="rise">
-              <Breadcrumbs items={crumbs} />
-            </Reveal>
-          </Container>
+        <section aria-labelledby="product-heading" className="bg-cream pt-28 lg:pt-32">
           <Container width="wide" className="px-3 sm:px-4 lg:px-5">
             <div className="relative isolate overflow-hidden rounded-[1.75rem] bg-[var(--p-deep)] lg:rounded-[2.5rem]">
               <div
@@ -556,7 +536,7 @@ export function Hero({
     /* A large citrus-round photograph with smaller circles in orbit. */
     case "orbit":
       return (
-        <LightHero crumbs={crumbs} className="bg-[var(--p-tint)]">
+        <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-6">
               <HeroCopy product={product} />

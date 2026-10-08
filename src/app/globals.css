@@ -93,6 +93,10 @@
   --text-label--line-height: 1.2;
   --text-label--letter-spacing: 0.2em;
 
+  /* Section eyebrows: the label style, a step larger — 12px on phones
+     easing to 13px from tablet width. */
+  --text-eyebrow: clamp(0.75rem, 0.65rem + 0.34vw, 0.8125rem);
+
   /* --- Layout ------------------------------------------------------------ */
   --spacing-gutter: clamp(1.25rem, 3vw, 3rem);
   --spacing-section: clamp(2.5rem, 3.2vw, 4.5rem);
@@ -193,6 +197,15 @@
 @utility type-label {
   font-family: var(--font-mono);
   font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  text-transform: uppercase;
+}
+
+/* Section eyebrows (the Eyebrow component): type-label at eyebrow size. */
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow);
   line-height: var(--text-label--line-height);
   letter-spacing: var(--text-label--letter-spacing);
   text-transform: uppercase;

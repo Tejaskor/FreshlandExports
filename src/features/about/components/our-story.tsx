@@ -40,17 +40,29 @@ export function OurStory() {
           {ourStory.features.map((feature, index) => (
             <li key={feature.title} className="relative flex gap-5 md:block">
               {index < lastIndex && (
-                // Connector to the next step: vertical when stacked, horizontal
-                // once the steps sit in a row. Drawn with scroll on desktop.
+                // Arrow to the next step, centred in the gap between the two
+                // circles: pointing down beside the stacked steps, right once
+                // they sit in a row. Slides in with scroll on desktop.
                 <ScrollScrub
-                  className="absolute top-14 -bottom-8 left-[1.375rem] w-px origin-top bg-sage-300 md:top-[1.375rem] md:-right-8 md:bottom-auto md:left-16 md:h-px md:w-auto md:origin-left"
-                  from={{ scaleX: 0 }}
-                  to={{ scaleX: 1 }}
+                  className="absolute top-11 -bottom-10 left-0 flex w-11 items-center justify-center text-sage-300 md:top-0 md:-right-8 md:bottom-auto md:left-11 md:h-11 md:w-auto"
+                  from={{ opacity: 0, x: -10 }}
+                  to={{ opacity: 1, x: 0 }}
                   start="top 85%"
                   end="top 55%"
                   desktopOnly
                 >
-                  {null}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 40 12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.25}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-3 w-10 rotate-90 md:rotate-0"
+                  >
+                    <path d="M1 6h37M33 1.5 38 6l-5 4.5" />
+                  </svg>
                 </ScrollScrub>
               )}
 

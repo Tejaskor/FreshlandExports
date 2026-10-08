@@ -1,6 +1,5 @@
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { ProductBlog } from "@/features/products/components/product-blog";
-import { exportCategories, type ExportProduct } from "@/features/products/export-catalogue";
+import type { ExportProduct } from "@/features/products/export-catalogue";
 import { TurmericAbout } from "@/features/turmeric-powder/components/turmeric-about";
 import { TurmericApplications } from "@/features/turmeric-powder/components/turmeric-applications";
 import { TurmericContact } from "@/features/turmeric-powder/components/turmeric-contact";
@@ -15,17 +14,9 @@ import turmeric from "@/features/turmeric-powder/turmeric.module.css";
  * Moringa page, adding its own muted gold palette.
  */
 export function TurmericPage({ product }: { product: ExportProduct }) {
-  const category = exportCategories[product.category];
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: category.name, href: `/products#${category.anchor}` },
-    { label: product.name },
-  ];
-
   return (
     <div className={turmeric.palette}>
-      <TurmericHero crumbs={crumbs} />
+      <TurmericHero />
       <TurmericAbout />
       <TurmericApplications />
       <TurmericDetails />

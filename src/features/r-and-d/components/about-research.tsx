@@ -30,7 +30,9 @@ export function AboutResearch() {
 
         <ClipReveal
           from="left"
-          className="group overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-figure)]"
+          // Beside the copy, 88% of its column, held to the right edge so the
+          // extra room opens toward the text; full width once stacked.
+          className="group overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-figure)] lg:w-[88%] lg:justify-self-end"
         >
           <Parallax className="aspect-[4/3] w-full" amount={12} zoom={0.05}>
             <Figure

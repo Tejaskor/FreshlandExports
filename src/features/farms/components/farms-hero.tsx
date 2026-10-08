@@ -5,7 +5,7 @@ import { BotanicalLines } from "@/components/media/botanical-lines";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { FarmArches } from "@/features/farms/components/farm-arches";
 import { farmsHero } from "@/features/farms/data";
@@ -44,7 +44,7 @@ export function FarmsHero() {
       <Container className="grid items-center gap-12 pt-32 pb-16 lg:min-h-[42rem] lg:grid-cols-[0.8fr_1.2fr] lg:gap-14 lg:pt-36 lg:pb-20">
         <div className="max-w-xl">
           <Reveal variant="settle">
-            <RuledEyebrow>{farmsHero.eyebrow}</RuledEyebrow>
+            <Eyebrow>{farmsHero.eyebrow}</Eyebrow>
           </Reveal>
 
           <RevealLines
