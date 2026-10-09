@@ -112,7 +112,7 @@ export const primaryNav: readonly NavItem[] = [
       {
         label: "Case Studies",
         href: "/case-studies",
-        description: "How we work with buyers on sourcing, quality and supply — first studies coming soon.",
+        description: "Illustrative sourcing scenarios across powders, spices, fresh produce and fruits.",
         icon: "target",
       },
     ],
@@ -176,6 +176,7 @@ export const staticRoutes: readonly string[] = [
   "/r-and-d",
   "/categories",
   "/resources",
+  "/case-studies",
   "/certificates",
   "/contact",
   "/privacy-policy",

@@ -1,5 +1,6 @@
 import { featureFlags } from "@/config/features";
 import { blogListHref, usedCategories } from "@/features/blog/data";
+import { caseStudies, caseStudyHref } from "@/features/case-studies/data";
 import { catalogue, catalogueCategoryHref, catalogueHref } from "@/features/products/catalogue";
 
 /**
@@ -42,7 +43,11 @@ export const siteMapGroups: readonly SiteMapGroup[] = [
         href: "/resources",
         children: usedCategories.map((category) => ({ label: category, href: blogListHref({ category }) })),
       },
-      { label: "Case Studies", href: "/case-studies" },
+      {
+        label: "Case Studies",
+        href: "/case-studies",
+        children: caseStudies.map((study) => ({ label: study.title, href: caseStudyHref(study.slug) })),
+      },
       { label: "XML Sitemap", href: "/sitemap.xml" },
     ],
   },

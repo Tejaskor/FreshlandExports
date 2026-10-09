@@ -1,35 +1,45 @@
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { Eyebrow } from "@/components/ui/eyebrow";
-import { Section } from "@/components/ui/section";
+import { Line, RevealLines } from "@/animations/reveal-lines";
+import { Reveal } from "@/animations/reveal";
+import { toCaseStudyCard } from "@/features/case-studies/card-data";
+import { CaseStudyBrowser } from "@/features/case-studies/components/case-study-browser";
+import { caseStudies } from "@/features/case-studies/data";
+import { catalogue } from "@/features/products/catalogue";
 import { createMetadata } from "@/lib/seo";
 
-// No published case studies yet: the page stays out of search results and
-// the sitemap until the first one is written.
 export const metadata = createMetadata({
-  title: "Case Studies",
-  description: "Case studies from Freshland Exports on sourcing, quality and supply for buyers worldwide.",
+  title: "Agricultural Sourcing Case Studies",
+  description:
+    "Illustrative B2B sourcing scenarios across botanical powders, whole spices, fresh agricultural produce and fruits: what buyers can define before requesting a quote.",
   path: "/case-studies",
-  noIndex: true,
+  image: { url: caseStudies[0].image.src, alt: caseStudies[0].image.alt },
 });
 
 export default function CaseStudiesPage() {
+  const cards = caseStudies.map(toCaseStudyCard);
+  const categories = catalogue.map((category) => ({ id: category.id, heading: category.heading }));
+
   return (
-    <Section className="flex min-h-[70vh] items-center bg-cream pt-32 lg:pt-36">
-      <Container>
-        <Eyebrow>Resources</Eyebrow>
-        <h1 className="mt-6 max-w-[16ch] text-display">Case Studies</h1>
-        <p className="mt-5 max-w-md text-lead text-ink-muted">
-          We are preparing case studies on how we work with buyers on sourcing, quality and supply. In the
-          meantime, our blog covers buyer guidance across our product range.
-        </p>
-        <div className="mt-9 flex flex-wrap gap-3">
-          <Button href="/resources">Read Our Blog</Button>
-          <Button href="/contact" variant="outline">
-            Contact Us
-          </Button>
-        </div>
-      </Container>
-    </Section>
+    <CaseStudyBrowser
+      studies={cards}
+      categories={categories}
+      intro={
+        <>
+          <p className="type-label font-semibold text-leaf">Sourcing Insights</p>
+          <RevealLines
+            as="h1"
+            id="case-studies-heading"
+            className="mt-4 font-display text-[clamp(2.25rem,1.5rem+2.6vw,3.5rem)] leading-[1.08] font-medium tracking-[-0.025em] text-balance text-forest-deep"
+            intro
+          >
+            <Line>Agricultural Sourcing Case Studies</Line>
+          </RevealLines>
+          <Reveal variant="rise" delay={0.15}>
+            <p className="mt-4 max-w-2xl text-lead text-ink-muted">
+              Understanding Buyer Requirements. Exploring Practical Sourcing Approaches.
+            </p>
+          </Reveal>
+        </>
+      }
+    />
   );
 }

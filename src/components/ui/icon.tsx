@@ -34,6 +34,9 @@ export type IconName =
   | "home"
   | "package"
   | "info"
+  | "link"
+  | "facebook"
+  | "x"
   | "linkedin"
   | "instagram"
   | "youtube";
@@ -70,10 +73,14 @@ const strokePaths: Partial<Record<IconName, string>> = {
   calendar: "M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm-1 4h16M8 4v4m8-4v4",
   home: "M3.5 11 12 4l8.5 7M6 9.5V20h4.5v-6h3v6H18V9.5",
   package: "M12 3 4 7.5v9L12 21l8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9M8 5.25l8 4.5",
+  link: "M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1.3 1.3M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1.3-1.3",
   info: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-10.5V16m0-8.5v.01",
 };
 
 const filledPaths: Partial<Record<IconName, string>> = {
+  facebook:
+    "M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46H16.6V4.46A21 21 0 0 0 14.3 4.3c-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3Z",
+  x: "M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z",
   linkedin:
     "M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 22 10.6 22 14v7h-4v-6.2c0-1.5-.03-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21H9V9Z",
   instagram:

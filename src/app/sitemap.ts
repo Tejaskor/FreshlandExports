@@ -3,6 +3,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig, staticRoutes } from "@/config/site";
 import { findLandingProduct } from "@/features/agri/content";
 import { blogPosts } from "@/features/blog/data";
+import { caseStudies, caseStudyHref } from "@/features/case-studies/data";
 import { exportProductHref, exportProducts } from "@/features/products/export-catalogue";
 import { absoluteUrl } from "@/lib/utils";
 
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...exportProducts
       .filter((product) => !findLandingProduct(product.slug))
       .map((product) => entry(exportProductHref(product.slug))),
+    ...caseStudies.map((study) => entry(caseStudyHref(study.slug))),
     ...blogPosts.map((post) => entry(post.href, post.updated ?? post.published)),
   ];
 }

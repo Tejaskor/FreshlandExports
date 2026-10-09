@@ -5,7 +5,7 @@ import { catalogue } from "@/features/products/catalogue";
  * action (the authority — client checks can always be bypassed).
  */
 
-export const brochureSources = ["header_brochure", "homepage_brochure", "footer_brochure"] as const;
+export const brochureSources = ["header_brochure", "homepage_brochure", "footer_brochure", "blog_brochure"] as const;
 export type BrochureSource = (typeof brochureSources)[number];
 
 export const markets = [

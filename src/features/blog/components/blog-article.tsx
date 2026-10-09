@@ -10,6 +10,7 @@ import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { siteConfig } from "@/config/site";
 import { ArticleToc } from "@/features/blog/components/article-toc";
 import { BlogCard, blogGrid } from "@/features/blog/components/blog-card";
+import { BrochureCard } from "@/features/blog/components/brochure-card";
 import {
   type BlogPost,
   articleOutline,
@@ -165,9 +166,18 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
             </article>
 
             {/* --- Table of contents: sticky beside the article, tablet up ---- */}
+            {/* On phones the brochure card follows the article. */}
+            <BrochureCard className="md:hidden" />
+
             <aside aria-label="Article contents" className="hidden md:block">
-              <div className="sticky top-28">
+              {/* Scrolls within itself if the contents and brochure card are
+                  taller than the screen, so the sticky panel never clips. */}
+              <div
+                data-lenis-prevent
+                className="sticky top-28 max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain [scrollbar-width:thin]"
+              >
                 <ArticleToc items={toc} variant="sidebar" />
+                <BrochureCard className="mt-5" />
                 <Link
                   href={blogListHref({})}
                   className="mt-5 inline-flex items-center gap-1.5 px-1 text-[0.875rem] font-semibold text-forest transition-colors duration-300 hover:text-leaf"

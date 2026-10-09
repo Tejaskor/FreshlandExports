@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { BotanicalArt, type ArtVariant } from "@/components/media/botanical-art";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,8 @@ type FigureProps = {
   className?: string;
   /** Applied to the image/art itself — the hover scale lives here. */
   mediaClassName?: string;
+  /** Inline style for the photograph, e.g. a data-driven object-position. */
+  mediaStyle?: CSSProperties;
   priority?: boolean;
   /** Must be listed in `images.qualities` in next.config.ts. */
   quality?: number;
@@ -29,6 +32,7 @@ export function Figure({
   art,
   className,
   mediaClassName,
+  mediaStyle,
   priority = false,
   quality,
   loading,
@@ -46,6 +50,7 @@ export function Figure({
           loading={priority ? undefined : loading}
           sizes={sizes}
           className={cn("object-cover", mediaClassName)}
+          style={mediaStyle}
         />
       ) : (
         <BotanicalArt
