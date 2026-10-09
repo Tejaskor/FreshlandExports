@@ -21,13 +21,22 @@ const contactRows = [
   },
 ];
 
-/**
- * Footer links: Inter at 1rem in muted ink, turning leaf green over 300ms on
- * hover, with a visible keyboard focus ring.
- */
-const footerLink =
-  "rounded-sm text-[1rem] text-ink-muted transition-colors duration-300 hover:text-leaf " +
+/** Footer link type: Inter at 1rem in muted ink, with a visible keyboard focus ring. */
+const linkText =
+  "rounded-sm text-[1rem] text-ink-muted transition-colors duration-500 ease-[var(--ease-out-expo)] hover:text-leaf " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf";
+
+/**
+ * A light 1px underline in translucent leaf green, drawn as a background so
+ * it can draw in from the left on hover and retract smoothly when the pointer
+ * leaves. Set on inline text, so it follows each line of wrapped text.
+ */
+const underline =
+  "bg-[linear-gradient(rgb(61_124_74/0.5),rgb(61_124_74/0.5))] bg-[length:0%_1px] bg-[position:0_100%] bg-no-repeat " +
+  "transition-[background-size,color] duration-500 ease-[var(--ease-out-expo)]";
+
+/** Footer links: text that turns leaf green as the underline draws in. */
+const footerLink = cn(linkText, underline, "hover:bg-[length:100%_1px] focus-visible:bg-[length:100%_1px]");
 
 /** Link columns after the brand: a hairline divider on their left from xl. */
 const column = "xl:border-l xl:border-line-strong xl:pl-8";
@@ -160,11 +169,19 @@ export function SiteFooter() {
                   </span>
                 );
                 return row.href ? (
-                  <a key={row.label} href={row.href} className={cn(footerLink, "flex items-center gap-3.5")}>
+                  <a key={row.label} href={row.href} className={cn(linkText, "group/contact flex items-center gap-3.5")}>
                     {icon}
-                    {/* One line from xl, where the column grows to fit; below that it may wrap. */}
+                    {/* One line from xl, where the column grows to fit; below that it may wrap.
+                        The underline sits under the text only, not the icon. */}
                     <span className="min-w-0 [overflow-wrap:anywhere] xl:whitespace-nowrap xl:[overflow-wrap:normal]">
-                      {row.label}
+                      <span
+                        className={cn(
+                          underline,
+                          "group-hover/contact:bg-[length:100%_1px] group-focus-visible/contact:bg-[length:100%_1px]",
+                        )}
+                      >
+                        {row.label}
+                      </span>
                     </span>
                   </a>
                 ) : (
