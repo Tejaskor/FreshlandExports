@@ -122,7 +122,7 @@ export const dryMangoPowder: AgriProduct = {
     // dry-mango-powder-hero.webp — a mound of pale beige amchur powder beside dried green mango slices and a whole unripe mango, on a pale cream ground (1:1, blob crop).
     hero: powderImg(slug, "hero", "Dry mango powder beside dried mango slices and a green mango", "dry-mango-powder-hero.webp"),
     // dry-mango-powder-applications.webp — amchur dusted over a plate of chaat with chutneys alongside (4:3).
-    detail: powderImg(slug, "applications", "Amchur dusted over a plate of chaat", "dry-mango-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "A plate of bhel puri chaat topped with tomato, onion and coriander leaves", "dry-mango-powder-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "blob" },

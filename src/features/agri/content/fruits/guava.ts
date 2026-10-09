@@ -83,14 +83,14 @@ export const guava: AgriProduct = {
   },
   images: {
     // Collage hero — whole and cut guavas showing pink flesh (3:5).
-    hero: img(slug, "hero", "Whole and cut guavas showing pink flesh", "Whole and cut guavas"),
+    hero: img(slug, "hero", "A cut pink guava among whole green guavas", "Whole and cut guavas"),
     // Leaf intro — guavas on a branch with leaves (5:4).
-    detail: img(slug, "detail", "Guavas growing on a branch with leaves", "Guavas on the branch"),
+    detail: img(slug, "detail", "A guava growing on a branch with leaves", "Guavas on the branch"),
     extra: [
       // Circle — a guava slice with pink flesh (1:1).
-      img(slug, "slice", "A slice of pink guava", "Pink guava slice"),
+      img(slug, "slice", "Halved pink guavas in a glass bowl", "Pink guava slice"),
       // Rounded square — white guava halves (1:1).
-      img(slug, "white", "Halved white guavas", "White guava halves"),
+      img(slug, "white", "Slices of white guava on a plate", "White guava halves"),
     ],
   },
   sections: [

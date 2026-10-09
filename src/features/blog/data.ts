@@ -15,12 +15,12 @@ import { exportProductHref, findExportProduct, productMenu } from "@/features/pr
 
 /**
  * The Blog: every product article from features/products/blog.ts, given its
- * own page at /resources/<slug>. Product pages, the archive and the article pages
+ * own page at /blog/<slug>. Product pages, the archive and the article pages
  * all read from this one index, so an article is written once.
  */
 
-/** The Blog lives under Resources: the listing and every article. */
-export const blogPath = "/resources";
+/** The Blog: the listing at /blog and every article at /blog/<slug> (listed under Resources in the menu). */
+export const blogPath = "/blog";
 export const blogPostHref = (slug: string) => `${blogPath}/${slug}`;
 
 export { blogCategories, type BlogCategory } from "@/features/blog/meta";

@@ -79,14 +79,14 @@ export const frozenPeas: AgriProduct = {
   },
   images: {
     // Collage hero — frozen peas with a light frost (3:5 tall).
-    hero: img(slug, "hero", "Frozen green peas with a light frost", "Frozen peas close-up"),
+    hero: img(slug, "hero", "Frost-covered frozen green peas in a white bowl", "Frozen peas close-up", "50% 55%"),
     // Detail — peas in a bowl, round crop (1:1).
-    detail: img(slug, "detail", "A bowl of frozen green peas", "Bowl of frozen peas"),
+    detail: img(slug, "detail", "Close-up of bright green peas", "Bowl of frozen peas"),
     extra: [
       // Circle — fresh pea pods (1:1).
-      img(slug, "pods", "Fresh green pea pods", "Pea pods"),
+      img(slug, "pods", "Heap of fresh green pea pods", "Pea pods"),
       // Rounded square — a scoop of frozen peas (1:1).
-      img(slug, "scoop", "A scoop of frozen peas", "Scoop of frozen peas"),
+      img(slug, "scoop", "Close-up of plump shelled green peas", "Scoop of frozen peas"),
     ],
   },
   sections: [

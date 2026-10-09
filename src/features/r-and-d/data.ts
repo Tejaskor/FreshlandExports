@@ -1,10 +1,14 @@
 import type { IconName } from "@/components/ui/icon";
+import { featureFlags } from "@/config/features";
 import type { MediaSlot } from "@/types/media";
 
 /** Knowledge Center (formerly R&D Lab) content. Photography lives in public/images/r-and-d/. */
 
 type Link = { label: string; href: string };
 type IconItem = { icon: IconName; title: string; description: string };
+
+/** The old /quality page is now Our Signature Ingredients; while that is hidden, the catalogue. */
+const qualityHref = featureFlags.signatureIngredients ? "/signature-ingredients" : "/products";
 
 export const rdHero = {
   eyebrow: "Knowledge Center",
@@ -42,21 +46,21 @@ export const capabilities = {
       title: "Microbiology & Safety",
       description:
         "Ensuring purity, safety, and microbial quality at every stage of development.",
-      link: { label: "Learn more", href: "/quality" },
+      link: { label: "Learn more", href: qualityHref },
     },
     {
       icon: "molecule",
       title: "Phytochemical Analysis",
       description:
         "Identifying and quantifying bioactive compounds using advanced analytical techniques.",
-      link: { label: "Learn more", href: "/quality" },
+      link: { label: "Learn more", href: qualityHref },
     },
     {
       icon: "shield",
       title: "Quality Assurance",
       description:
         "Rigorous testing and validation to meet international quality and regulatory standards.",
-      link: { label: "Learn more", href: "/quality" },
+      link: { label: "Learn more", href: qualityHref },
     },
   ] as readonly (IconItem & { link: Link })[],
 } as const;
@@ -89,7 +93,7 @@ export const researchFocus = {
         "Aligning our research with international quality, safety and sustainability standards.",
     },
   ] as readonly IconItem[],
-  cta: { label: "Explore Our Research", href: "/resources" } satisfies Link,
+  cta: { label: "Explore Our Research", href: "/blog" } satisfies Link,
   media: {
     image: "/images/r-and-d/rnd-lab-research-focus.webp",
     alt: "Dried botanicals, glassware and a microscope on a bright laboratory bench",
@@ -105,7 +109,7 @@ export const researchNotes = {
       title: "Botanical Sourcing and Quality Parameters for Herbal Ingredients",
       description:
         "An overview of the key factors that influence the quality and purity of botanical raw materials.",
-      href: "/resources",
+      href: "/blog",
       media: {
         image: "/images/r-and-d/botanical-sourcing-quality.webp",
         alt: "Fresh young leaves on a healthy botanical plant",
@@ -116,7 +120,7 @@ export const researchNotes = {
       title: "Comparative Study of Extraction Methods for Plant-Based Compounds",
       description:
         "How different extraction techniques shape the phytochemical profile of plant-based compounds.",
-      href: "/resources",
+      href: "/blog",
       media: {
         image: "/images/r-and-d/plant-extraction-methods.webp",
         alt: "A dropper releasing a drop of plant extract into a petri dish of green leaves",
@@ -127,7 +131,7 @@ export const researchNotes = {
       title: "Stability Evaluation of Natural Ingredients in Functional Products",
       description:
         "Insights into maintaining the stability and efficacy of botanical ingredients in finished products.",
-      href: "/resources",
+      href: "/blog",
       media: {
         image: "/images/r-and-d/natural-ingredient-stability.webp",
         alt: "Test tubes of botanical extracts in a rack beside flasks and dried herbs",

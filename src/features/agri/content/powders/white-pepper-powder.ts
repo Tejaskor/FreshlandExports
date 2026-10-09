@@ -114,9 +114,9 @@ export const whitePepperPowder: AgriProduct = {
   },
   images: {
     // white-pepper-powder-hero.webp — a heap of fine off-white pepper powder in a pale ceramic bowl, a few whole white peppercorns beside it, on a light linen surface (4:5).
-    hero: powderImg(slug, "hero", "A bowl of fine white pepper powder with whole white peppercorns", "white-pepper-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "A small mound of ground white pepper in a white leaf-shaped dish on a wooden board", "white-pepper-powder-hero.webp"),
     // white-pepper-powder-applications.webp — white pepper being dusted over a creamy white sauce or soup, no dark specks visible (4:3).
-    detail: powderImg(slug, "applications", "White pepper powder dusted over a creamy soup", "white-pepper-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "Ground white pepper dusted over a bowl of century egg congee", "white-pepper-powder-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "editorial" },

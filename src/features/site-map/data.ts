@@ -40,7 +40,7 @@ export const siteMapGroups: readonly SiteMapGroup[] = [
     links: [
       {
         label: "Blog",
-        href: "/resources",
+        href: "/blog",
         children: usedCategories.map((category) => ({ label: category, href: blogListHref({ category }) })),
       },
       {

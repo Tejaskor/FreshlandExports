@@ -113,9 +113,9 @@ export const cuminSeeds: AgriProduct = {
   },
   images: {
     // cumin-seeds-hero.webp — a scoop of whole cumin seeds on a warm cream surface (5:4, leaf crop).
-    hero: spiceImg(slug, "hero", "A scoop of whole cumin seeds", "cumin-seeds-hero.webp"),
+    hero: spiceImg(slug, "hero", "Whole cumin seeds in a worn brass bowl, seen from above", "cumin-seeds-hero.webp"),
     // cumin-seeds-applications.webp — cumin tempering in a pan (4:3).
-    detail: spiceImg(slug, "applications", "Cumin seeds sizzling in a tempering pan", "cumin-seeds-applications.webp"),
+    detail: spiceImg(slug, "applications", "Whole moong dal finished with a tadka of tempered spices and herbs on a square plate", "cumin-seeds-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "split" },

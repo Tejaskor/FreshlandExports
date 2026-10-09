@@ -116,12 +116,12 @@ export const dryGingerPowder: AgriProduct = {
   },
   images: {
     // dry-ginger-powder-hero.webp — a wooden bowl of pale beige ginger powder beside dried ginger slices (16:10, rounded).
-    hero: powderImg(slug, "hero", "A bowl of pale dry ginger powder beside dried ginger slices", "dry-ginger-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "A bowl of dried ginger pieces beside a bowl of ginger powder on a dark surface", "dry-ginger-powder-hero.webp"),
     // dry-ginger-powder-applications.webp — ginger powder with gingerbread biscuits and a cup of masala chai (4:3).
     detail: powderImg(
       slug,
       "applications",
-      "Dry ginger powder with ginger biscuits and a cup of masala chai",
+      "Three ginger nut biscuits on a white background",
       "dry-ginger-powder-applications.webp",
     ),
   },

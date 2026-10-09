@@ -73,9 +73,9 @@ export const chikoo: AgriProduct = {
   },
   images: {
     // Centred hero — whole and halved chikoo on an earthy surface (21:9).
-    hero: img(slug, "hero", "Whole and halved chikoo on an earthy surface", "Whole and cut chikoo"),
+    hero: img(slug, "hero", "Chikoo (sapodilla) fruits growing on a branch", "Whole and cut chikoo"),
     // Arch intro — a halved chikoo showing its flesh and seeds (4:5).
-    detail: img(slug, "detail", "A halved chikoo showing its soft brown flesh", "Halved chikoo"),
+    detail: img(slug, "detail", "A halved chikoo showing its soft flesh beside a whole fruit", "Halved chikoo", "22% 50%"),
   },
   sections: [
     { type: "hero", variant: "centered" },

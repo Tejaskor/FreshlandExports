@@ -79,14 +79,14 @@ export const beans: AgriProduct = {
   },
   images: {
     // Collage — a tall bundle of green beans (3:5).
-    hero: img(slug, "hero", "A bundle of fresh green beans", "Fresh green beans"),
+    hero: img(slug, "hero", "Close-up of a heap of fresh green beans", "Fresh green beans"),
     // Tabs panel — beans being trimmed on a board (4:3).
-    detail: img(slug, "detail", "Green beans being trimmed on a chopping board", "Trimmed green beans"),
+    detail: img(slug, "detail", "Pile of freshly harvested green beans with their stem ends", "Trimmed green beans"),
     extra: [
       // Circle — beans in a bowl (1:1).
-      img(slug, "bowl", "A bowl of fresh green beans", "Bowl of beans"),
+      img(slug, "bowl", "Fresh green beans piled in a rustic wooden crate", "Bowl of beans", "62% 50%"),
       // Rounded square — blanched beans (1:1).
-      img(slug, "blanched", "Blanched green beans on a plate", "Blanched beans"),
+      img(slug, "blanched", "Heap of fresh, bright green snap beans", "Blanched beans"),
     ],
   },
   sections: [

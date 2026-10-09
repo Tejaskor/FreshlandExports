@@ -54,10 +54,10 @@ export const turmeric: AgriProduct = {
     heading: "Golden Colour for Every Kitchen",
     intro: "Temporary overview — replace with final culinary applications.",
     groups: [
-      { title: "Curries & Dals", items: ["Curries", "Dals", "Gravies"], image: spiceImg(slug, "culinary-use", "Golden turmeric curry in a bowl", "turmeric-culinary-use.webp") },
-      { title: "Rice Dishes", items: ["Pulao", "Biryani", "Yellow rice"], image: spiceImg(slug, "use-rice", "Turmeric-coloured rice", "turmeric-use-rice.webp") },
-      { title: "Pickles", items: ["Mixed pickles", "Preserves"], image: spiceImg(slug, "use-pickles", "Jars of turmeric pickle", "turmeric-use-pickles.webp") },
-      { title: "Beverages", items: ["Golden milk", "Herbal drinks"], image: spiceImg(slug, "use-drinks", "A cup of golden milk", "turmeric-use-drinks.webp") },
+      { title: "Curries & Dals", items: ["Curries", "Dals", "Gravies"], image: spiceImg(slug, "culinary-use", "Yellow coconut curry with chicken, potatoes and basil in a bowl", "turmeric-culinary-use.webp") },
+      { title: "Rice Dishes", items: ["Pulao", "Biryani", "Yellow rice"], image: spiceImg(slug, "use-rice", "Turmeric-yellow nasi kuning rice topped with sambal and egg on a green plate", "turmeric-use-rice.webp") },
+      { title: "Pickles", items: ["Mixed pickles", "Preserves"], image: spiceImg(slug, "use-pickles", "A jar of Assamese lemon pickle with a green chilli", "turmeric-use-pickles.webp") },
+      { title: "Beverages", items: ["Golden milk", "Herbal drinks"], image: spiceImg(slug, "use-drinks", "A turmeric latte with a dusting of spice on a wooden table", "turmeric-use-drinks.webp") },
     ],
   },
   commercial: {
@@ -118,9 +118,9 @@ export const turmeric: AgriProduct = {
   },
   images: {
     // turmeric-hero.webp — dried turmeric fingers heaped on a warm surface (1:1, blob mask).
-    hero: spiceImg(slug, "hero", "Dried turmeric fingers heaped on a warm surface", "turmeric-hero.webp"),
+    hero: spiceImg(slug, "hero", "A heap of fresh turmeric rhizomes at a vegetable market", "turmeric-hero.webp"),
     // turmeric-detail.webp — fresh and dried rhizomes, one broken to show the colour (4:3).
-    detail: spiceImg(slug, "detail", "Turmeric rhizomes, one broken to show its golden interior", "turmeric-detail.webp"),
+    detail: spiceImg(slug, "detail", "Fresh turmeric rhizomes with two cut pieces showing the bright orange interior", "turmeric-detail.webp", "50% 45%"),
   },
   sections: [
     { type: "hero", variant: "blob" },

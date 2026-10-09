@@ -109,9 +109,9 @@ export const cloves: AgriProduct = {
   },
   images: {
     // cloves-hero.webp — whole cloves scattered across a wide warm surface (21:8, panoramic).
-    hero: spiceImg(slug, "hero", "Whole cloves scattered across a warm wooden surface", "cloves-hero.webp"),
+    hero: spiceImg(slug, "hero", "A dense spread of whole dried cloves filling the frame", "cloves-hero.webp"),
     // cloves-culinary-use.webp — cloves with cinnamon and star anise for mulled drinks (16:10).
-    detail: spiceImg(slug, "culinary-use", "Cloves with cinnamon and star anise for mulled drinks", "cloves-culinary-use.webp"),
+    detail: spiceImg(slug, "culinary-use", "Mulled wine with orange slices, a cinnamon stick, star anise, cardamom and cloves floating in the pot", "cloves-culinary-use.webp"),
   },
   sections: [
     { type: "hero", variant: "panoramic" },

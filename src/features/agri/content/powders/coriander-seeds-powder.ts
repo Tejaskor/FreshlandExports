@@ -114,12 +114,12 @@ export const corianderSeedsPowder: AgriProduct = {
   },
   images: {
     // coriander-seeds-powder-hero.webp — a bowl of light tan coriander powder with whole coriander seeds scattered around it, on a pale straw linen (4:5).
-    hero: powderImg(slug, "hero", "A bowl of ground coriander beside whole coriander seeds", "coriander-seeds-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "Ground coriander in an orange bowl with a spoon of whole coriander seeds on a yellow cloth", "coriander-seeds-powder-hero.webp", "50% 60%"),
     // coriander-seeds-powder-applications.webp — coriander powder being spooned into a curry with other ground spices nearby (16:10).
-    detail: powderImg(slug, "applications", "Coriander powder spooned into a curry with other spices", "coriander-seeds-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "A bowl of chana masala served with flatbread and samosas", "coriander-seeds-powder-applications.webp", "50% 35%"),
     extra: [
       // coriander-seeds-powder-blend.webp — coriander powder in a spice tin among other ground masala spices (1:1).
-      powderImg(slug, "blend", "Coriander powder among other ground spices in a masala tin", "coriander-seeds-powder-blend.webp"),
+      powderImg(slug, "blend", "Coriander powder in a steel masala tin beside other spice containers", "coriander-seeds-powder-blend.webp", "50% 65%"),
     ],
   },
   sections: [

@@ -15,8 +15,9 @@ import { findMoq } from "@/features/products/moq";
 
 export const spicesCategory = "Spices";
 
-export function spiceImg(slug: string, name: string, alt: string, label: string): ImageSlotData {
-  return { file: `/images/products/spices/${slug}-${name}.webp`, alt, label };
+/** `position` is the crop's CSS object-position, for an off-centre subject. */
+export function spiceImg(slug: string, name: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/spices/${slug}-${name}.webp`, alt, label, ...(position && { position }) };
 }
 
 export function spiceSpecs(

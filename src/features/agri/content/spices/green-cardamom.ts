@@ -102,14 +102,14 @@ export const greenCardamom: AgriProduct = {
   },
   images: {
     // green-cardamom-hero.webp — a round bowl of green cardamom pods (1:1, orbit circle).
-    hero: spiceImg(slug, "hero", "A bowl of green cardamom pods", "green-cardamom-hero.webp"),
+    hero: spiceImg(slug, "hero", "Green cardamom pods in a worn brass bowl, seen from above", "green-cardamom-hero.webp"),
     // green-cardamom-applications.webp — cardamom with chai and sweets (4:5, arch).
-    detail: spiceImg(slug, "applications", "Green cardamom with a cup of chai and sweets", "green-cardamom-applications.webp"),
+    detail: spiceImg(slug, "applications", "A cup of masala chai with biscuits, cardamom pods, ginger, cinnamon and cloves on the saucer", "green-cardamom-applications.webp"),
     extra: [
       // green-cardamom-open-pod.webp — an opened pod showing seeds (1:1).
-      spiceImg(slug, "open-pod", "An opened cardamom pod showing its seeds", "green-cardamom-open-pod.webp"),
+      spiceImg(slug, "open-pod", "Whole and split green cardamom pods with their dark seeds on a white plate", "green-cardamom-open-pod.webp"),
       // green-cardamom-plant.webp — cardamom plant leaves (1:1).
-      spiceImg(slug, "plant", "Cardamom plant leaves", "green-cardamom-plant.webp"),
+      spiceImg(slug, "plant", "Lush lance-shaped leaves of a cardamom plant", "green-cardamom-plant.webp"),
     ],
   },
   sections: [

@@ -51,10 +51,10 @@ export const mango: AgriProduct = {
     heading: "From Fresh Slices to Pulp",
     intro: "Temporary overview of how buyers use mangoes.",
     groups: [
-      { title: "Fresh Consumption", items: ["Retail fruit", "Fruit platters", "Desserts"], image: img(slug, "use-fresh", "Sliced fresh mango cubes", "Fresh mango slices") },
-      { title: "Beverages", items: ["Juices", "Smoothies", "Lassi"], image: img(slug, "use-drinks", "Mango smoothie in a glass", "Mango beverages") },
-      { title: "Food Processing", items: ["Pulp", "Purée", "Dried mango"], image: img(slug, "use-processing", "Mango pulp in a bowl", "Mango pulp") },
-      { title: "Bakery & Desserts", items: ["Ice cream", "Cakes", "Jams"], image: img(slug, "use-desserts", "Mango dessert with fresh fruit", "Mango desserts") },
+      { title: "Fresh Consumption", items: ["Retail fruit", "Fruit platters", "Desserts"], image: img(slug, "use-fresh", "Ripe mango cut into cubes on a plate", "Fresh mango slices") },
+      { title: "Beverages", items: ["Juices", "Smoothies", "Lassi"], image: img(slug, "use-drinks", "A glass of fresh mango juice garnished with mint", "Mango beverages") },
+      { title: "Food Processing", items: ["Pulp", "Purée", "Dried mango"], image: img(slug, "use-processing", "Freshly blended mango pulp", "Mango pulp") },
+      { title: "Bakery & Desserts", items: ["Ice cream", "Cakes", "Jams"], image: img(slug, "use-desserts", "Mango custard desserts beside a cut mango", "Mango desserts") },
     ],
   },
   specs: {
@@ -86,7 +86,7 @@ export const mango: AgriProduct = {
   },
   images: {
     // Blob hero — a large ripe mango with leaves on a warm cream ground (1:1).
-    hero: img(slug, "hero", "Ripe golden mangoes with fresh leaves", "Ripe mangoes"),
+    hero: img(slug, "hero", "A basket of ripe mangoes in shades of green, gold and orange", "Ripe mangoes"),
     // Existing site photograph (941×1672): green mangoes on the tree.
     detail: {
       file: "/images/farms/hero-green-mangoes.webp",

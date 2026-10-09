@@ -5,9 +5,10 @@ import type { ImageSlotData, SpecRow } from "@/features/agri/types";
  * public/images/products/agri/<slug>/<slug>-<name>.webp the page shows a
  * labelled placeholder in the product's colours; the file then replaces it
  * at build time with no code change.
+ * `position` is the crop's CSS object-position, for an off-centre subject.
  */
-export function img(slug: string, name: string, alt: string, label: string): ImageSlotData {
-  return { file: `/images/products/agri/${slug}/${slug}-${name}.webp`, alt, label };
+export function img(slug: string, name: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/agri/${slug}/${slug}-${name}.webp`, alt, label, ...(position && { position }) };
 }
 
 /**

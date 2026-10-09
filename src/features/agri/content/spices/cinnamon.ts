@@ -39,10 +39,10 @@ export const cinnamon: AgriProduct = {
     heading: "From Oven to Cup",
     intro: "Temporary overview — replace with final culinary applications.",
     groups: [
-      { title: "Baking", text: "The classic spice of sweet bakes.", items: ["Cinnamon rolls", "Cakes", "Cookies"], image: spiceImg(slug, "applications", "Cinnamon rolls with cinnamon sticks", "cinnamon-applications.webp") },
-      { title: "Beverages", text: "Warming drinks and infusions.", items: ["Chai", "Mulled drinks", "Coffee"], image: spiceImg(slug, "use-drinks", "Hot drink with a cinnamon stick", "cinnamon-use-drinks.webp") },
-      { title: "Savoury Dishes", text: "Depth for rice and slow cooking.", items: ["Biryani", "Tagines", "Curries"], image: spiceImg(slug, "use-savoury", "Biryani with whole cinnamon", "cinnamon-use-savoury.webp") },
-      { title: "Desserts", text: "A warm finish for sweets.", items: ["Rice pudding", "Apple desserts", "Custards"], image: spiceImg(slug, "use-desserts", "Apple dessert dusted with cinnamon", "cinnamon-use-desserts.webp") },
+      { title: "Baking", text: "The classic spice of sweet bakes.", items: ["Cinnamon rolls", "Cakes", "Cookies"], image: spiceImg(slug, "applications", "A glazed cinnamon swirl bun on a grey plate with knife and fork", "cinnamon-applications.webp") },
+      { title: "Beverages", text: "Warming drinks and infusions.", items: ["Chai", "Mulled drinks", "Coffee"], image: spiceImg(slug, "use-drinks", "A cappuccino dusted with cinnamon, with a cinnamon stick resting on the saucer", "cinnamon-use-drinks.webp") },
+      { title: "Savoury Dishes", text: "Depth for rice and slow cooking.", items: ["Biryani", "Tagines", "Curries"], image: spiceImg(slug, "use-savoury", "Peas pulao cooked with whole cinnamon sticks and cloves, served on an oval plate", "cinnamon-use-savoury.webp") },
+      { title: "Desserts", text: "A warm finish for sweets.", items: ["Rice pudding", "Apple desserts", "Custards"], image: spiceImg(slug, "use-desserts", "A slice of apple crumble and custard tart on a white plate beside a cup of coffee", "cinnamon-use-desserts.webp", "35% 50%") },
     ],
   },
   commercial: {
@@ -102,14 +102,14 @@ export const cinnamon: AgriProduct = {
   },
   images: {
     // cinnamon-hero.webp — a tall bundle of cinnamon quills tied with string (3:5).
-    hero: spiceImg(slug, "hero", "A bundle of cinnamon quills tied with string", "cinnamon-hero.webp"),
+    hero: spiceImg(slug, "hero", "Upright cinnamon quills packed tightly together, showing their curled ends", "cinnamon-hero.webp"),
     // cinnamon-detail.webp — cinnamon bark close-up (16:10).
-    detail: spiceImg(slug, "detail", "Close-up of curled cinnamon bark", "cinnamon-detail.webp"),
+    detail: spiceImg(slug, "detail", "Close-up of a pile of broken cinnamon quills with curled bark edges", "cinnamon-detail.webp"),
     extra: [
       // cinnamon-ground.webp — ground cinnamon in a round bowl (1:1).
-      spiceImg(slug, "ground", "Ground cinnamon in a round bowl", "cinnamon-ground.webp"),
+      spiceImg(slug, "ground", "Ground cinnamon in a small glass bowl on a white marble surface", "cinnamon-ground.webp"),
       // cinnamon-star-anise.webp — cinnamon with star anise (1:1).
-      spiceImg(slug, "star-anise", "Cinnamon sticks with star anise", "cinnamon-star-anise.webp"),
+      spiceImg(slug, "star-anise", "Cinnamon sticks, star anise, cloves and peppercorns arranged in small dishes and on a wooden board against a black background", "cinnamon-star-anise.webp", "12% 50%"),
     ],
   },
   sections: [

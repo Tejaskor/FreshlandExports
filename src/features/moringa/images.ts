@@ -15,6 +15,8 @@ export type MoringaImage = {
   alt: string;
   /** Short caption printed on the placeholder so the slot is easy to find. */
   label: string;
+  /** CSS object-position for the crop, when the subject is off-centre (default: centre). */
+  position?: string;
 };
 
 export const moringaImages = {

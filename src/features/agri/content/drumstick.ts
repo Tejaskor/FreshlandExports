@@ -39,10 +39,10 @@ export const drumstick: AgriProduct = {
     heading: "Where Drumsticks Shine",
     intro: "Temporary overview of typical drumstick uses.",
     groups: [
-      { title: "Sambar & Dal", items: ["Sambar", "Dal", "Rasam"], image: img(slug, "use-sambar", "Sambar with drumstick pieces", "Drumstick sambar") },
-      { title: "Curries", items: ["Drumstick curry", "Coconut curries"], image: img(slug, "use-curry", "Drumstick curry in a bowl", "Drumstick curry") },
-      { title: "Soups", items: ["Clear soups", "Broths"], image: img(slug, "use-soup", "A bowl of drumstick soup", "Drumstick soup") },
-      { title: "Food Processing", items: ["Cut and frozen", "Ready meals"], image: img(slug, "use-frozen", "Cut drumstick pieces ready for freezing", "Cut drumsticks") },
+      { title: "Sambar & Dal", items: ["Sambar", "Dal", "Rasam"], image: img(slug, "use-sambar", "Bowl of sambar with pieces of drumstick on a blue cloth", "Drumstick sambar") },
+      { title: "Curries", items: ["Drumstick curry", "Coconut curries"], image: img(slug, "use-curry", "Bowl of drumstick curry garnished with fresh coriander", "Drumstick curry") },
+      { title: "Soups", items: ["Clear soups", "Broths"], image: img(slug, "use-soup", "Bowl of Burmese drumstick soup with tomato and potato", "Drumstick soup") },
+      { title: "Food Processing", items: ["Cut and frozen", "Ready meals"], image: img(slug, "use-frozen", "Hand holding cut pieces of fresh drumstick pods", "Cut drumsticks") },
     ],
   },
   process: {
@@ -76,7 +76,7 @@ export const drumstick: AgriProduct = {
   },
   images: {
     // Panoramic hero — long drumstick pods laid horizontally (21:8).
-    hero: img(slug, "hero", "Long green drumstick pods laid side by side", "Drumstick pods, panoramic"),
+    hero: img(slug, "hero", "Bundles of long green drumstick pods tied together and laid side by side", "Drumstick pods, panoramic"),
     // Detail — drumstick pods on the tree (16:10).
     detail: img(slug, "detail", "Drumstick pods hanging from a moringa tree", "Drumsticks on the tree"),
   },

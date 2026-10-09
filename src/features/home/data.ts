@@ -108,7 +108,8 @@ export const sustainability = {
   eyebrow: "Sustainable by nature",
   heading: "Caring for People and the Planet",
   body: "From responsible sourcing to eco-friendly processes, sustainability is at the heart of everything we do.",
-  cta: { label: "Our Sustainability Efforts", href: "/sustainability" },
+  // There is no standalone sustainability page; Our Farms covers sustainable practices.
+  cta: { label: "Our Sustainability Efforts", href: "/farms" },
   points: [
     {
       icon: "handshake",

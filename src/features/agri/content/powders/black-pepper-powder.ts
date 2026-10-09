@@ -109,14 +109,14 @@ export const blackPepperPowder: AgriProduct = {
   },
   images: {
     // black-pepper-powder-hero.webp — a mound of ground black pepper in a dark stone bowl, a few whole peppercorns scattered on charcoal slate (4:5).
-    hero: powderImg(slug, "hero", "Ground black pepper in a dark stone bowl", "black-pepper-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "Ground black pepper in a white bowl with a heaped spoon and whole peppercorns on a white cloth", "black-pepper-powder-hero.webp", "40% 45%"),
     // black-pepper-powder-applications.webp — ground pepper being dusted over a creamy soup and a grilled dish (16:10).
-    detail: powderImg(slug, "applications", "Ground black pepper over a soup and a grilled dish", "black-pepper-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "Spaghetti cacio e pepe topped with grated cheese and ground black pepper, with whole peppercorns on the table", "black-pepper-powder-applications.webp", "60% 50%"),
     extra: [
       // black-pepper-powder-texture.webp — close-up of fine ground pepper beside a coarse cracked grind (1:1).
-      powderImg(slug, "texture", "Fine and coarse ground black pepper side by side", "black-pepper-powder-texture.webp"),
+      powderImg(slug, "texture", "A mound of finely ground black pepper on a plain white surface", "black-pepper-powder-texture.webp"),
       // black-pepper-powder-seasoning.webp — ground pepper mixed with salt and herbs as a rub (1:1).
-      powderImg(slug, "seasoning", "Ground black pepper mixed into a seasoning rub", "black-pepper-powder-seasoning.webp"),
+      powderImg(slug, "seasoning", "Hands pressing a dry pepper spice rub onto raw pork ribs in a foil tray", "black-pepper-powder-seasoning.webp", "60% 50%"),
     ],
   },
   sections: [

@@ -39,10 +39,10 @@ export const papaya: AgriProduct = {
     heading: "From Breakfast to Processing",
     intro: "Temporary overview of how papaya is used.",
     groups: [
-      { title: "Fresh Fruit", items: ["Retail", "Fruit platters", "Breakfast bowls"], image: img(slug, "use-fresh", "Papaya halves on a plate", "Fresh papaya halves") },
-      { title: "Beverages", items: ["Smoothies", "Juices", "Shakes"], image: img(slug, "use-drinks", "Papaya smoothie in a glass", "Papaya smoothie") },
-      { title: "Salads & Cooking", items: ["Fruit salads", "Green papaya salad", "Chutneys"], image: img(slug, "use-salad", "Papaya salad in a bowl", "Papaya salad") },
-      { title: "Food Processing", items: ["Pulp", "Dried papaya", "Jams"], image: img(slug, "use-processing", "Diced papaya ready for processing", "Diced papaya") },
+      { title: "Fresh Fruit", items: ["Retail", "Fruit platters", "Breakfast bowls"], image: img(slug, "use-fresh", "A ripe papaya cut lengthways on a plate", "Fresh papaya halves") },
+      { title: "Beverages", items: ["Smoothies", "Juices", "Shakes"], image: img(slug, "use-drinks", "A glass of papaya smoothie beside a halved papaya", "Papaya smoothie") },
+      { title: "Salads & Cooking", items: ["Fruit salads", "Green papaya salad", "Chutneys"], image: img(slug, "use-salad", "Green papaya salad in a bowl", "Papaya salad") },
+      { title: "Food Processing", items: ["Pulp", "Dried papaya", "Jams"], image: img(slug, "use-processing", "Diced ripe papaya in a bowl", "Diced papaya") },
     ],
   },
   specs: {
@@ -75,7 +75,7 @@ export const papaya: AgriProduct = {
     // Diagonal hero — a halved papaya with seeds and leaves (5:6).
     hero: img(slug, "hero", "A halved papaya showing orange flesh and black seeds", "Halved papaya"),
     // Overlap intro — papayas growing on the tree (16:10).
-    detail: img(slug, "detail", "Papayas growing on the tree", "Papayas on the tree"),
+    detail: img(slug, "detail", "Clusters of papayas growing on the tree", "Papayas on the tree"),
   },
   sections: [
     { type: "hero", variant: "diagonal" },

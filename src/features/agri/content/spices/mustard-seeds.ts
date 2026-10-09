@@ -108,9 +108,9 @@ export const mustardSeeds: AgriProduct = {
   },
   images: {
     // mustard-seeds-hero.webp — yellow and brown mustard seeds in a wide composition (21:9).
-    hero: spiceImg(slug, "hero", "Yellow and brown mustard seeds side by side", "mustard-seeds-hero.webp"),
+    hero: spiceImg(slug, "hero", "A wide heap of brown mustard seeds on a white surface", "mustard-seeds-hero.webp"),
     // mustard-seeds-applications.webp — mustard seeds with a jar of prepared mustard (5:4, leaf).
-    detail: spiceImg(slug, "applications", "Mustard seeds beside a jar of prepared mustard", "mustard-seeds-applications.webp"),
+    detail: spiceImg(slug, "applications", "A spoonful of smooth Dijon mustard on a white background", "mustard-seeds-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "centered" },

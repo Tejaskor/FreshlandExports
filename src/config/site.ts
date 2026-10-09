@@ -100,12 +100,12 @@ export const primaryNav: readonly NavItem[] = [
   { label: "Knowledge Center", href: "/r-and-d", hint: "Extraction, assay and validation" },
   {
     label: "Resources",
-    href: "/resources",
+    href: "/blog",
     hint: "Insights on products, sourcing and supply",
     links: [
       {
         label: "Blogs",
-        href: "/resources",
+        href: "/blog",
         description: "Buyer guides on agricultural products, fruits and spices — sourcing, quality and handling.",
         icon: "clipboard",
       },
@@ -122,7 +122,7 @@ export const primaryNav: readonly NavItem[] = [
       description:
         "Practical guidance on agricultural sourcing, quality checks, storage and handling, and food applications.",
       cta: "Explore Our Blog",
-      href: "/resources",
+      href: "/blog",
       image: "/images/Resources/Blog/freshland-exports-blog-card.webp",
       alt: "Growers inspecting fresh herbs, chillies, vegetables and spices laid out in crates at the edge of a farm",
       // The growers' faces and hands sit above centre; keep them in frame.
@@ -149,7 +149,7 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
       ...(featureFlags.signatureIngredients
         ? [{ label: "Our Signature Ingredients", href: "/signature-ingredients" }]
         : []),
-      { label: "Blog", href: "/resources" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact" },
     ],
   },
@@ -175,7 +175,7 @@ export const staticRoutes: readonly string[] = [
   "/farms",
   "/r-and-d",
   "/categories",
-  "/resources",
+  "/blog",
   "/case-studies",
   "/certificates",
   "/contact",

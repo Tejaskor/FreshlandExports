@@ -42,10 +42,10 @@ export const okra: AgriProduct = {
     heading: "Popular Ways to Use Okra",
     intro: "Temporary overview of typical okra uses.",
     groups: [
-      { title: "Curries & Stir-Fries", items: ["Bhindi masala", "Stir-fries", "Dry sabzi"], image: img(slug, "use-curry", "Okra curry in a pan", "Okra curry") },
-      { title: "Soups & Stews", items: ["Gumbo", "Stews", "Soups"], image: img(slug, "use-stew", "A bowl of okra stew", "Okra stew") },
-      { title: "Fried & Crispy", items: ["Crispy okra", "Fritters", "Snacks"], image: img(slug, "use-fried", "Crispy fried okra", "Fried okra") },
-      { title: "Frozen & Processed", items: ["Cut and frozen", "Ready meals", "Pickles"], image: img(slug, "use-frozen", "Cut okra ready for freezing", "Cut okra") },
+      { title: "Curries & Stir-Fries", items: ["Bhindi masala", "Stir-fries", "Dry sabzi"], image: img(slug, "use-curry", "Bhindi masala okra curry served with white rice on a dark marble table", "Okra curry") },
+      { title: "Soups & Stews", items: ["Gumbo", "Stews", "Soups"], image: img(slug, "use-stew", "Bamia okra and meat stew in tomato sauce served with rice", "Okra stew") },
+      { title: "Fried & Crispy", items: ["Crispy okra", "Fritters", "Snacks"], image: img(slug, "use-fried", "Plate of crispy spiced fried okra pieces on a steel plate", "Fried okra") },
+      { title: "Frozen & Processed", items: ["Cut and frozen", "Ready meals", "Pickles"], image: img(slug, "use-frozen", "Glass bowl of frost-covered cut okra pieces", "Cut okra") },
     ],
   },
   specs: {
@@ -69,7 +69,7 @@ export const okra: AgriProduct = {
   },
   images: {
     // Diagonal hero — fresh okra pods arranged diagonally (5:6).
-    hero: img(slug, "hero", "Fresh okra pods arranged on a cream surface", "Fresh okra pods"),
+    hero: img(slug, "hero", "Two bundles of fresh okra pods tied with rubber bands, lying diagonally on a red surface", "Fresh okra pods"),
     // Detail — okra pods, one cut to show seeds (16:10).
     detail: img(slug, "detail", "Okra pods, one cut to show the seeds", "Cut okra"),
   },

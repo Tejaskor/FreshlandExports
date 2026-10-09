@@ -27,7 +27,7 @@ const companyPages = [
   { label: "Our Farms", path: "/farms", text: "How the company works with farming communities and agricultural partners." },
   { label: "Knowledge Center", path: "/r-and-d", text: "The company's research and quality pages." },
   { label: "Certificates", path: "/certificates", text: "Certifications and registrations as listed by the company." },
-  { label: "Blog", path: "/resources", text: "Buyer guides on sourcing, quality, storage and applications." },
+  { label: "Blog", path: "/blog", text: "Buyer guides on sourcing, quality, storage and applications." },
   { label: "Contact Us", path: "/contact", text: "Enquiry form for availability, specifications and export requirements." },
 ] as const;
 
@@ -128,7 +128,7 @@ export function llmsFullText() {
     ]),
     "## Blog Articles",
     "",
-    `Buyer guides grouped by product. All articles: ${url("/resources")}`,
+    `Buyer guides grouped by product. All articles: ${url("/blog")}`,
     "",
     ...[...articlesByProduct].flatMap(([product, posts]) => [
       `### ${product}`,

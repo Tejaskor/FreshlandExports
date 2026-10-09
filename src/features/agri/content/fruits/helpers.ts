@@ -43,3 +43,4 @@ export function fruitFaqs(name: string, first: readonly Faq[]): readonly Faq[] {
     },
   ];
 }
+

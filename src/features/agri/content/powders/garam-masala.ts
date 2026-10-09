@@ -114,12 +114,12 @@ export const garamMasala: AgriProduct = {
   },
   images: {
     // garam-masala-hero.webp — a tall shot of a brass bowl of warm brown garam masala surrounded by whole spices (cinnamon, cloves, cardamom, peppercorns, bay leaf) on a dark wooden surface (3:5).
-    hero: powderImg(slug, "hero", "A bowl of garam masala surrounded by whole spices", "garam-masala-hero.webp"),
+    hero: powderImg(slug, "hero", "Ground garam masala in a steel masala tin among other spice containers", "garam-masala-hero.webp", "50% 60%"),
     // garam-masala-curry.webp — garam masala being sprinkled over a simmering curry (4:3).
-    detail: powderImg(slug, "curry", "Garam masala sprinkled over a simmering curry", "garam-masala-curry.webp"),
+    detail: powderImg(slug, "curry", "A pot of Kerala chicken curry with green chillies, a tomato and dried red chillies alongside", "garam-masala-curry.webp"),
     extra: [
       // garam-masala-whole-spices.webp — the whole spices of a typical blend laid out in small heaps before grinding (1:1).
-      powderImg(slug, "whole-spices", "Whole spices laid out in small heaps before grinding", "garam-masala-whole-spices.webp"),
+      powderImg(slug, "whole-spices", "Whole garam masala spices: nutmeg, mace, peppercorns, cardamom, cinnamon and cloves on white", "garam-masala-whole-spices.webp", "40% 50%"),
     ],
   },
   sections: [

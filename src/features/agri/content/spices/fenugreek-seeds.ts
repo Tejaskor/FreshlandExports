@@ -114,9 +114,9 @@ export const fenugreekSeeds: AgriProduct = {
   },
   images: {
     // fenugreek-seeds-hero.webp — golden fenugreek seeds heaped in a wooden bowl with a few fresh methi leaves on a cream linen surface (16:10).
-    hero: spiceImg(slug, "hero", "Golden fenugreek seeds in a wooden bowl with fresh methi leaves", "fenugreek-seeds-hero.webp"),
+    hero: spiceImg(slug, "hero", "A heap of golden fenugreek seeds on a white surface", "fenugreek-seeds-hero.webp"),
     // fenugreek-seeds-applications.webp — fenugreek seeds tempering in hot oil beside a jar of mango pickle (4:3).
-    detail: spiceImg(slug, "applications", "Fenugreek seeds tempering in oil beside a jar of pickle", "fenugreek-seeds-applications.webp"),
+    detail: spiceImg(slug, "applications", "Homemade mango pickle in red chilli oil on a patterned plate", "fenugreek-seeds-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "editorial" },

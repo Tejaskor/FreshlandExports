@@ -103,12 +103,12 @@ export const blackPepper: AgriProduct = {
   },
   images: {
     // black-pepper-hero.webp — peppercorns in a dark bowl on charcoal (4:5).
-    hero: spiceImg(slug, "hero", "Black peppercorns in a dark bowl", "black-pepper-hero.webp"),
+    hero: spiceImg(slug, "hero", "Tellicherry black peppercorns in a worn brass bowl on a pale stone surface", "black-pepper-hero.webp"),
     // black-pepper-culinary-use.webp — cracked pepper over a grilled dish (16:10).
-    detail: spiceImg(slug, "culinary-use", "Cracked black pepper over a grilled dish", "black-pepper-culinary-use.webp"),
+    detail: spiceImg(slug, "culinary-use", "Seared steak crusted with cracked black pepper, served with asparagus and peas on a gold-rimmed plate", "black-pepper-culinary-use.webp"),
     extra: [
       // black-pepper-vine.webp — green pepper berries on the vine (1:1).
-      spiceImg(slug, "vine", "Pepper berries growing on the vine", "black-pepper-vine.webp"),
+      spiceImg(slug, "vine", "Green pepper berries hanging in a spike among heart-shaped Piper nigrum leaves", "black-pepper-vine.webp", "40% 45%"),
     ],
   },
   sections: [

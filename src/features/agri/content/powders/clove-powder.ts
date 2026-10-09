@@ -115,12 +115,12 @@ export const clovePowder: AgriProduct = {
   },
   images: {
     // clove-powder-hero.webp — a mound of dark brown clove powder with a few whole cloves at its edge, on a warm cream surface (diagonal crop).
-    hero: powderImg(slug, "hero", "A mound of dark clove powder with whole cloves beside it", "clove-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "A mound of dark brown clove powder beside a heap of whole cloves on a white surface", "clove-powder-hero.webp"),
     // clove-powder-applications.webp — clove powder in a spoon beside spiced cake and a spice blend (4:3).
     detail: powderImg(
       slug,
       "applications",
-      "A spoon of clove powder beside spiced cake and a bowl of mixed spice",
+      "Spiced gingerbread cookies with a glass of milk",
       "clove-powder-applications.webp",
     ),
   },

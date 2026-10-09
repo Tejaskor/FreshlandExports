@@ -121,14 +121,14 @@ export const nutmegPowder: AgriProduct = {
   },
   images: {
     // nutmeg-powder-hero.webp — a wooden spoon heaped with reddish-brown ground nutmeg beside two whole nutmegs, one half-grated on a small grater, on a warm cream surface (4:5).
-    hero: powderImg(slug, "hero", "A spoon of ground nutmeg beside whole nutmegs and a grater", "nutmeg-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "A small heap of freshly grated nutmeg on a white surface", "nutmeg-powder-hero.webp"),
     // nutmeg-powder-applications.webp — ground nutmeg dusted over a custard tart or a cup of spiced milk (4:3).
-    detail: powderImg(slug, "applications", "Ground nutmeg dusted over a custard tart", "nutmeg-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "A glass of eggnog dusted with grated nutmeg, seen from above on a wooden table", "nutmeg-powder-applications.webp", "50% 40%"),
     extra: [
       // nutmeg-powder-fruit.webp — an opened nutmeg fruit showing the brown seed wrapped in red mace (1:1).
-      powderImg(slug, "fruit", "An opened nutmeg fruit with the seed wrapped in red mace", "nutmeg-powder-fruit.webp"),
+      powderImg(slug, "fruit", "A split nutmeg fruit on the tree showing the seed wrapped in red mace", "nutmeg-powder-fruit.webp", "35% 45%"),
       // nutmeg-powder-kernels.webp — shelled whole nutmeg kernels in a small bowl (1:1).
-      powderImg(slug, "kernels", "Whole shelled nutmeg kernels in a small bowl", "nutmeg-powder-kernels.webp"),
+      powderImg(slug, "kernels", "Whole nutmeg kernels in a stone bowl, one cut in half", "nutmeg-powder-kernels.webp"),
     ],
   },
   sections: [

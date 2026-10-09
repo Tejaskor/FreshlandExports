@@ -99,12 +99,12 @@ export const fennelSeeds: AgriProduct = {
   },
   images: {
     // fennel-seeds-hero.webp — fennel seeds with a flowering fennel stem, tall crop (9:19).
-    hero: spiceImg(slug, "hero", "Fennel seeds with a flowering fennel stem", "fennel-seeds-hero.webp"),
+    hero: spiceImg(slug, "hero", "Green fennel seeds spilling from a tipped glass jar onto a white surface", "fennel-seeds-hero.webp", "45% 50%"),
     // fennel-seeds-applications.webp — fennel seeds in a tea cup and spice blend (4:5).
-    detail: spiceImg(slug, "applications", "Fennel seeds with a cup of fennel tea", "fennel-seeds-applications.webp"),
+    detail: spiceImg(slug, "applications", "Fennel seeds mixed with rock sugar in a steel bowl with a spoon, served as an Indian after-meal mouth freshener", "fennel-seeds-applications.webp"),
     extra: [
       // fennel-seeds-plant.webp — fennel plant fronds, tall crop (9:19).
-      spiceImg(slug, "plant", "Feathery fennel plant fronds", "fennel-seeds-plant.webp"),
+      spiceImg(slug, "plant", "A yellow fennel umbel against a haze of feathery fennel foliage", "fennel-seeds-plant.webp"),
     ],
   },
   sections: [

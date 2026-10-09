@@ -13,7 +13,7 @@ export type BlogArticle = {
   title: string;
   description: string;
   /**
-   * The full article, read on its own page at /resources/<slug>. Articles written
+   * The full article, read on its own page at /blog/<slug>. Articles written
    * later keep their text in features/blog/bodies instead.
    */
   body?: ArticleBody;

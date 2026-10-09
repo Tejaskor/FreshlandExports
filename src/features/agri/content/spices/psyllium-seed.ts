@@ -110,9 +110,9 @@ export const psylliumSeed: AgriProduct = {
   },
   images: {
     // psyllium-seed-hero.webp — a heap of whole pinkish-grey psyllium seeds in a ceramic bowl on pale oat linen, tall crop (5:6).
-    hero: spiceImg(slug, "hero", "Whole psyllium seeds in a ceramic bowl", "psyllium-seed-hero.webp"),
+    hero: spiceImg(slug, "hero", "A hand holding a pile of raw pinkish-brown psyllium seeds above more seeds", "psyllium-seed-hero.webp"),
     // psyllium-seed-applications.webp — whole psyllium seed beside a bowl of pale husk and a loaf of seeded bread (4:3).
-    detail: spiceImg(slug, "applications", "Whole psyllium seed beside psyllium husk and a loaf of bread", "psyllium-seed-applications.webp"),
+    detail: spiceImg(slug, "applications", "A pile of pale, flaky psyllium husk on a grey background", "psyllium-seed-applications.webp"),
   },
   sections: [
     { type: "hero", variant: "diagonal", reverse: true },

@@ -77,12 +77,12 @@ export const orange: AgriProduct = {
     // Orbit hero — whole oranges with a halved orange, round crop (1:1).
     hero: img(slug, "hero", "Whole and halved fresh oranges", "Whole and halved oranges"),
     // Tabs panel — orange segments and juice (4:3).
-    detail: img(slug, "detail", "Orange segments beside a glass of fresh juice", "Orange segments and juice"),
+    detail: img(slug, "detail", "Fresh orange juice in a glass and jug with whole and cut oranges", "Orange segments and juice", "50% 60%"),
     extra: [
       // Orbit circle — a single orange slice (1:1).
-      img(slug, "slice", "A single bright orange slice", "Orange slice"),
+      img(slug, "slice", "A whole orange with halves and wedges", "Orange slice"),
       // Orbit circle — oranges on the tree (1:1).
-      img(slug, "tree", "Oranges growing on the tree", "Oranges on the tree"),
+      img(slug, "tree", "Ripe oranges growing on the tree", "Oranges on the tree"),
     ],
   },
   sections: [

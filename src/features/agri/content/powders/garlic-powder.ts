@@ -114,9 +114,9 @@ export const garlicPowder: AgriProduct = {
   },
   images: {
     // garlic-powder-hero.webp — a wooden bowl of fine off-white garlic powder beside whole garlic bulbs and a few loose cloves on a pale cream surface, framed on a deep green stage (4:5).
-    hero: powderImg(slug, "hero", "A bowl of fine garlic powder beside whole garlic bulbs", "garlic-powder-hero.webp"),
+    hero: powderImg(slug, "hero", "A measuring spoon heaped with off-white garlic powder on a white surface", "garlic-powder-hero.webp", "40% 50%"),
     // garlic-powder-applications.webp — garlic powder being sprinkled over a tray of seasoned snacks or a spice rub (4:3).
-    detail: powderImg(slug, "applications", "Garlic powder sprinkled over seasoned snacks", "garlic-powder-applications.webp"),
+    detail: powderImg(slug, "applications", "Garlic powder being shaken over pan-fried potato cubes in a cast-iron skillet", "garlic-powder-applications.webp", "50% 50%"),
     // garlic-powder-texture.webp — close-up of the powder's fine texture in a scoop (4:3).
     specs: powderImg(slug, "texture", "Close-up of fine garlic powder in a scoop", "garlic-powder-texture.webp"),
   },

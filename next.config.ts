@@ -9,27 +9,25 @@ const nextConfig: NextConfig = {
     qualities: [75, 90],
   },
   async redirects() {
-    // The Blog moved under Resources (/resources, /resources/<slug>); keep
-    // the earlier /blog links working.
+    // Retitled articles: their slugs follow the title. Each earlier address
+    // (/blog/<old>, /resources/<old>) goes straight to the final page.
+    const retitled: readonly [string, string][] = [
+      ["red-chilli-powder-buying-guide-heat-colour-and-grind", "/blog/red-chilli-powder-buying-guide-colour-heat-and-grind"],
+      [
+        "storing-red-chilli-powder-to-keep-its-colour-bright",
+        "/blog/storage-and-handling-considerations-for-bulk-chilli-powder",
+      ],
+      ["red-chilli-powder-in-sauces-snacks-and-seasoning-blends", "/products/red-chilli-powder"],
+    ];
+    // The Blog lives at /blog and /blog/<slug>. Its earlier addresses under
+    // Resources (/resources, /resources/<slug>) redirect in one hop; query
+    // strings carry over.
     const blog = [
-      { source: "/blog", destination: "/resources", permanent: true },
-      { source: "/blog/:slug", destination: "/resources/:slug", permanent: true },
-      // Red Chilli Powder articles retitled (their slugs follow the title).
-      {
-        source: "/resources/red-chilli-powder-buying-guide-heat-colour-and-grind",
-        destination: "/resources/red-chilli-powder-buying-guide-colour-heat-and-grind",
-        permanent: true,
-      },
-      {
-        source: "/resources/storing-red-chilli-powder-to-keep-its-colour-bright",
-        destination: "/resources/storage-and-handling-considerations-for-bulk-chilli-powder",
-        permanent: true,
-      },
-      {
-        source: "/resources/red-chilli-powder-in-sauces-snacks-and-seasoning-blends",
-        destination: "/products/red-chilli-powder",
-        permanent: true,
-      },
+      ...retitled.flatMap(([slug, destination]) =>
+        ["/blog", "/resources"].map((prefix) => ({ source: `${prefix}/${slug}`, destination, permanent: true })),
+      ),
+      { source: "/resources", destination: "/blog", permanent: true },
+      { source: "/resources/:slug", destination: "/blog/:slug", permanent: true },
     ];
     // The Quality page was replaced by Our Signature Ingredients; keep old
     // links and bookmarks working.

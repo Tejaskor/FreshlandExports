@@ -14,8 +14,9 @@ import type { ImageSlotData } from "@/features/agri/types";
 
 export const powdersCategory = "Powder Products";
 
-export function powderImg(slug: string, name: string, alt: string, label: string): ImageSlotData {
-  return { file: `/images/products/powders/${slug}-${name}.webp`, alt, label };
+/** `position` is the crop's CSS object-position, for an off-centre subject. */
+export function powderImg(slug: string, name: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/powders/${slug}-${name}.webp`, alt, label, ...(position && { position }) };
 }
 
 export const powderSpecsNote =

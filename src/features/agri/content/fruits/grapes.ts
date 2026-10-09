@@ -84,12 +84,12 @@ export const grapes: AgriProduct = {
   },
   images: {
     // Duo hero — large bunch of dark grapes on a deep purple ground (4:5).
-    hero: img(slug, "hero", "A large bunch of dark grapes", "Bunch of grapes"),
+    hero: img(slug, "hero", "A large bunch of dark grapes on the vine", "Bunch of grapes"),
     // Overlap intro — grapes on the vine in a vineyard (16:10).
-    detail: img(slug, "detail", "Grapes growing on the vine in a vineyard", "Grapes on the vine"),
+    detail: img(slug, "detail", "Bunches of white grapes growing on the vine in a vineyard", "Grapes on the vine"),
     extra: [
       // Duo overlap — close-up of green grapes (1:1).
-      img(slug, "green", "Close-up of green grapes", "Green grapes close-up"),
+      img(slug, "green", "Green table grapes piled in market baskets", "Green grapes close-up"),
     ],
   },
   sections: [

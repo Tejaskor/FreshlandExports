@@ -86,9 +86,9 @@ export const banana: AgriProduct = {
   },
   images: {
     // Panoramic hero — banana hands laid horizontally on warm cream (21:8).
-    hero: img(slug, "hero", "Hands of fresh bananas laid on a warm cream surface", "Fresh banana hands"),
+    hero: img(slug, "hero", "Hands of ripe yellow and green bananas", "Fresh banana hands"),
     // List image — an elongated banana bunch, portrait crop (4:5).
-    detail: img(slug, "detail", "A bunch of bananas on the plant", "Banana bunch"),
+    detail: img(slug, "detail", "A bunch of green bananas growing on the plant", "Banana bunch"),
   },
   sections: [
     { type: "hero", variant: "panoramic" },

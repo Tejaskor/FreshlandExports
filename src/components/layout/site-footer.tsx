@@ -139,7 +139,7 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className={footerLink}>
+                <Link href="/blog" className={footerLink}>
                   Blog
                 </Link>
               </li>

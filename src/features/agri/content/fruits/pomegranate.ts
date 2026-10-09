@@ -39,10 +39,10 @@ export const pomegranate: AgriProduct = {
     heading: "From Fresh Arils to Juice",
     intro: "Temporary overview of typical pomegranate uses.",
     groups: [
-      { title: "Fresh Fruit", items: ["Retail", "Fruit markets"], image: img(slug, "use-fresh", "Halved pomegranate showing its arils", "Halved pomegranate") },
-      { title: "Arils & Salads", items: ["Salads", "Garnishes", "Bowls"], image: img(slug, "use-salad", "Salad topped with pomegranate arils", "Pomegranate salad") },
-      { title: "Juices", items: ["Fresh juice", "Blends"], image: img(slug, "use-juice", "Glass of pomegranate juice", "Pomegranate juice") },
-      { title: "Food Processing", items: ["Concentrates", "Syrups", "Desserts"], image: img(slug, "use-processing", "Pomegranate syrup and dessert", "Pomegranate products") },
+      { title: "Fresh Fruit", items: ["Retail", "Fruit markets"], image: img(slug, "use-fresh", "A whole pomegranate beside a broken piece showing its arils", "Halved pomegranate") },
+      { title: "Arils & Salads", items: ["Salads", "Garnishes", "Bowls"], image: img(slug, "use-salad", "Fruit salad topped with pomegranate arils", "Pomegranate salad") },
+      { title: "Juices", items: ["Fresh juice", "Blends"], image: img(slug, "use-juice", "A glass of pomegranate juice beside a halved pomegranate", "Pomegranate juice") },
+      { title: "Food Processing", items: ["Concentrates", "Syrups", "Desserts"], image: img(slug, "use-processing", "A bowl of pomegranate arils", "Pomegranate products") },
     ],
   },
   specs: {
@@ -73,9 +73,9 @@ export const pomegranate: AgriProduct = {
   },
   images: {
     // Stage hero — whole and cut pomegranates on a burgundy ground (4:5).
-    hero: img(slug, "hero", "Whole and cut pomegranates on a dark burgundy surface", "Whole and cut pomegranates"),
+    hero: img(slug, "hero", "A whole ripe pomegranate", "Whole and cut pomegranates"),
     // Circle intro — a cross-section full of arils (1:1).
-    detail: img(slug, "detail", "Cross-section of a pomegranate full of red arils", "Pomegranate cross-section"),
+    detail: img(slug, "detail", "An opened pomegranate full of red arils", "Pomegranate cross-section"),
   },
   sections: [
     { type: "hero", variant: "stage" },

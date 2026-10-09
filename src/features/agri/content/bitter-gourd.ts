@@ -72,9 +72,9 @@ export const bitterGourd: AgriProduct = {
   },
   images: {
     // Split hero — bitter gourds showing their ridged texture (5:4).
-    hero: img(slug, "hero", "Fresh bitter gourds with ridged green skin", "Fresh bitter gourds"),
+    hero: img(slug, "hero", "Fresh bitter gourds with bumpy ridged green skin at a market in Hyderabad", "Fresh bitter gourds"),
     // Overlap intro — close-up of bitter gourd texture and a sliced cross-section (16:10).
-    detail: img(slug, "detail", "Close-up of bitter gourd texture and slices", "Bitter gourd texture"),
+    detail: img(slug, "detail", "Close-up of ridged, warty bitter gourds in a white bowl", "Bitter gourd texture"),
   },
   sections: [
     { type: "hero", variant: "split", reverse: true },

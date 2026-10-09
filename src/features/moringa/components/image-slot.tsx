@@ -107,7 +107,7 @@ export function ImageSlot({
    */
   framed?: boolean;
 }) {
-  const slot = ownSlot ?? moringaImages[image as MoringaImageKey];
+  const slot: MoringaImage = ownSlot ?? moringaImages[image as MoringaImageKey];
   const onDisk = existsSync(path.join(process.cwd(), "public", slot.file));
   const palette = tones[tone];
 
@@ -124,6 +124,7 @@ export function ImageSlot({
           priority={priority}
           sizes={sizes}
           className={cn("object-cover", mediaClassName)}
+          style={slot.position ? { objectPosition: slot.position } : undefined}
         />
       ) : (
         <div

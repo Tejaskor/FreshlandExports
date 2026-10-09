@@ -40,10 +40,10 @@ export const corianderSeeds: AgriProduct = {
     heading: "Around the Kitchen",
     intro: "Temporary overview — replace with final culinary applications.",
     groups: [
-      { title: "Curry Blends", items: ["Curry powder", "Masalas"], image: spiceImg(slug, "culinary-use", "Coriander seeds with a spice blend", "coriander-seeds-culinary-use.webp") },
-      { title: "Pickling", items: ["Pickling spice", "Brines"], image: spiceImg(slug, "use-pickling", "Pickles with coriander seeds", "coriander-seeds-use-pickling.webp") },
-      { title: "Baking", items: ["Breads", "Biscuits"], image: spiceImg(slug, "use-baking", "Bread topped with coriander seeds", "coriander-seeds-use-baking.webp") },
-      { title: "Rubs & Marinades", items: ["Spice rubs", "Marinades"], image: spiceImg(slug, "use-rubs", "Crushed coriander in a spice rub", "coriander-seeds-use-rubs.webp") },
+      { title: "Curry Blends", items: ["Curry powder", "Masalas"], image: spiceImg(slug, "culinary-use", "A loose heap of whole golden-brown coriander seeds", "coriander-seeds-culinary-use.webp") },
+      { title: "Pickling", items: ["Pickling spice", "Brines"], image: spiceImg(slug, "use-pickling", "Indian mixed pickle in oily spiced masala on a round plate", "coriander-seeds-use-pickling.webp") },
+      { title: "Baking", items: ["Breads", "Biscuits"], image: spiceImg(slug, "use-baking", "A loaf of dark Borodinsky rye bread crusted with whole coriander seeds", "coriander-seeds-use-baking.webp") },
+      { title: "Rubs & Marinades", items: ["Spice rubs", "Marinades"], image: spiceImg(slug, "use-rubs", "Spoons of coriander seeds and pepper laid out with shallots, garlic, lemongrass, galangal and kluwak nuts for an Indonesian spice paste", "coriander-seeds-use-rubs.webp") },
     ],
   },
   commercial: {
@@ -99,7 +99,7 @@ export const corianderSeeds: AgriProduct = {
   },
   images: {
     // coriander-seeds-hero.webp — coriander seeds spilling from a bowl (5:6, diagonal crop).
-    hero: spiceImg(slug, "hero", "Coriander seeds spilling from a bowl", "coriander-seeds-hero.webp"),
+    hero: spiceImg(slug, "hero", "Whole coriander seeds in a worn brass bowl, seen from above", "coriander-seeds-hero.webp"),
     detail: spiceImg(slug, "detail", "Close-up of round coriander seeds", "coriander-seeds-detail.webp"),
     // Existing 300 px catalogue photograph, used only in a small circle.
     thumb: "/images/products/coriander-seeds.webp",

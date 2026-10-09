@@ -98,9 +98,9 @@ export const redChilli: AgriProduct = {
   },
   images: {
     // red-chilli-hero.webp — a heap of whole dried red chillies on a deep green ground (4:5).
-    hero: spiceImg(slug, "hero", "A heap of whole dried red chillies", "red-chilli-hero.webp"),
+    hero: spiceImg(slug, "hero", "A bunch of glossy dried red chillies with green stalks on a sunlit wooden board", "red-chilli-hero.webp"),
     // red-chilli-applications.webp — dried chillies with chilli flakes and a chilli sauce (4:3).
-    detail: spiceImg(slug, "applications", "Dried red chillies with chilli flakes and sauce", "red-chilli-applications.webp"),
+    detail: spiceImg(slug, "applications", "Jars of chilli sauce and chilli flakes in oil in a woven basket on a restaurant table", "red-chilli-applications.webp"),
     // Existing 300 px catalogue photograph, used only in a small circle.
     thumb: "/images/products/red-chilli.webp",
   },

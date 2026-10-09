@@ -74,9 +74,9 @@ export const eggplant: AgriProduct = {
   },
   images: {
     // Stage hero — glossy aubergines on a deep aubergine ground (4:5).
-    hero: img(slug, "hero", "Glossy purple eggplants on a dark background", "Fresh eggplants"),
+    hero: img(slug, "hero", "Glossy round purple eggplants packed in a green crate", "Fresh eggplants"),
     // Arch intro — a single eggplant with its green calyx (4:5).
-    detail: img(slug, "detail", "A single glossy eggplant with its green calyx", "Single eggplant"),
+    detail: img(slug, "detail", "Single glossy dark purple eggplant with its green calyx, growing on the plant", "Single eggplant", "62% 50%"),
   },
   sections: [
     { type: "hero", variant: "stage", reverse: true },
