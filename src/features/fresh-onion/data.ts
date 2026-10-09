@@ -1,18 +1,21 @@
 import type { IconName } from "@/components/ui/icon";
 import type { MoringaImage } from "@/features/moringa/images";
 import { freshOnionImages } from "@/features/fresh-onion/images";
+import { moqFor } from "@/features/products/moq";
 
 /**
  * Content for the Fresh Onion page, as supplied. Size, packaging, origin,
  * supply and shelf life stay qualified ("as per buyer requirements",
- * "subject to confirmation"); the MOQ is the confirmed 500 kg.
+ * "subject to confirmation"); the MOQ is the agricultural products' MOQ.
  */
+
+const moq = moqFor("onion");
 
 export const freshOnionHero = {
   eyebrow: "Agricultural Export Products",
   subheading: "Bulk Fresh Onions for Importers, Distributors and Food Businesses.",
   body: "Freshland Exports supplies fresh onions selected for firmness, dry outer skins and a consistent appearance, in bulk quantities for wholesale, retail and food-processing buyers. Size, packaging and quantities are agreed with each order.",
-  highlights: ["Bulk Export Supply", "Selected for Quality", "MOQ 500 kg"],
+  highlights: ["Bulk Export Supply", "Selected for Quality", `MOQ ${moq}`],
 } as const;
 
 export const freshOnionAbout = {
@@ -51,7 +54,7 @@ export const freshOnionFeatures: readonly { title: string; text: string; icon: I
   },
   {
     title: "Bulk Supply",
-    text: "Bulk quantities from a 500 kg minimum order, with packaging and quantities agreed for each shipment.",
+    text: `Bulk quantities from a minimum order of ${moq}, with packaging and quantities agreed for each shipment.`,
     icon: "globe",
   },
 ];
@@ -111,13 +114,12 @@ export const freshOnionStorage = {
   ],
 } as const;
 
-/** MOQ confirmed by Freshland Exports for fresh onions: 500 kg. */
+/** MOQ confirmed by Freshland Exports for agricultural products, fresh onions included. */
 export const freshOnionMoq = {
   label: "Minimum Order Quantity",
-  quantity: "500",
-  unit: "KG",
+  quantity: moq,
   body: "Bulk supply available for wholesale, food-service, processing and export buyers.",
-  highlight: "MOQ: 500 KG",
+  highlight: `MOQ: ${moq}`,
 } as const;
 
 export type FreshOnionFaq = { question: string; answer: string };
@@ -131,7 +133,7 @@ export const freshOnionFaqs: readonly FreshOnionFaq[] = [
   },
   {
     question: "What is the minimum order quantity?",
-    answer: "The minimum order quantity for fresh onions is 500 kg.",
+    answer: `The minimum order quantity for fresh onions is ${moq}.`,
   },
   {
     question: "Can you supply onions in a specific size?",

@@ -106,7 +106,20 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
 
-  "red-chilli-powder": [labTesting, facility("5"), facility("2")],
+  "red-chilli-powder": [
+    {
+      src: product("Powder Product/Red Chilli Powder/red-chilli-powder-key-features.webp"),
+      alt: "Red chilli powder in a wooden bowl beside dried red chillies and loose chilli seeds",
+    },
+    {
+      src: product("Powder Product/Red Chilli Powder/red-chilli-powder-overview.webp"),
+      alt: "A heaped wooden bowl of red chilli powder with whole dried chillies and chilli flakes",
+    },
+    {
+      src: product("Powder Product/Red Chilli Powder/red-chilli-powder-storage.webp"),
+      alt: "Red chilli powder in a sealed clip-top jar beside a bowl of powder and dried chillies",
+    },
+  ],
   "black-pepper-powder": [microscope, facility("6"), shot("Black Pepper Powder.webp", "Ground black pepper")],
   "coriander-seeds-powder": [shipping, fieldCheck, facility("7")],
   "garlic-powder": [labTesting, facility("4"), facility("6")],

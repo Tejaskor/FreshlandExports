@@ -6,7 +6,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
 import { MoqPanel } from "@/features/products/components/moq-panel";
-import { findMoq } from "@/features/products/moq";
+import { moqFor } from "@/features/products/moq";
 import { type } from "@/features/moringa/styles";
 import { TurmericSun } from "@/features/turmeric-powder/components/turmeric-sun";
 import {
@@ -121,7 +121,7 @@ export function TurmericDetails() {
         {/* --- Minimum order quantity ------------------------------------------ */}
         <div className="mt-10 lg:mt-12">
           <MoqPanel
-            value={findMoq("turmeric-powder")}
+            value={moqFor("turmeric-powder")}
             className="border-[var(--t-gold)]/45 bg-[var(--t-pale)]"
             accentClassName="text-forest"
             iconClassName="bg-[var(--t-glow)] text-forest"

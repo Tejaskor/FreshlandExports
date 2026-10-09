@@ -1,4 +1,5 @@
 import type { MoringaImageKey } from "@/features/moringa/images";
+import { moqFor } from "@/features/products/moq";
 
 /**
  * Content for the Moringa Powder page.
@@ -258,9 +259,9 @@ export const qualityPoints: readonly { title: string; text: string }[] = [
 export const moringaMoq = {
   label: "Minimum Order Quantity",
   heading: "Minimum Order:",
-  quantity: "500 KG",
+  quantity: moqFor("moringa-powder"),
   body: "Bulk supply available for wholesale, food-service, processing and export buyers.",
-  highlight: "MOQ: 500 KG",
+  highlight: `MOQ: ${moqFor("moringa-powder")}`,
 } as const;
 
 const toBeConfirmed = "To be confirmed";

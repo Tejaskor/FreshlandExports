@@ -3,6 +3,9 @@ import { Reveal } from "@/animations/reveal";
 import { moqCopy } from "@/features/products/moq";
 import { cn } from "@/lib/utils";
 
+/** Ranges such as "500 KG to 1 MT" are set smaller and may wrap, so they fit a phone-width card. */
+const rangeLength = 8;
+
 /**
  * Minimum Order Quantity — a compact, light card in the style of the Moringa
  * and Fresh Onion MOQ cards: a bulk-sack icon, the label, the quantity as the
@@ -17,7 +20,7 @@ export function MoqPanel({
   accentClassName = "text-forest",
   iconClassName = "bg-sage-100 text-forest",
 }: {
-  /** The quantity, e.g. "500 KG". */
+  /** The quantity, e.g. "500 KG" or "100 KG to 500 KG". */
   value: string;
   /** Replaces the shared one-line description. */
   body?: string;
@@ -63,7 +66,10 @@ export function MoqPanel({
             <h2
               id="moq-heading"
               className={cn(
-                "mt-1.5 font-display text-[clamp(2.25rem,1.7rem+1.8vw,3.25rem)] leading-none font-medium tracking-[-0.02em] whitespace-nowrap",
+                "mt-1.5 font-display leading-none font-medium tracking-[-0.02em]",
+                value.length > rangeLength
+                  ? "text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] text-balance"
+                  : "text-[clamp(2.25rem,1.7rem+1.8vw,3.25rem)] whitespace-nowrap",
                 accentClassName,
               )}
             >

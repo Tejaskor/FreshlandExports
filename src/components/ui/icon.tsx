@@ -31,6 +31,9 @@ export type IconName =
   | "download"
   | "user"
   | "calendar"
+  | "home"
+  | "package"
+  | "info"
   | "linkedin"
   | "instagram"
   | "youtube";
@@ -65,6 +68,9 @@ const strokePaths: Partial<Record<IconName, string>> = {
   download: "M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14",
   user: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 9v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1",
   calendar: "M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm-1 4h16M8 4v4m8-4v4",
+  home: "M3.5 11 12 4l8.5 7M6 9.5V20h4.5v-6h3v6H18V9.5",
+  package: "M12 3 4 7.5v9L12 21l8-4.5v-9L12 3ZM4 7.5l8 4.5 8-4.5M12 12v9M8 5.25l8 4.5",
+  info: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-10.5V16m0-8.5v.01",
 };
 
 const filledPaths: Partial<Record<IconName, string>> = {

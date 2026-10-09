@@ -134,7 +134,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
   /* Deep data sheet, two columns of rows. */
   if (variant === "sheet") {
     return (
-      <section aria-labelledby="specs-heading" className="bg-white py-14 lg:py-20">
+      <section id="specifications" aria-labelledby="specs-heading" className="scroll-mt-24 bg-white py-14 lg:py-20">
         <Container>
           <Reveal variant="rise">
             <div className="rounded-[2rem_0.75rem_2rem_2rem] bg-[var(--p-deep)] p-6 text-white shadow-[var(--shadow-panel)] sm:p-10">
@@ -163,7 +163,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
   /* Key–value tiles. */
   if (variant === "tiles") {
     return (
-      <section aria-labelledby="specs-heading" className="bg-[var(--p-tint)] py-14 lg:py-20">
+      <section id="specifications" aria-labelledby="specs-heading" className="scroll-mt-24 bg-[var(--p-tint)] py-14 lg:py-20">
         <Container>
           <SectionHeader id="specs-heading" eyebrow={specs.eyebrow} heading={specs.heading} intro={specs.note} />
           <Reveal as="dl" stagger={0.04} variant="rise" className="mt-10 grid gap-3 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
@@ -176,9 +176,11 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
               </div>
             ))}
           </Reveal>
-          <div className="mt-8">
-            <EnquiryNote />
-          </div>
+          {specs.enquiry !== false && (
+            <div className="mt-8">
+              <EnquiryNote />
+            </div>
+          )}
         </Container>
       </section>
     );
@@ -186,7 +188,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
 
   /* Table beside a photograph and the enquiry card. */
   return (
-    <section aria-labelledby="specs-heading" className="bg-white py-14 lg:py-20">
+    <section id="specifications" aria-labelledby="specs-heading" className="scroll-mt-24 bg-white py-14 lg:py-20">
       <Container>
         <SectionHeader id="specs-heading" eyebrow={specs.eyebrow} heading={specs.heading} align="start" />
         <div className="mt-10 grid gap-6 lg:mt-12 lg:grid-cols-12 lg:gap-8">

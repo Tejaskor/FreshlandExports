@@ -1,4 +1,5 @@
 import { specsNote } from "@/features/agri/content/helpers";
+import { moqFor } from "@/features/products/moq";
 import type { AgriProduct } from "@/features/agri/types";
 
 // Variety, size, grade, packaging, origin and supply stay qualified until confirmed.
@@ -99,7 +100,7 @@ export const cabbage: AgriProduct = {
       },
       {
         question: "What is the minimum order quantity?",
-        answer: "The minimum order quantity for fresh cabbage is 500 KG.",
+        answer: `The minimum order quantity for fresh cabbage is ${moqFor(slug)}.`,
       },
       {
         question: "How is fresh cabbage packed for bulk supply?",

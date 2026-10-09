@@ -89,10 +89,12 @@ export function FreshOnionSpecs() {
                     <p className="type-label text-[0.8125rem] text-leaf sm:text-[0.875rem]">
                       {freshOnionMoq.label}
                     </p>
-                    <h3 id="moq-heading" className="mt-1.5 font-display leading-none font-medium text-forest">
+                    <h3
+                      id="moq-heading"
+                      className="mt-1.5 font-display text-[clamp(1.75rem,1.4rem+1.2vw,2.5rem)] leading-none font-medium text-balance text-forest"
+                    >
                       <span className="sr-only">Minimum order quantity: </span>
-                      <span className="text-[clamp(2.5rem,2rem+1.6vw,3.25rem)]">{freshOnionMoq.quantity}</span>
-                      <span className="ml-1.5 text-[1.5rem] text-rust">{freshOnionMoq.unit}</span>
+                      {freshOnionMoq.quantity}
                     </h3>
                   </div>
                   {/* Scale — bulk quantity. */}

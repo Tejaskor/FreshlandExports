@@ -1,10 +1,16 @@
-import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
-import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import { powdersCategory } from "@/features/agri/content/powders/helpers";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
-// TEMPORARY content — replace with final product copy. Heat and colour
-// depend on the chilli variety and are confirmed with each order.
+// B2B copy for bulk buyers. Heat, colour value, particle size, moisture,
+// origin and documentation are not yet verified for this product, so they are
+// left out of the specifications rather than shown as figures. The MOQ comes
+// from features/products/moq (Red Chilli Powder is ordered under spices).
 const slug = "red-chilli-powder";
+
+/** Photography in public/images/products/Powder Product/Red Chilli Powder/. */
+function img(file: string, alt: string, label: string): ImageSlotData {
+  return { file: `/images/products/Powder Product/Red Chilli Powder/${file}`, alt, label };
+}
 
 export const redChilliPowder: AgriProduct = {
   slug,
@@ -13,121 +19,213 @@ export const redChilliPowder: AgriProduct = {
   // Muted brick red on a deep forest ground, with a warm blush tint.
   theme: { accent: "#9C3B22", deep: "#1A3627", tint: "#FBF2EC", soft: "#EBC8B6" },
   hero: {
-    eyebrow: "Premium Spice Powders",
+    eyebrow: "Powder Products",
     title: "Red Chilli Powder",
-    tagline: "Colour and heat, ground fine.",
-    body: "Ground red chilli powder with heat and colour matched by variety, supplied in bulk for spice blenders, sauce makers and food manufacturers.",
-    highlights: ["Ground from dried chillies", "Heat & colour by variety", "Bulk supply"],
-    badge: "Variety matched to order",
+    tagline: "Colour, Heat and Flavour for Food Manufacturing",
+    body: "Finely ground red chilli for spice blends, seasonings, sauces and savoury food applications. Enquire about available grades, heat levels, product specifications and bulk supply.",
+    highlights: ["Ground from dried red chillies", "Colour and heat by requirement", "Bulk supply enquiries"],
+    badge: "Bulk enquiries welcome",
     card: { title: "Heat & Colour", text: "Confirmed with each enquiry" },
-    secondary: "enquire",
+    secondary: "specs",
   },
   intro: {
-    eyebrow: "Introducing Red Chilli Powder",
-    heading: "The Red Behind Every Curry",
-    statement: "Vivid colour, warming heat, ready to blend.",
+    eyebrow: "Product Overview",
+    heading: "Red Chilli Powder for Commercial Food Applications",
+    statement: "Colour, chilli flavour and pungency in one ingredient.",
     body: [
-      "Red chilli powder is made by grinding dried red chillies (Capsicum annuum) into a fine, free-flowing powder that brings both colour and pungency to food.",
-      "Chilli varieties differ widely, from mild, deeply coloured types to sharp, fiery ones, so the variety is chosen to suit how the buyer will use the powder.",
+      "Red chilli powder is made by grinding dried red chilli peppers. In food formulations it can contribute red colour, a characteristic chilli flavour and pungency that ranges from mild to hot, depending on the chillies used.",
+      "It is used in spice blends, seasonings, sauces, marinades and a wide range of savoury foods. Colour, heat and grind are discussed with each buyer so the powder suits the intended application.",
     ],
     highlights: [
       { label: "Botanical", value: "Capsicum annuum" },
       { label: "Form", value: "Ground powder" },
-      { label: "Colour", value: "Bright to deep red" },
+      { label: "Colour", value: "Red, varies by variety" },
       { label: "Heat", value: "Varies by variety" },
-      { label: "Aroma", value: "Pungent, warm" },
-      { label: "Texture", value: "Fine, free-flowing" },
+      { label: "Flavour", value: "Characteristic chilli" },
+      { label: "Uses", value: "Blends, sauces, seasonings" },
     ],
   },
   features: {
-    eyebrow: "Product Highlights",
-    heading: "What Buyers Look For",
+    eyebrow: "Key Features",
+    heading: "What Buyers Specify",
     items: [
-      { title: "Colour", text: "Bright to deep red, set by the chilli variety and how the pods are dried.", icon: "layers" },
-      { title: "Heat", text: "From mild to hot — chosen per order to suit the finished product.", icon: "target" },
-      { title: "Aroma", text: "Pungent and warm, with a light smoky note.", icon: "sprout" },
-      { title: "Texture", text: "Finely ground for even mixing; grind agreed with the buyer.", icon: "flask" },
+      { title: "Colour Profile", text: "The shade of red depends on the chilli variety and drying. Share the colour your product needs." },
+      { title: "Heat-Level Requirements", text: "Pungency ranges from mild to hot. Tell us the heat level your formulation calls for." },
+      { title: "Form and Particle Size", text: "Supplied as a ground powder. Fineness is discussed against how the powder will be used." },
+      { title: "Characteristic Flavour", text: "Brings the familiar warm, pungent taste of red chilli to savoury products." },
+      { title: "Application Flexibility", text: "Works in dry blends, wet sauces and pastes, coatings and cooked dishes." },
+      { title: "Buyer-Specific Specifications", text: "Requirements are reviewed with each enquiry, and what can be supplied is confirmed before order." },
     ],
   },
   uses: {
-    eyebrow: "Culinary Applications",
-    heading: "Where Chilli Powder Works",
-    intro: "Temporary overview — replace with final culinary applications.",
+    eyebrow: "Applications",
+    heading: "Where Red Chilli Powder Is Used",
+    intro: "Common commercial uses for red chilli powder across food manufacturing and processing.",
     groups: [
-      { title: "Curries & Gravies", text: "For colour and heat in everyday cooking.", items: ["Curries", "Gravies", "Dals"] },
-      { title: "Marinades & Rubs", text: "Mixed into pastes for grilled and roasted dishes.", items: ["Tandoori marinades", "Meat rubs", "Grills"] },
-      { title: "Spice Blends", text: "A base ingredient in many masalas and seasonings.", items: ["Curry powder", "Sambar masala", "Seasoning mixes"] },
-      { title: "Sauces & Snacks", text: "Heat and colour for condiments and savoury snacks.", items: ["Chilli sauces", "Chutneys", "Snack dusting"] },
+      {
+        title: "Spice Blends and Curry Powders",
+        text: "A base ingredient for colour and heat in dry spice mixes.",
+        items: ["Curry powders", "Masala blends", "Chilli spice mixes"],
+      },
+      {
+        title: "Seasonings and Snack Coatings",
+        text: "Dusted or tumbled onto snacks as part of a seasoning.",
+        items: ["Chip seasonings", "Extruded snack coatings", "Namkeen and nuts"],
+      },
+      {
+        title: "Sauces and Chilli Pastes",
+        text: "Adds red colour and pungency to wet formulations.",
+        items: ["Chilli sauces", "Chilli pastes", "Cooking sauces"],
+      },
+      {
+        title: "Marinades and Condiments",
+        text: "Mixed into marinades, rubs and table condiments.",
+        items: ["Marinades", "Dry rubs", "Chutneys and dips"],
+      },
+      {
+        title: "Ready Meals and Convenience Foods",
+        text: "Used in prepared dishes that need consistent heat and colour.",
+        items: ["Ready meals", "Instant mixes", "Frozen meals"],
+      },
+      {
+        title: "Food Manufacturing",
+        text: "An ingredient for processors working to their own recipes.",
+        items: ["Meat and savoury products", "Soups and gravies", "Private-label packing"],
+      },
+    ],
+  },
+  commercial: {
+    eyebrow: "Prospective Buyers",
+    heading: "Who Can Benefit from Red Chilli Powder?",
+    items: [
+      { title: "Spice and Masala Manufacturers", text: "For curry powders, masalas and blended spice ranges." },
+      { title: "Seasoning Companies", text: "For savoury seasonings and flavour blends." },
+      { title: "Snack and Savoury Food Producers", text: "For coatings, dustings and spiced savoury products." },
+      { title: "Sauce and Condiment Manufacturers", text: "For chilli sauces, pastes, marinades and dips." },
+      { title: "Importers and Distributors", text: "For supplying food businesses in their own markets." },
+      { title: "Bulk Ingredient Wholesalers", text: "For resale to processors, food service and repackers." },
     ],
   },
   process: {
     eyebrow: "Product Journey",
     heading: "From Pod to Powder",
+    note: "A general outline of how red chilli powder is made. Process details are confirmed with each enquiry.",
+    image: img(
+      "red-chilli-processing-selection.webp",
+      "Gloved hands sorting dried red chillies on a stainless steel table",
+      "Dried red chillies being sorted",
+    ),
     steps: [
-      { title: "Selection", text: "Dried chillies are chosen by variety for heat and colour." },
-      { title: "Cleaning", text: "Pods are cleaned of dust and foreign matter." },
-      { title: "Grinding", text: "Ground to the fineness the buyer requires." },
-      { title: "Sieving", text: "Sifted for an even, free-flowing powder." },
-      { title: "Packing", text: "Packed to buyer requirements." },
+      { title: "Selection", text: "Dried red chillies are chosen to suit the colour and heat required." },
+      { title: "Cleaning", text: "The chillies are cleaned to remove dust and foreign matter." },
+      { title: "Preparation", text: "The cleaned chillies are prepared for grinding." },
+      { title: "Grinding", text: "The chillies are ground into powder." },
+      { title: "Packing", text: "The powder is packed in sealed packaging." },
     ],
   },
   specs: {
     eyebrow: "Product Specifications",
     heading: "Red Chilli Powder Specifications",
-    rows: spiceSpecs(
-      "Red Chilli Powder",
-      [
-        { label: "Appearance", value: "Fine, free-flowing powder" },
-        { label: "Colour", value: "Red, varies by variety" },
-        { label: "Aroma", value: "Pungent, warm" },
-        { label: "Heat & Colour Value", value: "To be confirmed", pending: true },
-        { label: "Moisture & Mesh Size", value: "To be confirmed", pending: true },
-      ],
-      {
-        form: "Ground powder",
-        packaging: "As per buyer requirements",
-        storage: "Cool, dry, airtight, away from light",
-        applications: "Spice blends, sauces, seasonings, snacks",
-      },
-      slug,
-    ),
-    note: powderSpecsNote,
+    rows: [
+      { label: "Product Name", value: "Red Chilli Powder" },
+      { label: "Product Type", value: "Ground spice powder" },
+      { label: "Botanical Name", value: "Capsicum annuum" },
+      { label: "Form", value: "Ground powder" },
+      { label: "Colour", value: "Red" },
+      { label: "Aroma & Flavour", value: "Characteristic chilli aroma and pungent flavour" },
+      { label: "Applications", value: "Spice blends, seasonings, sauces and savoury foods" },
+      { label: "Packaging", value: "Suitable packaging for commercial supply" },
+    ],
+    note: "Key product details for buyers sourcing red chilli powder for commercial food applications.",
+    enquiry: false,
   },
+  moqBody: "Bulk order quantities range from 100 KG to 500 KG, depending on product requirements and the agreed order.",
   storage: {
-    heading: "Keeping the Colour Bright",
-    text: "Chilli powder fades and loses pungency with light, heat and moisture, and can cake if it picks up damp.",
-    points: ["Keep in sealed, lined packaging", "Store cool and dry", "Protect from direct light", "Reseal opened bags promptly"],
+    heading: "Storage & Handling",
+    text: "Keep red chilli powder in suitable sealed packaging, in a clean, dry environment.",
+    points: [
+      "Keep packaging sealed when not in use",
+      "Store in a clean, dry area",
+      "Protect from excessive heat and moisture",
+      "Keep away from direct sunlight",
+      "Protect from contamination",
+      "Reseal opened packs promptly",
+    ],
   },
   faqs: {
     eyebrow: "FAQ",
     heading: "Red Chilli Powder Questions",
-    items: spiceFaqs("Red chilli powder", [
-      { question: "How hot is your chilli powder?", answer: "Heat depends on the chilli variety used, so it is agreed with each order. Tell us the heat level your product needs and we will advise." },
-      { question: "Can you supply powder for colour rather than heat?", answer: "Yes — milder, deeply coloured varieties can be selected for buyers who want colour first. Colour value is confirmed with each quotation." },
-      { question: "Can the grind be adjusted?", answer: "Fineness can be discussed with our team and is confirmed with each enquiry." },
-    ], slug),
+    items: [
+      {
+        question: "What is red chilli powder made from?",
+        answer: "It is made by grinding dried red chilli peppers into a powder.",
+      },
+      {
+        question: "What are the main uses of red chilli powder?",
+        answer: "It is used in spice blends and curry powders, seasonings and snack coatings, sauces and chilli pastes, marinades, condiments, ready meals and other savoury foods.",
+      },
+      {
+        question: "Can I specify the required colour and heat level?",
+        answer: "Yes, share the colour and heat level your application needs. Colour and heat depend on the chillies used, so what can be supplied is confirmed with each enquiry.",
+      },
+      {
+        question: "What particle size or mesh is available?",
+        answer: "Particle size has not yet been confirmed for this product. Tell us the fineness you need and our team will advise.",
+      },
+      {
+        question: "Is red chilli powder available for bulk orders?",
+        answer: "Yes. Bulk order quantities range from 100 KG to 500 KG, depending on product requirements and the agreed order. Share your required quantity and destination market, and our team will confirm availability.",
+      },
+      {
+        question: "What packaging options are available?",
+        answer: "Packaging is discussed with each enquiry. Let us know your preferred pack type and size.",
+      },
+      {
+        question: "Can I request product specifications or test reports?",
+        answer: "You can request them with your enquiry. Our team will let you know which specifications and documents are available for your order.",
+      },
+      {
+        question: "How can I request a quotation?",
+        answer: "Use the Request a Quote form on this page. Include your application, required colour and heat profile, quantity and destination market.",
+      },
+    ],
   },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Source Red Chilli Powder",
     body: "Tell us the heat level, colour, quantity and destination you need, and our team will reply with availability and pricing.",
   },
+  quote: {
+    body: "Share your target application, required colour and heat profile, quantity and destination market. Our team can follow up to discuss available specifications and bulk-supply requirements.",
+  },
   images: {
-    // red-chilli-powder-hero.webp — a heap of vivid red chilli powder in a wide bowl with a few whole dried chillies beside it, on a pale blush surface (16:10).
-    hero: powderImg(slug, "hero", "A bowl of red chilli powder beside whole dried chillies", "red-chilli-powder-hero.webp"),
-    // red-chilli-powder-applications.webp — chilli powder being stirred into a curry, with a tandoori marinade and a bowl of chilli sauce nearby (4:3).
-    detail: powderImg(slug, "applications", "Red chilli powder added to a curry and a marinade", "red-chilli-powder-applications.webp"),
+    hero: img(
+      "red-chilli-powder-hero.webp",
+      "A bowl of red chilli powder surrounded by whole dried red chillies and chilli flakes",
+      "Red chilli powder",
+    ),
+    detail: img(
+      "red-chilli-powder-overview.webp",
+      "Red chilli powder heaped in a wooden bowl beside dried red chillies",
+      "Red chilli powder overview",
+    ),
+    uses: img(
+      "red-chilli-powder-applications.webp",
+      "Red chilli powder in a bowl among a chilli curry, a vegetable curry and dried red chillies",
+      "Red chilli powder applications",
+    ),
   },
   sections: [
     { type: "hero", variant: "editorial" },
     { type: "intro", variant: "split", shape: "pill" },
     { type: "features", variant: "alternating" },
     { type: "uses", variant: "tabs" },
+    { type: "commercial", variant: "numbered" },
     { type: "process" },
     { type: "specs", variant: "tiles" },
     { type: "storage" },
     { type: "faq", variant: "split" },
     { type: "related" },
-    { type: "contact", variant: "centered" },
+    { type: "contact", variant: "split" },
   ],
 };

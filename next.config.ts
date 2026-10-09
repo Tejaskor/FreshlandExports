@@ -14,6 +14,22 @@ const nextConfig: NextConfig = {
     const blog = [
       { source: "/blog", destination: "/resources", permanent: true },
       { source: "/blog/:slug", destination: "/resources/:slug", permanent: true },
+      // Red Chilli Powder articles retitled (their slugs follow the title).
+      {
+        source: "/resources/red-chilli-powder-buying-guide-heat-colour-and-grind",
+        destination: "/resources/red-chilli-powder-buying-guide-colour-heat-and-grind",
+        permanent: true,
+      },
+      {
+        source: "/resources/storing-red-chilli-powder-to-keep-its-colour-bright",
+        destination: "/resources/storage-and-handling-considerations-for-bulk-chilli-powder",
+        permanent: true,
+      },
+      {
+        source: "/resources/red-chilli-powder-in-sauces-snacks-and-seasoning-blends",
+        destination: "/products/red-chilli-powder",
+        permanent: true,
+      },
     ];
     // The Quality page was replaced by Our Signature Ingredients; keep old
     // links and bookmarks working.

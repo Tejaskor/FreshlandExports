@@ -57,6 +57,7 @@ export function AgriPage({ product }: { product: AgriProduct }) {
                 <Container>
                   <MoqPanel
                     value={moq}
+                    body={product.moqBody}
                     className="bg-[var(--p-tint)]"
                     accentClassName="text-[var(--p-deep)]"
                     iconClassName="bg-white text-[var(--p-deep)]"

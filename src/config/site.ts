@@ -27,10 +27,10 @@ export const siteConfig = {
     "probiotics manufacturer",
   ],
   contact: {
-    // PLACEHOLDER — not Freshland Exports' real details. Replace the email and
-    // phone below with the confirmed ones; the footer, /contact page and form
-    // error messages all read them from here.
-    email: "enquiry@freshland-exports.example.com",
+    // The footer, /contact page and form error messages all read these.
+    // The email is confirmed. PLACEHOLDER: the phone and address below are
+    // not Freshland Exports' real details yet; replace them with confirmed ones.
+    email: "info@freshlandexports.com",
     phone: "+91 20 4000 1200",
     address: {
       street: "Botanical Estate Road",
@@ -161,9 +161,9 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
 ] as const;
 
 export const legalNav: readonly NavItem[] = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms & Conditions", href: "/terms" },
-  { label: "Sitemap", href: "/sitemap.xml" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Sitemap", href: "/site-map" },
 ] as const;
 
 /** Routes emitted into sitemap.xml. Extend as real pages land. */
@@ -178,4 +178,7 @@ export const staticRoutes: readonly string[] = [
   "/resources",
   "/certificates",
   "/contact",
+  "/privacy-policy",
+  "/terms-and-conditions",
+  "/site-map",
 ] as const;

@@ -1,4 +1,5 @@
 import { specsNote } from "@/features/agri/content/helpers";
+import { moqFor } from "@/features/products/moq";
 import type { AgriProduct } from "@/features/agri/types";
 
 // Size, grade, packaging, origin and supply stay qualified until confirmed.
@@ -105,7 +106,7 @@ export const elephantYam: AgriProduct = {
       },
       {
         question: "What is the minimum order quantity?",
-        answer: "The minimum order quantity for elephant yam is 500 KG.",
+        answer: `The minimum order quantity for elephant yam is ${moqFor(slug)}.`,
       },
       {
         question: "How is Elephant Yam packed?",

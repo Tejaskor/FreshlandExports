@@ -1,4 +1,5 @@
 import { specsNote } from "@/features/agri/content/helpers";
+import { moqFor } from "@/features/products/moq";
 import type { AgriProduct } from "@/features/agri/types";
 
 // Variety, size, grade, packaging, origin and supply stay qualified until confirmed.
@@ -103,7 +104,7 @@ export const cucumber: AgriProduct = {
     items: [
       { question: "What type of fresh cucumber do you supply?", answer: "Fresh whole cucumbers selected according to buyer requirements." },
       { question: "What sizes or grades are available?", answer: "Size and grade can be supplied according to buyer requirements and availability." },
-      { question: "What is the minimum order quantity?", answer: "500 KG." },
+      { question: "What is the minimum order quantity?", answer: `${moqFor(slug)}.` },
       { question: "How are cucumbers packed?", answer: "Packaging can be arranged according to buyer and shipment requirements." },
       {
         question: "How should fresh cucumbers be stored?",

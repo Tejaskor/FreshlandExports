@@ -1,4 +1,5 @@
 import { specsNote } from "@/features/agri/content/helpers";
+import { moqFor } from "@/features/products/moq";
 import type { AgriProduct } from "@/features/agri/types";
 
 // Facts come from the existing Garlic catalogue entry (forms, packing). Size,
@@ -110,7 +111,7 @@ export const garlic: AgriProduct = {
       {
         question: "What is the minimum order quantity?",
         answer:
-          "The minimum order quantity for fresh garlic is 500 KG. Share your required quantity and we will confirm availability with your quotation.",
+          `The minimum order quantity for fresh garlic is ${moqFor(slug)}. Share your required quantity and we will confirm availability with your quotation.`,
       },
       {
         question: "How is fresh garlic packed for export?",

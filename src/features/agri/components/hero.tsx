@@ -19,7 +19,8 @@ const titleClass = "font-display font-medium leading-[0.95] tracking-[-0.032em]"
 /**
  * The two hero buttons. By default "Explore Our Product" (to the first
  * section) and "Request a Quote"; spice pages use "Request a Quote" (to the
- * inquiry form) and "Enquire Now" (to the contact page).
+ * inquiry form) and "Enquire Now" (to the contact page); "specs" pages lead
+ * with "View Specifications" (to the specifications section).
  */
 function HeroButtons({ product, inverse = false }: { product: AgriProduct; inverse?: boolean }) {
   const second = cn(
@@ -37,6 +38,19 @@ function HeroButtons({ product, inverse = false }: { product: AgriProduct; inver
         <Button href="/contact" size="lg" variant={secondVariant} className={second}>
           Enquire Now
         </Button>
+      </>
+    );
+  }
+
+  if (product.hero.secondary === "specs") {
+    return (
+      <>
+        <AnchorButton href="#specifications" size="lg" className="font-semibold">
+          View Specifications
+        </AnchorButton>
+        <AnchorButton href="#quote-form" size="lg" variant={secondVariant} className={second}>
+          Request a Quote
+        </AnchorButton>
       </>
     );
   }

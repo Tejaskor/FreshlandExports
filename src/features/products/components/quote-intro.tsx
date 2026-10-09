@@ -18,6 +18,7 @@ export function QuoteIntro({
   headingId = "cta-heading",
   accentClassName,
   eyebrowClassName,
+  body = "Tell us your required quantity, specifications and destination. Our team will get back to you with availability and pricing.",
 }: {
   productName: string;
   /** Light text for dark section grounds. */
@@ -29,6 +30,8 @@ export function QuoteIntro({
   /** Colour of the product name; defaults to the site's leaf greens. */
   accentClassName?: string;
   eyebrowClassName?: string;
+  /** The paragraph under the heading; a page can word it for its product. */
+  body?: string;
 }) {
   return (
     <div className={cn(center && "mx-auto max-w-2xl text-center")}>
@@ -56,8 +59,7 @@ export function QuoteIntro({
             inverse ? "text-sage-100" : "text-ink-muted",
           )}
         >
-          Tell us your required quantity, specifications and destination. Our team will get back to you with
-          availability and pricing.
+          {body}
         </p>
       </Reveal>
     </div>

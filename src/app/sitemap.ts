@@ -6,22 +6,25 @@ import { blogPosts } from "@/features/blog/data";
 import { exportProductHref, exportProducts } from "@/features/products/export-catalogue";
 import { absoluteUrl } from "@/lib/utils";
 
+/**
+ * /sitemap.xml — indexable pages only. Product landing pages with temporary
+ * copy are noindex, so they stay out until final. Articles carry their own
+ * publication (or revision) date; other pages have no recorded update date,
+ * so they omit lastModified rather than claim every build as a change.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
-  // Agricultural landing pages with temporary copy stay out until final.
-  const routes = [
-    ...staticRoutes,
-    ...exportProducts
-      .filter((product) => !findLandingProduct(product.slug))
-      .map((product) => exportProductHref(product.slug)),
-    ...blogPosts.map((post) => post.href),
-  ];
-
-  return routes.map((route) => ({
+  const entry = (route: string, lastModified?: string): MetadataRoute.Sitemap[number] => ({
     url: absoluteUrl(route, siteConfig.url),
-    lastModified,
+    ...(lastModified ? { lastModified } : {}),
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : 0.7,
-  }));
+  });
+
+  return [
+    ...staticRoutes.map((route) => entry(route)),
+    ...exportProducts
+      .filter((product) => !findLandingProduct(product.slug))
+      .map((product) => entry(exportProductHref(product.slug))),
+    ...blogPosts.map((post) => entry(post.href, post.updated ?? post.published)),
+  ];
 }

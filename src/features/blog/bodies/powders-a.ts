@@ -6,7 +6,7 @@ import type { ArticleBody } from "@/features/products/blog";
  */
 export const powdersABodies: Record<string, readonly [ArticleBody, ArticleBody, ArticleBody]> = {
   "red-chilli-powder": [
-    // Red Chilli Powder Buying Guide: Heat, Colour and Grind
+    // Red Chilli Powder Buying Guide: Colour, Heat and Grind
     [
       {
         heading: "Start with the variety",
@@ -29,30 +29,30 @@ export const powdersABodies: Record<string, readonly [ArticleBody, ArticleBody, 
         text: "Chilli powder is sensitive to light and moisture, so agree packing that protects it, such as lined bags or sealed inner liners, along with the pack size and labelling your market requires. Confirm the documents and any testing your destination expects before the order is packed, and share your quantity and delivery timing early so that the right chillies can be set aside for your lot.",
       },
     ],
-    // Red Chilli Powder in Sauces, Snacks and Seasoning Blends
+    // Understanding ASTA Colour and SHU in Red Chilli Powder
     [
       {
-        heading: "Seasoning and spice blends",
-        text: "Red chilli powder is a core ingredient in curry powders, masalas and savoury seasoning mixes. Blenders usually look for a powder with steady colour and predictable heat, so that each batch of the finished blend tastes and looks the same. Many choose a variety, or a mix of varieties, to hit both targets, and keep a reference sample to check every new lot against.",
+        heading: "Two measures, two questions",
+        text: "Red chilli powder is usually judged on two things: how much colour it brings and how hot it is. Because chilli varieties differ widely on both, buyers and suppliers use two common measures to describe them. ASTA colour value describes colour, and Scoville Heat Units (SHU) describe pungency. Neither says anything about the other, so a powder can be deeply coloured and mild, or pale and very hot.",
       },
       {
-        heading: "Sauces, pastes and condiments",
-        text: "In chilli sauces, pastes, chutneys and dips, chilli powder supplies both heat and the rich red colour customers expect. Processors often prefer a fine grind that disperses evenly without leaving specks, and may favour a deeply coloured, milder variety when appearance matters more than pungency. Agree how the powder will behave in your recipe by running a trial batch with a supplier sample.",
+        heading: "What ASTA colour value describes",
+        text: "ASTA colour value is named after the American Spice Trade Association, whose analytical method it comes from. It measures how much red pigment can be extracted from a sample, so a higher value means more colour. Buyers who use chilli powder mainly for appearance, for example in sauces, seasonings or coatings, often place more weight on colour value than on heat.",
       },
       {
-        heading: "Snacks and coatings",
-        text: "Snack makers use chilli powder in the dustings and coatings applied to chips, extruded snacks, nuts and namkeen. Here a free-flowing powder matters, because it has to feed smoothly through seasoning equipment and stick evenly to the product. Moisture and lumps cause uneven coating, so dry, well-packed powder and good storage at the factory both make a difference.",
+        heading: "What SHU describes",
+        text: "Scoville Heat Units express pungency, which comes from capsaicinoids, the compounds that make chillies hot. Today pungency is usually measured in the laboratory and expressed on the Scoville scale, so a higher figure means a hotter powder. Buyers making hot sauces or spicy snacks may set a minimum heat level, while others want a gentle, predictable heat.",
       },
       {
-        heading: "Ready meals and marinades",
-        text: "Ready meals, frozen foods and marinades rely on chilli powder for heat and colour that hold up through cooking and storage. Manufacturers usually set heat and colour targets for each recipe and agree them with the supplier, rather than relying on a general description. Sharing the end use early helps your supplier propose the most suitable variety and grind.",
+        heading: "Agreeing a specification",
+        text: "Colour and heat depend on the chilli variety, the harvest and how the pods were dried and stored, so they vary from lot to lot. If your product depends on either, state the range you need on the specification sheet, ask how it will be measured and which method will be used, and request the supporting results with each lot. Keeping an approved reference sample makes later shipments easier to check.",
       },
       {
-        heading: "Food service and repacking",
-        text: "Restaurants, caterers and repackers buy chilli powder in bulk for daily cooking or for retail packing under their own labels. These buyers tend to value consistency from one delivery to the next, along with packing that keeps the powder dry and bright. Agree the pack size, labelling and delivery schedule with your supplier to match how quickly you use or sell the stock.",
+        heading: "Colour and heat over time",
+        text: "Colour in chilli powder fades with exposure to light, heat and air, so a value measured at dispatch may not be the value on arrival or months later. Agree when measurements are taken and how the powder will be packed and stored, so that both sides judge the product on the same basis.",
       },
     ],
-    // Storing Red Chilli Powder to Keep Its Colour Bright
+    // Storage and Handling Considerations for Bulk Chilli Powder
     [
       {
         heading: "Why chilli powder fades",

@@ -13,6 +13,7 @@ function Invitation({ product, inverse = false, center = false }: { product: Agr
       inverse={inverse}
       center={center}
       accentClassName={inverse ? "text-[var(--p-soft)]" : "text-[var(--p-accent)]"}
+      body={product.quote?.body}
     />
   );
 }
@@ -21,11 +22,15 @@ function Form({ product }: { product: AgriProduct }) {
   return (
     <div id="quote-form" className="scroll-mt-28">
       <Reveal variant="rise" className="text-ink">
-        <ContactForm
-          title={`Request a Quote for ${product.name}`}
-          defaultMessage={inquiryMessage(product.name)}
-          submitLabel="Request a Quote"
-        />
+        {product.quote ? (
+          <ContactForm variant="quote" product={product.name} submitLabel="Request a Quote" />
+        ) : (
+          <ContactForm
+            title={`Request a Quote for ${product.name}`}
+            defaultMessage={inquiryMessage(product.name)}
+            submitLabel="Request a Quote"
+          />
+        )}
       </Reveal>
     </div>
   );

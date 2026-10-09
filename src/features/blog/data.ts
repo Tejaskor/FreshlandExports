@@ -127,7 +127,7 @@ function buildPosts(): readonly BlogPost[] {
         body,
         image,
         art: entry.art,
-        published: firstPublished,
+        published: article.published ?? firstPublished,
         updated: article.updated,
         author: article.author,
         views: article.views,

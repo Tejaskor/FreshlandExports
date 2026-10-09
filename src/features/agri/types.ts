@@ -84,8 +84,12 @@ export type AgriProduct = {
     badge?: string;
     /** Editorial hero: floating information card beside the photograph. */
     card?: { title: string; text: string };
-    /** Second hero button: "Explore Our Product" (default) or "Enquire Now". */
-    secondary?: "explore" | "enquire";
+    /**
+     * Hero buttons: "Explore Our Product" + "Request a Quote" (default),
+     * "Request a Quote" + "Enquire Now" (enquire), or "View Specifications"
+     * + "Request a Quote" (specs).
+     */
+    secondary?: "explore" | "enquire" | "specs";
   };
   intro: {
     eyebrow: string;
@@ -98,7 +102,16 @@ export type AgriProduct = {
   features: { eyebrow: string; heading: string; items: readonly Feature[] };
   uses: { eyebrow: string; heading: string; intro: string; groups: readonly UseGroup[] };
   process?: { eyebrow: string; heading: string; steps: readonly Step[]; note?: string; image?: ImageSlotData };
-  specs: { eyebrow: string; heading: string; rows: readonly SpecRow[]; note: string };
+  specs: {
+    eyebrow: string;
+    heading: string;
+    rows: readonly SpecRow[];
+    note: string;
+    /** Set false to leave out the "Request Specifications" button and its note. */
+    enquiry?: boolean;
+  };
+  /** Replaces the shared line beside the MOQ figure. */
+  moqBody?: string;
   quality?: { heading: string; text: string; points: readonly string[] };
   /** Varieties showcase (e.g. mango varieties). */
   varieties?: {
@@ -114,9 +127,16 @@ export type AgriProduct = {
   /** Storage recommendations, rendered as a compact strip. */
   storage?: { heading: string; text: string; points: readonly string[] };
   cta: { eyebrow: string; heading: string; body: string };
+  /**
+   * Opts the closing section into the business quote form (company, market,
+   * quantity), with its own line under the "Looking for …" heading.
+   */
+  quote?: { body: string };
   images: {
     hero: ImageSlotData;
     detail: ImageSlotData;
+    /** Tabbed uses photograph; falls back to `detail`. */
+    uses?: ImageSlotData;
     /** Specifications photograph; falls back to `detail`. */
     specs?: ImageSlotData;
     /** Extra photographs used by collage / elongated heroes and galleries. */

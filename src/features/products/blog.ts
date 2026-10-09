@@ -17,6 +17,8 @@ export type BlogArticle = {
    * later keep their text in features/blog/bodies instead.
    */
   body?: ArticleBody;
+  /** ISO publication date, for articles added after the first set. */
+  published?: string;
   /** ISO date of a substantive revision; shown only when set. */
   updated?: string;
   /** The writer's name, shown on the Blog cards once set. Never a placeholder. */
@@ -193,21 +195,22 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     articles: [
       {
         topic: "Buying Guide",
-        title: "Red Chilli Powder Buying Guide: Heat, Colour and Grind",
+        title: "Red Chilli Powder Buying Guide: Colour, Heat and Grind",
         description:
-          "Why chilli variety sets heat and colour, and how to judge appearance, grind and packing when buying red chilli powder.",
+          "Why chilli variety sets colour and heat, and how to judge appearance, grind and packing when buying red chilli powder.",
       },
       {
-        topic: "Food Processing",
-        title: "Red Chilli Powder in Sauces, Snacks and Seasoning Blends",
+        topic: "Quality",
+        title: "Understanding ASTA Colour and SHU in Red Chilli Powder",
         description:
-          "How seasoning blenders, sauce makers, snack producers and food service buyers each specify red chilli powder.",
+          "What ASTA colour value and Scoville Heat Units describe, and how buyers use them when agreeing a red chilli powder specification.",
+        published: "2026-10-09",
       },
       {
         topic: "Storage",
-        title: "Storing Red Chilli Powder to Keep Its Colour Bright",
+        title: "Storage and Handling Considerations for Bulk Chilli Powder",
         description:
-          "Why light, heat and moisture fade chilli powder, and how dark, dry and sealed storage protects colour and prevents caking.",
+          "Why light, heat and moisture affect chilli powder, and how dry, sealed and protected storage helps limit fading and caking.",
       },
     ],
   },
@@ -476,7 +479,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Buying in bulk",
-            text: "Bulk orders are planned around quantity, size, packaging and timing. Our minimum order for fresh onions is 500 kg. Sharing your expected volumes and delivery schedule early helps your supplier confirm availability and keep shipments consistent.",
+            text: "Bulk orders are planned around quantity, size, packaging and timing. Our minimum order quantity for fresh onions is 500 KG to 1 MT. Sharing your expected volumes and delivery schedule early helps your supplier confirm availability and keep shipments consistent.",
           },
           {
             heading: "Export considerations",
@@ -568,7 +571,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Buying in bulk",
-            text: "For bulk orders, share your required quantity, bulb size, form and packaging together. Our minimum order for fresh garlic is 500 KG, and sharing your expected volumes early helps your supplier plan availability, which depends on the season.",
+            text: "For bulk orders, share your required quantity, bulb size, form and packaging together. Our minimum order quantity for fresh garlic is 500 KG to 1 MT, and sharing your expected volumes early helps your supplier plan availability, which depends on the season.",
           },
           {
             heading: "Export supply requirements",
@@ -652,7 +655,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Sourcing in bulk",
-            text: "For bulk orders, share your quantity, size range, packing preference and destination together. Our minimum order for elephant yam is 500 KG, and availability depends on the season, so plan volumes early.",
+            text: "For bulk orders, share your quantity, size range, packing preference and destination together. Our minimum order quantity for elephant yam is 500 KG to 1 MT, and availability depends on the season, so plan volumes early.",
           },
           {
             heading: "Export considerations",
@@ -736,7 +739,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Bulk sourcing",
-            text: "For bulk orders, share your quantity, head size, packing preference and destination together. Our minimum order for fresh cabbage is 500 KG, and supply depends on the season.",
+            text: "For bulk orders, share your quantity, head size, packing preference and destination together. Our minimum order quantity for fresh cabbage is 500 KG to 1 MT, and supply depends on the season.",
           },
           {
             heading: "Export considerations",
@@ -824,7 +827,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Buying in bulk",
-            text: "For bulk orders, share your quantity, length range, packing preference and destination together. Our minimum order for fresh cucumbers is 500 KG, and supply depends on the season.",
+            text: "For bulk orders, share your quantity, length range, packing preference and destination together. Our minimum order quantity for fresh cucumbers is 500 KG to 1 MT, and supply depends on the season.",
           },
           {
             heading: "Export considerations",
@@ -912,7 +915,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Ordering in bulk",
-            text: "For bulk orders, share your quantity, variety preference, length range, packing and destination together. Our minimum order for fresh green chilli is 500 KG, and supply depends on the season.",
+            text: "For bulk orders, share your quantity, variety preference, length range, packing and destination together. Our minimum order quantity for fresh green chilli is 500 KG to 1 MT, and supply depends on the season.",
           },
           {
             heading: "Export considerations",

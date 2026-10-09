@@ -47,7 +47,7 @@ export function Uses({
           <div className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-10">
             <Reveal variant="unveil" className="lg:col-span-5">
               <ProductImage
-                slot={images.detail}
+                slot={images.uses ?? images.detail}
                 dark
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="aspect-[4/3] w-full rounded-[2rem_2rem_2rem_0.5rem]"
