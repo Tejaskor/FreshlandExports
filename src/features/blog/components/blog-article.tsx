@@ -103,16 +103,18 @@ export function BlogArticle({ post }: { post: BlogPost }) {
               {/* Introduction, with a link to the product it belongs to. */}
               <div className="mt-6">
                 <p className="text-lead text-ink">{post.description}</p>
-                <p className="mt-4 text-[1rem] leading-[1.75] text-ink-muted">
-                  This guide is part of our{" "}
-                  <Link
-                    href={post.product.href}
-                    className="font-semibold text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf"
-                  >
-                    {post.product.name}
-                  </Link>{" "}
-                  insights — see the product page for specifications, packaging and supply.
-                </p>
+                {post.product.href && (
+                  <p className="mt-4 text-[1rem] leading-[1.75] text-ink-muted">
+                    This guide is part of our{" "}
+                    <Link
+                      href={post.product.href}
+                      className="font-semibold text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf"
+                    >
+                      {post.product.name}
+                    </Link>{" "}
+                    insights — see the product page for specifications, packaging and supply.
+                  </p>
+                )}
               </div>
 
               {/* Sections: every heading carries the anchor its TOC entry links to. */}
@@ -138,32 +140,34 @@ export function BlogArticle({ post }: { post: BlogPost }) {
               </div>
 
               {/* Related product */}
-              <Link
-                href={post.product.href}
-                className="group mt-12 grid max-w-[44rem] overflow-hidden rounded-xl border border-line bg-cream-warm transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-[var(--shadow-card)] focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none sm:grid-cols-[11rem_minmax(0,1fr)]"
-              >
-                <Figure
-                  image={productPhoto?.image ?? null}
-                  alt=""
-                  art={post.art}
-                  sizes="(min-width: 640px) 11rem, 100vw"
-                  className="aspect-[16/9] w-full sm:aspect-auto sm:h-full"
-                  mediaClassName="transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
-                />
-                <span className="block p-5">
-                  <span className="type-label font-semibold text-ink-faint">Related Product</span>
-                  <span className="mt-1.5 block font-display text-[1.25rem] font-semibold text-forest">
-                    {post.product.name}
+              {post.product.href && (
+                <Link
+                  href={post.product.href}
+                  className="group mt-12 grid max-w-[44rem] overflow-hidden rounded-xl border border-line bg-cream-warm transition-[border-color,box-shadow] duration-500 hover:border-line-strong hover:shadow-[var(--shadow-card)] focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none sm:grid-cols-[11rem_minmax(0,1fr)]"
+                >
+                  <Figure
+                    image={productPhoto?.image ?? null}
+                    alt=""
+                    art={post.art}
+                    sizes="(min-width: 640px) 11rem, 100vw"
+                    className="aspect-[16/9] w-full sm:aspect-auto sm:h-full"
+                    mediaClassName="transition-transform duration-[1200ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
+                  />
+                  <span className="block p-5">
+                    <span className="type-label font-semibold text-ink-faint">Related Product</span>
+                    <span className="mt-1.5 block font-display text-[1.25rem] font-semibold text-forest">
+                      {post.product.name}
+                    </span>
+                    <span className="mt-1 block text-[0.875rem] leading-relaxed text-ink-muted">
+                      Specifications, packaging options and bulk supply from Freshland Exports.
+                    </span>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-rust-deep transition-colors duration-300 group-hover:text-rust">
+                      View Product
+                      <Icon name="arrow-right" className="size-3.5" />
+                    </span>
                   </span>
-                  <span className="mt-1 block text-[0.875rem] leading-relaxed text-ink-muted">
-                    Specifications, packaging options and bulk supply from Freshland Exports.
-                  </span>
-                  <span className="mt-3 inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-rust-deep transition-colors duration-300 group-hover:text-rust">
-                    View Product
-                    <Icon name="arrow-right" className="size-3.5" />
-                  </span>
-                </span>
-              </Link>
+                </Link>
+              )}
             </article>
 
             {/* --- Table of contents and brochure card, tablet up (sticky) -- */}
@@ -220,13 +224,15 @@ export function BlogArticle({ post }: { post: BlogPost }) {
             <Button href="/contact" variant="primary" size="md">
               Get a Quote
             </Button>
-            <Link
-              href={post.product.href}
-              className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-cream transition-colors duration-300 hover:text-highlight-inverse"
-            >
-              View {post.product.name}
-              <Icon name="arrow-right" className="size-3.5" />
-            </Link>
+            {post.product.href && (
+              <Link
+                href={post.product.href}
+                className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-cream transition-colors duration-300 hover:text-highlight-inverse"
+              >
+                View {post.product.name}
+                <Icon name="arrow-right" className="size-3.5" />
+              </Link>
+            )}
           </div>
         </Container>
       </section>

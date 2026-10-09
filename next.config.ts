@@ -29,17 +29,12 @@ const nextConfig: NextConfig = {
       { source: "/resources", destination: "/blog", permanent: true },
       { source: "/resources/:slug", destination: "/blog/:slug", permanent: true },
     ];
-    // The Quality page was replaced by Our Signature Ingredients; keep old
-    // links and bookmarks working.
-    if (featureFlags.signatureIngredients) {
-      return [...blog, { source: "/quality", destination: "/signature-ingredients", permanent: true }];
-    }
-    // Signature Ingredients is temporarily hidden: send its URLs (and the old
-    // /quality link) to the product catalogue. Temporary redirects, so
-    // browsers don't cache them once the page is restored.
+    if (featureFlags.signatureIngredients) return blog;
+    // Signature Ingredients is temporarily hidden: send its URLs to the
+    // product catalogue. Temporary redirects, so browsers don't cache them
+    // once the page is restored.
     return [
       ...blog,
-      { source: "/quality", destination: "/products", permanent: false },
       { source: "/signature-ingredients", destination: "/products", permanent: false },
       { source: "/signature-ingredients/:slug", destination: "/products", permanent: false },
     ];

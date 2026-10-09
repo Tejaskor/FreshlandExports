@@ -28,6 +28,8 @@ export type BlogArticle = {
 };
 
 export type ProductBlogEntry = {
+  /** Display name, for articles whose product has no page of its own. */
+  name?: string;
   /** The product's own photograph. Card images are set per article in features/blog/images. */
   image: string | null;
   alt: string;
@@ -1629,8 +1631,9 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
 
-  /* --- Other export products -------------------------------------------- */
+  /* --- Articles without a product page ----------------------------------- */
   ginger: {
+    name: "Ginger",
     image: photo("ginger.webp"),
     alt: "Fresh ginger root",
     art: "ginger",
@@ -1656,6 +1659,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
   "other-agricultural-products": {
+    name: "Other Agricultural Products",
     image: photo("other-agricultural-products.webp"),
     alt: "An assortment of fresh agricultural produce",
     art: "field",

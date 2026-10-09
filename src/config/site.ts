@@ -163,6 +163,7 @@ export const footerNav: readonly { title: string; items: readonly NavItem[] }[] 
 export const legalNav: readonly NavItem[] = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Image Credits", href: "/image-credits" },
   { label: "Sitemap", href: "/site-map" },
 ] as const;
 
@@ -174,12 +175,12 @@ export const staticRoutes: readonly string[] = [
   "/about",
   "/farms",
   "/r-and-d",
-  "/categories",
   "/blog",
   "/case-studies",
   "/certificates",
   "/contact",
   "/privacy-policy",
   "/terms-and-conditions",
+  "/image-credits",
   "/site-map",
 ] as const;

@@ -3,6 +3,8 @@ import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import type { LegalBlock, LegalSection } from "@/features/legal/types";
 
+const creditLink = "text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf";
+
 function Block({ block }: { block: LegalBlock }) {
   switch (block.type) {
     case "h3":
@@ -25,6 +27,30 @@ function Block({ block }: { block: LegalBlock }) {
             {block.label}
           </Button>
         </div>
+      );
+    case "credits":
+      return (
+        <ul className="space-y-2.5">
+          {block.items.map((item) => (
+            <li key={item.source} className="flex gap-3">
+              <span aria-hidden="true" className="mt-[0.625rem] size-1.5 shrink-0 rounded-full bg-leaf" />
+              <span>
+                <a href={item.source} target="_blank" rel="noopener noreferrer" className={creditLink}>
+                  {item.title}
+                </a>{" "}
+                ({item.usedOn}) by {item.author},{" "}
+                {item.licenseUrl ? (
+                  <a href={item.licenseUrl} target="_blank" rel="noopener noreferrer license" className={creditLink}>
+                    {item.license}
+                  </a>
+                ) : (
+                  item.license
+                )}
+                {item.changes && <>. {item.changes}</>}
+              </span>
+            </li>
+          ))}
+        </ul>
       );
     default:
       return <p>{block.text}</p>;

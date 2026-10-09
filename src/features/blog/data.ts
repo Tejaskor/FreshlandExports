@@ -59,7 +59,8 @@ export type BlogPost = {
   author?: string;
   /** Set per article in features/products/blog.ts; absent until recorded. */
   views?: number;
-  product: { slug: string; name: string; href: string };
+  /** The product the article belongs to; `href` is null when it has no page. */
+  product: { slug: string; name: string; href: string | null };
 };
 
 /** Fields a card needs — what crosses into client components. */
@@ -96,7 +97,14 @@ const productOrder = [
 
 function productName(slug: string) {
   const menuItem = productMenu.flatMap((group) => group.items).find((item) => item.slug === slug);
-  return menuItem?.label ?? findExportProduct(slug)?.name ?? slug;
+  return menuItem?.label ?? findExportProduct(slug)?.name ?? productBlogs[slug]?.name ?? slug;
+}
+
+/** Only products with a page of their own are linked. */
+function productHref(slug: string) {
+  const hasPage =
+    productMenu.some((group) => group.items.some((item) => item.slug === slug)) || Boolean(findExportProduct(slug));
+  return hasPage ? exportProductHref(slug) : null;
 }
 
 function buildPosts(): readonly BlogPost[] {
@@ -131,7 +139,7 @@ function buildPosts(): readonly BlogPost[] {
         updated: article.updated,
         author: article.author,
         views: article.views,
-        product: { slug: productSlug, name, href: exportProductHref(productSlug) },
+        product: { slug: productSlug, name, href: productHref(productSlug) },
       };
     });
   });

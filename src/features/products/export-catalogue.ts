@@ -212,33 +212,6 @@ export const exportProducts: readonly ExportProduct[] = [
     media: { image: "/images/products/garlic.webp", alt: "Fresh garlic bulbs", art: "jar" },
   },
   {
-    slug: "ginger",
-    name: "Ginger",
-    category: "agricultural",
-    summary: "Fresh and dried ginger rhizomes",
-    description:
-      "Ginger rhizomes from Indian farms, supplied fresh or dried. Its warm, pungent flavour makes it essential across cuisines, beverages and wellness products.",
-    forms: ["Fresh whole ginger", "Dried whole or split ginger", "Dried sliced and powder on request"],
-    specifications: [
-      { label: "Product", value: "Ginger (Zingiber officinale)" },
-      { label: "Part used", value: "Rhizome" },
-      { label: "Country of origin", value: "India" },
-      { label: "Grade & moisture (dried)", value: onRequest },
-      { label: "Documentation", value: "Specification sheet and certificate of analysis on request" },
-    ],
-    packaging: ["Mesh or jute bags (fresh)", "PP or jute bags (dried)", "Cartons on request"],
-    applications: [
-      { icon: "users", title: "Culinary", text: "Fresh cooking, pastes and marinades." },
-      { icon: "sprout", title: "Beverages", text: "Teas, ginger ales and wellness drinks." },
-      { icon: "flask", title: "Extracts", text: "Oleoresin, oils and supplement ingredients." },
-    ],
-    media: {
-      image: "/images/products/ginger.webp",
-      alt: "Fresh ginger roots and sliced ginger beside a bowl of ginger powder",
-      art: "ginger",
-    },
-  },
-  {
     slug: "turmeric",
     name: "Turmeric",
     category: "agricultural",
@@ -310,33 +283,6 @@ export const exportProducts: readonly ExportProduct[] = [
       { icon: "sprout", title: "Extraction", text: "Coriander seed oil and oleoresin." },
     ],
     media: { image: "/images/products/coriander-seeds.webp", alt: "Whole coriander seeds", art: "leaf" },
-  },
-  {
-    slug: "other-agricultural-products",
-    name: "Other Agricultural Products",
-    category: "agricultural",
-    summary: "Seasonal Indian agricultural produce and custom commodity sourcing",
-    description:
-      "Freshland Exports sources and exports a diverse range of Indian agricultural produce and specialty crops tailored to buyer specifications, volume requirements and international import standards.",
-    forms: ["Fresh produce", "Whole & split", "Dried & dehydrated cuts", "Custom grades on request"],
-    specifications: [
-      { label: "Product line", value: "Indian Agricultural Commodities" },
-      { label: "Sourcing origin", value: "Contract farms & partner grower networks across India" },
-      { label: "Quality grading", value: "Export quality, sorted and graded to specification" },
-      { label: "Country of origin", value: "India" },
-      { label: "Documentation", value: "Phytosanitary certificate, COA and shipping docs on request" },
-    ],
-    packaging: ["Jute bags", "Mesh (leno) bags", "Corrugated cartons", "Bulk container bags"],
-    applications: [
-      { icon: "globe", title: "Global import", text: "Wholesale food distributors and importers." },
-      { icon: "layers", title: "Food processing", text: "Industrial processors and ingredient manufacturers." },
-      { icon: "users", title: "Food service", text: "Commercial hospitality kitchens and bulk supply." },
-    ],
-    media: {
-      image: "/images/products/other-agricultural-products.webp",
-      alt: "Other agricultural products and farmland harvest",
-      art: "field",
-    },
   },
 ];
 
