@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
 
-import type { Crumb } from "@/components/ui/breadcrumbs";
 import { BlogArticle } from "@/features/blog/components/blog-article";
-import { blogPath, blogPosts, findBlogPost } from "@/features/blog/data";
-import { blogPostingJsonLd, breadcrumbJsonLd, createMetadata } from "@/lib/seo";
+import { blogPosts, findBlogPost } from "@/features/blog/data";
+import { blogPostingJsonLd, createMetadata } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -33,11 +32,6 @@ export default async function BlogPostPage({ params }: Params) {
   const post = findBlogPost(slug);
   if (!post) notFound();
 
-  const crumbs: Crumb[] = [
-    { label: "Home", href: "/" },
-    { label: "Blog", href: blogPath },
-    { label: post.title },
-  ];
 
   const jsonLd = [
     blogPostingJsonLd({
@@ -48,12 +42,11 @@ export default async function BlogPostPage({ params }: Params) {
       published: post.published,
       section: post.category,
     }),
-    breadcrumbJsonLd(crumbs, post.href),
   ];
 
   return (
     <>
-      <BlogArticle post={post} crumbs={crumbs} />
+      <BlogArticle post={post} />
       <script
         type="application/ld+json"
         // Static, author-controlled JSON — no user input reaches this string.

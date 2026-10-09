@@ -45,7 +45,7 @@ export type CatalogueCategory = {
   description: string;
   /** Short line for the homepage "Our Categories" card. */
   summary: string;
-  /** In-page anchor; product breadcrumbs and the homepage cards link to it. */
+  /** In-page anchor; the homepage cards and footer link to it. */
   anchor: string;
   /**
    * Category photograph: a file in the root of public/images/products/ (the

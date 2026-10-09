@@ -69,7 +69,7 @@ export type ImageShape = "arch" | "circle" | "leaf" | "pill" | "rounded";
 export type AgriProduct = {
   slug: string;
   name: string;
-  /** Breadcrumb category; defaults to "Agricultural Products". */
+  /** Category label; defaults to "Agricultural Products". */
   category?: string;
   theme: AgriTheme;
   hero: {

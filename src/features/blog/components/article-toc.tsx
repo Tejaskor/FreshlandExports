@@ -94,7 +94,7 @@ export function ArticleToc({
 
   const list = (
     <ol id={listId} className="space-y-0.5">
-      {items.map((item, index) => {
+      {items.map((item) => {
         const current = item.id === active;
         return (
           <li key={item.id} className={cn(item.level === 3 && "pl-5")}>
@@ -103,24 +103,20 @@ export function ArticleToc({
               onClick={(event) => go(event, item.id)}
               aria-current={current ? "location" : undefined}
               className={cn(
-                "group/toc relative flex gap-3 rounded-lg py-2 pr-3 pl-4 text-[0.875rem] leading-snug transition-colors duration-300",
+                "group/toc relative flex gap-3 rounded-lg py-2 pr-3 pl-4 text-[0.9375rem] leading-snug transition-colors duration-300",
                 "focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none",
                 current ? "bg-section font-semibold text-forest" : "text-ink-muted hover:bg-section/60 hover:text-forest",
               )}
             >
-              {/* Rust marker on the section being read. */}
+              {/* Short rust dash before the title of the section being read,
+                  in the row's left padding so the text never shifts. */}
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute top-2 bottom-2 left-0 w-0.5 rounded-full transition-colors duration-300",
+                  "absolute top-1/2 left-1.5 h-0.5 w-2 -translate-y-1/2 rounded-full transition-colors duration-300",
                   current ? "bg-rust" : "bg-transparent",
                 )}
               />
-              {item.level === 2 && (
-                <span aria-hidden="true" className={cn("tabular-nums", current ? "text-rust" : "text-ink-faint")}>
-                  {String(items.filter((other, i) => other.level === 2 && i <= index).length).padStart(2, "0")}
-                </span>
-              )}
               <span className="min-w-0">{item.text}</span>
             </a>
           </li>
@@ -163,21 +159,12 @@ export function ArticleToc({
   }
 
   return (
-    // Capped to the viewport (below the header) so a long outline scrolls
-    // inside the panel; data-lenis-prevent lets that inner scroll work.
-    <nav
-      aria-labelledby={`${listId}-heading`}
-      data-lenis-prevent
-      className={cn(
-        "max-h-[calc(100dvh-9rem)] overflow-y-auto overscroll-contain rounded-xl border border-line bg-white p-5",
-        className,
-      )}
-    >
+    // Grows with the outline: no height cap, so no inner scrollbar.
+    <nav aria-labelledby={`${listId}-heading`} className={cn("rounded-xl border border-line bg-white p-5", className)}>
       <h2 id={`${listId}-heading`} className="font-display text-[1.25rem] font-semibold text-forest">
         Table of Contents
       </h2>
-      <span aria-hidden="true" className="mt-3 mb-3 block h-px w-10 bg-rust" />
-      {list}
+      <div className="mt-3">{list}</div>
     </nav>
   );
 }

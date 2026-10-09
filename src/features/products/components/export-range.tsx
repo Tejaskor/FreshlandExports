@@ -15,8 +15,8 @@ import {
 import { exportProductMedia } from "@/features/products/export-images";
 
 /**
- * The export range grouped by category. Each group carries the anchor the
- * product pages' breadcrumbs link to (/products#powder-products, …).
+ * The export range grouped by category. Each group carries its section
+ * anchor (/products#powder-products, …).
  */
 export function ExportRange() {
   return (

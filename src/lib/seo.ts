@@ -79,21 +79,6 @@ export function organizationJsonLd() {
   };
 }
 
-/** BreadcrumbList JSON-LD from a page's breadcrumb trail. */
-export function breadcrumbJsonLd(crumbs: readonly { label: string; href?: string }[], path: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: crumbs.map((crumb, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: crumb.label,
-      // The last crumb is the page itself.
-      item: absoluteUrl(crumb.href ?? path, siteConfig.url),
-    })),
-  };
-}
-
 /** FAQPage JSON-LD; the questions must match those visible on the page. */
 export function faqJsonLd(faqs: readonly { question: string; answer: string }[]) {
   return {

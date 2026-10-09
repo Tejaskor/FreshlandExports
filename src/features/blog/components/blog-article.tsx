@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { Reveal } from "@/animations/reveal";
 import { Figure } from "@/components/media/figure";
-import { Breadcrumbs, type Crumb } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
@@ -11,6 +10,7 @@ import { siteConfig } from "@/config/site";
 import { ArticleToc } from "@/features/blog/components/article-toc";
 import { BlogCard, blogGrid } from "@/features/blog/components/blog-card";
 import { BrochureCard } from "@/features/blog/components/brochure-card";
+import { StickySidebar } from "@/features/blog/components/sticky-sidebar";
 import {
   type BlogPost,
   articleOutline,
@@ -30,11 +30,12 @@ const metaDivider = <span aria-hidden="true" className="h-3 w-px bg-line-strong"
 /**
  * One Blog article: the text on the left with its title, details, photograph
  * and sections; on the right a table of contents built from the article's own
- * headings, sticky while the article scrolls past. On phones the contents
- * fold into a compact panel above the text. Related reading and a quote
+ * headings, with the brochure card beneath it, both sticky while the article
+ * scrolls past. On phones the contents fold
+ * into a compact panel above the text and the brochure card follows it. Related reading and a quote
  * prompt follow the article.
  */
-export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly Crumb[] }) {
+export function BlogArticle({ post }: { post: BlogPost }) {
   const { sections, toc } = articleOutline(post);
   const related = relatedPosts(post);
   const sameProduct = related.every((other) => other.product.slug === post.product.slug);
@@ -45,13 +46,13 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
     <>
       <div className="bg-cream pt-28 pb-16 lg:pt-32 lg:pb-24">
         <Container>
-          <Breadcrumbs items={crumbs} />
-
-          <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_15rem] lg:mt-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-10 xl:gap-14">
+          {/* From lg, the same 8 / 4 columns and gap as the blog listing, so the
+              sidebar matches the listing's right column. */}
+          <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_17rem] lg:grid-cols-12 lg:gap-10">
             {/* --- Article ------------------------------------------------- */}
             <article
               aria-labelledby="article-heading"
-              className="min-w-0 rounded-xl border border-line bg-white p-5 sm:p-8 lg:p-10"
+              className="min-w-0 rounded-xl border border-line bg-white p-5 sm:p-7 lg:col-span-8 lg:p-8"
             >
               <header>
                 <Link
@@ -100,7 +101,7 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
               <ArticleToc items={toc} variant="collapsible" className="mt-7 md:hidden" />
 
               {/* Introduction, with a link to the product it belongs to. */}
-              <div className="mt-8 max-w-[44rem]">
+              <div className="mt-6">
                 <p className="text-lead text-ink">{post.description}</p>
                 <p className="mt-4 text-[1rem] leading-[1.75] text-ink-muted">
                   This guide is part of our{" "}
@@ -115,7 +116,7 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
               </div>
 
               {/* Sections: every heading carries the anchor its TOC entry links to. */}
-              <div className="mt-10 max-w-[44rem] space-y-9">
+              <div className="mt-7 space-y-6">
                 {sections.map((section) => {
                   const Heading = section.level === 3 ? "h3" : "h2";
                   return (
@@ -130,7 +131,7 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
                       >
                         {section.heading}
                       </Heading>
-                      <p className="mt-3 text-[1.0625rem] leading-[1.75] text-ink-muted">{section.text}</p>
+                      <p className="mt-2 text-[1.0625rem] leading-[1.7] text-ink-muted">{section.text}</p>
                     </section>
                   );
                 })}
@@ -165,27 +166,18 @@ export function BlogArticle({ post, crumbs }: { post: BlogPost; crumbs: readonly
               </Link>
             </article>
 
-            {/* --- Table of contents: sticky beside the article, tablet up ---- */}
+            {/* --- Table of contents and brochure card, tablet up (sticky) -- */}
             {/* On phones the brochure card follows the article. */}
             <BrochureCard className="md:hidden" />
 
-            <aside aria-label="Article contents" className="hidden md:block">
-              {/* Scrolls within itself if the contents and brochure card are
-                  taller than the screen, so the sticky panel never clips. */}
-              <div
-                data-lenis-prevent
-                className="sticky top-28 max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain [scrollbar-width:thin]"
-              >
+            <aside aria-label="Article contents" className="hidden md:block lg:col-span-4">
+              {/* The contents and brochure card stick together below the
+                  header and stop at the end of the article (the aside spans
+                  the article's row). No height cap, so no inner scrollbar. */}
+              <StickySidebar>
                 <ArticleToc items={toc} variant="sidebar" />
                 <BrochureCard className="mt-5" />
-                <Link
-                  href={blogListHref({})}
-                  className="mt-5 inline-flex items-center gap-1.5 px-1 text-[0.875rem] font-semibold text-forest transition-colors duration-300 hover:text-leaf"
-                >
-                  <Icon name="arrow-left" className="size-3.5" />
-                  All articles
-                </Link>
-              </div>
+              </StickySidebar>
             </aside>
           </div>
         </Container>
