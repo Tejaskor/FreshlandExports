@@ -80,7 +80,6 @@ export const cucumber: AgriProduct = {
       { label: "Colour", value: "Green, subject to variety" },
       { label: "Size / Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to seasonal availability" },
       { label: "Storage", value: "Cool, dry and well-ventilated conditions; avoid chilling injury" },
     ],
@@ -99,13 +98,14 @@ export const cucumber: AgriProduct = {
     ],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Cucumber Questions",
     items: [
       { question: "What type of fresh cucumber do you supply?", answer: "Fresh whole cucumbers selected according to buyer requirements." },
       { question: "What sizes or grades are available?", answer: "Size and grade can be supplied according to buyer requirements and availability." },
-      { question: "What is the minimum order quantity?", answer: `${moqFor(slug)}.` },
-      { question: "How are cucumbers packed?", answer: "Packaging can be arranged according to buyer and shipment requirements." },
+      { question: "What is the minimum order quantity?", answer: `The minimum order quantity for fresh cucumbers is ${moqFor(slug)}.` },
+      {
+        question: "How are cucumbers packed?",
+        answer: "Packaging is arranged according to buyer and shipment requirements. Share your pack size, quantity and destination when you request a quotation.",
+      },
       {
         question: "How should fresh cucumbers be stored?",
         answer: "Store under appropriate cool conditions with suitable humidity and ventilation while avoiding chilling injury.",
@@ -113,10 +113,6 @@ export const cucumber: AgriProduct = {
       {
         question: "Are cucumbers suitable for food-service applications?",
         answer: "Yes. Cucumbers can be used for salads, garnishes, snacks and other food-service preparations.",
-      },
-      {
-        question: "Can buyers request specific requirements?",
-        answer: "Yes. Buyers can communicate their quantity, quality, size and packaging requirements when requesting a quotation.",
       },
     ],
   },

@@ -60,9 +60,7 @@ export const pomegranate: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Pomegranate Questions",
-    items: fruitFaqs("Pomegranate", [
+    items: fruitFaqs("Pomegranate", slug, [
       { question: "Which pomegranate varieties do you supply?", answer: "Varieties depend on the season and are confirmed with each enquiry." },
     ]),
   },

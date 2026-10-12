@@ -72,7 +72,6 @@ export const mustardSeeds: AgriProduct = {
     rows: spiceSpecs(
       "Mustard Seeds",
       [
-        { label: "Type", value: "To be confirmed", pending: true },
         { label: "Appearance", value: "Small, round seeds" },
         { label: "Colour", value: "Yellow, brown or black, by type" },
         { label: "Aroma", value: "Pungent when crushed" },
@@ -93,10 +92,8 @@ export const mustardSeeds: AgriProduct = {
     points: ["Cool, dry storage", "Airtight packaging", "Away from moisture", "Away from direct sunlight"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Mustard Questions",
     items: spiceFaqs("Mustard seeds", [
-      { question: "Which types of mustard seed do you supply?", answer: "Seed type (yellow, brown or black) will be confirmed here; our team can advise with each enquiry." },
+      { question: "Which types of mustard seed do you supply?", answer: "Tell us whether you need yellow, brown or black seed. The types available are confirmed with each enquiry." },
       { question: "Are the seeds suitable for condiments?", answer: "Yes — mustard seeds are the base of prepared mustard and sauces." },
       { question: "Why do mustard seeds taste different when cooked?", answer: "Whole seeds tempered in hot oil turn mild and nutty; crushing releases their sharp, pungent heat." },
     ], slug),

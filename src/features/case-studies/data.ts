@@ -1,5 +1,15 @@
 import type { ArtVariant } from "@/components/media/botanical-art";
-import { type CatalogueCategoryId, catalogue, findCatalogueProduct } from "@/features/products/catalogue";
+import { findLandingProduct } from "@/features/agri/content";
+import { agriculturalCaseStudies } from "@/features/case-studies/content/agricultural";
+import { fruitCaseStudies } from "@/features/case-studies/content/fruits";
+import { powderCaseStudies } from "@/features/case-studies/content/powders";
+import { spiceCaseStudies } from "@/features/case-studies/content/spices";
+import {
+  type CatalogueCategoryId,
+  catalogue,
+  catalogueImage,
+  findCatalogueProduct,
+} from "@/features/products/catalogue";
 import { categoryMoq } from "@/features/products/moq";
 
 /**
@@ -8,7 +18,7 @@ import { categoryMoq } from "@/features/products/moq";
  * The first entries are ILLUSTRATIVE sourcing scenarios: they explain what a
  * buyer typically prepares for a product category, and describe no real
  * customer, order, date, destination or result. Their `status` keeps the
- * "Illustrative Sourcing Scenario" label visible on cards and pages. When an
+ * "Illustrative Industry Case Study" label visible on cards and pages. When an
  * approved customer story is available, add it with `status: "verified"` and
  * its own documented details; the pages render either kind unchanged.
  *
@@ -19,11 +29,13 @@ import { categoryMoq } from "@/features/products/moq";
 export type CaseStudyStatus = "illustrative" | "verified";
 
 export const statusLabel: Record<CaseStudyStatus, string> = {
-  illustrative: "Illustrative Sourcing Scenario",
+  illustrative: "Illustrative Industry Case Study",
   verified: "Customer Case Study",
 };
 
 type Item = { title: string; text: string };
+
+export type CaseStudyImage = { src: string; alt: string; art: ArtVariant; position?: string };
 
 export type CaseStudy = {
   slug: string;
@@ -34,19 +46,23 @@ export type CaseStudy = {
   subtitle: string;
   /** Card summary and meta description. */
   summary: string;
-  /** Short sourcing topic shown on the card. */
+  /** Industry or application, shown over the card photograph (two or three words). */
+  industry: string;
+  /** Short sourcing topic. */
   topic: string;
   /** Catalogue product slugs the scenario covers. */
   products: readonly string[];
   /** Extra words the listing search should match. */
   keywords: readonly string[];
   /** `position`: CSS object-position for the portrait hero crop (default centred). */
-  image: { src: string; alt: string; art: ArtVariant; position?: string };
+  image: CaseStudyImage;
   intro: readonly string[];
   overview: { application: string; focus: string };
   requirements: { intro: string; items: readonly Item[] };
   challenge: { intro: string; points: readonly string[] };
   approach: { intro: string; steps: readonly Item[] };
+  /** Expected application benefits: never measured or reported results. */
+  outcome: { intro: string; points: readonly string[] };
   /** Buyer considerations; the MOQ card is added from the category rules. */
   considerations: readonly Item[];
   takeaways: readonly string[];
@@ -54,7 +70,10 @@ export type CaseStudy = {
   insights: readonly string[];
 };
 
-export const caseStudies: readonly CaseStudy[] = [
+/** A case study as written: without an image, its first product's photograph is used. */
+export type CaseStudyEntry = Omit<CaseStudy, "image"> & { image?: CaseStudyImage };
+
+const coreStudies: readonly CaseStudyEntry[] = [
   {
     slug: "planning-a-botanical-powder-sourcing-brief",
     status: "illustrative",
@@ -64,6 +83,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "A practical guide to the product details, technical requirements, packaging preferences and order quantities buyers can prepare before requesting a quotation for botanical powder ingredients.",
     summary:
       "How a food or ingredient buyer might define application, colour, particle size, packaging and documents before asking for a quote on moringa, onion or turmeric powder.",
+    industry: "Ingredient Sourcing",
     topic: "Specification brief for powder ingredients",
     products: ["moringa-powder", "onion-powder", "turmeric-powder"],
     keywords: ["moringa", "onion powder", "turmeric", "particle size", "mesh", "specification", "powder"],
@@ -146,6 +166,15 @@ export const caseStudies: readonly CaseStudy[] = [
         },
       ],
     },
+    outcome: {
+    intro: "Expected benefits of a complete specification brief. These are typical results of good preparation, not measured outcomes:",
+    points: [
+      "Quotations from different suppliers describe comparable grades of powder.",
+      "Fewer clarification rounds before a price can be confirmed.",
+      "Samples can be judged against agreed colour, fineness and moisture requirements.",
+      "Packaging arrives suited to the buyer’s storage and handling.",
+    ],
+    },
     considerations: [
       {
         title: "Technical specifications",
@@ -185,6 +214,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "How a commercial spice buyer can set out flavour, colour, form and packing expectations before requesting bulk quotations.",
     summary:
       "A walk-through of the requirements a food manufacturer or spice blender might define when sourcing red chilli, black pepper, cumin and coriander seeds in bulk.",
+    industry: "Spice Procurement",
     topic: "Flavour, colour and form requirements for spices",
     products: ["red-chilli", "black-pepper", "cumin-seeds", "coriander-seeds"],
     keywords: ["red chilli", "black pepper", "cumin", "coriander", "spice", "pungency", "aroma", "seasoning"],
@@ -264,6 +294,15 @@ export const caseStudies: readonly CaseStudy[] = [
         },
       ],
     },
+    outcome: {
+    intro: "Expected benefits of defining spice requirements up front. These are typical results of good preparation, not measured outcomes:",
+    points: [
+      "Each spice is quoted against the same form, grade and cleaning standard.",
+      "Quality parameters are agreed in writing before shipment, not debated on arrival.",
+      "Purchases can be timed around each spice’s harvest season.",
+      "Packaging suits how each spice will be stored and used.",
+    ],
+    },
     considerations: [
       {
         title: "Spice-specific specifications",
@@ -303,6 +342,7 @@ export const caseStudies: readonly CaseStudy[] = [
       "What an importer or distributor can define before sourcing fresh onions, garlic, mangoes and grapes for export.",
     summary:
       "How a produce buyer might plan variety, grade, size, seasonal availability, packing and shipment requirements for fresh vegetables and fruits.",
+    industry: "Fresh Produce Import",
     topic: "Seasonality, grade and packing for fresh produce",
     products: ["onion", "garlic", "mango", "grapes"],
     keywords: ["onion", "garlic", "mango", "grapes", "fresh", "season", "grade", "size", "shipment", "produce", "fruit"],
@@ -354,7 +394,7 @@ export const caseStudies: readonly CaseStudy[] = [
         "Mangoes and grapes are requested for a period that has not been checked against their seasons.",
         "Onion and garlic sizes are described as ‘export quality’ rather than as a size range.",
         "Packing preferences differ between the importer’s wholesale and retail customers but are not separated.",
-        "The destination market’s import and documentation requirements are still to be confirmed.",
+        "The destination market’s import and documentation requirements have not yet been checked.",
       ],
     },
     approach: {
@@ -381,6 +421,15 @@ export const caseStudies: readonly CaseStudy[] = [
           text: "Align quotations and shipment planning with the agreed requirements and the transport conditions fresh produce needs.",
         },
       ],
+    },
+    outcome: {
+    intro: "Expected benefits of a season-led fresh produce brief. These are typical results of good preparation, not measured outcomes:",
+    points: [
+      "Orders are planned for the months each product is actually available.",
+      "Size and grade ranges make quotations easier to compare.",
+      "Packing suits each customer group and the journey.",
+      "Destination requirements are known before the produce is packed.",
+    ],
     },
     considerations: [
       {
@@ -414,6 +463,41 @@ export const caseStudies: readonly CaseStudy[] = [
   },
 ];
 
+/** A product a case study covers: a catalogue entry, or a product page outside the catalogue (whole turmeric). */
+export type CaseStudyProduct = { slug: string; name: string; image: string | null; alt: string };
+
+export function findCaseStudyProduct(slug: string): CaseStudyProduct | undefined {
+  const entry = findCatalogueProduct(slug);
+  if (entry) return { slug, name: entry.name, image: catalogueImage(entry.image), alt: entry.alt };
+  const page = findLandingProduct(slug);
+  if (page) return { slug, name: page.name, image: page.images.hero.file, alt: page.images.hero.alt };
+  return undefined;
+}
+
+const artFor: Record<CatalogueCategoryId, ArtVariant> = {
+  powders: "powder",
+  agricultural: "leaf",
+  fruits: "leaf",
+  spices: "powder",
+};
+
+/** The case study's own image, or its first product's photograph. */
+function withImage(study: CaseStudyEntry): CaseStudy {
+  if (study.image) return { ...study, image: study.image };
+  const product = findCaseStudyProduct(study.products[0]);
+  if (!product?.image) throw new Error(`Case study "${study.slug}": no image for "${study.products[0]}"`);
+  return { ...study, image: { src: product.image, alt: product.alt, art: artFor[study.categories[0]] } };
+}
+
+/** Every case study, core scenarios first, then the product-specific ones. */
+export const caseStudies: readonly CaseStudy[] = [
+  ...coreStudies,
+  ...powderCaseStudies,
+  ...spiceCaseStudies,
+  ...agriculturalCaseStudies,
+  ...fruitCaseStudies,
+].map(withImage);
+
 export function findCaseStudy(slug: string) {
   return caseStudies.find((study) => study.slug === slug);
 }
@@ -425,14 +509,77 @@ export function categoryHeading(id: CatalogueCategoryId) {
   return catalogue.find((category) => category.id === id)?.heading ?? id;
 }
 
-/** Catalogue products a case study covers, in its own order. */
-export function caseStudyProducts(study: CaseStudy) {
+/** Products a case study covers, in its own order. */
+export function caseStudyProducts(study: Pick<CaseStudy, "slug" | "products">) {
   return study.products.map((slug) => {
-    const product = findCatalogueProduct(slug);
-    if (!product) throw new Error(`Case study "${study.slug}": no catalogue product "${slug}"`);
+    const product = findCaseStudyProduct(slug);
+    if (!product) throw new Error(`Case study "${study.slug}": no product page "${slug}"`);
     return product;
   });
 }
+
+/**
+ * The three case studies shown on a product page: those covering the
+ * product, most specific first (fewest products), then in data order.
+ */
+/** Case studies for Blog subjects that have no product page of their own. */
+const subjectCaseStudies: Record<string, readonly string[]> = {
+  // General fresh-produce articles: mixed orders, seasonality and export documents.
+  "other-agricultural-products": [
+    "preparing-a-fresh-produce-buying-brief",
+    "planning-seasonal-indian-fruit-purchases",
+    "cold-chain-planning-for-perishable-vegetables",
+  ],
+};
+
+export function productCaseStudies(slug: string, limit = 3): readonly CaseStudy[] {
+  const subject = subjectCaseStudies[slug];
+  if (subject) {
+    return subject
+      .map((entry) => caseStudies.find((study) => study.slug === entry))
+      .filter((study) => study !== undefined);
+  }
+  return caseStudies
+    .map((study, index) => ({ study, index }))
+    .filter(({ study }) => study.products.includes(slug))
+    .sort((a, b) => a.study.products.length - b.study.products.length || a.index - b.index)
+    .slice(0, limit)
+    .map(({ study }) => study);
+}
+
+/**
+ * Case studies related to `study`, for the foot of its page: never the study
+ * itself, ranked by products in common, then a shared catalogue category,
+ * then the same industry label, then data order. Every study shares at least
+ * a category with others, so three are always found.
+ */
+export function relatedCaseStudies(study: CaseStudy, limit = 3): readonly CaseStudy[] {
+  const score = (other: CaseStudy) =>
+    other.products.filter((slug) => study.products.includes(slug)).length * 100 +
+    (other.categories[0] === study.categories[0] ? 20 : 0) +
+    other.categories.filter((id) => study.categories.includes(id)).length * 5 +
+    (other.industry === study.industry ? 3 : 0);
+
+  return caseStudies
+    .map((other, index) => ({ other, index, score: score(other) }))
+    .filter(({ other, score }) => other.slug !== study.slug && score > 0)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, limit)
+    .map(({ other }) => other);
+}
+
+/** The homepage's three case studies: one each for powders, spices and fresh produce. */
+export const featuredCaseStudySlugs = [
+  "planning-a-botanical-powder-sourcing-brief",
+  "defining-requirements-for-bulk-spice-procurement",
+  "preparing-a-fresh-produce-buying-brief",
+] as const;
+
+export const featuredCaseStudies = featuredCaseStudySlugs.map((slug) => {
+  const study = caseStudies.find((entry) => entry.slug === slug);
+  if (!study) throw new Error(`Featured case study "${slug}" not found`);
+  return study;
+});
 
 /** The MOQ consideration, one line per category the case study covers. */
 export function moqConsideration(study: CaseStudy) {

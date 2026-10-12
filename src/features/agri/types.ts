@@ -31,7 +31,8 @@ export type AgriTheme = {
 
 export type Feature = { title: string; text: string; icon?: IconName };
 export type UseGroup = { title: string; text?: string; items: readonly string[]; image?: ImageSlotData };
-export type SpecRow = { label: string; value: string; pending?: boolean };
+/** A confirmed specification; an unconfirmed value is left out, not shown as pending. */
+export type SpecRow = { label: string; value: string };
 export type Step = { title: string; text: string };
 
 export type HeroVariant =
@@ -121,7 +122,8 @@ export type AgriProduct = {
     items: readonly { name: string; text: string }[];
     note: string;
   };
-  faqs?: { eyebrow: string; heading: string; items: readonly Faq[] };
+  /** Shown under the site-wide FAQ heading. */
+  faqs?: { items: readonly Faq[] };
   /** Commercial applications, rendered with the feature layouts. */
   commercial?: { eyebrow: string; heading: string; items: readonly Feature[] };
   /** Storage recommendations, rendered as a compact strip. */
@@ -144,5 +146,7 @@ export type AgriProduct = {
     /** An existing small photograph (≤300 px) for a small circular slot. */
     thumb?: string;
   };
+  /** Case study card images for this page only, by case study slug. */
+  caseStudyImages?: Readonly<Record<string, ImageSlotData>>;
   sections: readonly SectionSpec[];
 };

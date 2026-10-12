@@ -1,3 +1,4 @@
+import { freshFaqs } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // Variety, size, grade, packaging, origin and supply stay qualified until confirmed.
@@ -32,7 +33,6 @@ export const greenChili: AgriProduct = {
       { label: "Form", value: "Whole fresh pods" },
       { label: "Flavour", value: "Fresh, pungent heat" },
       { label: "Use", value: "Cooking and food processing" },
-      { label: "Origin", value: "India, subject to confirmation" },
     ],
   },
   features: { eyebrow: "Features", heading: "Green Chilli Features", items: [] },
@@ -58,7 +58,6 @@ export const greenChili: AgriProduct = {
       { label: "Form", value: "Whole fresh pods" },
       { label: "Size / Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to seasonal availability" },
       { label: "Storage", value: "Cool, dry and well-ventilated conditions" },
       { label: "Shelf Life", value: "Subject to product grade, storage and handling conditions" },
@@ -76,6 +75,22 @@ export const greenChili: AgriProduct = {
       "Handled carefully during preparation and dispatch",
       "Specifications confirmed before order",
     ],
+  },
+  faqs: {
+    items: freshFaqs("green chillies", slug, [
+      {
+        question: "What form are green chillies supplied in?",
+        answer: "Green chillies are supplied as whole fresh pods, selected for their colour, firmness and appearance.",
+      },
+      {
+        question: "What are green chillies used for?",
+        answer: "They are used in everyday cooking such as curries, stir-fries and chutneys, in pickles, chilli sauces and relishes, in prepared foods, and by restaurants, caterers and commercial kitchens.",
+      },
+      {
+        question: "How should green chillies be stored?",
+        answer: "Keep them in cool, dry and well-ventilated conditions.",
+      },
+    ]),
   },
   cta: {
     eyebrow: "Export Enquiry",
@@ -102,6 +117,7 @@ export const greenChili: AgriProduct = {
     { type: "uses", variant: "tabs" },
     { type: "specs", variant: "tiles" },
     { type: "quality" },
+    { type: "faq", variant: "split" },
     { type: "contact", variant: "split" },
   ],
 };

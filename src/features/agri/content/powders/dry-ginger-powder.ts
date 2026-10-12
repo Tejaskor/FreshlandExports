@@ -80,7 +80,6 @@ export const dryGingerPowder: AgriProduct = {
         { label: "Colour", value: "Pale cream to light beige" },
         { label: "Aroma", value: "Warm, spicy, lemony" },
         { label: "Mesh Size", value: "As per buyer requirements" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Powder",
@@ -98,8 +97,6 @@ export const dryGingerPowder: AgriProduct = {
     points: ["Airtight, lined packaging", "Store cool and dry", "Protect from light", "Reseal opened bags promptly"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Dry Ginger Powder Questions",
     items: spiceFaqs("Dry ginger powder", [
       {
         question: "What is the difference between dry ginger powder and fresh ginger?",

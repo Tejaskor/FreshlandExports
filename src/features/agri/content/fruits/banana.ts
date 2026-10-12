@@ -66,16 +66,13 @@ export const banana: AgriProduct = {
         { label: "Product", value: "Fresh Banana" },
         { label: "Form", value: "Hands / clusters" },
         { label: "Colour", value: "Green to yellow, by ripening stage" },
-        { label: "Variety", value: "To be confirmed", pending: true },
       ],
       "Controlled temperature; avoid chilling",
     ),
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Banana Questions",
-    items: fruitFaqs("Banana", [
+    items: fruitFaqs("Banana", slug, [
       { question: "Are bananas shipped green or ripe?", answer: "Ripening stage is agreed with each buyer to suit the market and transit time." },
     ]),
   },

@@ -149,6 +149,11 @@ export function SiteFooter() {
                 </BrochureButton>
               </li>
               <li>
+                <Link href="/faqs" className={footerLink}>
+                  FAQs
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className={footerLink}>
                   Contact Us
                 </Link>

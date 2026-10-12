@@ -7,9 +7,10 @@ import { SkipLink } from "@/components/layout/skip-link";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { BrochureProvider } from "@/features/brochure/brochure-provider";
 import { siteConfig } from "@/config/site";
-import { organizationJsonLd } from "@/lib/seo";
+import { defaultShareImage, organizationJsonLd } from "@/lib/seo";
 
 import "./globals.css";
+import { JsonLd } from "@/components/seo/json-ld";
 
 /** Editorial display face — headlines only. */
 const fraunces = Fraunces({
@@ -51,11 +52,13 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     locale: siteConfig.locale,
+    images: [defaultShareImage],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    images: [{ url: defaultShareImage.url, alt: defaultShareImage.alt }],
   },
   robots: {
     index: true,
@@ -92,13 +95,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </BrochureProvider>
         </SmoothScrollProvider>
 
-        <script
-          type="application/ld+json"
-          // Static, author-controlled JSON — no user input reaches this string.
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd()),
-          }}
-        />
+        <JsonLd data={organizationJsonLd()} />
       </body>
     </html>
   );

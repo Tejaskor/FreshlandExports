@@ -10,7 +10,7 @@ import { findMoq } from "@/features/products/moq";
  * so on. Until a file exists, the page shows a labelled placeholder.
  *
  * Nothing here states a certification, grade, test result, origin or
- * capacity: unverified values are shown as pending or neutral wording.
+ * capacity: unverified values are left out or given neutral wording.
  */
 
 export const spicesCategory = "Spices";
@@ -35,13 +35,12 @@ export function spiceSpecs(
     { label: "Packaging", value: details.packaging },
     { label: "Storage", value: details.storage },
     { label: "Applications", value: details.applications },
-    { label: "Origin", value: "To be confirmed", pending: true },
     { label: "MOQ", value: moq ?? "Flexible MOQ — Contact Us" },
   ];
 }
 
 export const spiceSpecsNote =
-  "Temporary specification — grades, quality parameters and packaging are confirmed with each enquiry.";
+  "Grades, quality parameters and packaging are confirmed with each enquiry.";
 
 /** Product questions first, then one common supply question. */
 export function spiceFaqs(name: string, first: readonly Faq[], slug?: string): readonly Faq[] {

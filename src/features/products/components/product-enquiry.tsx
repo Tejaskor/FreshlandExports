@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/section";
 import type { MenuOnlyProduct } from "@/features/products/export-catalogue";
 import { ProductBlog } from "@/features/products/components/product-blog";
 import { QuoteIntro } from "@/features/products/components/quote-intro";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 /**
  * Enquiry page for a product listed in the Products menu that does not yet
@@ -59,6 +60,7 @@ export function ProductEnquiry({ product }: { product: MenuOnlyProduct }) {
       </Section>
 
       <ProductBlog slug={product.slug} productName={product.name} className="bg-white" />
+      <ProductCaseStudies slug={product.slug} productName={product.name} className="bg-cream" />
 
       <Section id="quote" aria-labelledby="quote-heading" className="scroll-mt-24 bg-sage-50 lg:py-20">
         <Container className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">

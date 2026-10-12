@@ -1,4 +1,4 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -62,6 +62,22 @@ export const okra: AgriProduct = {
     ),
     note: specsNote,
   },
+  faqs: {
+    items: freshFaqs("fresh okra", slug, [
+      {
+        question: "What kind of okra do you supply?",
+        answer: "Fresh okra pods, picked young for a tender bite and selected for consistent length and fresh green colour.",
+      },
+      {
+        question: "What is okra used for?",
+        answer: "Okra is used in curries and stir-fries such as bhindi masala, in soups and stews such as gumbo, in fried snacks, and in cut-and-frozen, ready-meal and pickle lines.",
+      },
+      {
+        question: "How should fresh okra be stored?",
+        answer: "Keep it in cool, well-ventilated conditions.",
+      },
+    ]),
+  },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Bring Fresh Okra to Your Market",
@@ -78,6 +94,7 @@ export const okra: AgriProduct = {
     { type: "features", variant: "alternating" },
     { type: "uses", variant: "gallery" },
     { type: "specs", variant: "sheet" },
+    { type: "faq", variant: "split" },
     { type: "contact", variant: "card" },
   ],
 };

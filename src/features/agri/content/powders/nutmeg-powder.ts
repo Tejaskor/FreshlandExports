@@ -93,7 +93,6 @@ export const nutmegPowder: AgriProduct = {
         { label: "Colour", value: "Light to reddish brown" },
         { label: "Aroma", value: "Sweet, warm, woody" },
         { label: "Mesh / Fineness", value: "As per buyer requirements" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Ground powder",
@@ -106,8 +105,6 @@ export const nutmegPowder: AgriProduct = {
     note: powderSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Nutmeg Powder Questions",
     items: spiceFaqs("Nutmeg powder", [
       { question: "What is nutmeg powder made from?", answer: "It is the dried seed kernel of Myristica fragrans, ground to a powder. Mace, from the same fruit, is a separate product." },
       { question: "Can the grind size be specified?", answer: "Yes — share the fineness your process needs and it will be confirmed with the quotation." },

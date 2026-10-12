@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Params) {
     title: ingredient.name,
     description: `${ingredient.name} — ${ingredient.tagline} A Freshland Exports signature ingredient.`,
     path: ingredientHref(ingredient.slug),
+    image: ingredient.media.image ? { url: ingredient.media.image, alt: ingredient.media.alt } : undefined,
   });
 }
 

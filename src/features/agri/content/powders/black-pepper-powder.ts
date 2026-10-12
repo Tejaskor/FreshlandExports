@@ -75,7 +75,6 @@ export const blackPepperPowder: AgriProduct = {
         { label: "Appearance", value: "Fine to coarse ground powder" },
         { label: "Colour", value: "Greyish brown to dark" },
         { label: "Aroma", value: "Sharp, woody" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
         { label: "Grind Size", value: "As per buyer requirements" },
       ],
       {
@@ -94,8 +93,6 @@ export const blackPepperPowder: AgriProduct = {
     points: ["Keep in airtight, lined packaging", "Store cool and dry", "Protect from light and heat", "Keep away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Black Pepper Powder Questions",
     items: spiceFaqs("Black pepper powder", [
       { question: "Can you supply a coarse grind?", answer: "Yes — fine and coarse grinds can be discussed, and the grind is confirmed with each enquiry." },
       { question: "How are quality parameters specified?", answer: "Purity, moisture and other parameters are confirmed with each quotation." },

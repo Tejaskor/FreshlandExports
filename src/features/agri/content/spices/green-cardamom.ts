@@ -74,7 +74,6 @@ export const greenCardamom: AgriProduct = {
         { label: "Appearance", value: "Whole, three-sided pods" },
         { label: "Colour", value: "Green" },
         { label: "Aroma", value: "Sweet, floral" },
-        { label: "Pod Size / Grade", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole pods",
@@ -87,8 +86,6 @@ export const greenCardamom: AgriProduct = {
     note: spiceSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Cardamom Questions",
     items: spiceFaqs("Green cardamom", [
       { question: "How is cardamom graded?", answer: "Pod size, colour and grade are confirmed with each quotation." },
       { question: "How should cardamom be stored?", answer: "Keep pods whole in airtight packaging, away from heat and light, to preserve the aroma." },

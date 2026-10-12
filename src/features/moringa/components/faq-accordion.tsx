@@ -9,18 +9,22 @@ import { cn } from "@/lib/utils";
 /**
  * One-open-at-a-time accordion; by default the first answer starts open.
  * `offset` continues the numbering when one list is split across columns.
+ * `headingLevel` sets each question's heading so it nests under the page's own.
  */
 export function FaqAccordion({
   items,
   offset = 0,
   defaultOpen = 0,
+  headingLevel = 4,
 }: {
   items: readonly Faq[];
   offset?: number;
   defaultOpen?: number | null;
+  headingLevel?: 2 | 3 | 4;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(defaultOpen);
   const baseId = useId();
+  const Heading = `h${headingLevel}` as const;
 
   return (
     <ul className="space-y-2.5">
@@ -39,7 +43,7 @@ export function FaqAccordion({
                 : "border-line-strong hover:border-leaf/50",
             )}
           >
-            <h4>
+            <Heading>
               <button
                 id={buttonId}
                 type="button"
@@ -74,7 +78,7 @@ export function FaqAccordion({
                   </svg>
                 </span>
               </button>
-            </h4>
+            </Heading>
             <Collapse id={panelId} open={open}>
               <p
                 role="region"

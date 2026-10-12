@@ -3,7 +3,7 @@ import type { Faq } from "@/features/moringa/data";
 /**
  * Content for the Onion Powder page (/products/onion-powder), written for
  * B2B buyers. It states what is known about the product and leaves grade,
- * particle size, moisture, packaging and shelf life to be confirmed with
+ * particle size, moisture, packaging and shelf life to be agreed with
  * each buyer — no nutritional, health or exact technical claims.
  */
 
@@ -42,7 +42,6 @@ export const onionSpecs: readonly { label: string; value: string }[] = [
   { label: "Taste", value: "Characteristic onion flavour" },
   { label: "Application", value: "Food & Food Processing" },
   { label: "Packaging", value: "As per buyer requirement" },
-  { label: "Origin", value: "India, subject to confirmation" },
   { label: "Supply", value: "Bulk / Commercial Supply" },
 ];
 

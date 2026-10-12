@@ -79,7 +79,6 @@ export const clovePowder: AgriProduct = {
         { label: "Colour", value: "Dark reddish brown" },
         { label: "Aroma", value: "Warm, sweet, pungent" },
         { label: "Mesh Size", value: "As per buyer requirements" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Powder",
@@ -97,8 +96,6 @@ export const clovePowder: AgriProduct = {
     points: ["Airtight, lined packaging", "Store cool and dry", "Protect from light", "Keep away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Clove Powder Questions",
     items: spiceFaqs("Clove powder", [
       {
         question: "How is clove powder different from whole cloves?",

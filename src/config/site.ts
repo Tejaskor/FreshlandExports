@@ -14,7 +14,14 @@ export const siteConfig = {
   tagline: "Pure botanicals. Proven science.",
   description:
     "High-quality botanical ingredients for the food, nutraceutical, cosmetic and wellness industries — cultivated, extracted and analytically validated in India.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://freshland-exports.example.com",
+  // Canonical, Open Graph and sitemap URLs. NEXT_PUBLIC_SITE_URL wins; on
+  // Vercel without it, the project's production domain (set at build time);
+  // the placeholder only for local builds. Server-side use only.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://freshland-exports.example.com"),
   locale: "en_IN",
   lang: "en",
   themeColor: "#14452f",
@@ -178,6 +185,7 @@ export const staticRoutes: readonly string[] = [
   "/case-studies",
   "/certificates",
   "/contact",
+  "/faqs",
   "/privacy-policy",
   "/terms-and-conditions",
   "/site-map",

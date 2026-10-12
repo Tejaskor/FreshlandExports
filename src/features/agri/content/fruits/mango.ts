@@ -63,7 +63,6 @@ export const mango: AgriProduct = {
     rows: fruitSpecs(
       [
         { label: "Product", value: "Fresh Mango" },
-        { label: "Varieties", value: "Seasonal, to be confirmed", pending: true },
         { label: "Appearance", value: "Oval to round, smooth skin" },
         { label: "Colour", value: "Green to golden yellow, varies by variety" },
       ],
@@ -72,9 +71,7 @@ export const mango: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Mango Questions",
-    items: fruitFaqs("Mango", [
+    items: fruitFaqs("Mango", slug, [
       { question: "Which mango varieties do you supply?", answer: "Varieties depend on the season. Our team confirms current availability with each enquiry." },
       { question: "When is mango season?", answer: "Indian mango season generally runs through the summer months; exact timing varies by variety and region." },
     ]),

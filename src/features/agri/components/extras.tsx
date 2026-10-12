@@ -2,8 +2,10 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { SectionHeader } from "@/features/agri/components/shared";
 import type { AgriProduct } from "@/features/agri/types";
+import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
 import { cn } from "@/lib/utils";
+import { FaqJsonLd } from "@/components/seo/json-ld";
 
 /* ========================================================================
    Varieties — a row of variety cards, each opened by a large initial.
@@ -54,9 +56,10 @@ export function Faq({ product, variant }: { product: AgriProduct; variant: "spli
     return (
       <section aria-labelledby="faq-heading" className="bg-white py-14 lg:py-20">
         <Container>
-          <SectionHeader id="faq-heading" eyebrow={faqs.eyebrow} heading={faqs.heading} align="center" />
+          <SectionHeader id="faq-heading" heading={faqHeading} align="center" />
           <Reveal variant="rise" className="mx-auto mt-8 max-w-3xl">
             <FaqAccordion items={faqs.items} />
+            <FaqJsonLd items={faqs.items} />
           </Reveal>
         </Container>
       </section>
@@ -68,14 +71,15 @@ export function Faq({ product, variant }: { product: AgriProduct; variant: "spli
       <Container className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <SectionHeader id="faq-heading" eyebrow={faqs.eyebrow} heading={faqs.heading} align="start" />
+            <SectionHeader id="faq-heading" heading={faqHeading} align="start" />
             <p className="mt-5 text-[0.9375rem] leading-relaxed text-ink-muted">
-              Temporary answers — final details are confirmed with each enquiry.
+              Final details such as grade, size and packaging are confirmed with each enquiry.
             </p>
           </div>
         </div>
         <Reveal variant="rise" className="lg:col-span-8">
           <FaqAccordion items={faqs.items} />
+            <FaqJsonLd items={faqs.items} />
         </Reveal>
       </Container>
     </section>

@@ -4,14 +4,14 @@ import { toCaseStudyCard } from "@/features/case-studies/card-data";
 import { CaseStudyBrowser } from "@/features/case-studies/components/case-study-browser";
 import { caseStudies } from "@/features/case-studies/data";
 import { catalogue } from "@/features/products/catalogue";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, ogCard } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "Agricultural Sourcing Case Studies",
   description:
     "Illustrative B2B sourcing scenarios across botanical powders, whole spices, fresh agricultural produce and fruits: what buyers can define before requesting a quote.",
   path: "/case-studies",
-  image: { url: caseStudies[0].image.src, alt: caseStudies[0].image.alt },
+  image: ogCard("case-studies", "Freshland Exports case studies: illustrative examples across our product range"),
 });
 
 export default function CaseStudiesPage() {

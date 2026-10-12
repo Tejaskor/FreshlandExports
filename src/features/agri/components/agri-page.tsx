@@ -13,6 +13,7 @@ import { ProductBlog } from "@/features/products/components/product-blog";
 import { RelatedProducts } from "@/features/products/components/related-products";
 import { findMoq } from "@/features/products/moq";
 import { cn } from "@/lib/utils";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 /**
  * Agricultural and fruit product landing page (/products/<slug>). Renders the
@@ -95,6 +96,17 @@ export function AgriPage({ product }: { product: AgriProduct }) {
               }
               accentClassName="text-[var(--p-accent)]"
               linkClassName="text-[var(--p-deep)] group-hover:text-[var(--p-accent)]"
+            />
+            {/* Alternates with the Blog ground above. */}
+            <ProductCaseStudies
+              slug={product.slug}
+              productName={product.name}
+              images={product.caseStudyImages}
+              className={
+                section.variant === "split" || section.variant === "centered"
+                  ? "bg-[var(--p-tint)]"
+                  : "border-t border-line bg-white"
+              }
             />
             <Contact product={product} variant={section.variant} />
           </>

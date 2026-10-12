@@ -1,7 +1,33 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
 import { absoluteUrl } from "@/lib/utils";
+
+export type ShareImage = { url: string; alt: string; width?: number; height?: number };
+
+/** A branded 1200 × 630 card from public/images/og (built by scripts/generate-og-images.mjs). */
+export function ogCard(name: string, alt: string): ShareImage {
+  return { url: `/images/og/${name}.jpg`, alt, width: 1200, height: 630 };
+}
+
+/** The site-wide fallback share image. */
+export const defaultShareImage = ogCard(
+  "freshland-exports",
+  "Freshland Exports: agricultural products, botanical powders, fruits and spices from India",
+);
+
+/** Whether a site-relative image exists in public/ (absolute URLs are trusted). */
+function onDisk(url: string) {
+  return !url.startsWith("/") || existsSync(join(process.cwd(), "public", url));
+}
+
+/** The first candidate whose file exists, or undefined. */
+export function existingImage(...candidates: readonly (ShareImage | null | undefined)[]): ShareImage | undefined {
+  return candidates.find((candidate): candidate is ShareImage => Boolean(candidate?.url) && onDisk(candidate!.url));
+}
 
 type PageMeta = {
   title: string;
@@ -10,8 +36,12 @@ type PageMeta = {
   path?: string;
   /** Set on pages that should stay out of the index. */
   noIndex?: boolean;
-  /** Share image for Open Graph and Twitter, as a site-relative path. */
-  image?: { url: string; alt: string };
+  /**
+   * Share image for Open Graph and Twitter, as a site-relative path (made
+   * absolute through the root layout's metadataBase). Pages without one, or
+   * whose file is missing, share the branded Freshland Exports card.
+   */
+  image?: ShareImage;
   /** Marks the page as an article in Open Graph, with its publication date. */
   article?: { publishedTime: string; section?: string };
 };
@@ -29,6 +59,7 @@ export function createMetadata({
   article,
 }: PageMeta): Metadata {
   const url = absoluteUrl(path, siteConfig.url);
+  const share = existingImage(image) ?? defaultShareImage;
 
   return {
     title,
@@ -43,13 +74,13 @@ export function createMetadata({
       description,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
-      ...(image ? { images: [{ url: image.url, alt: image.alt }] } : {}),
+      images: [{ url: share.url, alt: share.alt, ...(share.width && { width: share.width, height: share.height }) }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(image ? { images: [image.url] } : {}),
+      images: [{ url: share.url, alt: share.alt }],
     },
     ...(noIndex ? { robots: { index: false, follow: false } } : {}),
   };
@@ -79,12 +110,20 @@ export function organizationJsonLd() {
   };
 }
 
-/** FAQPage JSON-LD; the questions must match those visible on the page. */
-export function faqJsonLd(faqs: readonly { question: string; answer: string }[]) {
+export type FaqEntry = { question: string; answer: string };
+
+/**
+ * FAQPage JSON-LD; the questions must be those visible on the page. Entries
+ * with an empty question or answer are left out, and null is returned when
+ * none remain, so no empty FAQPage is ever published.
+ */
+export function faqJsonLd(faqs: readonly FaqEntry[]) {
+  const complete = faqs.filter((faq) => faq.question.trim() && faq.answer.trim());
+  if (complete.length === 0) return null;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: complete.map((faq) => ({
       "@type": "Question",
       name: faq.question,
       acceptedAnswer: { "@type": "Answer", text: faq.answer },

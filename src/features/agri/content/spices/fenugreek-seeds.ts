@@ -81,7 +81,6 @@ export const fenugreekSeeds: AgriProduct = {
         { label: "Botanical Name", value: "Trigonella foenum-graecum" },
         { label: "Appearance", value: "Small, angular, grooved seeds" },
         { label: "Colour", value: "Golden yellow to amber" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole seeds; ground on request",
@@ -99,8 +98,6 @@ export const fenugreekSeeds: AgriProduct = {
     points: ["Airtight or lined packaging", "Store cool and dry", "Raise bags off the floor", "Keep away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Fenugreek Questions",
     items: spiceFaqs("Fenugreek seeds", [
       { question: "Are the seeds cleaned?", answer: "Seeds are cleaned before packing; the cleaning standard is agreed with each order." },
       { question: "Do you supply fenugreek powder?", answer: "This page covers whole seeds; ground fenugreek can be discussed with our team." },

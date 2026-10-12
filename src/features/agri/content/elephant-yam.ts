@@ -69,7 +69,6 @@ export const elephantYam: AgriProduct = {
       { label: "Texture", value: "Dense, firm and starchy" },
       { label: "Size / Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to seasonal availability" },
       { label: "Storage", value: "Cool, dry and well-ventilated" },
     ],
@@ -87,17 +86,11 @@ export const elephantYam: AgriProduct = {
     ],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Elephant Yam Questions",
     items: [
       {
         question: "What type of Elephant Yam do you supply?",
         answer:
-          "We supply fresh elephant yam, also called elephant foot yam (Amorphophallus paeoniifolius), with rough brown skin and cream to pinkish flesh depending on variety. Variety and availability are confirmed with each enquiry.",
-      },
-      {
-        question: "What form is Elephant Yam supplied in?",
-        answer: "Elephant yam is supplied as whole fresh tubers.",
+          "We supply fresh elephant yam, also called elephant foot yam (Amorphophallus paeoniifolius), with rough brown skin and cream to pinkish flesh depending on variety, as whole fresh tubers. Variety and availability are confirmed with each enquiry.",
       },
       {
         question: "What sizes are available?",

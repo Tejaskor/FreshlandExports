@@ -21,6 +21,7 @@ import {
 import { ProductBlog } from "@/features/products/components/product-blog";
 import type { MediaSlot } from "@/types/media";
 import { QuoteIntro } from "@/features/products/components/quote-intro";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 type Related = { product: ExportProduct; media: MediaSlot };
 
@@ -195,6 +196,7 @@ export function ExportProductDetail({
       </Section>
 
       <ProductBlog slug={product.slug} productName={product.name} className="bg-cream" />
+      <ProductCaseStudies slug={product.slug} productName={product.name} className="border-t border-line bg-white" />
 
       {/* --- Quote --------------------------------------------------------- */}
       <Section

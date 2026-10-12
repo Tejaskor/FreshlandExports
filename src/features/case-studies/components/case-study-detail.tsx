@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { Figure } from "@/components/media/figure";
 import { AnchorButton } from "@/components/ui/anchor-button";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { findBlogPost } from "@/features/blog/data";
 import { toCaseStudyCard } from "@/features/case-studies/card-data";
@@ -10,10 +11,10 @@ import { CaseStudyCard } from "@/features/case-studies/components/case-study-car
 import { ShareButtons } from "@/features/case-studies/components/share-buttons";
 import {
   type CaseStudy,
-  caseStudies,
   caseStudyProducts,
   categoryHeading,
   moqConsideration,
+  relatedCaseStudies,
   statusLabel,
 } from "@/features/case-studies/data";
 import { catalogueHref } from "@/features/products/catalogue";
@@ -61,7 +62,7 @@ function Bullets({ items }: { items: readonly (string | { title: string; text: s
 /**
  * A case study page, rendered entirely from its data: a wide photograph with
  * the title card floating over it, the case study across the site container,
- * sharing, then more case studies. Illustrative scenarios carry their status
+ * sharing, then three related case studies and a link to them all. Illustrative scenarios carry their status
  * label in the title card and a note at the start of the text.
  */
 export function CaseStudyDetail({ study }: { study: CaseStudy }) {
@@ -73,7 +74,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
     if (!post) throw new Error(`Case study "${study.slug}": no blog article "${slug}"`);
     return post;
   });
-  const more = caseStudies.filter((other) => other.slug !== study.slug).map(toCaseStudyCard);
+  const related = relatedCaseStudies(study).map(toCaseStudyCard);
   const illustrative = study.status === "illustrative";
 
   return (
@@ -129,7 +130,7 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
               ))}
               {illustrative && (
                 <p className="border-l-2 border-rust/60 pl-4 text-[0.9375rem]">
-                  <span className="font-semibold text-rust-deep">Illustrative sourcing scenario:</span> this page
+                  <span className="font-semibold text-rust-deep">Illustrative industry case study:</span> this page
                   describes typical buyer considerations. It does not report a specific Freshland Exports customer,
                   order or result.
                 </p>
@@ -190,6 +191,11 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
                 </ol>
               </Part>
 
+              <Part id="outcome-heading" title="Expected Application Benefits">
+                <p>{study.outcome.intro}</p>
+                <Bullets items={study.outcome.points} />
+              </Part>
+
               <Part id="considerations-heading" title="Key Considerations for Buyers">
                 <Bullets items={considerations} />
               </Part>
@@ -232,23 +238,28 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
         </Container>
       </div>
 
-      {/* --- More case studies -------------------------------------------- */}
-      {more.length > 0 && (
-        <section aria-labelledby="explore-heading" className="border-t border-line bg-cream-warm py-12 lg:py-16">
+      {/* --- Related case studies: three, never this one ------------------ */}
+      {related.length > 0 && (
+        <section aria-labelledby="related-case-studies-heading" className="border-t border-line bg-cream-warm py-12 lg:py-16">
           <Container>
-            <div className="text-center">
-              <h2 id="explore-heading" className="font-display text-display text-forest-deep">
-                Explore More
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 id="related-case-studies-heading" className="font-display text-display text-forest-deep">
+                Related Case Studies
               </h2>
-              <p className="mt-2 text-[1rem] text-ink-muted">More sourcing scenarios across our product categories</p>
+              <p className="mt-3 text-[1rem] text-ink-muted">Explore more product applications and industry insights.</p>
             </div>
             <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-8">
-              {more.map((card) => (
+              {related.map((card) => (
                 <li key={card.slug}>
-                  <CaseStudyCard study={card} />
+                  <CaseStudyCard study={card} label="category" />
                 </li>
               ))}
             </ul>
+            <div className="mt-10 flex justify-center lg:mt-12">
+              <Button href="/case-studies" variant="outline" withArrow>
+                Explore All Case Studies
+              </Button>
+            </div>
           </Container>
         </section>
       )}

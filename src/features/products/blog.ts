@@ -73,7 +73,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Agree the mesh size for your use",
-            text: "Particle size decides how the powder behaves. Capsule fillers and drink mixes generally need a fine, even powder that flows and disperses well; tea blends can take a coarser grind. Specify the mesh range your process needs and ask for it to be confirmed on the specification sheet.",
+            text: "Particle size decides how the powder behaves. Capsule fillers and drink mixes generally need a fine, even powder that flows and disperses well; tea blends can take a coarser grind. Specify the mesh range your process needs and ask for it to be written into the specification sheet.",
           },
           {
             heading: "Keep moisture low",

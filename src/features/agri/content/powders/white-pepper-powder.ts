@@ -81,7 +81,6 @@ export const whitePepperPowder: AgriProduct = {
         { label: "Colour", value: "Off-white to pale cream" },
         { label: "Aroma", value: "Earthy, slightly musky" },
         { label: "Mesh / Fineness", value: "As per buyer requirements" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Ground powder",
@@ -99,8 +98,6 @@ export const whitePepperPowder: AgriProduct = {
     points: ["Keep in airtight packaging", "Store cool and dry", "Protect from light", "Reseal opened bags promptly"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "White Pepper Powder Questions",
     items: spiceFaqs("White pepper powder", [
       { question: "How is white pepper different from black pepper?", answer: "Both come from Piper nigrum. White pepper has the outer skin removed before drying, giving a paler colour and a cleaner, earthier heat." },
       { question: "Can the grind size be specified?", answer: "Yes — share the fineness your process needs and it will be confirmed with the quotation." },

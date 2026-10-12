@@ -86,7 +86,6 @@ export const corianderSeedsPowder: AgriProduct = {
         { label: "Appearance", value: "Fine ground powder" },
         { label: "Colour", value: "Light greenish brown to tan" },
         { label: "Aroma", value: "Mild, citrusy" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Ground powder",
@@ -99,8 +98,6 @@ export const corianderSeedsPowder: AgriProduct = {
     note: powderSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Coriander Powder Questions",
     items: spiceFaqs("Coriander seeds powder", [
       { question: "Is this the same as dhania powder?", answer: "Yes — dhania powder is the common Indian name for ground coriander seed." },
       { question: "How fine is the powder?", answer: "Fineness is agreed with the buyer and confirmed with each enquiry." },

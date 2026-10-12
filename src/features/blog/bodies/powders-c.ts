@@ -18,7 +18,7 @@ export const powdersCBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Agree the fineness",
-        text: "How finely the pepper is ground decides how it behaves in your product. Smooth sauces and dressings usually need a fine, even powder that disperses without grit, while some seasoning blends can take a slightly coarser grind. Rather than accepting a general description, state the fineness your process needs on the specification sheet and ask for it to be confirmed with the quotation, so that every lot behaves the same on your line.",
+        text: "How finely the pepper is ground decides how it behaves in your product. Smooth sauces and dressings usually need a fine, even powder that disperses without grit, while some seasoning blends can take a slightly coarser grind. Rather than accepting a general description, state the fineness your process needs on the specification sheet and ask for it to be stated in the quotation, so that every lot behaves the same on your line.",
       },
       {
         heading: "Heat and consistency",

@@ -1,9 +1,14 @@
 import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
 import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
 const slug = "dry-mango-powder";
+
+/** Photography in public/images/products/Powder Product/Dry Mango Powder/. */
+function photo(file: string, alt: string, label: string): ImageSlotData {
+  return { file: `/images/products/Powder Product/Dry Mango Powder/${file}`, alt, label };
+}
 
 export const dryMangoPowder: AgriProduct = {
   slug,
@@ -77,6 +82,11 @@ export const dryMangoPowder: AgriProduct = {
       { title: "Grinding", text: "Dried slices are ground and sieved to powder." },
       { title: "Packing", text: "Packed to buyer requirements." },
     ],
+    image: photo(
+      "dry-mango-powder-overview.webp",
+      "Whole unripe green mangoes beside dried mango slices and a bowl of amchur powder",
+      "From green mango to amchur",
+    ),
   },
   specs: {
     eyebrow: "Product Specifications",
@@ -87,7 +97,6 @@ export const dryMangoPowder: AgriProduct = {
         { label: "Appearance", value: "Fine powder" },
         { label: "Colour", value: "Pale beige to light brown" },
         { label: "Taste", value: "Sour, fruity" },
-        { label: "Acidity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Powder",
@@ -105,8 +114,6 @@ export const dryMangoPowder: AgriProduct = {
     points: ["Airtight, moisture-proof packing", "Cool, dry storage", "Away from direct light", "Use dry scoops and reseal"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Dry Mango Powder Questions",
     items: spiceFaqs("Dry mango powder", [
       { question: "What is amchur?", answer: "Amchur is the Indian name for dry mango powder, made by drying and grinding slices of unripe green mango." },
       { question: "What does it taste like?", answer: "Sharp and sour with a fruity, slightly sweet edge." },
@@ -119,10 +126,41 @@ export const dryMangoPowder: AgriProduct = {
     body: "Share the quantity, packaging and destination you need, and our team will reply with availability and pricing.",
   },
   images: {
-    // dry-mango-powder-hero.webp — a mound of pale beige amchur powder beside dried green mango slices and a whole unripe mango, on a pale cream ground (1:1, blob crop).
-    hero: powderImg(slug, "hero", "Dry mango powder beside dried mango slices and a green mango", "dry-mango-powder-hero.webp"),
-    // dry-mango-powder-applications.webp — amchur dusted over a plate of chaat with chutneys alongside (4:3).
+    hero: photo(
+      "dry-mango-powder-hero.webp",
+      "A wooden bowl of dry mango powder beside dried mango slices, whole green mangoes and a cut mango",
+      "Dry mango powder",
+    ),
+    // Intro photograph, unchanged.
     detail: powderImg(slug, "applications", "A plate of bhel puri chaat topped with tomato, onion and coriander leaves", "dry-mango-powder-applications.webp"),
+    uses: photo(
+      "dry-mango-powder-culinary-applications.webp",
+      "A bowl of chaat topped with crisp sev, diced potato, coriander leaves and a dusting of spice",
+      "Culinary applications",
+    ),
+    specs: photo(
+      "dry-mango-powder-specifications.webp",
+      "A bowl of fine beige dry mango powder beside dried mango slices and unripe green mangoes",
+      "Dry mango powder specifications",
+    ),
+  },
+  /** Card images for this page's case studies only (the studies keep their own elsewhere). */
+  caseStudyImages: {
+    "amchur-for-tangy-seasoning-and-chaat-blends": photo(
+      "dry-mango-powder-snack-seasoning-case-study.webp",
+      "A wooden bowl of crisp, seasoned snack chips",
+      "Snack seasoning",
+    ),
+    "whole-spices-for-pickle-manufacturing": photo(
+      "dry-mango-powder-spice-blend-case-study.webp",
+      "A bowl of rich, spiced red gravy with dried red chillies and fresh coriander",
+      "Spice blends",
+    ),
+    "keeping-dry-mango-powder-free-flowing": photo(
+      "dry-mango-powder-food-manufacturing-case-study.webp",
+      "A bowl of fine dry mango powder among other dried ingredients",
+      "Dry mango powder",
+    ),
   },
   sections: [
     { type: "hero", variant: "blob" },

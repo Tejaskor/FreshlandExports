@@ -80,7 +80,6 @@ export const cuminSeeds: AgriProduct = {
         { label: "Appearance", value: "Elongated, ridged seeds" },
         { label: "Colour", value: "Greyish brown" },
         { label: "Aroma", value: "Warm, earthy" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole seeds; ground on request",
@@ -98,8 +97,6 @@ export const cuminSeeds: AgriProduct = {
     points: ["Keep in airtight packaging", "Store cool and dry", "Protect from light", "Use clean, dry scoops"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Cumin Questions",
     items: spiceFaqs("Cumin seeds", [
       { question: "Are the seeds cleaned?", answer: "Seeds are machine-cleaned, with sortex cleaning available on request." },
       { question: "Do you supply ground cumin?", answer: "Ground cumin is available on request." },

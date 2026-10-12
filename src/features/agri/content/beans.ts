@@ -1,4 +1,4 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -72,6 +72,22 @@ export const beans: AgriProduct = {
       "Specifications confirmed per order",
     ],
   },
+  faqs: {
+    items: freshFaqs("fresh green beans", slug, [
+      {
+        question: "What kind of green beans do you supply?",
+        answer: "Fresh green beans: slender, straight pods selected for tenderness, colour and length.",
+      },
+      {
+        question: "What are green beans used for?",
+        answer: "They are used in everyday cooking such as stir-fries, steamed sides and curries, in salads, by restaurants, caterers and hotels, and in cut-and-frozen, canned and ready-meal lines.",
+      },
+      {
+        question: "How should fresh green beans be stored?",
+        answer: "Keep them in cool, humid conditions.",
+      },
+    ]),
+  },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Bring Fresh Beans to Your Market",
@@ -95,6 +111,7 @@ export const beans: AgriProduct = {
     { type: "uses", variant: "tabs" },
     { type: "specs", variant: "tiles" },
     { type: "quality" },
+    { type: "faq", variant: "split" },
     { type: "contact", variant: "card" },
   ],
 };

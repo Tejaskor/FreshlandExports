@@ -103,8 +103,6 @@ export const turmeric: AgriProduct = {
     note: spiceSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Turmeric Questions",
     items: spiceFaqs("Turmeric", [
       { question: "What forms of turmeric do you supply?", answer: "Dried fingers and bulbs, polished or unpolished. Turmeric powder has its own product page." },
       { question: "Can you share curcumin content?", answer: "Quality parameters such as curcumin content are shared with each quotation." },

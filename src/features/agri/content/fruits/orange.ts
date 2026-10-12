@@ -55,16 +55,13 @@ export const orange: AgriProduct = {
         { label: "Product", value: "Fresh Orange" },
         { label: "Appearance", value: "Round citrus fruit" },
         { label: "Colour", value: "Orange, varies by variety" },
-        { label: "Variety", value: "To be confirmed", pending: true },
       ],
       "Cool conditions with good ventilation",
     ),
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Orange Questions",
-    items: fruitFaqs("Orange", [
+    items: fruitFaqs("Orange", slug, [
       { question: "Are the oranges suitable for juicing?", answer: "Yes — oranges are widely used for juice. Our team can advise on the most suitable varieties in season." },
     ]),
   },

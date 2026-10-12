@@ -57,7 +57,8 @@ export function SectionHeader({
   className,
 }: {
   id: string;
-  eyebrow: string;
+  /** Small ruled label above the heading; leave out for a heading alone. */
+  eyebrow?: string;
   heading: string;
   intro?: ReactNode;
   inverse?: boolean;
@@ -77,15 +78,17 @@ export function SectionHeader({
       )}
     >
       <div className={cn(align === "split" && intro && "lg:col-span-7")}>
-        <Reveal variant="rise">
-          <RuledEyebrow tone={inverse ? "inverse" : "default"} align={center ? "center" : "start"}>
-            {eyebrow}
-          </RuledEyebrow>
-        </Reveal>
+        {eyebrow && (
+          <Reveal variant="rise">
+            <RuledEyebrow tone={inverse ? "inverse" : "default"} align={center ? "center" : "start"}>
+              {eyebrow}
+            </RuledEyebrow>
+          </Reveal>
+        )}
         <RevealLines
           as="h2"
           id={id}
-          className={cn(type.section, "mt-5", inverse ? "text-white" : "text-forest")}
+          className={cn(type.section, eyebrow && "mt-5", inverse ? "text-white" : "text-forest")}
         >
           <Line>{heading}</Line>
         </RevealLines>

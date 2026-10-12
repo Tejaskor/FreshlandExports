@@ -264,9 +264,8 @@ export const moringaMoq = {
   highlight: `MOQ: ${moqFor("moringa-powder")}`,
 } as const;
 
-const toBeConfirmed = "To be confirmed";
-
-export const specifications: readonly { label: string; value: string; pending?: boolean }[] = [
+/** Confirmed values only: grade, mesh size, moisture and shelf life are left out until verified. */
+export const specifications: readonly { label: string; value: string }[] = [
   { label: "Product Name", value: "Moringa Leaf Powder" },
   { label: "Botanical Name", value: "Moringa oleifera" },
   { label: "Form", value: "Fine Powder" },
@@ -274,10 +273,6 @@ export const specifications: readonly { label: string; value: string; pending?: 
   { label: "Processing", value: "As per buyer requirements" },
   { label: "Packaging", value: "Customisable" },
   { label: "Origin", value: "India" },
-  { label: "Grade", value: toBeConfirmed, pending: true },
-  { label: "Mesh Size", value: toBeConfirmed, pending: true },
-  { label: "Moisture Content", value: toBeConfirmed, pending: true },
-  { label: "Shelf Life", value: toBeConfirmed, pending: true },
 ];
 
 export type Faq = { question: string; answer: string };
@@ -307,11 +302,6 @@ export const faqs: readonly Faq[] = [
     question: "Does it contain protein?",
     answer:
       "Yes. Moringa leaves contain plant protein alongside other nutrients. Exact values vary by lot and are shared on the specification sheet.",
-  },
-  {
-    question: "Does it help with weight loss?",
-    answer:
-      "There is no reliable evidence that moringa powder causes weight loss on its own. It can be part of a balanced diet, but it is not a weight-loss product.",
   },
   {
     question: "Can it be used in the food industry?",

@@ -68,7 +68,6 @@ export const garlic: AgriProduct = {
       { label: "Colour", value: "White to off-white, subject to variety" },
       { label: "Size / Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to seasonal availability" },
       { label: "Harvest / Availability", value: "Subject to seasonal availability" },
     ],
@@ -87,17 +86,11 @@ export const garlic: AgriProduct = {
     ],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Garlic Questions",
     items: [
       {
         question: "What type of fresh garlic do you supply?",
         answer:
-          "We supply fresh garlic (Allium sativum), white to off-white in colour depending on variety. Variety and availability are confirmed with each enquiry.",
-      },
-      {
-        question: "Is garlic available as whole bulbs?",
-        answer: "Yes. Fresh garlic is supplied as whole bulbs.",
+          "We supply fresh garlic (Allium sativum), white to off-white in colour depending on variety, as whole bulbs. Variety and availability are confirmed with each enquiry.",
       },
       {
         question: "Are peeled garlic cloves available?",
@@ -122,10 +115,6 @@ export const garlic: AgriProduct = {
         question: "How should fresh garlic be stored?",
         answer:
           "Store garlic in a cool, dry and well-ventilated environment, protect it from excess moisture and handle it carefully during transport.",
-      },
-      {
-        question: "Can packaging be customised according to buyer requirements?",
-        answer: "Yes. Packaging can be arranged according to buyer requirements and is confirmed with each quotation.",
       },
     ],
   },

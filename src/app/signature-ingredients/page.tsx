@@ -3,9 +3,10 @@ import { FeaturedIngredients } from "@/features/signature-ingredients/components
 import { IngredientNavigation } from "@/features/signature-ingredients/components/ingredient-navigation";
 import { IngredientsCta } from "@/features/signature-ingredients/components/ingredients-cta";
 import { SignatureIngredientsHero } from "@/features/signature-ingredients/components/signature-ingredients-hero";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, ogCard } from "@/lib/seo";
 
 export const metadata = createMetadata({
+  image: ogCard("signature-ingredients", "Freshland Exports signature ingredients"),
   title: "Our Signature Ingredients",
   description:
     "Science-backed botanical ingredients from Freshland Exports — Ashwalite, Fenugreen, Cinaplus, Ocibos, MobeetX, TheaMind and Peatrix — for nutrition, wellness and functional applications.",

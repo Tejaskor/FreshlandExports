@@ -48,6 +48,7 @@ export const siteMapGroups: readonly SiteMapGroup[] = [
         href: "/case-studies",
         children: caseStudies.map((study) => ({ label: study.title, href: caseStudyHref(study.slug) })),
       },
+      { label: "FAQs", href: "/faqs" },
       { label: "XML Sitemap", href: "/sitemap.xml" },
     ],
   },

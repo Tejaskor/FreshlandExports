@@ -1,4 +1,4 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -67,6 +67,22 @@ export const eggplant: AgriProduct = {
     ),
     note: specsNote,
   },
+  faqs: {
+    items: freshFaqs("fresh eggplant", slug, [
+      {
+        question: "Which eggplant varieties do you supply?",
+        answer: "Eggplants come in different shapes and colours, and the varieties offered depend on availability. Tell us the variety and size you need and our team will confirm what can be supplied.",
+      },
+      {
+        question: "What is eggplant used for?",
+        answer: "It is grilled and roasted, cooked in curries such as baingan bharta, used in Mediterranean dishes such as moussaka, ratatouille and baba ganoush, and processed into grilled-and-frozen products, ready meals and pickles.",
+      },
+      {
+        question: "How should fresh eggplant be stored?",
+        answer: "Keep it in cool conditions and avoid chilling injury.",
+      },
+    ]),
+  },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Bring Premium Eggplant to Your Market",
@@ -84,6 +100,7 @@ export const eggplant: AgriProduct = {
     { type: "features", variant: "bento" },
     { type: "uses", variant: "columns" },
     { type: "specs", variant: "table" },
+    { type: "faq", variant: "split" },
     { type: "contact", variant: "band" },
   ],
 };

@@ -77,7 +77,6 @@ export const psylliumSeed: AgriProduct = {
         { label: "Botanical Name", value: "Plantago ovata" },
         { label: "Appearance", value: "Small, boat-shaped whole seeds" },
         { label: "Colour", value: "Pinkish grey to brown" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole seed",
@@ -95,8 +94,6 @@ export const psylliumSeed: AgriProduct = {
     points: ["Lined or moisture-resistant bags", "Cool, dry, ventilated store", "Stack off the floor on pallets", "Keep away from humidity"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Psyllium Seed Questions",
     items: spiceFaqs("Psyllium seed", [
       { question: "Do you supply psyllium husk?", answer: "This page covers whole seed; husk and husk powder can be discussed with our team." },
       { question: "How are purity and moisture specified?", answer: "Purity, moisture and other quality parameters are confirmed with each quotation." },

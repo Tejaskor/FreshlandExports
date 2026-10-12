@@ -9,6 +9,8 @@ import { WaveDivider } from "@/components/ui/wave-divider";
 import { faqs } from "@/features/moringa/data";
 import { moringaImages } from "@/features/moringa/images";
 import { faqJsonLd, productJsonLd } from "@/lib/seo";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
+import { JsonLd } from "@/components/seo/json-ld";
 
 /**
  * Dedicated editorial page for Moringa Powder (/products/moringa-powder).
@@ -34,7 +36,7 @@ export function MoringaPage({ product }: { product: ExportProduct }) {
       category: category.name,
     }),
     faqJsonLd(faqs),
-  ];
+  ].filter((entry) => entry !== null);
 
   return (
     <>
@@ -42,15 +44,17 @@ export function MoringaPage({ product }: { product: ExportProduct }) {
       <MoringaAbout />
       <MoringaApplications />
       <MoringaDetails />
+      <ProductBlog slug={product.slug} productName={product.name} className="bg-cream" />
       {/* Flows into the Contact band's forest green. */}
-      <ProductBlog slug={product.slug} productName={product.name} className="bg-cream" after={<WaveDivider fill="text-forest" />} />
+      <ProductCaseStudies
+        slug={product.slug}
+        productName={product.name}
+        className="border-t border-line bg-white"
+        after={<WaveDivider fill="text-forest" />}
+      />
       <MoringaCta productName={product.name} />
 
-      <script
-        type="application/ld+json"
-        // Static, author-controlled JSON — no user input reaches this string.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

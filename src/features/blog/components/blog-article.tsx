@@ -21,6 +21,7 @@ import {
 } from "@/features/blog/data";
 import { formatPublished } from "@/features/blog/meta";
 import { productBlogs } from "@/features/products/blog";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 /** Headings clear the fixed header when reached by a hash link or the TOC. */
 const anchorClearance = "scroll-mt-28";
@@ -38,7 +39,6 @@ const metaDivider = <span aria-hidden="true" className="h-3 w-px bg-line-strong"
 export function BlogArticle({ post }: { post: BlogPost }) {
   const { sections, toc } = articleOutline(post);
   const related = relatedPosts(post);
-  const sameProduct = related.every((other) => other.product.slug === post.product.slug);
   const productPhoto = productBlogs[post.product.slug];
   const minutes = readingMinutes(post);
 
@@ -195,7 +195,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
               <RuledEyebrow>Keep Reading</RuledEyebrow>
             </Reveal>
             <h2 id="related-heading" className="mt-5 font-display text-display text-forest">
-              {sameProduct ? `More ${post.product.name} Insights` : "Related Articles"}
+              Latest Blogs
             </h2>
             <Reveal stagger={0.12} variant="rise" className={`${blogGrid} mt-10 lg:mt-12`}>
               {related.map((other) => (
@@ -207,6 +207,9 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </Container>
         </section>
       )}
+
+      {/* --- Case studies for the article's product ---------------------- */}
+      <ProductCaseStudies slug={post.product.slug} productName={post.product.name} className="border-t border-line bg-white" />
 
       {/* --- Final CTA --------------------------------------------------- */}
       <section aria-labelledby="article-cta-heading" className="bg-forest-deep">

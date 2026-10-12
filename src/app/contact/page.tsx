@@ -4,9 +4,10 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { ContactBackdrop } from "@/features/contact/components/contact-backdrop";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, ogCard } from "@/lib/seo";
 
 export const metadata = createMetadata({
+  image: ogCard("contact", "Contact Freshland Exports for enquiries and quotations"),
   title: "Contact",
   description:
     "Contact Freshland Exports for availability, specifications and export requirements across botanical powders, fresh produce, fruits and whole spices.",

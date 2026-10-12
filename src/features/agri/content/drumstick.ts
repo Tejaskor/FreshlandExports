@@ -1,4 +1,4 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -69,6 +69,22 @@ export const drumstick: AgriProduct = {
     ),
     note: specsNote,
   },
+  faqs: {
+    items: freshFaqs("fresh drumsticks", slug, [
+      {
+        question: "What kind of drumsticks do you supply?",
+        answer: "Fresh drumstick pods: long, slender and ridged, selected for length, tenderness and colour.",
+      },
+      {
+        question: "How are drumsticks prepared for supply?",
+        answer: "Pods are picked while tender, sorted by length and condition, cleaned and trimmed, then bundled and packed to buyer requirements.",
+      },
+      {
+        question: "How should fresh drumsticks be stored?",
+        answer: "Keep them in cool, well-ventilated conditions.",
+      },
+    ]),
+  },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Source Fresh Drumsticks",
@@ -86,6 +102,7 @@ export const drumstick: AgriProduct = {
     { type: "uses", variant: "gallery" },
     { type: "process" },
     { type: "specs", variant: "sheet" },
+    { type: "faq", variant: "center" },
     { type: "contact", variant: "split" },
   ],
 };

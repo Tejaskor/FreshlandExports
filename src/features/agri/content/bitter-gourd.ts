@@ -1,4 +1,4 @@
-import { freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, freshSpecs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -65,6 +65,22 @@ export const bitterGourd: AgriProduct = {
     ]),
     note: specsNote,
   },
+  faqs: {
+    items: freshFaqs("bitter gourd", slug, [
+      {
+        question: "What kind of bitter gourd do you supply?",
+        answer: "Fresh bitter gourd: elongated, ridged gourds selected for firmness, colour and consistent size.",
+      },
+      {
+        question: "What is bitter gourd used for?",
+        answer: "It is used in stir-fries, stuffed dishes such as stuffed karela, and curries, and is processed into chips, pickles and dried slices.",
+      },
+      {
+        question: "Can I specify the size of bitter gourd?",
+        answer: "Yes. Size and grade are supplied as per buyer requirements. Share the size you need and we will confirm availability with your quotation.",
+      },
+    ]),
+  },
   cta: {
     eyebrow: "Export Enquiry",
     heading: "Source Fresh Bitter Gourd",
@@ -82,6 +98,7 @@ export const bitterGourd: AgriProduct = {
     { type: "features", variant: "numbered" },
     { type: "uses", variant: "list" },
     { type: "specs", variant: "tiles" },
+    { type: "faq", variant: "center" },
     { type: "contact", variant: "band" },
   ],
 };

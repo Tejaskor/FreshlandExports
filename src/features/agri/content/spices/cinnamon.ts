@@ -71,7 +71,6 @@ export const cinnamon: AgriProduct = {
     rows: spiceSpecs(
       "Cinnamon",
       [
-        { label: "Species", value: "To be confirmed", pending: true },
         { label: "Appearance", value: "Rolled quills and bark pieces" },
         { label: "Colour", value: "Light to reddish brown" },
         { label: "Aroma", value: "Sweet, woody" },
@@ -87,10 +86,8 @@ export const cinnamon: AgriProduct = {
     note: spiceSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Cinnamon Questions",
     items: spiceFaqs("Cinnamon", [
-      { question: "Which type of cinnamon do you supply?", answer: "The species and grade will be confirmed here; our team can advise with each enquiry." },
+      { question: "Which type of cinnamon do you supply?", answer: "Species and grade are confirmed with each enquiry. Tell us the type and grade you need and our team will advise on availability." },
       { question: "Do you supply cinnamon powder?", answer: "This page covers quills and bark; other forms can be discussed with our team." },
       { question: "How should cinnamon be stored?", answer: "In airtight packaging in a cool, dry place, away from light." },
     ], slug),

@@ -1,10 +1,15 @@
 import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
 import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy. The blend recipe is
 // agreed with each buyer, so no fixed composition is stated here.
 const slug = "garam-masala";
+
+/** Photography in public/images/products/Powder Product/Garam masala Powder/. */
+function photo(file: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/Powder Product/Garam masala Powder/${file}`, alt, label, ...(position && { position }) };
+}
 
 export const garamMasala: AgriProduct = {
   slug,
@@ -54,9 +59,36 @@ export const garamMasala: AgriProduct = {
     heading: "Where Garam Masala Belongs",
     intro: "Temporary overview — replace with final culinary applications.",
     groups: [
-      { title: "Curries & Gravies", text: "Added near the end of cooking for aroma.", items: ["Chicken curry", "Paneer dishes", "Dal makhani"] },
-      { title: "Rice Dishes", text: "Warm depth for layered rice.", items: ["Biryani", "Pulao", "Spiced rice"] },
-      { title: "Meat & Marinades", text: "A base for rich, spiced marinades.", items: ["Kebabs", "Tikka", "Keema"] },
+      {
+        title: "Curries & Gravies",
+        text: "Added near the end of cooking for aroma.",
+        items: ["Chicken curry", "Paneer dishes", "Dal makhani"],
+        image: photo(
+          "garam-masala-curry-applications.webp",
+          "A brass kadai of mixed vegetable curry with cauliflower, peas, carrot and capsicum",
+          "Curries and gravies",
+        ),
+      },
+      {
+        title: "Rice Dishes",
+        text: "Warm depth for layered rice.",
+        items: ["Biryani", "Pulao", "Spiced rice"],
+        image: photo(
+          "garam-masala-rice-biryani.webp",
+          "A silver bowl of saffron biryani rice topped with fried onions and mint leaves",
+          "Rice and biryani",
+        ),
+      },
+      {
+        title: "Meat & Marinades",
+        text: "A base for rich, spiced marinades.",
+        items: ["Kebabs", "Tikka", "Keema"],
+        image: photo(
+          "garam-masala-marinades.webp",
+          "Chicken pieces coated in a red spiced yoghurt marinade, with lemon, garlic and ginger alongside",
+          "Marinades",
+        ),
+      },
       { title: "Snacks & Vegetables", text: "Lifts everyday dishes and fillings.", items: ["Samosa fillings", "Chole", "Sabzi"] },
     ],
   },
@@ -80,7 +112,6 @@ export const garamMasala: AgriProduct = {
         { label: "Colour", value: "Warm brown, varies with recipe" },
         { label: "Aroma", value: "Warm, sweet-spiced" },
         { label: "Particle Size", value: "As per buyer requirements" },
-        { label: "Moisture & Quality Parameters", value: "To be confirmed", pending: true },
       ],
       {
         form: "Ground blend",
@@ -98,8 +129,6 @@ export const garamMasala: AgriProduct = {
     points: ["Airtight packaging", "Cool, dry storage", "Protect from light and heat", "Reseal after each use"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Garam Masala Questions",
     items: spiceFaqs("Garam masala", [
       { question: "What spices are in your garam masala?", answer: "The composition is agreed with each buyer. Typical blends include spices such as cumin, coriander, black pepper, cloves, cinnamon and cardamom." },
       { question: "Can you match our own recipe?", answer: "Yes — share your recipe or a reference sample, and our team will discuss how the blend can be prepared to it." },
@@ -113,14 +142,39 @@ export const garamMasala: AgriProduct = {
     body: "Share your preferred composition, quantity, packaging and destination, and our team will reply with availability and pricing.",
   },
   images: {
-    // garam-masala-hero.webp — a tall shot of a brass bowl of warm brown garam masala surrounded by whole spices (cinnamon, cloves, cardamom, peppercorns, bay leaf) on a dark wooden surface (3:5).
-    hero: powderImg(slug, "hero", "Ground garam masala in a steel masala tin among other spice containers", "garam-masala-hero.webp", "50% 60%"),
-    // garam-masala-curry.webp — garam masala being sprinkled over a simmering curry (4:3).
+    hero: photo(
+      "garam-masala-hero.webp",
+      "A wooden bowl of garam masala on a tray of whole cinnamon, cardamom, peppercorns, star anise, cumin, coriander and nutmeg",
+      "Garam masala",
+      "60% 50%",
+    ),
+    // Fallback for the "Snacks & Vegetables" applications photograph, unchanged.
     detail: powderImg(slug, "curry", "A pot of Kerala chicken curry with green chillies, a tomato and dried red chillies alongside", "garam-masala-curry.webp"),
     extra: [
-      // garam-masala-whole-spices.webp — the whole spices of a typical blend laid out in small heaps before grinding (1:1).
-      powderImg(slug, "whole-spices", "Whole garam masala spices: nutmeg, mace, peppercorns, cardamom, cinnamon and cloves on white", "garam-masala-whole-spices.webp", "40% 50%"),
+      photo(
+        "garam-masala-blend-composition.webp",
+        "Small bowls of whole cinnamon, coriander seed, nutmeg, cumin, cloves and green cardamom on linen",
+        "Blend composition",
+      ),
     ],
+  },
+  /** Card images for this page's case studies only (the studies keep their own elsewhere). */
+  caseStudyImages: {
+    "supplying-a-curry-powder-blender": photo(
+      "garam-masala-spice-blend-case-study.webp",
+      "A brass bowl of ground spice blend among bay leaves, cardamom, star anise and dried red chillies",
+      "Spice blending",
+    ),
+    "ground-spices-for-ready-meal-production": photo(
+      "garam-masala-food-service-case-study.webp",
+      "A brass bowl of garam masala with whole spices and a stone mortar in a kitchen",
+      "Food service",
+    ),
+    "matching-a-house-garam-masala-recipe": photo(
+      "garam-masala-custom-blend-case-study.webp",
+      "Four bowls of ground spices, chilli, coriander, turmeric and a brown blend, with whole spices around them",
+      "Custom blend",
+    ),
   },
   sections: [
     { type: "hero", variant: "elongated" },

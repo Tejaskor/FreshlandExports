@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import { faqs } from "@/features/moringa/data";
@@ -19,19 +19,13 @@ export function FaqBlock({ className }: { className?: string }) {
     <Container className={cn("grid gap-12 lg:grid-cols-12 lg:gap-10", className)}>
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-28">
-          <Reveal variant="rise">
-            <RuledEyebrow>FAQ</RuledEyebrow>
-          </Reveal>
           <div className="relative">
             <RevealLines
               as="h3"
               id="faq-heading"
-              className={cn(type.sub, "relative z-10 mt-6 text-forest")}
+              className={cn(type.sub, "relative z-10 text-forest")}
             >
-              <Line>Everything</Line>
-              <Line>
-                You Need to <span className="text-leaf">Know</span>
-              </Line>
+              <Line>{faqHeading}</Line>
             </RevealLines>
             {/* Decorative moringa leaf illustration beside the heading. */}
             <Reveal

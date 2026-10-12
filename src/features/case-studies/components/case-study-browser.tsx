@@ -17,6 +17,9 @@ type Filter = CatalogueCategoryId | "all";
  * the result count is announced to screen readers, and an empty state offers
  * a way back to every case study.
  */
+/** Cards shown per "Load More" step. */
+const pageSize = 12;
+
 export function CaseStudyBrowser({
   studies,
   categories,
@@ -39,6 +42,12 @@ export function CaseStudyBrowser({
         terms.every((term) => study.search.includes(term)),
     );
   }, [studies, query, filter]);
+
+  // Twelve at a time; a new search or filter starts again from twelve.
+  const view = `${filter}|${query}`;
+  const [loaded, setLoaded] = useState({ view, count: pageSize });
+  const count = loaded.view === view ? loaded.count : pageSize;
+  const visible = results.slice(0, count);
 
   const reset = () => {
     setQuery("");
@@ -123,13 +132,29 @@ export function CaseStudyBrowser({
           </p>
 
           {results.length > 0 ? (
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {results.map((study) => (
-                <li key={study.slug}>
-                  <CaseStudyCard study={study} />
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                {visible.map((study) => (
+                  <li key={study.slug}>
+                    <CaseStudyCard study={study} />
+                  </li>
+                ))}
+              </ul>
+              {count < results.length && (
+                <div className="mt-10 flex flex-col items-center gap-3 lg:mt-12">
+                  <p className="text-[0.875rem] text-ink-muted">
+                    Showing {visible.length} of {results.length} case studies
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setLoaded({ view, count: count + pageSize })}
+                    className="rounded-full border border-forest px-6 py-3 text-[0.875rem] font-semibold text-forest transition-colors duration-300 hover:bg-forest hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                  >
+                    Load More
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="rounded-xl border border-dashed border-line-strong bg-white px-6 py-12 text-center">
               <p className="font-display text-[1.375rem] text-forest">No case studies match your search</p>

@@ -20,6 +20,7 @@ export function BlogCard({
   accentClassName = "text-rust",
   linkClassName = "text-forest group-hover:text-rust",
   sizes = "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw",
+  label = "topic",
 }: {
   post: BlogCardData;
   headingLevel?: "h2" | "h3";
@@ -29,6 +30,8 @@ export function BlogCard({
   /** Colour of "Read More", at rest and on hover. */
   linkClassName?: string;
   sizes?: string;
+  /** Label above the title: the article's topic or its Blog category. */
+  label?: "topic" | "category";
 }) {
   const Heading = headingLevel;
 
@@ -44,7 +47,7 @@ export function BlogCard({
       />
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <p className={cn("type-label font-semibold", accentClassName)}>{post.topic}</p>
+        <p className={cn("type-label font-semibold", accentClassName)}>{label === "category" ? post.category : post.topic}</p>
 
         <Heading className="mt-3 font-display text-[1.375rem] leading-[1.22] font-semibold tracking-[-0.01em] text-balance break-words text-forest">
           <Link href={post.href} className="outline-none after:absolute after:inset-0 after:content-['']">

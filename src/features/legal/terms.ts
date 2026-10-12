@@ -11,20 +11,13 @@
 
 import type { LegalSection } from "@/features/legal/types";
 import { catalogue } from "@/features/products/catalogue";
-import { categoryMoq, findMoq } from "@/features/products/moq";
+import { categoryMoq, moqExceptions } from "@/features/products/moq";
 
 /** ISO date of the business-approved version. Shown only once set. */
 export const termsLastUpdated: string | null = null;
 
 export const termsIntro =
   "These terms govern your use of the Freshland Exports website and the product information and enquiry services provided through it.";
-
-/** Products whose published MOQ differs from their category's. */
-const moqExceptions = catalogue.flatMap((category) =>
-  category.products
-    .filter((product) => findMoq(product.slug) !== categoryMoq[category.id])
-    .map((product) => `${product.name}: ${findMoq(product.slug)}`),
-);
 
 export const termsSections: readonly LegalSection[] = [
   {

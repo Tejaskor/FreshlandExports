@@ -60,9 +60,7 @@ export const papaya: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Papaya Questions",
-    items: fruitFaqs("Papaya", [
+    items: fruitFaqs("Papaya", slug, [
       { question: "At what ripeness is papaya shipped?", answer: "Ripening stage is agreed with each buyer to suit the market and transit time." },
     ]),
   },

@@ -8,7 +8,7 @@ import type { ImageSlotData } from "@/features/agri/types";
  * the page shows a labelled placeholder.
  *
  * Specification rows and FAQs reuse the spice helpers, so the MOQ and
- * "to be confirmed" wording stays the same across both ranges. Nothing here
+ * enquiry wording stays the same across both ranges. Nothing here
  * states a certification, grade, test result, origin or capacity.
  */
 
@@ -20,4 +20,4 @@ export function powderImg(slug: string, name: string, alt: string, label: string
 }
 
 export const powderSpecsNote =
-  "Temporary specification — grades, quality parameters and packaging are confirmed with each enquiry.";
+  "Grades, quality parameters and packaging are confirmed with each enquiry.";

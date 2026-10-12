@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { BlogArticle } from "@/features/blog/components/blog-article";
 import { blogPosts, findBlogPost } from "@/features/blog/data";
 import { blogPostingJsonLd, createMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -47,11 +48,7 @@ export default async function BlogPostPage({ params }: Params) {
   return (
     <>
       <BlogArticle post={post} />
-      <script
-        type="application/ld+json"
-        // Static, author-controlled JSON — no user input reaches this string.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

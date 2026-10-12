@@ -4,6 +4,7 @@ import { Icon } from "@/components/ui/icon";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
+import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
 import { MoqPanel } from "@/features/products/components/moq-panel";
 import { moqFor } from "@/features/products/moq";
@@ -16,6 +17,7 @@ import {
   turmericWhyChoose,
 } from "@/features/turmeric-powder/data";
 import { cn } from "@/lib/utils";
+import { FaqJsonLd } from "@/components/seo/json-ld";
 
 const subHeading =
   "font-display text-title leading-[1.05]";
@@ -57,14 +59,7 @@ export function TurmericDetails() {
                   <div key={row.label} className="border-t border-[var(--t-gold)]/40 py-3">
                     <dt className="type-label text-ink-muted">{row.label}</dt>
                     <dd className="mt-1">
-                      {row.pending ? (
-                        <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-rust/50 px-3 py-0.5 text-[0.8125rem] text-rust">
-                          <span aria-hidden="true" className="size-1.5 rounded-full bg-rust" />
-                          {row.value}
-                        </span>
-                      ) : (
-                        <span className="font-display text-heading leading-tight text-forest">{row.value}</span>
-                      )}
+                      <span className="font-display text-heading leading-tight text-forest">{row.value}</span>
                     </dd>
                   </div>
                 ))}
@@ -131,11 +126,11 @@ export function TurmericDetails() {
         {/* --- FAQs ------------------------------------------------------------ */}
         <div className="mx-auto mt-14 max-w-3xl lg:mt-16">
           <div className="text-center">
-            <p className={cn(label, "text-rust")}>Frequently asked questions</p>
-            <h3 className={cn(subHeading, "mt-2 text-forest")}>Everything About Turmeric Powder</h3>
+            <h3 className={cn(subHeading, "text-forest")}>{faqHeading}</h3>
           </div>
           <Reveal variant="rise" className="mt-6">
             <FaqAccordion items={turmericFaqs} />
+            <FaqJsonLd items={turmericFaqs} />
           </Reveal>
         </div>
       </Container>

@@ -20,7 +20,8 @@ import {
   relatedExportProducts,
 } from "@/features/products/export-catalogue";
 import { exportProductMedia } from "@/features/products/export-images";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, existingImage } from "@/lib/seo";
+import { catalogueImage, findCatalogueProduct } from "@/features/products/catalogue";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -34,6 +35,13 @@ export function generateStaticParams() {
     ...menuOnlyProducts.map((product) => ({ slug: product.slug })),
     ...products.map((product) => ({ slug: productSlug(product) })),
   ];
+}
+
+/** The product's catalogue photograph, as a share image. */
+function catalogueShareImage(slug: string) {
+  const entry = findCatalogueProduct(slug);
+  const url = entry ? catalogueImage(entry.image) : null;
+  return entry && url ? { url, alt: entry.alt } : undefined;
 }
 
 function findProduct(slug: string) {
@@ -52,6 +60,8 @@ export async function generateMetadata({ params }: Params) {
       description: agri.hero.body,
       path: exportProductHref(agri.slug),
       noIndex: true,
+      // The page's own hero photograph, else the catalogue photograph.
+      image: existingImage({ url: agri.images.hero.file, alt: agri.images.hero.alt }, catalogueShareImage(agri.slug)),
     });
   }
 
@@ -64,7 +74,7 @@ export async function generateMetadata({ params }: Params) {
         exportProduct.seoDescription ??
         `${exportProduct.name} from India — ${exportProduct.summary.toLowerCase()}. ${exportCategories[exportProduct.category].name} from Freshland Exports; specifications, packaging and quotes on request.`,
       path: exportProductHref(exportProduct.slug),
-      image: media.image ? { url: media.image, alt: media.alt } : undefined,
+      image: existingImage(media.image ? { url: media.image, alt: media.alt } : undefined, catalogueShareImage(exportProduct.slug)),
     });
   }
 
@@ -76,6 +86,7 @@ export async function generateMetadata({ params }: Params) {
       description: `Enquire about ${menuOnly.name} from Freshland Exports — specifications, packaging and quotes on request.`,
       path: exportProductHref(menuOnly.slug),
       noIndex: true,
+      image: catalogueShareImage(menuOnly.slug),
     });
   }
 
@@ -86,6 +97,7 @@ export async function generateMetadata({ params }: Params) {
     title: product.name,
     description: `${product.name} — ${product.descriptor}.`,
     path: product.href,
+    image: product.image ? { url: product.image, alt: product.alt } : undefined,
   });
 }
 

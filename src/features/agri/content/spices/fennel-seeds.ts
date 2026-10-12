@@ -66,7 +66,6 @@ export const fennelSeeds: AgriProduct = {
         { label: "Appearance", value: "Slender, ridged seeds" },
         { label: "Colour", value: "Pale green to greenish brown" },
         { label: "Aroma", value: "Sweet, anise-like" },
-        { label: "Grade", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole seeds",
@@ -84,8 +83,6 @@ export const fennelSeeds: AgriProduct = {
     points: ["Airtight packaging", "Cool, dry storage", "Protect from light", "Away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Fennel Questions",
     items: spiceFaqs("Fennel seeds", [
       { question: "What does fennel taste like?", answer: "Sweet and fresh, with an aroma similar to anise." },
       { question: "How is grade specified?", answer: "Grade and quality parameters are confirmed with each quotation." },

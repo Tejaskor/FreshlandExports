@@ -70,9 +70,7 @@ export const guava: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Guava Questions",
-    items: fruitFaqs("Guava", [
+    items: fruitFaqs("Guava", slug, [
       { question: "Do you supply pink guava?", answer: "White and pink varieties may be available depending on the season; our team confirms options with each enquiry." },
     ]),
   },

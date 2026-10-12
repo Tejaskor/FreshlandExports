@@ -63,7 +63,6 @@ export const grapes: AgriProduct = {
       [
         { label: "Product", value: "Fresh Table Grapes" },
         { label: "Colour", value: "Green, red or black, by variety" },
-        { label: "Seed", value: "Seedless options, to be confirmed", pending: true },
         { label: "Form", value: "Whole bunches" },
       ],
       "Cold storage with humidity control",
@@ -71,9 +70,7 @@ export const grapes: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Grape Questions",
-    items: fruitFaqs("Grapes", [
+    items: fruitFaqs("Grapes", slug, [
       { question: "Do you supply seedless grapes?", answer: "Seedless varieties may be available depending on the season. Our team confirms options with each enquiry." },
     ]),
   },

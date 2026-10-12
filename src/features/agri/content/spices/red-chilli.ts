@@ -65,7 +65,6 @@ export const redChilli: AgriProduct = {
         { label: "Appearance", value: "Whole dried pods" },
         { label: "Colour", value: "Red, varies by variety" },
         { label: "Aroma", value: "Pungent, smoky" },
-        { label: "Pungency & Colour Value", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole with stem, stemless; crushed and powder on request",
@@ -83,8 +82,6 @@ export const redChilli: AgriProduct = {
     points: ["Store cool and dry", "Protect from direct sunlight", "Keep bags sealed", "Keep away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Red Chilli Questions",
     items: spiceFaqs("Red chilli", [
       { question: "Can you supply stemless chillies?", answer: "Yes — whole chillies are available with or without stems." },
       { question: "How is heat level specified?", answer: "Pungency and colour values vary by variety and are shared with each quotation." },

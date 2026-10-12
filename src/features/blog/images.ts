@@ -19,19 +19,6 @@ const product = (file: string) => `/images/products/${file}`;
 /** An article's own photograph, saved under its URL slug. */
 const article = (slug: string, alt: string): ArticleImage => ({ src: `/images/Blog/${slug}.webp`, alt });
 
-/* --- Freshland photography, until a topic-specific photograph is found -- */
-
-const labTesting: ArticleImage = {
-  src: "/images/r-and-d/rnd-lab-herbal-testing.webp",
-  alt: "A technician preparing plant samples for quality testing in the laboratory",
-};
-
-/** Freshland's facility, where produce is graded, packed and stored. */
-const facility = (variant: "4" | "6"): ArticleImage => ({
-  src: `/images/home/hero/hero-facility${variant}.webp`,
-  alt: "The Freshland Exports facility where produce is graded, packed and stored",
-});
-
 export const articleImages: Record<string, Trio> = {
   /* --- Powder products ------------------------------------------------- */
   "moringa-powder": [
@@ -92,16 +79,48 @@ export const articleImages: Record<string, Trio> = {
     article("sourcing-coriander-powder-from-whole-seed-to-ground-spice", "A spice container with ground coriander beside whole cumin, mustard seeds and other spices"),
     article("ground-coriander-in-curry-powders-masalas-and-bakery", "A masala spice tin with ground coriander, chilli, turmeric and whole seeds"),
   ],
-  "garlic-powder": [labTesting, facility("4"), facility("6")],
+  "garlic-powder": [
+    {
+      src: "/images/Blog/garlic-powder-buying-guide.webp",
+      alt: "A bowl of fine, pale garlic powder beside whole garlic bulbs, peeled cloves and fresh parsley",
+    },
+    {
+      src: "/images/Blog/garlic-powder-storage-handling.webp",
+      alt: "Lined bulk bags and sealed containers of garlic powder on pallets in a warehouse",
+    },
+    {
+      src: "/images/Blog/garlic-powder-food-applications.webp",
+      alt: "Garlic powder beside a seasoning blend, seasoned potato chips and a chicken and vegetable rice dish",
+    },
+  ],
   "dry-mango-powder": [
-    article("dry-mango-powder-quality-tang-colour-and-freshness", "Pale sun-dried green mango slices, the raw material for amchur, on a white background"),
-    article("from-green-mango-to-amchur-how-dry-mango-powder-is-made", "Thin slices of peeled green mango spread out to sun-dry for amchur"),
-    article("dry-mango-powder-amchur-in-chaat-masala-chutneys-and-snacks", "A plate of Punjabi chana chaat with chickpeas, onion, green chilli and lemon"),
+    {
+      src: product("Powder Product/Dry Mango Powder/dry-mango-powder-quality-blog.webp"),
+      alt: "Dried green mango slices, the raw material for amchur, on a rustic wooden board",
+    },
+    {
+      src: product("Powder Product/Dry Mango Powder/green-mango-to-amchur-blog.webp"),
+      alt: "Cut unripe green mangoes beside dried mango slices and a wooden bowl of amchur powder",
+    },
+    {
+      // The file name has a double dot as supplied.
+      src: product("Powder Product/Dry Mango Powder/dry-mango-powder-indian-cuisine-blog..webp"),
+      alt: "A wooden bowl piled with dried mango slices used to make amchur",
+    },
   ],
   "garam-masala": [
-    article("sourcing-garam-masala-agreeing-a-blend-recipe-with-your-supplier", "Whole and ground garam masala components arranged on a white plate"),
-    article("importing-garam-masala-in-bulk-specifications-packing-and-labelling", "Close-up of ground garam masala showing its coarse brown texture"),
-    article("how-food-makers-use-garam-masala-in-curries-rice-and-marinades", "A plate of spiced chicken biryani with peas, peppers and nuts on a red floral cloth"),
+    {
+      src: product("Powder Product/Garam masala Powder/Rustic Bowl of Warming Spices (1).webp"),
+      alt: "A bowl of garam masala beside the whole spices that go into it: cinnamon, mace, cardamom, nutmeg, cloves, cumin and coriander",
+    },
+    {
+      src: product("Powder Product/Garam masala Powder/whole-spices-to-garam-masala.webp"),
+      alt: "Bowls and spoons of ground spices in red, yellow and brown shades with cumin seeds and star anise",
+    },
+    {
+      src: product("Powder Product/Garam masala Powder/garam-masala-indian-cuisine-blog.webp"),
+      alt: "A bowl of garam masala with a brass spoon, surrounded by cinnamon, star anise, cardamom, cloves and cumin",
+    },
   ],
   "white-pepper-powder": [
     article("white-pepper-powder-quality-colour-aroma-and-fineness", "Fine white pepper powder dusted over the perforated metal lid of a pepper shaker"),

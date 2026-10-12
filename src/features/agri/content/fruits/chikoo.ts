@@ -60,9 +60,7 @@ export const chikoo: AgriProduct = {
     note: fruitSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Chikoo Questions",
-    items: fruitFaqs("Chikoo", [
+    items: fruitFaqs("Chikoo", slug, [
       { question: "What does chikoo taste like?", answer: "Ripe chikoo is naturally sweet with a malty, caramel-like flavour and soft, grainy flesh." },
     ]),
   },

@@ -5,9 +5,10 @@ import { OurApproach } from "@/features/farms/components/our-approach";
 import { OurPromise } from "@/features/farms/components/our-promise";
 import { OurRoots } from "@/features/farms/components/our-roots";
 import { PeopleBehind } from "@/features/farms/components/people-behind";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, ogCard } from "@/lib/seo";
 
 export const metadata = createMetadata({
+  image: ogCard("farms", "Farmers working together in the fields that supply Freshland Exports"),
   title: "Our Farms",
   description:
     "Freshland Exports works with farming communities and trusted agricultural partners across India to bring carefully selected botanical ingredients to markets worldwide.",

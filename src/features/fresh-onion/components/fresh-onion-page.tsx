@@ -7,6 +7,7 @@ import { FreshOnionSpecs } from "@/features/fresh-onion/components/fresh-onion-s
 import { FreshOnionUses } from "@/features/fresh-onion/components/fresh-onion-uses";
 import { ProductBlog } from "@/features/products/components/product-blog";
 import type { ExportProduct } from "@/features/products/export-catalogue";
+import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 /**
  * Dedicated page for Fresh Onions (/products/onion) — light, with burgundy
@@ -24,6 +25,7 @@ export function FreshOnionPage({ product }: { product: ExportProduct }) {
       <FreshOnionSpecs />
       <FreshOnionFaq />
       <ProductBlog slug={product.slug} productName="Fresh Onion" className="bg-sage-50" />
+      <ProductCaseStudies slug={product.slug} productName="Fresh Onion" className="bg-white" />
       <FreshOnionContact />
     </>
   );

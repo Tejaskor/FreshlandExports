@@ -22,7 +22,7 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Check the texture",
-        text: "Garlic powder should pour freely and look even. Lumps that break easily under a finger are a sign that the powder has picked up moisture; hard cakes suggest it has been exposed for some time. Particle size affects how the powder disperses in seasonings, sauces and coatings, so state the fineness your process needs and ask for it to be confirmed on the specification sheet.",
+        text: "Garlic powder should pour freely and look even. Lumps that break easily under a finger are a sign that the powder has picked up moisture; hard cakes suggest it has been exposed for some time. Particle size affects how the powder disperses in seasonings, sauces and coatings, so state the fineness your process needs and ask for it to be written into the specification sheet.",
       },
       {
         heading: "Agree the specification",
@@ -93,7 +93,7 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Check texture and freshness",
-        text: "The powder should be fine and dry. Because amchur readily absorbs moisture, soft lumps are common in powder that has been exposed to humid air, and hard cakes or a musty smell are a warning sign. Fineness affects how the powder blends into masalas and seasonings, so specify the texture your product needs and ask for it to be confirmed.",
+        text: "The powder should be fine and dry. Because amchur readily absorbs moisture, soft lumps are common in powder that has been exposed to humid air, and hard cakes or a musty smell are a warning sign. Fineness affects how the powder blends into masalas and seasonings, so specify the texture your product needs and ask the supplier to agree it in writing.",
       },
       {
         heading: "Agree the paperwork",

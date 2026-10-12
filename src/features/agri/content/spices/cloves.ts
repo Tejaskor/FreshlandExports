@@ -76,7 +76,6 @@ export const cloves: AgriProduct = {
         { label: "Appearance", value: "Whole, nail-shaped buds" },
         { label: "Colour", value: "Reddish to dark brown" },
         { label: "Aroma", value: "Warm, sweet, pungent" },
-        { label: "Grade", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole cloves",
@@ -94,8 +93,6 @@ export const cloves: AgriProduct = {
     points: ["Airtight packaging", "Cool, dry storage", "Protect from light", "Keep away from moisture"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Clove Questions",
     items: spiceFaqs("Cloves", [
       { question: "Do you supply ground cloves?", answer: "This page covers whole cloves; other forms can be discussed with our team." },
       { question: "How is quality specified?", answer: "Grade and quality parameters are confirmed with each quotation." },

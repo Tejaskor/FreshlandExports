@@ -1,4 +1,4 @@
-import { type CatalogueCategoryId, findCatalogueProduct } from "@/features/products/catalogue";
+import { catalogue, type CatalogueCategoryId, findCatalogueProduct } from "@/features/products/catalogue";
 
 /**
  * Minimum order quantities confirmed by Freshland Exports, by catalogue
@@ -38,3 +38,10 @@ export function moqFor(slug: string) {
   if (!moq) throw new Error(`MOQ: no catalogue category for "${slug}"`);
   return moq;
 }
+
+/** Catalogue products whose MOQ differs from their category's, as "Name: MOQ". */
+export const moqExceptions: readonly string[] = catalogue.flatMap((category) =>
+  category.products
+    .filter((product) => findMoq(product.slug) !== categoryMoq[category.id])
+    .map((product) => `${product.name}: ${findMoq(product.slug)}`),
+);

@@ -66,7 +66,6 @@ export const cabbage: AgriProduct = {
       { label: "Colour", value: "Green, subject to variety" },
       { label: "Size / Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to seasonal availability" },
       { label: "Storage", value: "Cool, humid and well-ventilated conditions, according to handling requirements" },
     ],
@@ -85,8 +84,6 @@ export const cabbage: AgriProduct = {
     ],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Cabbage Questions",
     items: [
       {
         question: "What type of fresh cabbage do you supply?",
@@ -115,10 +112,6 @@ export const cabbage: AgriProduct = {
         question: "Is cabbage suitable for food processing?",
         answer:
           "Yes. Fresh cabbage is suitable for washing, cutting and commercial food-processing applications such as shredded packs and ready meals.",
-      },
-      {
-        question: "Can packaging be customised according to buyer requirements?",
-        answer: "Yes. Packaging can be arranged according to buyer requirements and is confirmed with each quotation.",
       },
     ],
   },

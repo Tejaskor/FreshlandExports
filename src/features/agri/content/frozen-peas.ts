@@ -1,4 +1,4 @@
-import { img, specsNote } from "@/features/agri/content/helpers";
+import { freshFaqs, img, specsNote } from "@/features/agri/content/helpers";
 import type { AgriProduct } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
@@ -66,11 +66,25 @@ export const frozenPeas: AgriProduct = {
       { label: "Grade", value: "As per buyer requirements" },
       { label: "Packaging", value: "As per buyer requirements" },
       { label: "Storage", value: "Frozen, as per product specification" },
-      { label: "Shelf Life", value: "To be confirmed", pending: true },
-      { label: "Origin", value: "India, subject to confirmation" },
       { label: "Supply", value: "Subject to availability" },
     ],
     note: specsNote,
+  },
+  faqs: {
+    items: freshFaqs("frozen peas", slug, [
+      {
+        question: "How are the frozen peas prepared?",
+        answer: "Peas are harvested at the right maturity, shelled and sorted, washed, and frozen to preserve their colour and texture, then packed and held in frozen storage.",
+      },
+      {
+        question: "How are frozen peas stored and shipped?",
+        answer: "They are kept frozen, as per the product specification, and shipped frozen in reefer containers.",
+      },
+      {
+        question: "Are frozen peas available outside the fresh season?",
+        answer: "Yes, frozen peas are available beyond the fresh season, subject to stock. Share your timing and our team will confirm availability.",
+      },
+    ]),
   },
   cta: {
     eyebrow: "Export Enquiry",
@@ -95,6 +109,7 @@ export const frozenPeas: AgriProduct = {
     { type: "process" },
     { type: "features", variant: "band" },
     { type: "specs", variant: "table" },
+    { type: "faq", variant: "center" },
     { type: "contact", variant: "centered" },
   ],
 };

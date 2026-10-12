@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
-import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { freshOnionFaqs } from "@/features/fresh-onion/data";
+import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
 import { type } from "@/features/moringa/styles";
 import { cn } from "@/lib/utils";
+import { FaqJsonLd } from "@/components/seo/json-ld";
 
 /**
  * FAQ — the site's accordion beside a sticky heading, as on the other
@@ -19,14 +20,8 @@ export function FreshOnionFaq() {
       <Container className="grid gap-10 border-t border-line pt-12 lg:grid-cols-12 lg:gap-10 lg:pt-14">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-28">
-            <Reveal variant="rise">
-              <RuledEyebrow>FAQ</RuledEyebrow>
-            </Reveal>
-            <RevealLines as="h2" id="faq-heading" className={cn(type.section, "mt-5 text-forest")}>
-              <Line>Fresh Onion</Line>
-              <Line>
-                <span className="text-leaf">Questions</span>
-              </Line>
+            <RevealLines as="h2" id="faq-heading" className={cn(type.section, "text-forest")}>
+              <Line>{faqHeading}</Line>
             </RevealLines>
             <Reveal variant="rise" delay={0.2}>
               <p className="mt-6 max-w-sm text-[0.9375rem] leading-relaxed text-ink-muted">
@@ -45,6 +40,7 @@ export function FreshOnionFaq() {
 
         <Reveal variant="rise" className="lg:col-span-7">
           <FaqAccordion items={freshOnionFaqs} />
+          <FaqJsonLd items={freshOnionFaqs} />
         </Reveal>
       </Container>
     </section>

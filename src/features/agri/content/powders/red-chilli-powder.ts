@@ -1,5 +1,6 @@
 import { powdersCategory } from "@/features/agri/content/powders/helpers";
 import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
+import { moqFor } from "@/features/products/moq";
 
 // B2B copy for bulk buyers. Heat, colour value, particle size, moisture,
 // origin and documentation are not yet verified for this product, so they are
@@ -153,28 +154,18 @@ export const redChilliPowder: AgriProduct = {
     ],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Red Chilli Powder Questions",
     items: [
-      {
-        question: "What is red chilli powder made from?",
-        answer: "It is made by grinding dried red chilli peppers into a powder.",
-      },
       {
         question: "What are the main uses of red chilli powder?",
         answer: "It is used in spice blends and curry powders, seasonings and snack coatings, sauces and chilli pastes, marinades, condiments, ready meals and other savoury foods.",
       },
       {
-        question: "Can I specify the required colour and heat level?",
-        answer: "Yes, share the colour and heat level your application needs. Colour and heat depend on the chillies used, so what can be supplied is confirmed with each enquiry.",
+        question: "Can I specify the colour, heat level and particle size?",
+        answer: "Yes, share the colour, heat level and fineness your application needs. These depend on the chillies used and the grind, so what can be supplied is confirmed with each enquiry.",
       },
       {
-        question: "What particle size or mesh is available?",
-        answer: "Particle size has not yet been confirmed for this product. Tell us the fineness you need and our team will advise.",
-      },
-      {
-        question: "Is red chilli powder available for bulk orders?",
-        answer: "Yes. Bulk order quantities range from 100 KG to 500 KG, depending on product requirements and the agreed order. Share your required quantity and destination market, and our team will confirm availability.",
+        question: "What is the minimum order quantity for red chilli powder?",
+        answer: `The minimum order quantity is ${moqFor(slug)}. Share your required quantity and destination market, and our team will confirm availability.`,
       },
       {
         question: "What packaging options are available?",

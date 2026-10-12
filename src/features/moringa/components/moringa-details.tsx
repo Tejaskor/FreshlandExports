@@ -166,7 +166,7 @@ function QualityStrip() {
   );
 }
 
-/** Deep-green data sheet. Pending values are flagged, not guessed. */
+/** Deep-green data sheet. Unconfirmed values are left out, not guessed. */
 function DataSheet() {
   return (
     <div className="relative h-full overflow-hidden rounded-[2rem_0.75rem_2rem_2rem] bg-forest-deep p-6 text-cream shadow-[var(--shadow-panel)] sm:p-8">
@@ -194,14 +194,7 @@ function DataSheet() {
               {row.label}
             </dt>
             <dd>
-              {row.pending ? (
-                <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-leaf-bright/60 px-3 py-0.5 text-[0.8125rem] text-leaf-bright">
-                  <span aria-hidden="true" className="size-1.5 rounded-full bg-leaf-bright" />
-                  {row.value}
-                </span>
-              ) : (
-                <span className="font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-tight text-cream">{row.value}</span>
-              )}
+              <span className="font-display text-[clamp(1rem,0.9rem+0.28vw,1.25rem)] leading-tight text-cream">{row.value}</span>
             </dd>
           </div>
         ))}

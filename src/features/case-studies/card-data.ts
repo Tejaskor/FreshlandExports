@@ -14,6 +14,8 @@ export type CaseStudyCardData = {
   href: string;
   title: string;
   summary: string;
+  /** Industry or application label shown over the photograph. */
+  industry: string;
   topic: string;
   status: string;
   illustrative: boolean;
@@ -32,13 +34,14 @@ export function toCaseStudyCard(study: CaseStudy): CaseStudyCardData {
     href: caseStudyHref(study.slug),
     title: study.title,
     summary: study.summary,
+    industry: study.industry,
     topic: study.topic,
     status: statusLabel[study.status],
     illustrative: study.status === "illustrative",
     categories,
     products,
     image: study.image,
-    search: [study.title, study.summary, study.topic, ...categories.map((c) => c.heading), ...products, ...study.keywords]
+    search: [study.title, study.summary, study.industry, study.topic, ...categories.map((c) => c.heading), ...products, ...study.keywords]
       .join(" ")
       .toLowerCase(),
   };

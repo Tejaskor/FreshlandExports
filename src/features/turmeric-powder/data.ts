@@ -145,9 +145,9 @@ export const turmericWhyChoose = {
 
 /**
  * Specification panel: every value is taken from the supplied copy. Figures
- * that were not supplied are shown as pending, never estimated.
+ * that were not supplied (such as curcumin content) are left out, never estimated.
  */
-export const turmericSpecs: readonly { label: string; value: string; pending?: boolean }[] = [
+export const turmericSpecs: readonly { label: string; value: string }[] = [
   { label: "Product Name", value: "Turmeric Powder" },
   { label: "Botanical Name", value: "Curcuma longa" },
   { label: "Plant Part", value: "Rhizome (underground stem)" },
@@ -158,13 +158,10 @@ export const turmericSpecs: readonly { label: string; value: string; pending?: b
   { label: "Applications", value: "Food, beverages, and food processing" },
   { label: "Supply", value: "Bulk supply options" },
   { label: "Packaging", value: "Options for international buyers" },
-  { label: "Curcumin Content", value: "To be confirmed", pending: true },
 ];
 
 export const turmericFaqs: readonly Faq[] = [
   { question: "What is turmeric powder made from?", answer: "Turmeric powder is made from the dried underground stems, known as rhizomes, of the Curcuma longa plant. These are processed and ground into a fine powder." },
-  { question: "What are the main benefits of turmeric powder?", answer: "Turmeric contains curcumin and other compounds with antioxidant properties. Researchers are studying its potential anti-inflammatory effects and possible benefits for joint health." },
-  { question: "Can turmeric powder be consumed daily?", answer: "Turmeric is commonly used in everyday cooking. Culinary quantities are generally considered safe for most people. However, concentrated supplements may carry additional risks." },
   { question: "How can turmeric powder be used?", answer: "Turmeric powder can be used in curries, rice, soups, lentils, sauces, marinades, spice blends, and beverages such as golden milk." },
   { question: "Does turmeric powder contain curcumin?", answer: "Yes. Turmeric naturally contains curcumin and other related compounds called curcuminoids. The concentration varies depending on the turmeric variety and processing." },
   { question: "Is turmeric powder suitable for food manufacturing?", answer: "Yes. Turmeric powder is used in a variety of food products, including spice blends, sauces, snacks, instant meals, and seasoning mixes." },

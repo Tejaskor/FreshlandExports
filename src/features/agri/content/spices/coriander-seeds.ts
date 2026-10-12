@@ -66,7 +66,6 @@ export const corianderSeeds: AgriProduct = {
         { label: "Appearance", value: "Round, ribbed seeds" },
         { label: "Colour", value: "Straw to light brown" },
         { label: "Aroma", value: "Citrusy, sweet" },
-        { label: "Grade & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole, split; ground on request",
@@ -84,8 +83,6 @@ export const corianderSeeds: AgriProduct = {
     points: ["Airtight packaging", "Cool, dry storage", "Away from sunlight", "Away from strong odours"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Coriander Questions",
     items: spiceFaqs("Coriander seeds", [
       { question: "Do you supply split coriander?", answer: "Yes — whole and split seeds are available, with ground coriander on request." },
       { question: "How are the seeds cleaned?", answer: "Seeds are machine-cleaned, with sortex cleaning available on request." },

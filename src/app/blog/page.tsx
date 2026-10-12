@@ -8,7 +8,7 @@ import {
   listingAnchor,
 } from "@/features/blog/components/blog-listing";
 import { blogListHref, blogListing, findCategory } from "@/features/blog/data";
-import { createMetadata } from "@/lib/seo";
+import { createMetadata, ogCard } from "@/lib/seo";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -47,6 +47,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
         : blogDescription,
       // Each listing page is its own canonical URL.
       path: blogListHref({ category, page }),
+      image: ogCard("blog", "The Freshland Exports Blog: sourcing, quality and food application guides"),
     }),
     // The full title already names the company, so the site template is skipped.
     title: { absolute: title },

@@ -80,7 +80,6 @@ export const garlicPowder: AgriProduct = {
         { label: "Colour", value: "Off-white to creamy beige" },
         { label: "Aroma", value: "Pungent, savoury garlic" },
         { label: "Particle Size", value: "As per buyer requirements" },
-        { label: "Purity & Moisture", value: "To be confirmed", pending: true },
       ],
       {
         form: "Powder; other particle sizes on request",
@@ -98,8 +97,6 @@ export const garlicPowder: AgriProduct = {
     points: ["Keep in airtight, moisture-proof packaging", "Store cool and dry", "Protect from light and heat", "Reseal opened bags promptly"],
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Garlic Powder Questions",
     items: spiceFaqs("Garlic powder", [
       { question: "How is garlic powder made?", answer: "Garlic cloves are dehydrated and then milled into a fine powder." },
       { question: "Can you supply a specific particle size?", answer: "Particle size is agreed with each enquiry to suit your application." },

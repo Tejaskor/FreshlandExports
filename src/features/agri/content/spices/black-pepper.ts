@@ -75,7 +75,6 @@ export const blackPepper: AgriProduct = {
         { label: "Appearance", value: "Round, wrinkled peppercorns" },
         { label: "Colour", value: "Dark brown to black" },
         { label: "Aroma", value: "Sharp, woody" },
-        { label: "Grade / Density", value: "To be confirmed", pending: true },
       ],
       {
         form: "Whole peppercorns",
@@ -88,8 +87,6 @@ export const blackPepper: AgriProduct = {
     note: spiceSpecsNote,
   },
   faqs: {
-    eyebrow: "FAQ",
-    heading: "Black Pepper Questions",
     items: spiceFaqs("Black pepper", [
       { question: "Do you supply whole or ground pepper?", answer: "This page covers whole peppercorns; other forms can be discussed with our team." },
       { question: "How is grade specified?", answer: "Grade and quality parameters are confirmed with each quotation." },

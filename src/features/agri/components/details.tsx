@@ -7,19 +7,6 @@ import type { AgriProduct, SpecRow } from "@/features/agri/types";
 import { cn } from "@/lib/utils";
 
 function SpecValue({ row, inverse = false }: { row: SpecRow; inverse?: boolean }) {
-  if (row.pending) {
-    return (
-      <span
-        className={cn(
-          "inline-flex items-center gap-2 rounded-full border border-dashed px-3 py-0.5 text-[0.8125rem]",
-          inverse ? "border-white/40 text-white/85" : "border-rust/50 text-rust",
-        )}
-      >
-        <span aria-hidden="true" className={cn("size-1.5 rounded-full", inverse ? "bg-white/70" : "bg-rust")} />
-        {row.value}
-      </span>
-    );
-  }
   return <span className={cn(inverse ? "text-white" : "text-ink")}>{row.value}</span>;
 }
 
@@ -171,7 +158,7 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
               <div key={row.label} className="rounded-[1.25rem] bg-white p-5">
                 <dt className={cn(label, "text-[var(--p-deep)]")}>{row.label}</dt>
                 <dd className="mt-2 font-display text-heading text-forest">
-                  {row.pending ? <SpecValue row={row} /> : row.value}
+                  {row.value}
                 </dd>
               </div>
             ))}

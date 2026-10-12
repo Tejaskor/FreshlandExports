@@ -4,9 +4,9 @@ import { freshOnionImages } from "@/features/fresh-onion/images";
 import { moqFor } from "@/features/products/moq";
 
 /**
- * Content for the Fresh Onion page, as supplied. Size, packaging, origin,
- * supply and shelf life stay qualified ("as per buyer requirements",
- * "subject to confirmation"); the MOQ is the agricultural products' MOQ.
+ * Content for the Fresh Onion page, as supplied. Size, packaging, supply and
+ * shelf life stay qualified ("as per buyer requirements"); origin is left out
+ * until confirmed. The MOQ is the agricultural products' MOQ.
  */
 
 const moq = moqFor("onion");
@@ -91,7 +91,6 @@ export const freshOnionSpecs: readonly { label: string; value: string }[] = [
   { label: "Texture", value: "Firm and crisp" },
   { label: "Size", value: "As per buyer requirements" },
   { label: "Packaging", value: "As per buyer requirements" },
-  { label: "Origin", value: "India, subject to confirmation" },
   { label: "Supply", value: "Bulk supply, subject to availability" },
   { label: "Shelf Life", value: "Depends on variety and storage conditions" },
   { label: "Storage", value: "Cool, dry, and well-ventilated conditions" },
@@ -146,14 +145,9 @@ export const freshOnionFaqs: readonly FreshOnionFaq[] = [
       "Packaging is supplied as per buyer requirements. We agree the bag type and weight with you before dispatch, using breathable packaging that lets air move around the onions.",
   },
   {
-    question: "How should fresh onions be stored after delivery?",
+    question: "How should fresh onions be stored, and how long do they keep?",
     answer:
-      "Keep them in a cool, dry and well-ventilated place, away from moisture and direct sunlight, and handle the bags gently to avoid bruising.",
-  },
-  {
-    question: "What is the shelf life of fresh onions?",
-    answer:
-      "Shelf life depends on the variety and on storage conditions. Cool, dry and well-ventilated storage helps onions stay firm for longer.",
+      "Keep them in a cool, dry and well-ventilated place, away from moisture and direct sunlight, and handle the bags gently to avoid bruising. Shelf life depends on the variety and on storage conditions; good storage helps onions stay firm for longer.",
   },
   {
     question: "How do I request a quote?",
