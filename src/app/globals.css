@@ -248,3 +248,85 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Homepage hero: a warm-cream wash over the background film, strongest
+   behind the copy on the left and clear on the right, with a soft radial
+   glow under the text. Two layered gradients, no hard edges. Phones carry
+   more wash because the copy spans the full width. */
+@utility hero-wash {
+  background:
+    radial-gradient(ellipse 80% 55% at 35% 42%, rgb(250 248 243 / 0.4), transparent 72%),
+    linear-gradient(
+      to right,
+      rgb(250 248 243 / 0.88) 0%,
+      rgb(250 248 243 / 0.76) 40%,
+      rgb(250 248 243 / 0.55) 75%,
+      rgb(250 248 243 / 0.4) 100%
+    );
+
+  @media (min-width: 48rem) {
+    background:
+      radial-gradient(ellipse 60% 65% at 26% 48%, rgb(250 248 243 / 0.42), transparent 70%),
+      linear-gradient(
+        to right,
+        rgb(250 248 243 / 0.88) 0%,
+        rgb(250 248 243 / 0.72) 30%,
+        rgb(250 248 243 / 0.48) 55%,
+        rgb(250 248 243 / 0.22) 80%,
+        rgb(250 248 243 / 0.1) 100%
+      );
+  }
+
+  @media (min-width: 64rem) {
+    background:
+      radial-gradient(ellipse 48% 70% at 20% 50%, rgb(250 248 243 / 0.45), transparent 70%),
+      linear-gradient(
+        to right,
+        rgb(250 248 243 / 0.88) 0%,
+        rgb(250 248 243 / 0.76) 20%,
+        rgb(250 248 243 / 0.5) 36%,
+        rgb(250 248 243 / 0.28) 50%,
+        rgb(250 248 243 / 0.1) 66%,
+        transparent 82%
+      );
+  }
+}
+
+/* --- Glass surfaces: header (top of page), Products menu, dropdowns ----- */
+/* Warm-cream frosted glass. Where backdrop-filter is unsupported the
+   surface turns nearly opaque, so text never sits on a busy background. */
+@utility glass-bar {
+  background-color: rgb(250 248 243 / 0.62);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  backdrop-filter: blur(20px) saturate(1.15);
+  border: 1px solid rgb(255 255 255 / 0.55);
+  box-shadow: 0 8px 32px rgb(22 36 28 / 0.1);
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background-color: rgb(250 248 243 / 0.94);
+  }
+}
+
+@utility glass-menu {
+  background-color: rgb(250 248 243 / 0.84);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+  backdrop-filter: blur(24px) saturate(1.15);
+  border: 1px solid rgb(255 255 255 / 0.78);
+  box-shadow: 0 16px 48px rgb(22 36 28 / 0.14);
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background-color: rgb(250 248 243 / 0.98);
+  }
+}
+
+@utility glass-dropdown {
+  background-color: rgb(250 248 243 / 0.86);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  backdrop-filter: blur(20px) saturate(1.15);
+  border: 1px solid rgb(255 255 255 / 0.78);
+  box-shadow: 0 16px 44px rgb(22 36 28 / 0.13);
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background-color: rgb(250 248 243 / 0.98);
+  }
+}

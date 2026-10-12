@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { Figure } from "@/components/media/figure";
 import { Icon } from "@/components/ui/icon";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
@@ -12,13 +11,12 @@ import { ScrollScrub } from "@/animations/scroll-scrub";
 import { CountUp } from "@/animations/count-up";
 import { WaveDivider } from "@/components/ui/wave-divider";
 import { CertificationMarquee } from "@/features/home/components/certification-marquee";
+import { HeroVideo } from "@/features/home/components/hero-video";
 import { hero, stats } from "@/features/home/data";
 
 /**
- * Full-bleed hero with the statistics band and organic wave transition.
- *
- * The R3F/WebGL scene will mount as an absolutely positioned sibling of the
- * Figure below, behind the copy column — no layout change required.
+ * Full-bleed hero with the statistics band and organic wave transition. The
+ * background is a looping film (HeroVideo) behind the copy.
  */
 export function Hero() {
   return (
@@ -39,23 +37,13 @@ export function Hero() {
             overscan={1.03}
             zoom={0}
           >
-            <Figure
-              image={hero.media.image}
-              alt={hero.media.alt}
-              art={hero.media.art}
-              priority
-              sizes="100vw"
-              className="h-full w-full"
-              mediaClassName="object-[70%_center] md:object-[58%_center]"
-            />
+            {/* The background film, edge to edge. */}
+            <HeroVideo />
           </Parallax>
-          {/* Readability scrim: strong only under the copy column, fully clear
-            from 62% so the facility stays photographic rather than washed. */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 from-8% via-white/65 via-40% to-transparent to-62%" />
-          {/* Grounds the image into the cream wave below. */}
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-cream to-transparent" />
-          {/* Below md the copy spans the full width, so it needs a flat veil. */}
-          <div className="absolute inset-0 bg-white/30 md:hidden" />
+          {/* Warm-cream wash (globals.css hero-wash): strong behind the copy
+              on the left, about a quarter by the centre, clear on the right.
+              Above the film, below the copy; hero only, never takes clicks. */}
+          <div aria-hidden="true" className="hero-wash pointer-events-none absolute inset-0" />
         </div>
 
         <Container className="flex min-h-[30rem] flex-col justify-center pt-36 pb-16 md:min-h-[32rem] lg:min-h-[33rem] lg:pt-40 lg:pb-16">
@@ -74,19 +62,19 @@ export function Hero() {
             <RevealLines
               as="h1"
               id="hero-heading"
-              className="mt-6 text-hero font-medium"
+              className="mt-6 text-hero font-medium text-black"
               delay={0.15}
               intro
             >
               <Line>{hero.headline.lead}</Line>
               <Line>
                 {hero.headline.emphasisPrefix}{" "}
-                <span className="text-leaf-bright">{hero.headline.emphasis}</span>
+                <span className="text-forest">{hero.headline.emphasis}</span>
               </Line>
             </RevealLines>
 
             <Reveal delay={0.45} variant="rise">
-              <p className="mt-6 max-w-md text-lead text-ink-muted">
+              <p className="mt-6 max-w-md text-lead text-ink">
                 {hero.body}
               </p>
             </Reveal>
@@ -107,7 +95,7 @@ export function Hero() {
 
               <Link
                 href={hero.secondaryCta.href}
-                className="group/play flex items-center gap-3 text-[0.875rem] font-semibold text-ink-muted"
+                className="group/play flex items-center gap-3 text-[0.875rem] font-semibold text-ink"
               >
                 <span className="flex size-10 items-center justify-center rounded-full border border-line-strong bg-white transition-[background-color,color,border-color] duration-500 ease-[var(--ease-out-expo)] group-hover/play:border-leaf group-hover/play:text-leaf">
                   <Icon name="play" className="size-3.5 translate-x-px" />

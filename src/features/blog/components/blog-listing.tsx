@@ -1,18 +1,30 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Figure } from "@/components/media/figure";
 import { Icon } from "@/components/ui/icon";
 import {
-  type BlogCategory,
+  type BlogFilter,
   type BlogPost,
+  type BlogRange,
   blogListHref,
+  blogRanges,
+  filterHref,
   latestPosts,
-  usedCategories,
 } from "@/features/blog/data";
 import { formatPublished } from "@/features/blog/meta";
 import { cn } from "@/lib/utils";
 
-/** Listing links land on the article list, not the top of the masthead. */
+/**
+ * Listing links land on the article list, not the top of the masthead.
+ *
+ * Category and page links are plain <a> elements, not next/link: they all
+ * point at /blog and differ only in the query string, and client-side
+ * navigation could show a cached or prefetched page for another query
+ * (clicking page 3 showed the last page). A document request always renders
+ * exactly the URL that was clicked, so the URL, the active page and the
+ * articles stay in step, and a refresh shows the same page.
+ */
 export const listingAnchor = "articles";
 const toList = (href: string) => `${href}#${listingAnchor}`;
 
@@ -102,13 +114,14 @@ const panel = "rounded-xl border border-line bg-white p-5 sm:p-6";
 const panelHeading = "font-display text-[1.25rem] font-semibold text-forest";
 
 /**
- * Categories and the five newest articles. Beside the list on desktop; below
- * it on smaller screens, where the categories wrap into a compact grid.
+ * Categories (the four product ranges, plus All Articles) and the five newest
+ * articles. Beside the list on desktop; below it on smaller screens.
  */
-export function BlogSidebar({ active }: { active?: BlogCategory }) {
-  const options: { label: string; category?: BlogCategory }[] = [
+export function BlogSidebar({ active }: { active?: BlogFilter }) {
+  const activeRange = active && "range" in active ? active.range.id : undefined;
+  const options: { label: string; range?: BlogRange }[] = [
     { label: "All Articles" },
-    ...usedCategories.map((category) => ({ label: category, category })),
+    ...blogRanges.map((range) => ({ label: range.label, range })),
   ];
 
   return (
@@ -118,25 +131,41 @@ export function BlogSidebar({ active }: { active?: BlogCategory }) {
           Categories
         </h2>
         <span aria-hidden="true" className="mt-3 block h-px w-10 bg-rust" />
-        <ul className="mt-4 grid grid-cols-2 gap-x-3 gap-y-1 sm:grid-cols-1">
+        <ul className="mt-4 grid gap-1.5">
           {options.map((option) => {
-            const current = option.category === active;
+            const current = option.range ? option.range.id === activeRange : !active;
             return (
               <li key={option.label}>
-                <Link
-                  href={toList(blogListHref({ category: option.category }))}
+                <a
+                  href={toList(blogListHref({ range: option.range }))}
                   aria-current={current ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-2 rounded-lg px-2.5 py-2 text-[0.875rem] leading-snug transition-colors duration-300",
-                    // A short horizontal dash before the name, drawn in CSS.
-                    "before:h-px before:w-3 before:shrink-0 before:rounded-full before:transition-colors before:duration-300 before:content-['']",
-                    current
-                      ? "bg-section font-semibold text-forest before:bg-rust"
-                      : "text-ink before:bg-line-strong hover:bg-section/70 hover:text-forest hover:before:bg-leaf",
+                    "group/cat flex min-h-12 w-full items-center gap-3 rounded-xl px-2.5 py-2 text-[0.9375rem] leading-snug text-forest transition-colors duration-300",
+                    "focus-visible:ring-2 focus-visible:ring-leaf/50 focus-visible:outline-none",
+                    current ? "bg-sage-100 font-semibold" : "bg-transparent hover:bg-sage-50",
                   )}
                 >
-                  {option.label}
-                </Link>
+                  {option.range ? (
+                    <span className="relative size-10 shrink-0 overflow-hidden rounded-full ring-1 ring-line">
+                      <Image src={option.range.image} alt="" fill sizes="40px" className="object-cover" />
+                    </span>
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-line"
+                    >
+                      <Icon name="layers" className="size-4 text-forest" />
+                    </span>
+                  )}
+                  <span className="flex-1">{option.label}</span>
+                  <Icon
+                    name="chevron-down"
+                    className={cn(
+                      "size-4 shrink-0 -rotate-90 transition-colors duration-300",
+                      current ? "text-forest" : "text-ink-faint group-hover/cat:text-forest",
+                    )}
+                  />
+                </a>
               </li>
             );
           })}
@@ -189,22 +218,22 @@ const pageDisabled = "cursor-not-allowed border-line bg-white/60 text-ink-faint"
 export function BlogPagination({
   page,
   pageCount,
-  category,
+  filter,
 }: {
   page: number;
   pageCount: number;
-  category?: BlogCategory;
+  filter?: BlogFilter;
 }) {
   if (pageCount <= 1) return null;
-  const href = (n: number) => toList(blogListHref({ category, page: n }));
+  const href = (n: number) => toList(filterHref(filter, n));
 
   const step = (label: "Previous" | "Next", target: number, enabled: boolean) =>
     enabled ? (
-      <Link href={href(target)} rel={label === "Next" ? "next" : "prev"} className={cn(pageBox, pageIdle)}>
+      <a href={href(target)} rel={label === "Next" ? "next" : "prev"} className={cn(pageBox, pageIdle)}>
         {label === "Previous" && <Icon name="arrow-right" className="mr-1.5 size-3.5 rotate-180" />}
         {label}
         {label === "Next" && <Icon name="arrow-right" className="ml-1.5 size-3.5" />}
-      </Link>
+      </a>
     ) : (
       <span aria-disabled="true" className={cn(pageBox, pageDisabled)}>
         {label === "Previous" && <Icon name="arrow-right" className="mr-1.5 size-3.5 rotate-180" />}
@@ -224,15 +253,14 @@ export function BlogPagination({
             </li>
           ) : (
             <li key={item}>
-              <Link
+              <a
                 href={href(item)}
-               
                 aria-label={`Page ${item}`}
                 aria-current={item === page ? "page" : undefined}
                 className={cn(pageBox, item === page ? "border-forest bg-forest text-white" : pageIdle)}
               >
                 {item}
-              </Link>
+              </a>
             </li>
           ),
         )}

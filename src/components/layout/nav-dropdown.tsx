@@ -108,7 +108,7 @@ export function NavDropdown({
       <div
         id={panelId}
         className={cn(
-          "absolute top-[calc(100%+var(--header-pb,0px))] right-gutter left-gutter z-20",
+          "absolute top-[calc(100%+var(--header-pb,0px))] inset-x-[var(--nav-edge)] z-20",
           "invisible pointer-events-none translate-y-2 opacity-0",
           "transition-[opacity,translate,visibility] duration-300 ease-[var(--ease-out-expo)]",
           open ? shown : armed && hoverShown,
@@ -118,7 +118,7 @@ export function NavDropdown({
             tall as its category list (four 80px rows, 4px gaps and 1rem
             padding = 22.75rem) plus its 1px borders = 22.875rem. The links
             fill the panel, with one compact featured card at the right edge. */}
-        <div className="grid h-[22.875rem] grid-cols-[minmax(0,1fr)_23rem] gap-8 overflow-hidden rounded-2xl border border-line/80 bg-white shadow-[0_24px_56px_-16px_rgba(13,44,30,0.18),0_0_1px_1px_rgba(13,44,30,0.06)]">
+        <div className="glass-dropdown grid h-[22.875rem] grid-cols-[minmax(0,1fr)_23rem] gap-8 overflow-hidden rounded-[20px]">
           {/* --- Links ------------------------------------------------------ */}
           <div className="p-4 pt-6">
             <p className="flex items-center gap-3 px-3">
@@ -136,7 +136,7 @@ export function NavDropdown({
                       onClick={dismiss}
                       className={cn(
                         "group/link flex items-start gap-4 rounded-xl p-3 transition-colors duration-200",
-                        here ? "bg-section" : "hover:bg-section focus-visible:bg-section",
+                        here ? "bg-[rgb(230_238_224/0.88)]" : "hover:bg-white/60 focus-visible:bg-white/60",
                       )}
                     >
                       {link.icon && (

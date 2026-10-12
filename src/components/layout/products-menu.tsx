@@ -98,7 +98,7 @@ function ProductRow({
   onDismiss: () => void;
 }) {
   return (
-    <li className="border-b border-line/70">
+    <li className="border-b border-forest/10">
       <Link
         href={item.href}
         onClick={onDismiss}
@@ -287,14 +287,14 @@ export function ProductsMenu({
       <div
         id={panelId}
         className={cn(
-          "absolute top-[calc(100%+var(--header-pb,0px))] right-gutter left-gutter z-20",
+          "absolute top-[calc(100%+var(--header-pb,0px))] inset-x-[var(--nav-edge)] z-20",
           "transition-[opacity,translate,visibility] duration-300 ease-[var(--ease-out-expo)]",
           open ? reveal : ["invisible pointer-events-none translate-y-2 opacity-0", armed && hoverReveal],
         )}
       >
-        <div className="grid grid-cols-[minmax(19rem,5fr)_7fr] overflow-hidden rounded-2xl border border-line/80 bg-white shadow-[0_24px_56px_-16px_rgba(13,44,30,0.18),0_0_1px_1px_rgba(13,44,30,0.06)]">
+        <div className="glass-menu grid grid-cols-[minmax(19rem,5fr)_7fr] overflow-hidden rounded-[20px]">
           {/* --- Left panel: categories ------------------------------------- */}
-          <ul aria-label="Product categories" className="space-y-1 p-4">
+          <ul aria-label="Product categories" className="space-y-1 bg-white/25 p-4">
             {productMenu.map((group) => {
               const selected = group.id === activeId;
               return (
@@ -325,7 +325,7 @@ export function ProductsMenu({
                     }}
                     className={cn(
                       "group/cat relative flex w-full items-center gap-4 rounded-xl py-3 pr-4 pl-5 text-left transition-colors duration-200",
-                      selected ? "bg-sage-100" : "hover:bg-section/70",
+                      selected ? "bg-[rgb(230_238_224/0.88)]" : "hover:bg-white/60",
                     )}
                   >
                     <CategoryCover group={group} selected={selected} />
@@ -348,7 +348,7 @@ export function ProductsMenu({
           </ul>
 
           {/* --- Right panel: the selected category's products --------------- */}
-          <div id={productsId} className="border-l border-line px-7 py-6">
+          <div id={productsId} className="border-l border-white/70 bg-white/45 px-7 py-6">
             <p className="flex items-baseline justify-between gap-4 pb-3">
               <span className="font-display text-[1.6rem] leading-tight text-forest">{activeGroup.title}</span>
             </p>
@@ -356,7 +356,7 @@ export function ProductsMenu({
               key={activeGroup.id}
               aria-label={activeGroup.title}
               // Products sit side by side, three to a row, in every category.
-              className="grid grid-cols-3 gap-x-6 border-t border-line/70"
+              className="grid grid-cols-3 gap-x-6 border-t border-forest/10"
             >
               {activeGroup.items.map((item) => (
                 <ProductRow

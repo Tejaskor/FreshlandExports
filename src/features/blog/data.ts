@@ -11,6 +11,7 @@ import { vegetablesBodies } from "@/features/blog/bodies/vegetables";
 import { type ArticleImage, articleImages } from "@/features/blog/images";
 import { blogCategories, type BlogCategory } from "@/features/blog/meta";
 import { type ArticleBody, productBlogs } from "@/features/products/blog";
+import { type CatalogueCategoryId, findCatalogueProduct } from "@/features/products/catalogue";
 import { exportProductHref, findExportProduct, productMenu } from "@/features/products/export-catalogue";
 
 /**
@@ -170,6 +171,73 @@ export function findCategory(slug: string) {
   return blogCategories.find((category) => categorySlug(category) === slug);
 }
 
+/* --- Product ranges: the listing sidebar's Categories ------------------ */
+
+/**
+ * The four product ranges the Blog listing filters by, in the catalogue's
+ * order. An article's range is its product's catalogue category; the topic
+ * categories above stay on each article and its card.
+ */
+export const blogRanges = [
+  {
+    id: "powders",
+    label: "Powder Products",
+    image: "/images/home/categories/Botanicalpowder.webp",
+    alt: "Bowls of botanical powders",
+  },
+  {
+    id: "agricultural",
+    label: "Agricultural Products",
+    image: "/images/home/categories/Agriculturalproduct.webp",
+    alt: "Fresh agricultural produce",
+  },
+  { id: "fruits", label: "Fruits", image: "/images/home/categories/Fruits.webp", alt: "Fresh fruits" },
+  { id: "spices", label: "Spices", image: "/images/home/categories/Spices.webp", alt: "Whole spices" },
+] as const satisfies readonly { id: CatalogueCategoryId; label: string; image: string; alt: string }[];
+
+export type BlogRange = (typeof blogRanges)[number];
+
+/** Articles whose product is not a catalogue entry, by product slug. */
+const rangeOverrides: Record<string, CatalogueCategoryId> = {
+  // Whole turmeric has a spice page but no catalogue entry.
+  turmeric: "spices",
+  // Fresh and dried ginger root: produce handling and storage.
+  ginger: "agricultural",
+  // General fresh-produce articles (mixed orders, seasonality, documents).
+  "other-agricultural-products": "agricultural",
+};
+
+/** The product range an article belongs to; fails the build if unknown. */
+export function postRange(post: BlogPost): BlogRange {
+  const id = findCatalogueProduct(post.product.slug)?.category.id ?? rangeOverrides[post.product.slug];
+  const range = blogRanges.find((entry) => entry.id === id);
+  if (!range) throw new Error(`Blog: no product range for "${post.slug}" (${post.product.slug})`);
+  return range;
+}
+
+/** URL form of a range, e.g. "Powder Products" → "powder-products". */
+export const rangeSlug = (range: BlogRange) => slugify(range.label);
+
+export function findRange(slug: string) {
+  return blogRanges.find((range) => rangeSlug(range) === slug);
+}
+
+/**
+ * What the listing is narrowed to: a product range (the sidebar's
+ * Categories) or, for links from articles, a topic category. Both travel in
+ * the same ?category= parameter; their slugs never collide.
+ */
+export type BlogFilter = { range: BlogRange } | { topic: BlogCategory };
+
+export const filterLabel = (filter: BlogFilter) => ("range" in filter ? filter.range.label : filter.topic);
+
+export function findFilter(slug: string): BlogFilter | undefined {
+  const range = findRange(slug);
+  if (range) return { range };
+  const topic = findCategory(slug);
+  return topic ? { topic } : undefined;
+}
+
 /** Categories that have at least one article, in taxonomy order. */
 export const usedCategories = blogCategories.filter((category) =>
   blogPosts.some((post) => post.category === category),
@@ -177,21 +245,38 @@ export const usedCategories = blogCategories.filter((category) =>
 
 export const postsPerPage = 3;
 
-/** The listing URL for a category and page; page 1 and "all" stay implicit. */
-export function blogListHref({ category, page = 1 }: { category?: BlogCategory; page?: number }) {
+/** The listing URL for a range or topic and a page; page 1 and "all" stay implicit. */
+export function blogListHref({
+  category,
+  range,
+  page = 1,
+}: {
+  category?: BlogCategory;
+  range?: BlogRange;
+  page?: number;
+}) {
   const params = new URLSearchParams();
-  if (category) params.set("category", categorySlug(category));
+  if (range) params.set("category", rangeSlug(range));
+  else if (category) params.set("category", categorySlug(category));
   if (page > 1) params.set("page", String(page));
   const query = params.toString();
   return query ? `${blogPath}?${query}` : blogPath;
 }
 
+/** blogListHref's arguments for a filter. */
+export const filterHref = (filter: BlogFilter | undefined, page = 1) =>
+  blogListHref({ ...(filter && ("range" in filter ? { range: filter.range } : { category: filter.topic })), page });
+
 /**
  * One page of the listing: the newest articles first, optionally narrowed to
- * a category. Returns null for a page beyond the last.
+ * a product range or topic. Returns null for a page beyond the last.
  */
-export function blogListing({ category, page }: { category?: BlogCategory; page: number }) {
-  const posts = category ? latestPosts.filter((post) => post.category === category) : latestPosts;
+export function blogListing({ filter, page }: { filter?: BlogFilter; page: number }) {
+  const posts = !filter
+    ? latestPosts
+    : "range" in filter
+      ? latestPosts.filter((post) => postRange(post).id === filter.range.id)
+      : latestPosts.filter((post) => post.category === filter.topic);
   const pageCount = Math.max(1, Math.ceil(posts.length / postsPerPage));
   if (!Number.isInteger(page) || page < 1 || page > pageCount) return null;
   const start = (page - 1) * postsPerPage;

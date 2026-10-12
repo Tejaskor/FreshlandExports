@@ -105,15 +105,28 @@ export function SiteHeader() {
 
       {/* The shared content shell (90rem), so the logo and actions line up
           with every section's content edges below. */}
-      {/* Logo, then the link group, then the CTA group pushed to the right
-          edge. The container gap (24px) plus the nav's own margins set the
-          desktop rhythm: ~52px logo → links, at least ~56px links → CTAs. */}
-      <Container className="relative z-10 flex items-center justify-between gap-6">
+      {/* Logo, then the link group centred in the space between, then the
+          CTA group at the right edge: the two gaps either side of the links
+          are equal, and never less than the container's 24px gap. */}
+      <Container className="relative z-10 flex items-center justify-between gap-6 [--nav-edge:calc(var(--spacing-gutter)-0.75rem)]">
+        {/* Frosted-glass bar behind the logo row while the header sits over
+            the hero (globals.css glass-bar). It fades out as the existing
+            solid bar takes over on scroll, and back in at the top. Its sides
+            sit at --nav-edge (12px outside the logo and the last button), the
+            same edges as the Products and Resources menus; 14px above and
+            below, pill-round like the Brochure and Get a Quote buttons. */}
+        <span
+          aria-hidden="true"
+          className={cn(
+            "glass-bar pointer-events-none absolute inset-x-[var(--nav-edge)] -inset-y-3.5 -z-10 rounded-full transition-opacity duration-700 ease-[var(--ease-out-expo)]",
+            condensed ? "opacity-0" : "opacity-100",
+          )}
+        />
         <Link href="/" aria-label={`${siteConfig.name} — home`} className="shrink-0">
           <Logo priority />
         </Link>
 
-        <nav aria-label="Primary" className="hidden xl:mr-8 xl:ml-7 xl:block">
+        <nav aria-label="Primary" className="hidden xl:mx-auto xl:block">
           {/* One compact group: 24px between links, 28px from 85rem. Any spare
               width goes to the gap before the CTAs, never between links. */}
           <ul className="flex items-center gap-6 min-[85rem]:gap-7">
@@ -153,7 +166,7 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3 xl:ml-auto">
+        <div className="flex items-center gap-3">
           {/* Brochure: in the bar from sm, inside the mobile menu below that. */}
           <BrochureButton source="header_brochure" className={cn(brochureButton, "hidden cursor-pointer sm:inline-flex")}>
             Brochure

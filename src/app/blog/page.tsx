@@ -7,7 +7,7 @@ import {
   BlogSidebar,
   listingAnchor,
 } from "@/features/blog/components/blog-listing";
-import { blogListHref, blogListing, findCategory } from "@/features/blog/data";
+import { blogListing, filterHref, filterLabel, findFilter } from "@/features/blog/data";
 import { createMetadata, ogCard } from "@/lib/seo";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
@@ -21,20 +21,22 @@ async function readQuery(searchParams: SearchParams) {
   const query = await searchParams;
   const one = (value: string | string[] | undefined) => (Array.isArray(value) ? value[0] : value);
 
+  // A product range (the sidebar) or a topic category (linked from articles).
   const categoryParam = one(query.category);
-  const category = categoryParam ? findCategory(categoryParam) : undefined;
+  const filter = categoryParam ? findFilter(categoryParam) : undefined;
   const pageParam = one(query.page);
   const page = pageParam === undefined ? 1 : Number(pageParam);
 
   // An unknown category is a missing page, not a silent "all".
-  if (categoryParam && !category) return null;
-  return { category, page };
+  if (categoryParam && !filter) return null;
+  return { filter, page };
 }
 
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }) {
   const query = await readQuery(searchParams);
   if (!query) return createMetadata({ title: "Page not found", noIndex: true });
-  const { category, page } = query;
+  const { filter, page } = query;
+  const category = filter ? filterLabel(filter) : undefined;
 
   const parts = [category, page > 1 ? `Page ${page}` : null].filter(Boolean);
   const title = parts.length > 0 ? `${parts.join(" — ")} | Freshland Exports Blog` : blogTitle;
@@ -46,7 +48,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
         ? `${category} from the Freshland Exports Blog: practical guidance for buyers of agricultural products, fruits and spices.`
         : blogDescription,
       // Each listing page is its own canonical URL.
-      path: blogListHref({ category, page }),
+      path: filterHref(filter, page),
       image: ogCard("blog", "The Freshland Exports Blog: sourcing, quality and food application guides"),
     }),
     // The full title already names the company, so the site template is skipped.
@@ -65,7 +67,8 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
 
   const listing = blogListing(query);
   if (!listing) notFound();
-  const { category } = query;
+  const { filter } = query;
+  const category = filter ? filterLabel(filter) : undefined;
 
   return (
     <section
@@ -91,12 +94,12 @@ export default async function ResourcesPage({ searchParams }: { searchParams: Se
             ))}
           </ul>
 
-          <BlogPagination page={listing.page} pageCount={listing.pageCount} category={category} />
+          <BlogPagination page={listing.page} pageCount={listing.pageCount} filter={filter} />
         </div>
 
         <aside aria-label="Blog navigation" className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <BlogSidebar active={category} />
+            <BlogSidebar active={filter} />
           </div>
         </aside>
       </Container>
