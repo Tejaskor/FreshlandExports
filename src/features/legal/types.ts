@@ -1,4 +1,4 @@
-/** Content model shared by the legal pages (Privacy Policy, Terms & Conditions, Image Credits). */
+/** Content model shared by the legal pages (Privacy Policy, Terms & Conditions). */
 export type LegalBlock =
   | { type: "p"; text: string }
   | { type: "list"; items: readonly string[] }

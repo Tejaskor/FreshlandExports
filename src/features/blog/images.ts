@@ -6,7 +6,7 @@
  * dedicated shots where they exist (quality, processing, storage,
  * applications), otherwise a photograph of that product in that context
  * saved as public/images/Blog/<article-slug>.webp. Those are Wikimedia
- * Commons photographs, credited on /image-credits
+ * Commons photographs, credited on /terms-and-conditions
  * (features/agri/content/photo-credits.ts). No article shows another product.
  * To give an article a different photograph, replace its entry here.
  */

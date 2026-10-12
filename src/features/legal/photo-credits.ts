@@ -4,14 +4,12 @@ import type { LegalSection, PhotoCreditItem } from "@/features/legal/types";
 import { catalogueProducts } from "@/features/products/catalogue";
 
 /**
- * The Image Credits page (/image-credits): every third-party photograph on
- * the site, with its author, source and licence, built from
+ * The Photo Credits section closing the Terms & Conditions page: every
+ * third-party photograph on the site, with its author, source and licence,
+ * as CC BY and CC BY-SA require. Built from
  * features/agri/content/photo-credits.ts so a new photograph is credited
  * once it is recorded there.
  */
-
-export const creditsIntro =
-  "The photographs below are by the photographers named, from Wikimedia Commons, used under the licences shown. Each has been resized and converted to WebP for this website.";
 
 /** The Commons file name, without its extension, as a readable title. */
 function fileTitle(source: string) {
@@ -49,7 +47,17 @@ const items = (blog: boolean): PhotoCreditItem[] =>
       changes: credit.changes,
     }));
 
-export const creditsSections: readonly LegalSection[] = [
-  { id: "product-pages", title: "Product pages", blocks: [{ type: "credits", items: items(false) }] },
-  { id: "blog", title: "Blog articles", blocks: [{ type: "credits", items: items(true) }] },
-];
+export const photoCreditsSection: LegalSection = {
+  id: "photo-credits",
+  title: "Photo Credits",
+  blocks: [
+    {
+      type: "p",
+      text: "The photographs below are by the photographers named, from Wikimedia Commons, used under the licences shown. Each has been resized and converted to WebP for this website.",
+    },
+    { type: "h3", text: "Product pages" },
+    { type: "credits", items: items(false) },
+    { type: "h3", text: "Blog articles" },
+    { type: "credits", items: items(true) },
+  ],
+};

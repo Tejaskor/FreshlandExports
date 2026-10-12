@@ -5,7 +5,8 @@
  * this site: Commons rate-limits server-side image fetches, so hotlinking
  * is not reliable.
  *
- * Every file is credited (author, source, licence) on /image-credits, as
+ * Every file is credited (author, source, licence) in the Photo Credits
+ * section of /terms-and-conditions (features/legal/photo-credits.ts), as
  * CC BY and CC BY-SA require; CC0 and public-domain files are listed too.
  */
 

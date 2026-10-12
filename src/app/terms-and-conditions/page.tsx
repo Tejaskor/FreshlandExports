@@ -1,4 +1,5 @@
 import { LegalPage } from "@/features/legal/components/legal-page";
+import { photoCreditsSection } from "@/features/legal/photo-credits";
 import { termsIntro, termsLastUpdated, termsSections } from "@/features/legal/terms";
 import { createMetadata } from "@/lib/seo";
 
@@ -9,9 +10,11 @@ export const metadata = createMetadata({
   path: "/terms-and-conditions",
 });
 
-/** Content lives in features/legal/terms.ts. */
+/** Content lives in features/legal/terms.ts; photo credits in features/legal/photo-credits.ts. */
+const sections = [...termsSections, photoCreditsSection];
+
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms & Conditions" intro={termsIntro} lastUpdated={termsLastUpdated} sections={termsSections} />
+    <LegalPage title="Terms & Conditions" intro={termsIntro} lastUpdated={termsLastUpdated} sections={sections} />
   );
 }
