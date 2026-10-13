@@ -68,9 +68,21 @@ export function CategoryNav({ items }: { items: readonly NavItem[] }) {
       setActive(current);
     };
 
+    // Scroll events can outpace frames; measure at most once per frame.
+    let frame = 0;
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(() => {
+        frame = 0;
+        update();
+      });
+    };
+
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, [items]);
 
   useEffect(() => {

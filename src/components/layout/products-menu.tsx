@@ -282,12 +282,12 @@ export function ProductsMenu({
       </div>
 
       {/* Full-width mega menu, gutter to gutter. It sits flush against the
-          header's bottom edge: the container's bottom plus the header's own
-          bottom padding (--header-pb, set by the header for each state). */}
+          visible bar's bottom edge: the container's bottom plus --menu-top,
+          set by the header for each state (glass bar or solid bar). */}
       <div
         id={panelId}
         className={cn(
-          "absolute top-[calc(100%+var(--header-pb,0px))] inset-x-[var(--nav-edge)] z-20",
+          "absolute top-[calc(100%+var(--menu-top,0px))] inset-x-[var(--nav-edge)] z-20",
           "transition-[opacity,translate,visibility] duration-300 ease-[var(--ease-out-expo)]",
           open ? reveal : ["invisible pointer-events-none translate-y-2 opacity-0", armed && hoverReveal],
         )}

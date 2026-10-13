@@ -11,7 +11,6 @@ import { Logo } from "@/components/ui/logo";
 import { NavDropdown } from "@/components/layout/nav-dropdown";
 import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/products-menu";
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
-import { useScrolledPast } from "@/hooks/use-scrolled-past";
 import { primaryNav, siteConfig } from "@/config/site";
 import { BrochureButton } from "@/features/brochure/brochure-button";
 import { productMenu, type ProductMenuGroupId } from "@/features/products/export-catalogue";
@@ -31,9 +30,6 @@ export function SiteHeader() {
   const pathname = usePathname();
   const { stop, start } = useSmoothScroll();
 
-  // Solid bar once the hero image is behind us.
-  const condensed = useScrolledPast(24);
-
   // The menu is tied to the route it was opened on, so any navigation closes
   // it without an effect reaching back into state.
   const [openedOn, setOpenedOn] = useState<string | null>(null);
@@ -50,9 +46,6 @@ export function SiteHeader() {
     setMobileGroup(null);
   };
 
-  // Mobile menu scrolled past its top: the bar behind the logo turns solid.
-  const [menuScrolled, setMenuScrolled] = useState(false);
-
   const closeMenu = () => setOpenedOn(null);
   const toggleMenu = () => setOpenedOn((current) => (current ? null : pathname));
 
@@ -61,6 +54,9 @@ export function SiteHeader() {
 
     stop();
     document.body.style.overflow = "hidden";
+    // The menu covers the page: keep keyboard and screen-reader users in it.
+    const behind = [document.getElementById("main"), document.querySelector("body footer")];
+    behind.forEach((element) => element?.setAttribute("inert", ""));
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeMenu();
@@ -70,6 +66,7 @@ export function SiteHeader() {
     return () => {
       start();
       document.body.style.overflow = "";
+      behind.forEach((element) => element?.removeAttribute("inert"));
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [menuOpen, stop, start]);
@@ -78,52 +75,30 @@ export function SiteHeader() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[var(--ease-out-expo)]",
-        // Transparent over the hero; once the page scrolls it condenses into
-        // a solid white bar with a hairline, and clears again at the top.
-        // --header-pb mirrors the bottom padding so the Products menu can hang
-        // exactly from the header's bottom edge in both states.
-        condensed
-          ? "border-b border-line bg-white py-3 shadow-[0_1px_12px_rgb(13_44_30/0.06)] [--header-pb:0.75rem]"
-          : "border-b border-transparent bg-transparent py-5 [--header-pb:1.25rem]",
-      )}
-    >
-      {/* Solid bar for the open mobile menu. The page is locked at the top
-          while the menu is open, so the header never condenses; and the menu
-          (z-0) paints over the header's own background. This layer sits
-          between the menu and the logo row (z-10) and fades in once the menu
-          scrolls, matching the condensed bar. */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute inset-0 z-[5] border-b border-line bg-white shadow-[0_1px_12px_rgb(13_44_30/0.06)] transition-opacity duration-300 xl:hidden",
-          menuOpen && menuScrolled ? "opacity-100" : "opacity-0",
-        )}
-      />
-
+    // The header itself stays transparent: the frosted glass bar behind the
+    // logo row is its only surface, the same at every scroll position and on
+    // every page. --menu-top is how far below the logo row that bar ends
+    // (its --glass-y overhang), so the Products and Resources menus hang
+    // flush from it.
+    <header className="fixed inset-x-0 top-0 z-50 py-5 [--glass-y:0.875rem] [--menu-top:var(--glass-y)]">
       {/* The shared content shell (90rem), so the logo and actions line up
           with every section's content edges below. */}
       {/* Logo, then the link group centred in the space between, then the
           CTA group at the right edge: the two gaps either side of the links
           are equal, and never less than the container's 24px gap. */}
       <Container className="relative z-10 flex items-center justify-between gap-6 [--nav-edge:calc(var(--spacing-gutter)-0.75rem)]">
-        {/* Frosted-glass bar behind the logo row while the header sits over
-            the hero (globals.css glass-bar). It fades out as the existing
-            solid bar takes over on scroll, and back in at the top. Its sides
+        {/* Frosted-glass bar behind the logo row (globals.css glass-bar),
+            over the hero and every section below it alike. Its sides
             sit at --nav-edge (12px outside the logo and the last button), the
-            same edges as the Products and Resources menus; 14px above and
-            below, pill-round like the Brochure and Get a Quote buttons. */}
+            same edges as the Products and Resources menus; --glass-y (14px)
+            above and below, pill-round like the Brochure and Get a Quote
+            buttons. */}
         <span
           aria-hidden="true"
-          className={cn(
-            "glass-bar pointer-events-none absolute inset-x-[var(--nav-edge)] -inset-y-3.5 -z-10 rounded-full transition-opacity duration-700 ease-[var(--ease-out-expo)]",
-            condensed ? "opacity-0" : "opacity-100",
-          )}
+          className="glass-bar pointer-events-none absolute inset-x-[var(--nav-edge)] inset-y-[calc(var(--glass-y)*-1)] -z-10 rounded-full"
         />
         <Link href="/" aria-label={`${siteConfig.name} — home`} className="shrink-0">
-          <Logo priority />
+          <Logo eager />
         </Link>
 
         <nav aria-label="Primary" className="hidden xl:mx-auto xl:block">
@@ -200,7 +175,6 @@ export function SiteHeader() {
         id="primary-menu"
         hidden={!menuOpen}
         data-lenis-prevent
-        onScroll={(event) => setMenuScrolled(event.currentTarget.scrollTop > 8)}
         className="fixed inset-x-0 top-0 z-0 h-dvh max-h-dvh overflow-y-auto overscroll-contain bg-cream pt-24 pb-[max(3rem,calc(env(safe-area-inset-bottom)+1.5rem))] xl:hidden"
       >
         <Container>

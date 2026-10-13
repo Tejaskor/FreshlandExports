@@ -108,7 +108,7 @@ export function NavDropdown({
       <div
         id={panelId}
         className={cn(
-          "absolute top-[calc(100%+var(--header-pb,0px))] inset-x-[var(--nav-edge)] z-20",
+          "absolute top-[calc(100%+var(--menu-top,0px))] inset-x-[var(--nav-edge)] z-20",
           "invisible pointer-events-none translate-y-2 opacity-0",
           "transition-[opacity,translate,visibility] duration-300 ease-[var(--ease-out-expo)]",
           open ? shown : armed && hoverShown,

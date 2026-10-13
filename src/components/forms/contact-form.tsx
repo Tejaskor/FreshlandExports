@@ -28,7 +28,7 @@ import { cn } from "@/lib/utils";
 const baseField =
   "w-full rounded-lg border border-line bg-white text-ink " +
   "placeholder:text-ink-faint transition-colors duration-300 " +
-  "hover:border-line-strong focus:border-leaf focus:outline-none " +
+  "hover:border-line-strong focus:border-leaf focus:ring-2 focus:ring-leaf/20 focus:outline-none " +
   "aria-invalid:border-rust-deep/70 aria-invalid:focus:border-rust-deep";
 /** Compact and /contact fields. */
 const smallField = `${baseField} h-10 px-3.5 text-[0.8125rem]`;
@@ -384,7 +384,9 @@ export function ContactForm({
 
         )}
 
-        {quote && error("product")}
+        {/* The product is a hidden field, so nothing takes focus for this
+            error: announce it instead. */}
+        {quote && errorFor("product") && <div role="alert">{error("product")}</div>}
 
         <Button type="submit" disabled={pending} className={cn(quote ? "mt-5 w-full sm:w-auto" : "mt-4")}>
           {pending ? "Sending…" : submitLabel}

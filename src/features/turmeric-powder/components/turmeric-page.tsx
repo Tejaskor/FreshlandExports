@@ -1,5 +1,8 @@
 import { ProductBlog } from "@/features/products/components/product-blog";
-import type { ExportProduct } from "@/features/products/export-catalogue";
+import { exportCategories, exportProductHref, type ExportProduct } from "@/features/products/export-catalogue";
+import { turmericImages } from "@/features/turmeric-powder/images";
+import { JsonLd } from "@/components/seo/json-ld";
+import { productJsonLd } from "@/lib/seo";
 import { TurmericAbout } from "@/features/turmeric-powder/components/turmeric-about";
 import { TurmericApplications } from "@/features/turmeric-powder/components/turmeric-applications";
 import { TurmericContact } from "@/features/turmeric-powder/components/turmeric-contact";
@@ -15,6 +18,16 @@ import { ProductCaseStudies } from "@/features/case-studies/components/product-c
  * Moringa page, adding its own muted gold palette.
  */
 export function TurmericPage({ product }: { product: ExportProduct }) {
+  // Product data for search engines, matching what the page shows (the
+  // FAQ section publishes its own FAQPage). No offer: prices are quoted.
+  const jsonLd = productJsonLd({
+    name: product.name,
+    description: product.description,
+    path: exportProductHref(product.slug),
+    image: turmericImages.hero.file,
+    category: exportCategories[product.category].name,
+  });
+
   return (
     <div className={turmeric.palette}>
       <TurmericHero />
@@ -24,6 +37,7 @@ export function TurmericPage({ product }: { product: ExportProduct }) {
       <ProductBlog slug={product.slug} productName={product.name} className="bg-[var(--t-pale)]" accentClassName="text-rust" />
       <ProductCaseStudies slug={product.slug} productName={product.name} className="bg-white" />
       <TurmericContact productName={product.name} />
+      <JsonLd data={jsonLd} />
     </div>
   );
 }

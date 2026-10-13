@@ -13,11 +13,12 @@ import { cn } from "@/lib/utils";
  */
 export function Logo({
   className,
-  priority = false,
+  eager = false,
   size = "md",
 }: {
   className?: string;
-  priority?: boolean;
+  /** Above the fold: load at once, without a preload hint. */
+  eager?: boolean;
   /** "lg" for the footer's brand column; "md" everywhere else. */
   size?: "md" | "lg";
 }) {
@@ -29,7 +30,7 @@ export function Logo({
         alt=""
         width={415}
         height={391}
-        priority={priority}
+        loading={eager ? "eager" : undefined}
         sizes={large ? "64px" : "48px"}
         className={cn("w-auto shrink-0", large ? "h-11 sm:h-14" : "h-9 sm:h-10")}
       />

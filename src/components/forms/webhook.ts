@@ -1,4 +1,6 @@
-// Server-only: imported by Server Actions, never by client components.
+// Imported by Server Actions only; the import below fails the build if a
+// client component ever pulls it in (and with it CONTACT_WEBHOOK_URL).
+import "server-only";
 
 /**
  * Posts a form submission to CONTACT_WEBHOOK_URL as JSON — any form backend,

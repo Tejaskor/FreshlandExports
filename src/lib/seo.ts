@@ -60,6 +60,8 @@ export function createMetadata({
 }: PageMeta): Metadata {
   const url = absoluteUrl(path, siteConfig.url);
   const share = existingImage(image) ?? defaultShareImage;
+  // The layout's title template applies to <title> only; shares get the brand here.
+  const shareTitle = title.includes(siteConfig.name) ? title : `${title} — ${siteConfig.name}`;
 
   return {
     title,
@@ -70,7 +72,7 @@ export function createMetadata({
         ? { type: "article", publishedTime: article.publishedTime, section: article.section }
         : { type: "website" }),
       url,
-      title,
+      title: shareTitle,
       description,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
@@ -78,7 +80,7 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: shareTitle,
       description,
       images: [{ url: share.url, alt: share.alt }],
     },
@@ -98,15 +100,9 @@ export function organizationJsonLd() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.contact.email,
-    telephone: siteConfig.contact.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address.street,
-      addressLocality: siteConfig.contact.address.locality,
-      addressRegion: siteConfig.contact.address.region,
-      addressCountry: siteConfig.contact.address.country,
-    },
-    sameAs: siteConfig.social.map((item) => item.href),
+    // telephone, address and sameAs are left out until confirmed: the phone
+    // and address in siteConfig are placeholders, and the social links point
+    // at the networks' home pages rather than company profiles.
   };
 }
 
@@ -172,6 +168,7 @@ export function blogPostingJsonLd({
   path,
   image,
   published,
+  updated,
   section,
 }: {
   title: string;
@@ -179,6 +176,8 @@ export function blogPostingJsonLd({
   path: string;
   image: string;
   published: string;
+  /** Last revision, when the article has one (the sitemap's lastmod too). */
+  updated?: string;
   section: string;
 }) {
   const organization = { "@type": "Organization", name: siteConfig.name, url: siteConfig.url };
@@ -191,6 +190,7 @@ export function blogPostingJsonLd({
     mainEntityOfPage: absoluteUrl(path, siteConfig.url),
     image: absoluteUrl(image, siteConfig.url),
     datePublished: published,
+    dateModified: updated ?? published,
     articleSection: section,
     author: organization,
     publisher: organization,

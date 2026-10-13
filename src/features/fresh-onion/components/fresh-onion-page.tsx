@@ -6,7 +6,10 @@ import { FreshOnionHero } from "@/features/fresh-onion/components/fresh-onion-he
 import { FreshOnionSpecs } from "@/features/fresh-onion/components/fresh-onion-specs";
 import { FreshOnionUses } from "@/features/fresh-onion/components/fresh-onion-uses";
 import { ProductBlog } from "@/features/products/components/product-blog";
-import type { ExportProduct } from "@/features/products/export-catalogue";
+import { exportCategories, exportProductHref, type ExportProduct } from "@/features/products/export-catalogue";
+import { freshOnionImages } from "@/features/fresh-onion/images";
+import { JsonLd } from "@/components/seo/json-ld";
+import { productJsonLd } from "@/lib/seo";
 import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
 
 /**
@@ -16,6 +19,16 @@ import { ProductCaseStudies } from "@/features/case-studies/components/product-c
  * other product pages, but not their compositions.
  */
 export function FreshOnionPage({ product }: { product: ExportProduct }) {
+  // Product data for search engines, matching what the page shows (the
+  // FAQ section publishes its own FAQPage). No offer: prices are quoted.
+  const jsonLd = productJsonLd({
+    name: product.name,
+    description: product.description,
+    path: exportProductHref(product.slug),
+    image: freshOnionImages.hero.file,
+    category: exportCategories[product.category].name,
+  });
+
   return (
     <>
       <FreshOnionHero />
@@ -27,6 +40,7 @@ export function FreshOnionPage({ product }: { product: ExportProduct }) {
       <ProductBlog slug={product.slug} productName="Fresh Onion" className="bg-sage-50" />
       <ProductCaseStudies slug={product.slug} productName="Fresh Onion" className="bg-white" />
       <FreshOnionContact />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

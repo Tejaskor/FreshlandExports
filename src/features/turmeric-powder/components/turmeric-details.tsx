@@ -129,7 +129,7 @@ export function TurmericDetails() {
             <h3 className={cn(subHeading, "text-forest")}>{faqHeading}</h3>
           </div>
           <Reveal variant="rise" className="mt-6">
-            <FaqAccordion items={turmericFaqs} />
+            <FaqAccordion items={turmericFaqs} headingLevel={4} />
             <FaqJsonLd items={turmericFaqs} />
           </Reveal>
         </div>

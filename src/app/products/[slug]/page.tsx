@@ -93,10 +93,14 @@ export async function generateMetadata({ params }: Params) {
   const product = findProduct(slug);
   if (!product) return createMetadata({ title: "Product not found", noIndex: true });
 
+  // The earlier organic catalogue: no page links here and the sitemap leaves
+  // it out, and its short copy overlaps the export product pages, so it stays
+  // out of search results like the other placeholder pages.
   return createMetadata({
     title: product.name,
     description: `${product.name} — ${product.descriptor}.`,
     path: product.href,
+    noIndex: true,
     image: product.image ? { url: product.image, alt: product.alt } : undefined,
   });
 }

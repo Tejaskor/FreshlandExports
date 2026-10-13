@@ -28,7 +28,9 @@ const useHydrated = () =>
 
 /**
  * Homepage hero background: the poster frame first, then the looping,
- * muted film over it. The film is added only after hydration and never when
+ * muted film over it. The poster is the optimised image layer underneath,
+ * so the video carries no poster of its own (that fetched the raw file a
+ * second time). The film is added only after hydration and never when
  * the visitor prefers reduced motion, so the server and client markup match
  * and a reduced-motion visitor keeps the still frame. If the film fails to
  * load, the poster stays in place.
@@ -41,6 +43,16 @@ export function HeroVideo() {
     element.defaultPlaybackRate = playbackRate;
     element.playbackRate = playbackRate;
   }, []);
+  // Decoding stops once the hero scrolls out of view and resumes on return.
+  const pauseOffscreen = useCallback((element: HTMLVideoElement) => {
+    calm(element);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) element.pause();
+      else if (element.paused) element.play().catch(() => {});
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [calm]);
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -55,7 +67,7 @@ export function HeroVideo() {
       />
       {hydrated && !reducedMotion && (
         <video
-          ref={calm}
+          ref={pauseOffscreen}
           onLoadedMetadata={(event) => calm(event.currentTarget)}
           onPlay={(event) => calm(event.currentTarget)}
           className="absolute inset-0 h-full w-full object-cover object-center"
@@ -63,8 +75,6 @@ export function HeroVideo() {
           muted
           loop
           playsInline
-          preload="metadata"
-          poster={poster}
           aria-hidden="true"
           tabIndex={-1}
         >

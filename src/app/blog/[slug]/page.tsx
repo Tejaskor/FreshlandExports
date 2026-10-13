@@ -41,6 +41,7 @@ export default async function BlogPostPage({ params }: Params) {
       path: post.href,
       image: post.image.src,
       published: post.published,
+      updated: post.updated,
       section: post.category,
     }),
   ];

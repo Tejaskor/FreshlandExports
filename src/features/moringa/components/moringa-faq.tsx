@@ -52,7 +52,7 @@ export function FaqBlock({ className }: { className?: string }) {
       </div>
 
       <Reveal variant="rise" className="lg:col-span-7">
-        <FaqAccordion items={faqs} />
+        <FaqAccordion items={faqs} headingLevel={4} />
       </Reveal>
     </Container>
   );

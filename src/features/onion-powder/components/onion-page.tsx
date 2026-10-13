@@ -1,5 +1,8 @@
 import { ProductBlog } from "@/features/products/components/product-blog";
-import type { ExportProduct } from "@/features/products/export-catalogue";
+import { exportCategories, exportProductHref, type ExportProduct } from "@/features/products/export-catalogue";
+import { onionImages } from "@/features/onion-powder/images";
+import { JsonLd } from "@/components/seo/json-ld";
+import { productJsonLd } from "@/lib/seo";
 import { OnionApplications } from "@/features/onion-powder/components/onion-applications";
 import { OnionFaq } from "@/features/onion-powder/components/onion-faq";
 import { OnionHero } from "@/features/onion-powder/components/onion-hero";
@@ -17,6 +20,16 @@ import { ProductCaseStudies } from "@/features/case-studies/components/product-c
  * alternate white, sage and cream; deep green is kept for the closing quote.
  */
 export function OnionPage({ product }: { product: ExportProduct }) {
+  // Product data for search engines, matching what the page shows (the
+  // FAQ section publishes its own FAQPage). No offer: prices are quoted.
+  const jsonLd = productJsonLd({
+    name: product.name,
+    description: product.description,
+    path: exportProductHref(product.slug),
+    image: onionImages.hero.file,
+    category: exportCategories[product.category].name,
+  });
+
   return (
     <>
       <OnionHero />
@@ -29,6 +42,7 @@ export function OnionPage({ product }: { product: ExportProduct }) {
       <ProductBlog slug={product.slug} productName={product.name} className="bg-white" accentClassName="text-rust" />
       <ProductCaseStudies slug={product.slug} productName={product.name} className="bg-cream" />
       <OnionContact productName={product.name} />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

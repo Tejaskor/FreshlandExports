@@ -115,7 +115,7 @@ export function Carousel({
       .forEach((element) => element.setAttribute("tabindex", "-1"));
   }, [looping, children]);
 
-  // The drift itself: one rAF loop, paused by interaction or when off screen.
+  // The drift itself: one rAF loop, paused by interaction and stopped off screen.
   useEffect(() => {
     const rail = railRef.current;
     const clones = cloneRef.current;
@@ -160,7 +160,7 @@ export function Carousel({
         rail.scrollLeft = position;
       }
       wrap();
-      frame = requestAnimationFrame(tick);
+      if (visible) frame = requestAnimationFrame(tick);
     };
 
     const onEnter = (event: PointerEvent) => {
@@ -183,8 +183,15 @@ export function Carousel({
       if (!rail.contains(event.relatedTarget as Node | null)) focused = false;
     };
 
+    // The loop runs only while the rail is on screen; it starts with the
+    // observer's first report, and restarts with a fresh clock on return.
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
+      cancelAnimationFrame(frame);
+      if (visible) {
+        last = 0;
+        frame = requestAnimationFrame(tick);
+      }
     });
     observer.observe(rail);
 
@@ -195,7 +202,6 @@ export function Carousel({
     rail.addEventListener("touchcancel", onTouchEnd, { passive: true });
     rail.addEventListener("focusin", onFocusIn);
     rail.addEventListener("focusout", onFocusOut);
-    frame = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(frame);

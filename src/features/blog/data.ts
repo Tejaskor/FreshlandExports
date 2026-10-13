@@ -164,6 +164,30 @@ export const latestPosts: readonly BlogPost[] = blogPosts
   .sort((a, b) => b.post.published.localeCompare(a.post.published) || a.index - b.index)
   .map(({ post }) => post);
 
+/**
+ * Articles pinned to the top of the unfiltered /blog listing, in this order.
+ * Category views, Recent Posts and the homepage keep plain newest-first.
+ */
+const pinnedSlugs = [
+  "how-to-judge-moringa-powder-quality-before-you-import",
+  "from-leaf-to-powder-why-drying-matters-for-moringa",
+  "moringa-powder-in-teas-smoothies-and-functional-foods",
+] as const;
+
+/**
+ * The unfiltered listing: the pinned articles, then every other article
+ * newest first. Each article appears exactly once.
+ */
+const listingPosts: readonly BlogPost[] = (() => {
+  const pinned = pinnedSlugs.map((slug) => {
+    const post = blogPosts.find((entry) => entry.slug === slug);
+    // A renamed or removed article would otherwise vanish from the top silently.
+    if (!post) throw new Error(`Blog: pinned article "${slug}" not found`);
+    return post;
+  });
+  return [...pinned, ...latestPosts.filter((post) => !pinned.includes(post))];
+})();
+
 /** URL form of a category, e.g. "Quality & Sourcing" → "quality-and-sourcing". */
 export const categorySlug = (category: BlogCategory) => slugify(category);
 
@@ -268,12 +292,13 @@ export const filterHref = (filter: BlogFilter | undefined, page = 1) =>
   blogListHref({ ...(filter && ("range" in filter ? { range: filter.range } : { category: filter.topic })), page });
 
 /**
- * One page of the listing: the newest articles first, optionally narrowed to
- * a product range or topic. Returns null for a page beyond the last.
+ * One page of the listing: the pinned articles then the newest first, or,
+ * narrowed to a product range or topic, simply the newest first. Returns
+ * null for a page beyond the last.
  */
 export function blogListing({ filter, page }: { filter?: BlogFilter; page: number }) {
   const posts = !filter
-    ? latestPosts
+    ? listingPosts
     : "range" in filter
       ? latestPosts.filter((post) => postRange(post).id === filter.range.id)
       : latestPosts.filter((post) => post.category === filter.topic);

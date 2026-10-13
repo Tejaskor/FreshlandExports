@@ -15,7 +15,7 @@ export function FaqAccordion({
   items,
   offset = 0,
   defaultOpen = 0,
-  headingLevel = 4,
+  headingLevel = 3,
 }: {
   items: readonly Faq[];
   offset?: number;
