@@ -11,9 +11,11 @@ export const siteConfig = {
   name: "Freshland Exports",
   shortName: "Freshland",
   wordmarkAccent: "Exports",
-  tagline: "Pure botanicals. Proven science.",
+  // Drawn from the catalogue's four ranges (powders, agricultural products,
+  // fruits, spices); no certification or volume claims.
+  tagline: "Spices, Powders and Fresh Produce from India",
   description:
-    "High-quality botanical ingredients for the food, nutraceutical, cosmetic and wellness industries — cultivated, extracted and analytically validated in India.",
+    "Freshland Exports supplies spices, spice and botanical powders, fresh vegetables and fruits from India to B2B buyers, with specifications, packaging and quotes on request.",
   // Canonical, Open Graph and sitemap URLs. NEXT_PUBLIC_SITE_URL wins; on
   // Vercel without it, the project's production domain (set at build time);
   // the placeholder only for local builds. Server-side use only.
@@ -26,12 +28,15 @@ export const siteConfig = {
   lang: "en",
   themeColor: "#14452f",
   keywords: [
-    "botanical ingredients",
-    "organic herbal extracts",
-    "nutraceutical ingredients supplier",
-    "herbal powders",
-    "plant enzymes",
-    "probiotics manufacturer",
+    "agricultural exports from India",
+    "spice exporter India",
+    "spice powder supplier",
+    "moringa powder exporter",
+    "onion powder supplier",
+    "turmeric powder exporter",
+    "whole spices supplier",
+    "fresh vegetables export",
+    "fresh fruit export India",
   ],
   contact: {
     // The footer, /contact page and form error messages all read these.
@@ -90,7 +95,7 @@ export const primaryNav: readonly NavItem[] = [
     label: "Products",
     href: "/products",
     hasMenu: true,
-    hint: "Extracts, powders, enzymes and cultures",
+    hint: "Powders, spices, vegetables and fruits",
   },
   { label: "Our Farms", href: "/farms", hint: "Soil, seed and the growers behind it" },
   // Temporarily hidden — see featureFlags.signatureIngredients.
