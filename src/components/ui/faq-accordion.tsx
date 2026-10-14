@@ -2,8 +2,8 @@
 
 import { useId, useState } from "react";
 
-import { Collapse } from "@/features/moringa/components/collapse";
-import type { Faq } from "@/features/moringa/data";
+import { Collapse } from "@/components/ui/collapse";
+import type { FaqEntry } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /**
@@ -17,7 +17,7 @@ export function FaqAccordion({
   defaultOpen = 0,
   headingLevel = 3,
 }: {
-  items: readonly Faq[];
+  items: readonly FaqEntry[];
   offset?: number;
   defaultOpen?: number | null;
   headingLevel?: 2 | 3 | 4;

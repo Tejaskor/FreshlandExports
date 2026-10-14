@@ -12,7 +12,8 @@ import { type ArticleImage, articleImages } from "@/features/blog/images";
 import { blogCategories, type BlogCategory } from "@/features/blog/meta";
 import { type ArticleBody, productBlogs } from "@/features/products/blog";
 import { type CatalogueCategoryId, findCatalogueProduct } from "@/features/products/catalogue";
-import { exportProductHref, findExportProduct, productMenu } from "@/features/products/export-catalogue";
+import { exportProductHref, findExportProduct } from "@/features/products/export-catalogue";
+import { productMenu } from "@/features/products/menu";
 
 /**
  * The Blog: every product article from features/products/blog.ts, given its

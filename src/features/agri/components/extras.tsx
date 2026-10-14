@@ -3,7 +3,7 @@ import { Reveal } from "@/animations/reveal";
 import { SectionHeader } from "@/features/agri/components/shared";
 import type { AgriProduct } from "@/features/agri/types";
 import { faqHeading } from "@/features/faqs/data";
-import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
+import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { cn } from "@/lib/utils";
 import { FaqJsonLd } from "@/components/seo/json-ld";
 

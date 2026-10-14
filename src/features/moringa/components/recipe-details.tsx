@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Collapse } from "@/features/moringa/components/collapse";
+import { Collapse } from "@/components/ui/collapse";
 import type { Recipe } from "@/features/moringa/data";
 import { cn } from "@/lib/utils";
 

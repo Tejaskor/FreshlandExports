@@ -11,7 +11,7 @@ import {
   type ProductMenuGroup,
   type ProductMenuGroupId,
   type ProductMenuItem,
-} from "@/features/products/export-catalogue";
+} from "@/features/products/menu";
 import { cn } from "@/lib/utils";
 
 const reveal = "visible pointer-events-auto translate-y-0 opacity-100";

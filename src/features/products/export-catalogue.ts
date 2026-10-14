@@ -1,17 +1,18 @@
 import type { IconName } from "@/components/ui/icon";
-import { catalogue, catalogueImage, type CatalogueCategoryId } from "@/features/products/catalogue";
+import { productMenu } from "@/features/products/menu";
 import type { MediaSlot } from "@/types/media";
 
 /**
- * Export product range — the products behind the header's Products menu.
+ * Export product range — the long-form records for the products that have
+ * one. The header's Products menu is built from the central catalogue in
+ * ./menu, not from these records.
  *
  * Content is deliberately general and factual: product forms, typical uses
  * and trade practice. Grade-specific figures (moisture, mesh, curcumin,
  * pungency, purity) vary by lot and are shared with each quotation rather
  * than published as fixed claims.
  *
- * Client-safe: no server APIs here, so the header can import the menu.
- * Photography is resolved server-side in ./export-images.
+ * No server APIs here. Photography is resolved server-side in ./export-images.
  */
 
 export type ExportCategoryId = "powders" | "agricultural";
@@ -309,56 +310,9 @@ export function relatedExportProducts(product: ExportProduct, limit = 4) {
   return [...sameCategory, ...others].slice(0, limit);
 }
 
-export type ProductMenuItem = {
-  label: string;
-  href: string;
-  slug: string;
-  /** Thumbnail; null when no photograph exists yet (a placeholder is shown). */
-  image: string | null;
-};
-
-export type ProductMenuGroupId = CatalogueCategoryId;
-
-export type ProductMenuGroup = {
-  id: ProductMenuGroupId;
-  title: string;
-  icon: IconName;
-  /** Category image in the menu (from /images/dropdown-menu-icons/), or null. */
-  cover: string | null;
-  items: readonly ProductMenuItem[];
-};
-
-/**
- * The header's Products menu, derived from the central catalogue
- * (./catalogue.ts): one group per category, each product linking to
- * /products/<slug>. Thumbnails are the products' own catalogue images — the
- * same source as every other listing; a product without a photograph keeps
- * the menu's placeholder icon — no substitute image is used. Category
- * covers come from /images/dropdown-menu-icons/.
- *
- * Onion / Onion Powder and Turmeric / Turmeric Powder are separate products
- * with separate slugs.
- */
-
-/** Public URL for a dropdown icon; spaces and capitals are encoded safely. */
-const dropdownIcon = (file: string) => `/images/dropdown-menu-icons/${encodeURIComponent(file)}`;
-
-export const productMenu: readonly ProductMenuGroup[] = catalogue.map((category) => ({
-  id: category.id,
-  title: category.label,
-  icon: category.menu.icon,
-  cover: dropdownIcon(category.cover.file),
-  items: category.products.map((product) => ({
-    label: product.menuLabel ?? product.name,
-    slug: product.slug,
-    href: exportProductHref(product.slug),
-    image: catalogueImage(product.image),
-  })),
-}));
-
 export type MenuOnlyProduct = { slug: string; name: string; groupTitle: string };
 
-/** Menu products without a catalogue entry — each gets an enquiry page. */
+/** Menu products without an export product record — each gets an enquiry page. */
 export const menuOnlyProducts: readonly MenuOnlyProduct[] = productMenu.flatMap((group) =>
   group.items
     .filter((item) => !findExportProduct(item.slug))

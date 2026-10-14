@@ -2,8 +2,10 @@
 
 import { type KeyboardEvent, useId, useRef, useState } from "react";
 
-import type { UseCategory } from "@/features/onion-powder/data";
 import { cn } from "@/lib/utils";
+
+/** A use-case tab. */
+export type UseCategory = { id: string; title: string; text: string; items: readonly string[] };
 
 /**
  * The five everyday-use categories as tabs. Every panel stays in the markup

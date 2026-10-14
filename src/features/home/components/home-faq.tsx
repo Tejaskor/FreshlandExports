@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { faqHeading, homeFaqs } from "@/features/faqs/data";
-import { FaqAccordion } from "@/features/moringa/components/faq-accordion";
+import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { FaqJsonLd } from "@/components/seo/json-ld";
 
 /**

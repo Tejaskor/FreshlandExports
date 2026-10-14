@@ -84,6 +84,3 @@ export const onionFaqs: readonly Faq[] = [
     answer: "Final specifications can be discussed according to the buyer's application and requirements.",
   },
 ];
-
-/** A use-case tab (shared with the agricultural product pages' UseTabs). */
-export type UseCategory = { id: string; title: string; text: string; items: readonly string[] };

@@ -13,7 +13,7 @@ import { ProductThumb, ProductsMenu, menuUnderline } from "@/components/layout/p
 import { useSmoothScroll } from "@/components/providers/smooth-scroll-provider";
 import { primaryNav, siteConfig } from "@/config/site";
 import { BrochureButton } from "@/features/brochure/brochure-button";
-import { productMenu, type ProductMenuGroupId } from "@/features/products/export-catalogue";
+import { productMenu, type ProductMenuGroupId } from "@/features/products/menu";
 import { cn } from "@/lib/utils";
 
 /**

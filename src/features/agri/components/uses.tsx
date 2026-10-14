@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { ProductImage, SectionHeader } from "@/features/agri/components/shared";
 import type { AgriProduct } from "@/features/agri/types";
-import { UseTabs } from "@/features/onion-powder/components/use-tabs";
+import { UseTabs } from "@/features/agri/components/use-tabs";
 import { cn } from "@/lib/utils";
 
 function Chips({ items, inverse = false }: { items: readonly string[]; inverse?: boolean }) {
