@@ -6,7 +6,7 @@ import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { freshOnionAbout } from "@/features/fresh-onion/data";
 import { freshOnionImages } from "@/features/fresh-onion/images";
 import { ImageSlot } from "@/features/moringa/components/image-slot";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /**

@@ -3,7 +3,7 @@ import { Reveal } from "@/animations/reveal";
 import { ImageSlot } from "@/features/moringa/components/image-slot";
 import { RecipeDetails } from "@/features/moringa/components/recipe-details";
 import { type Recipe, recipes, usageTip, uses } from "@/features/moringa/data";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /** Each compact card takes a slightly different leaf-cut corner. */

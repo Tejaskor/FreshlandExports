@@ -8,7 +8,7 @@ import { ImageSlot } from "@/features/moringa/components/image-slot";
 import { MoringaProcess } from "@/features/moringa/components/moringa-process";
 import { MoringaNutrients } from "@/features/moringa/components/moringa-nutrients";
 import { moringaIntro } from "@/features/moringa/data";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 

@@ -4,7 +4,7 @@ import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { ImageSlot } from "@/features/moringa/components/image-slot";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { turmericIndustries, turmericUses } from "@/features/turmeric-powder/data";
 import { turmericImages } from "@/features/turmeric-powder/images";
 import { cn } from "@/lib/utils";

@@ -8,7 +8,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { ProductImage, SectionHeader, label, shapes } from "@/features/agri/components/shared";
 import type { AgriProduct, ImageShape } from "@/features/agri/types";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /* ========================================================================

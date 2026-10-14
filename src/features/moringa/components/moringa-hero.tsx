@@ -9,7 +9,7 @@ import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import { OrbitBadge } from "@/features/moringa/components/orbit-badge";
 import { moringaHero } from "@/features/moringa/data";
 import styles from "@/features/moringa/moringa.module.css";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /**

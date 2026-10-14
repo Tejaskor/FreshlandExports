@@ -5,7 +5,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import type { ImageShape, ImageSlotData } from "@/features/agri/types";
 import { ImageSlot } from "@/features/moringa/components/image-slot";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /** Radius and proportion for each image shape. */

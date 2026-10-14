@@ -6,7 +6,7 @@ import { ImageSlot } from "@/features/moringa/components/image-slot";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import { RecipesPanel } from "@/features/moringa/components/moringa-recipes";
 import { applications } from "@/features/moringa/data";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /**

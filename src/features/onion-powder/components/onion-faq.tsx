@@ -5,7 +5,7 @@ import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { MoqPanel } from "@/features/products/components/moq-panel";
 import { moqFor } from "@/features/products/moq";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { onionFaqs, onionMoqBody } from "@/features/onion-powder/data";
 import { cn } from "@/lib/utils";
 import { FaqJsonLd } from "@/components/seo/json-ld";

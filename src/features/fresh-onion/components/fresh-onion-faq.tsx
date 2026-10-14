@@ -6,7 +6,7 @@ import { Reveal } from "@/animations/reveal";
 import { freshOnionFaqs } from "@/features/fresh-onion/data";
 import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 import { FaqJsonLd } from "@/components/seo/json-ld";
 

@@ -14,7 +14,7 @@ import {
   qualityPoints,
   specifications,
 } from "@/features/moringa/data";
-import { type } from "@/features/moringa/styles";
+import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 
 /**
