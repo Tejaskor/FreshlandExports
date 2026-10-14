@@ -52,7 +52,7 @@ export function MoringaPage({ product }: { product: ExportProduct }) {
         className="border-t border-line bg-white"
         after={<WaveDivider fill="text-forest" />}
       />
-      <MoringaCta productName={product.name} />
+      <MoringaCta productName={product.name} productSlug={product.slug} />
 
       <JsonLd data={jsonLd} />
     </>

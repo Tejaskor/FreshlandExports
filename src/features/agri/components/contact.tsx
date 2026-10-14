@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/forms/contact-form";
+import { productEnquirySource } from "@/components/forms/contact-schema";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { inquiryMessage } from "@/features/agri/components/shared";
@@ -19,13 +20,15 @@ function Invitation({ product, inverse = false, center = false }: { product: Agr
 }
 
 function Form({ product }: { product: AgriProduct }) {
+  const source = productEnquirySource(product.slug);
   return (
     <div id="quote-form" className="scroll-mt-28">
       <Reveal variant="rise" className="text-ink">
         {product.quote ? (
-          <ContactForm variant="quote" product={product.name} submitLabel="Request a Quote" />
+          <ContactForm source={source} variant="quote" product={product.name} submitLabel="Request a Quote" />
         ) : (
           <ContactForm
+            source={source}
             title={`Request a Quote for ${product.name}`}
             defaultMessage={inquiryMessage(product.name)}
             submitLabel="Request a Quote"

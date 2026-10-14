@@ -39,7 +39,7 @@ export function FreshOnionPage({ product }: { product: ExportProduct }) {
       <FreshOnionFaq />
       <ProductBlog slug={product.slug} productName="Fresh Onion" className="bg-sage-50" />
       <ProductCaseStudies slug={product.slug} productName="Fresh Onion" className="bg-white" />
-      <FreshOnionContact />
+      <FreshOnionContact productSlug={product.slug} />
       <JsonLd data={jsonLd} />
     </>
   );

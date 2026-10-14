@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/forms/contact-form";
+import { productEnquirySource } from "@/components/forms/contact-schema";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { QuoteIntro } from "@/features/products/components/quote-intro";
@@ -8,7 +9,7 @@ import { QuoteIntro } from "@/features/products/components/quote-intro";
  * the left, the existing inquiry form on the right. The form's message is
  * pre-filled with the product and the details a bulk buyer needs to give.
  */
-export function FreshOnionContact() {
+export function FreshOnionContact({ productSlug }: { productSlug: string }) {
   return (
     <section
       id="quote"
@@ -27,6 +28,7 @@ export function FreshOnionContact() {
         <div id="quote-form" className="scroll-mt-28 lg:col-span-7">
           <Reveal variant="rise">
             <ContactForm
+              source={productEnquirySource(productSlug)}
               title="Request a Quote for Fresh Onions"
               submitLabel="Request a Quote"
               defaultMessage={"I'd like a quote for Fresh Onions.\nCompany: \nRequired quantity: \nPackaging preference: \n"}

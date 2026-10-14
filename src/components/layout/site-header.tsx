@@ -393,7 +393,7 @@ export function SiteHeader() {
           </nav>
 
           <BrochureButton
-            source="header_brochure"
+            source="header_mobile_brochure"
             onClick={closeMenu}
             className={cn(brochureButton, "mt-10 w-full justify-center sm:hidden")}
           >

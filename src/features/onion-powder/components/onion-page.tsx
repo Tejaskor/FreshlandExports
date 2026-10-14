@@ -41,7 +41,7 @@ export function OnionPage({ product }: { product: ExportProduct }) {
       <OnionFaq />
       <ProductBlog slug={product.slug} productName={product.name} className="bg-white" accentClassName="text-rust" />
       <ProductCaseStudies slug={product.slug} productName={product.name} className="bg-cream" />
-      <OnionContact productName={product.name} />
+      <OnionContact productName={product.name} productSlug={product.slug} />
       <JsonLd data={jsonLd} />
     </>
   );

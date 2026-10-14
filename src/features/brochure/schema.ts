@@ -5,7 +5,17 @@ import { catalogue } from "@/features/products/catalogue";
  * action (the authority — client checks can always be bypassed).
  */
 
-export const brochureSources = ["header_brochure", "homepage_brochure", "footer_brochure", "blog_brochure"] as const;
+/**
+ * Sent as `source`. The header has two buttons: the bar's (sm and up) sends
+ * header_brochure, the mobile menu's header_mobile_brochure.
+ */
+export const brochureSources = [
+  "header_brochure",
+  "header_mobile_brochure",
+  "homepage_brochure",
+  "footer_brochure",
+  "blog_brochure",
+] as const;
 export type BrochureSource = (typeof brochureSources)[number];
 
 export const markets = [

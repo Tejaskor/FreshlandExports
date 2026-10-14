@@ -36,7 +36,7 @@ export function TurmericPage({ product }: { product: ExportProduct }) {
       <TurmericDetails />
       <ProductBlog slug={product.slug} productName={product.name} className="bg-[var(--t-pale)]" accentClassName="text-rust" />
       <ProductCaseStudies slug={product.slug} productName={product.name} className="bg-white" />
-      <TurmericContact productName={product.name} />
+      <TurmericContact productName={product.name} productSlug={product.slug} />
       <JsonLd data={jsonLd} />
     </div>
   );

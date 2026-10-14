@@ -14,7 +14,8 @@ import { markets, productInterests, quantities } from "@/features/brochure/schem
  * company, email, country / market, required quantity and an optional
  * message; the product comes from the page itself as a hidden field, so the
  * lead names it without the visitor choosing it again. It identifies itself
- * with variant=quote. All three post the same fields to the same webhook.
+ * with variant=quote. All three post the same fields to the same webhook,
+ * plus `source`, `form_type` and `page_url` to say where the lead came from.
  */
 
 export const countries = ["India", "United States", "United Kingdom", "Germany", "Japan", "Other"];
@@ -42,6 +43,37 @@ export type FormVariant = "compact" | "detailed" | "quote";
 
 /** Multiple products travel as one string, joined by this separator. */
 export const productSeparator = "; ";
+
+/**
+ * Where a contact lead came from, sent as `source` (the spreadsheet's Source
+ * column). Each placement passes its own: the homepage and /contact forms a
+ * fixed label, every product page one built from its slug.
+ */
+export type ContactSource = "homepage_contact" | "contact_page" | `product_enquiry_${string}`;
+
+/** The kind of form, sent as `form_type` beside `source`. */
+export type ContactFormType = "contact" | "product_enquiry";
+
+const PRODUCT_SOURCE = /^product_enquiry_[a-z0-9]+(?:_[a-z0-9]+)*$/;
+
+/** A product page's source, from its slug: "moringa-powder" → "product_enquiry_moringa_powder". */
+export function productEnquirySource(slug: string): ContactSource {
+  return `product_enquiry_${slug.toLowerCase().replace(/-/g, "_")}`;
+}
+
+/** The submitted source if it is one the site sends, else "unknown" (the lead is still delivered). */
+export function readContactSource(formData: FormData): ContactSource | "unknown" {
+  const value = formData.get("source");
+  if (typeof value !== "string" || value.length > 100) return "unknown";
+  if (value === "homepage_contact" || value === "contact_page" || PRODUCT_SOURCE.test(value)) return value as ContactSource;
+  return "unknown";
+}
+
+/** The form type a source belongs to. */
+export function contactFormType(source: ContactSource | "unknown"): ContactFormType | "unknown" {
+  if (source === "unknown") return "unknown";
+  return source.startsWith("product_enquiry_") ? "product_enquiry" : "contact";
+}
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE = /^[+()\d\s.-]+$/;

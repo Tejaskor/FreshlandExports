@@ -3,11 +3,14 @@
 import {
   type ContactState,
   type ContactValues,
+  contactFormType,
   hasErrors,
   formVariant,
   readContact,
+  readContactSource,
   validateContact,
 } from "@/components/forms/contact-schema";
+import { readPageUrl } from "@/components/forms/lead-meta";
 import { postToWebhook } from "@/components/forms/webhook";
 
 /**
@@ -26,8 +29,14 @@ export async function submitContact(
   const errors = validateContact(values, formVariant(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
+  const source = readContactSource(formData);
+
   try {
-    await deliverEnquiry(values);
+    await deliverEnquiry(values, {
+      source,
+      form_type: contactFormType(source),
+      page_url: readPageUrl(formData),
+    });
     return { status: "success" };
   } catch (error) {
     console.error("[contact] enquiry could not be delivered", error);
@@ -39,7 +48,10 @@ export async function submitContact(
   }
 }
 
-/** Delivers the enquiry through the shared form webhook. */
-async function deliverEnquiry(enquiry: ContactValues) {
-  await postToWebhook("contact", enquiry);
+/** Delivers the enquiry, with where it came from, through the shared form webhook. */
+async function deliverEnquiry(
+  enquiry: ContactValues,
+  origin: { source: string; form_type: string; page_url: string },
+) {
+  await postToWebhook("contact", { ...enquiry, ...origin });
 }

@@ -4,6 +4,7 @@ import { AnchorButton } from "@/components/ui/anchor-button";
 import { Button } from "@/components/ui/button";
 import { ClipReveal } from "@/animations/clip-reveal";
 import { ContactForm } from "@/components/forms/contact-form";
+import { productEnquirySource } from "@/components/forms/contact-schema";
 import { Container } from "@/components/ui/container";
 import { Figure } from "@/components/media/figure";
 import { Icon } from "@/components/ui/icon";
@@ -211,6 +212,7 @@ export function ExportProductDetail({
 
           <Reveal variant="sweep-right" delay={0.15}>
             <ContactForm
+              source={productEnquirySource(product.slug)}
               title={`Request a Quote for ${product.name}`}
               submitLabel="Request a Quote"
               defaultMessage={`I'd like a quote for ${product.name}. `}

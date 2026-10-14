@@ -8,6 +8,7 @@ import { Modal } from "@/components/ui/modal";
 import { submitContact } from "@/components/forms/contact-action";
 import {
   type ContactField,
+  type ContactSource,
   type ContactState,
   type FormVariant,
   countries,
@@ -21,6 +22,7 @@ import {
   readContact,
   validateContact,
 } from "@/components/forms/contact-schema";
+import { currentPageUrl, pageUrlField } from "@/components/forms/lead-meta";
 import { ListSelect, MultiSelect } from "@/components/forms/select-fields";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -49,6 +51,9 @@ async function submit(previous: ContactState, formData: FormData): Promise<Conta
   const errors = validateContact(values, formVariant(formData));
   if (hasErrors(errors)) return { status: "invalid", errors, values };
 
+  // The page the lead was sent from, read now rather than at render.
+  formData.set(pageUrlField, currentPageUrl());
+
   try {
     return await submitContact(previous, formData);
   } catch {
@@ -61,12 +66,18 @@ async function submit(previous: ContactState, formData: FormData): Promise<Conta
 }
 
 export function ContactForm({
+  source,
   title,
   product,
   defaultMessage,
   variant = "compact",
   submitLabel = "Send Message",
 }: {
+  /**
+   * Where the lead comes from, sent as `source`: "homepage_contact",
+   * "contact_page", or productEnquirySource(slug) on a product page.
+   */
+  source: ContactSource;
   /** Card heading; the quote form builds its own from `product`. */
   title?: string;
   /** The product a quote form is for: shown in its heading and sent with the lead. */
@@ -167,6 +178,7 @@ export function ContactForm({
           </label>
         </div>
 
+        <input type="hidden" name="source" value={source} />
         {business && <input type="hidden" name="variant" value={variant} />}
         {quote && <input type="hidden" name="product" value={product ?? ""} />}
 

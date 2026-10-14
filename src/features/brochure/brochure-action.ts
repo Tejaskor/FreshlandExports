@@ -1,5 +1,6 @@
 "use server";
 
+import { readPageUrl } from "@/components/forms/lead-meta";
 import { postToWebhook } from "@/components/forms/webhook";
 import {
   type BrochureState,
@@ -46,6 +47,8 @@ export async function submitBrochureLead(_previous: BrochureState, formData: For
       buyerType: values.buyerType,
       expectedQuantity: values.quantity,
       source: readSource(formData),
+      form_type: "brochure_download",
+      page_url: readPageUrl(formData),
       ...readUtm(formData),
     });
     return { status: "success", download: brochure };

@@ -47,7 +47,7 @@ export default function ContactPage() {
       <section aria-label="Enquiry form" className="pb-16 lg:pb-24">
         <Container>
           <Reveal variant="rise" className="mx-auto max-w-[44rem]">
-            <ContactForm title="Send Us a Message" variant="detailed" submitLabel="Send Enquiry" />
+            <ContactForm source="contact_page" title="Send Us a Message" variant="detailed" submitLabel="Send Enquiry" />
           </Reveal>
         </Container>
       </section>

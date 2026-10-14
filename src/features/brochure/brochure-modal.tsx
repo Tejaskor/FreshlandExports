@@ -7,6 +7,7 @@ import type { FormEvent, ReactNode } from "react";
 
 import { Icon } from "@/components/ui/icon";
 import { Modal } from "@/components/ui/modal";
+import { currentPageUrl, pageUrlField } from "@/components/forms/lead-meta";
 import { ListSelect, MultiSelect } from "@/components/forms/select-fields";
 import { submitBrochureLead } from "@/features/brochure/brochure-action";
 import {
@@ -104,6 +105,8 @@ export function BrochureDownloadModal({
       return;
     }
     setClientErrors(null);
+    // The page the lead was sent from, read now rather than at render.
+    formData.set(pageUrlField, currentPageUrl());
     track("brochure_form_submit", { source: trackingSource });
     startTransition(() => formAction(formData));
   };

@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/forms/contact-form";
+import { productEnquirySource } from "@/components/forms/contact-schema";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { TurmericSun } from "@/features/turmeric-powder/components/turmeric-sun";
@@ -9,7 +10,7 @@ import { QuoteIntro } from "@/features/products/components/quote-intro";
  * quote intro on the left and the inquiry form on the right. The form's
  * message is pre-filled with the enquiry details the supplied brief asks for.
  */
-export function TurmericContact({ productName }: { productName: string }) {
+export function TurmericContact({ productName, productSlug }: { productName: string; productSlug: string }) {
   return (
     <section
       id="quote"
@@ -30,6 +31,7 @@ export function TurmericContact({ productName }: { productName: string }) {
         <div id="quote-form" className="scroll-mt-28 lg:col-span-7">
           <Reveal variant="rise" className="text-ink">
             <ContactForm
+              source={productEnquirySource(productSlug)}
               title={`Request a Quote for ${productName}`}
               submitLabel="Request a Quote"
               defaultMessage={`I'd like a quote for ${productName}.\nCompany: \nRequired quantity: \nPackaging preference: \n`}
