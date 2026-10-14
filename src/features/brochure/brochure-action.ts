@@ -46,6 +46,9 @@ export async function submitBrochureLead(_previous: BrochureState, formData: For
       productsInterested: values.products,
       buyerType: values.buyerType,
       expectedQuantity: values.quantity,
+      // The popup asks for no message; the key is sent empty so every lead
+      // carries `message`, as contact enquiries do.
+      message: "",
       source: readSource(formData),
       form_type: "brochure_download",
       page_url: readPageUrl(formData),
