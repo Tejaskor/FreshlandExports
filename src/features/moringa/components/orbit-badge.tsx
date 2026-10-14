@@ -1,4 +1,4 @@
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import styles from "@/features/moringa/moringa.module.css";
 import { cn } from "@/lib/utils";
 

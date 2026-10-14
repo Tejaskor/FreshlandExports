@@ -3,7 +3,7 @@ import path from "node:path";
 
 import Image from "next/image";
 
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import type { ImageSlotData } from "@/features/products/types";
 import { cn } from "@/lib/utils";
 

@@ -8,7 +8,7 @@ import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { FaqBlock } from "@/features/moringa/components/moringa-faq";
 import { ImageSlot } from "@/features/products/components/image-slot";
 import { moringaImages } from "@/features/moringa/images";
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import {
   moringaMoq,
   processSteps,

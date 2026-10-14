@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { productEnquirySource } from "@/components/forms/contact-schema";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import { QuoteIntro } from "@/features/products/components/quote-intro";
 
 /**

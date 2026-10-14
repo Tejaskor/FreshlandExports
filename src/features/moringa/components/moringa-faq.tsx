@@ -5,7 +5,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { faqHeading } from "@/features/faqs/data";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import { faqs } from "@/features/moringa/data";
 import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";

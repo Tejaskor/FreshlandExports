@@ -4,7 +4,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { ImageSlot } from "@/features/products/components/image-slot";
 import { moringaImages } from "@/features/moringa/images";
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import { RecipesPanel } from "@/features/moringa/components/moringa-recipes";
 import { applications } from "@/features/moringa/data";
 import { type } from "@/features/products/styles";

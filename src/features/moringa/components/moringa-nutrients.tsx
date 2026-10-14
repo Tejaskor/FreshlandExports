@@ -3,7 +3,7 @@
 import { type KeyboardEvent, type ReactNode, useId, useRef, useState } from "react";
 
 import { Reveal } from "@/animations/reveal";
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 import { benefitsDisclaimer, nutrients, nutrientsNote } from "@/features/moringa/data";
 import { cn } from "@/lib/utils";
 

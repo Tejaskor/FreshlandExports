@@ -1,4 +1,4 @@
-import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
+import { MoringaSprig } from "@/components/media/moringa-sprig";
 
 /**
  * Decoration behind the /contact page: large, soft organic sage curves rising
