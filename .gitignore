@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local artifacts
 *.local
+
+# local agent tooling metrics
+/.rune/metrics/
