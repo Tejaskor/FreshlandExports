@@ -111,9 +111,20 @@ export function Uses({
                     </span>
                     {group.title}
                   </h3>
-                  <div>
-                    {group.text && <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{group.text}</p>}
-                    <Chips items={group.items} />
+                  {/* A group with its own photograph shows it beside the text. */}
+                  <div className={cn(group.image && "flex items-start gap-4 sm:gap-5")}>
+                    <div className="min-w-0 flex-1">
+                      {group.text && <p className="text-[0.9375rem] leading-relaxed text-ink-muted">{group.text}</p>}
+                      <Chips items={group.items} />
+                    </div>
+                    {group.image && (
+                      <ProductImage
+                        slot={group.image}
+                        compact
+                        sizes="8rem"
+                        className="aspect-[5/4] w-24 shrink-0 rounded-[1rem] sm:w-32"
+                      />
+                    )}
                   </div>
                 </li>
               ))}

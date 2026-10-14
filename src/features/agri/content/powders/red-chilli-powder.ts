@@ -5,7 +5,7 @@ import { moqFor } from "@/features/products/moq";
 // B2B copy for bulk buyers. Heat, colour value, particle size, moisture,
 // origin and documentation are not yet verified for this product, so they are
 // left out of the specifications rather than shown as figures. The MOQ comes
-// from features/products/moq (Red Chilli Powder is ordered under spices).
+// from features/products/moq (the powders MOQ).
 const slug = "red-chilli-powder";
 
 /** Photography in public/images/products/Powder Product/Red Chilli Powder/. */
@@ -140,7 +140,6 @@ export const redChilliPowder: AgriProduct = {
     note: "Key product details for buyers sourcing red chilli powder for commercial food applications.",
     enquiry: false,
   },
-  moqBody: "Bulk order quantities range from 100 KG to 500 KG, depending on product requirements and the agreed order.",
   storage: {
     heading: "Storage & Handling",
     text: "Keep red chilli powder in suitable sealed packaging, in a clean, dry environment.",

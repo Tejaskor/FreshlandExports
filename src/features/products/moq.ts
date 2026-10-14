@@ -14,8 +14,6 @@ export const categoryMoq: Record<CatalogueCategoryId, string> = {
 
 /** Products whose MOQ follows a category other than their catalogue listing. */
 const moqCategory: Record<string, CatalogueCategoryId> = {
-  // Confirmed by Freshland Exports: ordered under the spices MOQ.
-  "red-chilli-powder": "spices",
   // Whole turmeric has a spice page but no catalogue entry.
   turmeric: "spices",
 };

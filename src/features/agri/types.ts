@@ -33,7 +33,8 @@ export type Feature = { title: string; text: string; icon?: IconName };
 export type UseGroup = { title: string; text?: string; items: readonly string[]; image?: ImageSlotData };
 /** A confirmed specification; an unconfirmed value is left out, not shown as pending. */
 export type SpecRow = { label: string; value: string };
-export type Step = { title: string; text: string };
+/** A process step; `text` is optional, `image` is used by the "cards" process layout. */
+export type Step = { title: string; text?: string; image?: ImageSlotData };
 
 export type HeroVariant =
   | "split"
@@ -50,15 +51,19 @@ export type HeroVariant =
 
 /** One section of a page, in order. Five to seven per product. */
 export type SectionSpec =
-  | { type: "hero"; variant: HeroVariant; reverse?: boolean }
+  /** `wide` (collage only): the main photograph as a wide banner, the two extras beneath — for a landscape hero. */
+  | { type: "hero"; variant: HeroVariant; reverse?: boolean; wide?: boolean }
   | { type: "intro"; variant: "split" | "statement" | "overlap"; shape?: ImageShape; reverse?: boolean }
   | { type: "features"; variant: "numbered" | "bento" | "band" | "alternating" }
   | { type: "uses"; variant: "columns" | "gallery" | "list" | "tabs" }
-  | { type: "process" }
-  | { type: "specs"; variant: "table" | "sheet" | "tiles" }
+  /** "cards": one photograph card per step, in a row joined by arrows. */
+  | { type: "process"; variant?: "rail" | "cards" }
+  /** `photo` (sheet only): show `images.specs` as a wide banner above the sheet. */
+  | { type: "specs"; variant: "table" | "sheet" | "tiles"; photo?: boolean }
   | { type: "quality" }
   | { type: "varieties" }
-  | { type: "commercial"; variant: "numbered" | "bento" | "band" | "alternating" }
+  /** `columns`: the band's desktop column count (default 3); 4 suits four items. */
+  | { type: "commercial"; variant: "numbered" | "bento" | "band" | "alternating"; columns?: 3 | 4 }
   | { type: "storage" }
   | { type: "faq"; variant: "split" | "center" }
   /** Related products from the central catalogue. */
@@ -76,6 +81,8 @@ export type AgriProduct = {
   hero: {
     eyebrow: string;
     title: string;
+    /** Optional explicit title lines (joined, they must read as `title`), e.g. ["Coriander", "Seeds Powder"]. */
+    titleLines?: readonly string[];
     tagline: string;
     body: string;
     highlights: readonly string[];
@@ -141,6 +148,8 @@ export type AgriProduct = {
     uses?: ImageSlotData;
     /** Specifications photograph; falls back to `detail`. */
     specs?: ImageSlotData;
+    /** Optional wide (3:1) photograph above the MOQ panel. */
+    moq?: ImageSlotData;
     /** Extra photographs used by collage / elongated heroes and galleries. */
     extra?: readonly ImageSlotData[];
     /** An existing small photograph (≤300 px) for a small circular slot. */

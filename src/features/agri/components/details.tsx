@@ -14,9 +14,62 @@ function SpecValue({ row, inverse = false }: { row: SpecRow; inverse?: boolean }
    Process — a numbered horizontal rail (vertical on small screens).
    ======================================================================== */
 
-export function Process({ product }: { product: AgriProduct }) {
+export function Process({ product, variant = "rail" }: { product: AgriProduct; variant?: "rail" | "cards" }) {
   if (!product.process) return null;
   const { process } = product;
+
+  /* One photograph card per step, numbered and joined by arrows on desktop;
+     a swipeable row of cards on smaller screens. */
+  if (variant === "cards") {
+    return (
+      <section aria-labelledby="process-heading" className="bg-cream-warm py-14 lg:py-20">
+        <Container>
+          <SectionHeader id="process-heading" eyebrow={process.eyebrow} heading={process.heading} intro={process.note} align="center" />
+          <Reveal
+            as="ol"
+            variant="rise"
+            className="scrollbar-none -mx-gutter mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-gutter pb-1 lg:mx-0 lg:mt-12 lg:grid lg:grid-cols-5 lg:gap-6 lg:overflow-visible lg:px-0"
+          >
+            {process.steps.map((step, index) => (
+              <li key={step.title} className="w-[68%] shrink-0 snap-start sm:w-[40%] lg:w-auto">
+                <div className="relative">
+                  {step.image && (
+                    <ProductImage
+                      slot={step.image}
+                      compact
+                      sizes="(min-width: 1024px) 18vw, (min-width: 640px) 40vw, 68vw"
+                      className="aspect-[4/3] w-full rounded-[1.5rem]"
+                    />
+                  )}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-3 left-3 flex size-9 items-center justify-center rounded-full bg-white font-display text-[0.9375rem] font-medium text-[var(--p-deep)] shadow-[var(--shadow-card)]"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {/* Arrow to the next step, centred in the gap (desktop). */}
+                  {index < process.steps.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-1/2 -right-[1.625rem] z-10 hidden size-7 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--p-deep)] text-white lg:flex"
+                    >
+                      <Icon name="arrow-right" className="size-3.5" />
+                    </span>
+                  )}
+                </div>
+                <h3 className="mt-4 font-display text-heading text-forest">
+                  <span className="sr-only">Step {index + 1}: </span>
+                  {step.title}
+                </h3>
+                {step.text && <p className="mt-1 text-[0.875rem] leading-relaxed text-ink-muted">{step.text}</p>}
+              </li>
+            ))}
+          </Reveal>
+        </Container>
+      </section>
+    );
+  }
+
   return (
     <section aria-labelledby="process-heading" className="bg-white py-14 lg:py-20">
       <Container>
@@ -115,7 +168,16 @@ function EnquiryNote({ inverse = false }: { inverse?: boolean }) {
   );
 }
 
-export function Specs({ product, variant }: { product: AgriProduct; variant: "table" | "sheet" | "tiles" }) {
+export function Specs({
+  product,
+  variant,
+  photo = false,
+}: {
+  product: AgriProduct;
+  variant: "table" | "sheet" | "tiles";
+  /** Sheet only: the specifications photograph as a wide banner above the sheet. */
+  photo?: boolean;
+}) {
   const { specs, images } = product;
 
   /* Deep data sheet, two columns of rows. */
@@ -123,6 +185,15 @@ export function Specs({ product, variant }: { product: AgriProduct; variant: "ta
     return (
       <section id="specifications" aria-labelledby="specs-heading" className="scroll-mt-24 bg-white py-14 lg:py-20">
         <Container>
+          {photo && images.specs && (
+            <Reveal variant="unveil">
+              <ProductImage
+                slot={images.specs}
+                sizes="(min-width: 1440px) 1344px, 100vw"
+                className="mb-6 aspect-[3/1] w-full rounded-[1.75rem]"
+              />
+            </Reveal>
+          )}
           <Reveal variant="rise">
             <div className="rounded-[2rem_0.75rem_2rem_2rem] bg-[var(--p-deep)] p-6 text-white shadow-[var(--shadow-panel)] sm:p-10">
               <SectionHeader id="specs-heading" eyebrow={specs.eyebrow} heading={specs.heading} inverse align="start" />

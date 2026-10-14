@@ -678,34 +678,6 @@ export const productPhotoCredits: Record<string, PhotoCredit> = {
     source: "https://commons.wikimedia.org/wiki/File:Nasi_Kuning_Behintalu.jpg",
     original: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Nasi_Kuning_Behintalu.jpg/1920px-Nasi_Kuning_Behintalu.jpg",
   },
-  "/images/products/powders/black-pepper-powder-hero.webp": {
-    author: "Nithyasrm",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Homemade_Pepper_powder.JPG",
-    original: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Homemade_Pepper_powder.JPG/1920px-Homemade_Pepper_powder.JPG",
-  },
-  "/images/products/powders/black-pepper-powder-texture.webp": {
-    author: "Eliška Jindříšková",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Ground_black_pepper.jpg",
-    original: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ground_black_pepper.jpg/1920px-Ground_black_pepper.jpg",
-  },
-  "/images/products/powders/black-pepper-powder-seasoning.webp": {
-    author: "Daryn Nakhuda",
-    license: "CC BY 2.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/2.0",
-    source: "https://commons.wikimedia.org/wiki/File:Applying_a_spice_rub_to_pork_ribs_for_a_barbecue_-_20080329.jpg",
-    original: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Applying_a_spice_rub_to_pork_ribs_for_a_barbecue_-_20080329.jpg/1920px-Applying_a_spice_rub_to_pork_ribs_for_a_barbecue_-_20080329.jpg",
-  },
-  "/images/products/powders/black-pepper-powder-applications.webp": {
-    author: "Popo le Chien",
-    license: "CC BY-SA 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
-    source: "https://commons.wikimedia.org/wiki/File:Cacio_e_pepe.jpg",
-    original: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Cacio_e_pepe.jpg/1920px-Cacio_e_pepe.jpg",
-  },
   "/images/products/powders/clove-powder-hero.webp": {
     author: "Kitchenshaman",
     license: "CC BY-SA 4.0",
@@ -852,13 +824,6 @@ export const productPhotoCredits: Record<string, PhotoCredit> = {
     licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0",
     source: "https://commons.wikimedia.org/wiki/File:Shallow_focus_on_salt_and_pepper_shakers.jpg",
     original: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Shallow_focus_on_salt_and_pepper_shakers.jpg/1920px-Shallow_focus_on_salt_and_pepper_shakers.jpg",
-  },
-  "/images/Blog/black-pepper-powder-in-seasonings-meat-products-and-ready-meals.webp": {
-    author: "Andy Li",
-    license: "CC0",
-    licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    source: "https://commons.wikimedia.org/wiki/File:Black_pepper_tofu_fried_udon_-_Stir_Fry_by_CK.jpg",
-    original: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Black_pepper_tofu_fried_udon_-_Stir_Fry_by_CK.jpg/1920px-Black_pepper_tofu_fried_udon_-_Stir_Fry_by_CK.jpg",
   },
   "/images/Blog/coriander-seeds-powder-export-guide-colour-aroma-and-packing.webp": {
     author: "Ajay Suresh from New York, NY, USA",

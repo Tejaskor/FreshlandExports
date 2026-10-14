@@ -70,9 +70,9 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
   "black-pepper-powder": [
-    article("ground-black-pepper-quality-aroma-grind-and-purity", "Macro close-up of freshly ground black pepper showing dark husk and pale inner fragments"),
-    article("how-black-peppercorns-are-ground-without-losing-aroma", "Wooden pepper mills on a table"),
-    article("black-pepper-powder-in-seasonings-meat-products-and-ready-meals", "A plate of black pepper fried udon noodles with tofu on a wooden table"),
+    { src: product("Black pepper powder/blog-black-pepper-quality.webp"), alt: "A wooden spoon of ground black pepper among whole black peppercorns" },
+    { src: product("Black pepper powder/blog-black-pepper-grinding.webp"), alt: "A wooden pepper mill beside a dish of whole black peppercorns and freshly ground pepper" },
+    { src: product("Black pepper powder/blog-black-pepper-applications.webp"), alt: "A plate of pasta with tomatoes and meat, finished with grated cheese and black pepper" },
   ],
   "coriander-seeds-powder": [
     article("coriander-seeds-powder-export-guide-colour-aroma-and-packing", "Steel containers of ground Indian spices, including ground coriander"),
@@ -204,8 +204,8 @@ export const articleImages: Record<string, Trio> = {
       alt: "Long, glossy green chillies sorted on a stainless steel table",
     },
     {
-      src: product("GreenChillies/green-chilli-export-quality.png"),
-      alt: "Fresh green chillies spread on steel trays in a packhouse",
+      src: product("GreenChillies/Fresh Green Chilli Sorting Display.png"),
+      alt: "Fresh green chillies on a metal sorting tray, with yellowing and blemished pods set apart and more chillies in a crate and basket behind",
     },
     {
       src: product("Agricultural Products/Green Chili/green-chilli-applications.webp"),

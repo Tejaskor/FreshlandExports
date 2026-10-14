@@ -6,6 +6,7 @@ import { Process, Quality, Specs } from "@/features/agri/components/details";
 import { Faq, Varieties } from "@/features/agri/components/extras";
 import { Hero } from "@/features/agri/components/hero";
 import { Features, Intro } from "@/features/agri/components/intro-features";
+import { ProductImage } from "@/features/agri/components/shared";
 import { Uses } from "@/features/agri/components/uses";
 import type { AgriProduct, SectionSpec } from "@/features/agri/types";
 import { MoqPanel } from "@/features/products/components/moq-panel";
@@ -35,7 +36,7 @@ export function AgriPage({ product }: { product: AgriProduct }) {
   const render = (section: SectionSpec) => {
     switch (section.type) {
       case "hero":
-        return <Hero product={product} variant={section.variant} reverse={section.reverse} />;
+        return <Hero product={product} variant={section.variant} reverse={section.reverse} wide={section.wide} />;
       case "intro":
         return <Intro product={product} variant={section.variant} shape={section.shape} reverse={section.reverse} />;
       case "features":
@@ -43,11 +44,11 @@ export function AgriPage({ product }: { product: AgriProduct }) {
       case "uses":
         return <Uses product={product} variant={section.variant} />;
       case "process":
-        return <Process product={product} />;
+        return <Process product={product} variant={section.variant} />;
       case "specs":
         return (
           <>
-            <Specs product={product} variant={section.variant} />
+            <Specs product={product} variant={section.variant} photo={section.photo} />
             {/* MOQ follows the specifications on every page. The table
                 variant ends on a tint, so the strip needs its own top space. */}
             {moq && (
@@ -56,6 +57,13 @@ export function AgriPage({ product }: { product: AgriProduct }) {
                 className={cn("bg-white pb-14 lg:pb-20", section.variant === "table" && "pt-14 lg:pt-20")}
               >
                 <Container>
+                  {product.images.moq && (
+                    <ProductImage
+                      slot={product.images.moq}
+                      sizes="(min-width: 1440px) 1344px, 100vw"
+                      className="mb-6 aspect-[3/1] w-full rounded-[1.75rem]"
+                    />
+                  )}
                   <MoqPanel
                     value={moq}
                     body={product.moqBody}
@@ -74,7 +82,13 @@ export function AgriPage({ product }: { product: AgriProduct }) {
         return <Quality product={product} kind="storage" />;
       case "commercial":
         return product.commercial ? (
-          <Features product={product} variant={section.variant} data={product.commercial} headingId="commercial-heading" />
+          <Features
+            product={product}
+            variant={section.variant}
+            data={product.commercial}
+            headingId="commercial-heading"
+            columns={section.columns}
+          />
         ) : null;
       case "varieties":
         return <Varieties product={product} />;

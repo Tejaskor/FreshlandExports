@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -29,6 +29,30 @@ const brochureButton =
 export function SiteHeader() {
   const pathname = usePathname();
   const { stop, start } = useSmoothScroll();
+
+  // The glass fills in as the page scrolls: --glass-alpha runs from the
+  // stylesheet's 0.62 at the top to 0.9 by 240px down, set straight on the
+  // element (at most once a frame, no re-render) so it tracks the scroll.
+  const glassRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const glass = glassRef.current;
+    if (!glass) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const progress = Math.min(Math.max(window.scrollY / 240, 0), 1);
+      glass.style.setProperty("--glass-alpha", (0.62 + progress * 0.28).toFixed(3));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   // The menu is tied to the route it was opened on, so any navigation closes
   // it without an effect reaching back into state.
@@ -88,12 +112,15 @@ export function SiteHeader() {
           are equal, and never less than the container's 24px gap. */}
       <Container className="relative z-10 flex items-center justify-between gap-6 [--nav-edge:calc(var(--spacing-gutter)-0.75rem)]">
         {/* Frosted-glass bar behind the logo row (globals.css glass-bar),
-            over the hero and every section below it alike. Its sides
+            over the hero and every section below it alike: a 62% cream
+            fill at the top of the page, filling in to 90% as it scrolls so
+            the content behind fades back, under the same 20px blur. Its sides
             sit at --nav-edge (12px outside the logo and the last button), the
             same edges as the Products and Resources menus; --glass-y (14px)
             above and below, pill-round like the Brochure and Get a Quote
             buttons. */}
         <span
+          ref={glassRef}
           aria-hidden="true"
           className="glass-bar pointer-events-none absolute inset-x-[var(--nav-edge)] inset-y-[calc(var(--glass-y)*-1)] -z-10 rounded-full"
         />
@@ -108,8 +135,8 @@ export function SiteHeader() {
             {primaryNav.map((item) => {
               const linkClassName = cn(
                 "flex items-center gap-1.5 text-[1rem] whitespace-nowrap transition-colors duration-300",
-                // Active page in leaf green (5:1 on white).
-                isActive(item.href) ? "text-leaf" : "text-ink hover:text-leaf",
+                // Active page in leaf green (5:1 on white); hover in forest green.
+                isActive(item.href) ? "text-leaf" : "text-ink hover:text-forest",
               );
 
               if (item.hasMenu) {

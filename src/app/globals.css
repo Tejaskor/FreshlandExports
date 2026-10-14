@@ -294,9 +294,12 @@
 
 /* --- Glass surfaces: header (top of page), Products menu, dropdowns ----- */
 /* Warm-cream frosted glass. Where backdrop-filter is unsupported the
-   surface turns nearly opaque, so text never sits on a busy background. */
+   surface turns nearly opaque, so text never sits on a busy background.
+   --glass-alpha lets the header fill it in as the page scrolls; only the
+   colour changes (and eases), the blur stays put. */
 @utility glass-bar {
-  background-color: rgb(250 248 243 / 0.62);
+  background-color: rgb(250 248 243 / var(--glass-alpha, 0.62));
+  transition: background-color 250ms ease-out;
   -webkit-backdrop-filter: blur(20px) saturate(1.15);
   backdrop-filter: blur(20px) saturate(1.15);
   border: 1px solid rgb(255 255 255 / 0.55);

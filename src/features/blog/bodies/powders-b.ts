@@ -9,8 +9,12 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
     // Garlic Powder Buying Guide: Colour, Aroma and Free-Flowing Texture
     [
       {
+        heading: "In brief",
+        text: "A good garlic powder is off-white to pale cream, smells strongly of garlic, pours freely and is very dry. Before a first order, agree the form and particle size, a low moisture limit, the strength and microbiological criteria your product needs, and whether any anti-caking agent is acceptable.",
+      },
+      {
         heading: "What you are buying",
-        text: "Garlic powder is made from garlic cloves that are dehydrated and then milled. Because nothing is added in a straight garlic powder, its quality depends almost entirely on the garlic that went in and on how carefully it was dried, milled and packed. A short check of colour, aroma and texture on a sample tells you a great deal about all three before you commit to a full order.",
+        text: "Garlic powder is made from garlic cloves that are dehydrated and then milled. Dehydrated garlic is also sold as flakes, minced, kibbled and granules, so name the form you need. A straight garlic powder contains garlic only, although some specifications permit a food-grade anti-caking agent, which must then be labelled. Its quality depends almost entirely on the garlic that went in and on how carefully it was dried, milled and packed.",
       },
       {
         heading: "Judge the colour",
@@ -18,26 +22,38 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Smell and taste",
-        text: "Open the sample and the aroma should be clearly and strongly of garlic: pungent and savoury, without musty, burnt or stale notes. A small amount stirred into warm water releases more of the flavour and makes comparison easier. A weak, flat smell usually means the powder has lost much of its character through age, heat or poor packing, and it will need a higher dose in your recipe.",
+        text: "Open the sample and the aroma should be clearly and strongly of garlic: pungent and savoury, without musty, burnt or stale notes. A small amount stirred into warm water releases more of the flavour and makes comparison easier. A weak, flat smell usually means the powder has lost much of its character through age, heat or poor packing, and it will need a higher dose in your recipe. Where strength matters, some buyers specify a minimum content of volatile organic sulphur compounds, which carry garlic's flavour.",
       },
       {
-        heading: "Check the texture",
-        text: "Garlic powder should pour freely and look even. Lumps that break easily under a finger are a sign that the powder has picked up moisture; hard cakes suggest it has been exposed for some time. Particle size affects how the powder disperses in seasonings, sauces and coatings, so state the fineness your process needs and ask for it to be written into the specification sheet.",
+        heading: "Check the texture and moisture",
+        text: "Garlic powder should pour freely and look even. Lumps that break easily under a finger are a sign that the powder has picked up moisture; hard cakes suggest it has been exposed for some time. Because dehydrated garlic is so dry, moisture limits are low: India's FSSAI standard sets a maximum of 5 per cent for garlic powder. State the particle size and moisture limit your process needs and ask for both to be reported per lot.",
+      },
+      {
+        heading: "Microbiology",
+        text: "Garlic is dried at temperatures chosen to protect its flavour, which means drying is not a reliable kill step for bacteria. Buyers who use garlic powder in ready-to-eat foods, such as snack seasonings and dips, commonly set microbiological criteria and may require a microbial reduction treatment. Agree these criteria, and any method restrictions in your destination market, on the specification before production.",
       },
       {
         heading: "Agree the specification",
-        text: "Before a first order, request a sample, the specification sheet and details of how each lot is checked. Agree the parameters that matter to you and to your destination market, such as moisture, particle size and any tests your customers expect, along with packaging and labelling. Confirming these in writing up front keeps every shipment consistent with the sample you approved.",
+        text: "Before a first order, request a sample, the specification sheet and details of how each lot is checked. A typical specification covers form and particle size, colour, moisture, extraneous matter, flavour strength, microbiology and any contaminant tests your customers expect, along with packaging and labelling. Confirming these in writing up front keeps every shipment consistent with the sample you approved.",
+      },
+      {
+        heading: "Standards and references",
+        text: "Codex Alimentarius CXS 347-2019, Standard for Dried or Dehydrated Garlic. ISO 5560, Dehydrated garlic (Allium sativum L.), Specification. FSSAI Food Products Standards and Food Additives Regulations, 2011, section 2.9.26, Garlic, which sets for garlic powder a maximum of 5 per cent moisture and a minimum of 0.3 per cent volatile organic sulphur compounds on a dry basis.",
       },
     ],
     // Stopping Garlic Powder from Caking in Storage and Transit
     [
       {
         heading: "Why garlic powder cakes",
-        text: "Dehydrated garlic readily draws moisture from the air. As the powder takes up humidity, its particles stick together, first into soft lumps and then into hard cakes that will not flow through dosing equipment. Moisture also dulls the aroma and colour. Almost every caking problem comes back to the same cause, so storage and packing are really about keeping humid air away from the powder.",
+        text: "Dehydrated garlic readily draws moisture from the air. As the powder takes up humidity, its particles stick together, first into soft lumps and then into hard cakes that will not flow through dosing equipment. Moisture also dulls the aroma and colour. Almost every caking problem comes back to the same cause, so storage and packing are really about keeping humid air away from a product that leaves the mill at only a few per cent moisture.",
       },
       {
         heading: "Pack for a long journey",
         text: "For export, garlic powder needs packing that acts as a barrier to moisture, such as lined bags or sealed inner liners inside an outer bag or carton. Seal liners well, avoid punctures during filling and handling, and agree the packing format with your supplier before the order is produced. Good packing is the cheapest protection against a container's changing temperatures and humidity.",
+      },
+      {
+        heading: "Anti-caking agents",
+        text: "Some buyers allow a small amount of a permitted anti-caking agent to keep garlic powder free-flowing in humid conditions; others want a straight powder with nothing added. Either is workable, but the choice must be agreed in advance, must be permitted in your destination market and must appear on the ingredient list of the finished product. Good packing and storage remain the main protection either way.",
       },
       {
         heading: "Mind the container",
@@ -49,7 +65,11 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Handle opened bags with care",
-        text: "Once a bag is opened, the clock starts again. Use clean, dry scoops, reseal the liner tightly straight after use, or move part-used stock into an airtight container. Avoid opening bags in steamy production areas. If soft lumps do appear, they can often be broken up and sieved, but hard caking is a sign that the powder has been exposed for too long.",
+        text: "Once a bag is opened, the clock starts again. Use clean, dry scoops, reseal the liner tightly straight after use, or move part-used stock into an airtight container. Avoid opening bags in steamy production areas. If soft lumps do appear, they can often be broken up and sieved, but hard caking is a sign that the powder has been exposed for too long and should be checked before use.",
+      },
+      {
+        heading: "Shelf life depends on conditions",
+        text: "How long garlic powder stays free-flowing and aromatic depends on its moisture at packing, the packaging and how it is stored, so there is no single figure that fits every shipment. Agree the best-before period and storage conditions on the specification sheet, and check stock regularly for lumps, darkening or a weakening smell.",
       },
     ],
     // Garlic Powder in Seasonings, Snack Coatings and Ready Meals
@@ -64,15 +84,37 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Snack coatings",
-        text: "In snack production, garlic powder is a familiar part of the coating on chips, crisps, nuts, popcorn and extruded snacks, often alongside onion powder, cheese and spices. A free-flowing powder spreads evenly in tumble drums and sticks well to oiled surfaces. Consistent flavour strength matters here, because small changes in the powder show up directly in the taste of the finished snack.",
+        text: "In snack production, garlic powder is a familiar part of the coating on chips, crisps, nuts, popcorn and extruded snacks, often alongside onion powder, cheese and spices. A free-flowing powder spreads evenly in tumble drums and sticks well to oiled surfaces. Because the seasoning is applied after frying or baking, it is not cooked again, so snack makers pay particular attention to the microbiological quality of the powder.",
       },
       {
         heading: "Sauces, soups and ready meals",
         text: "In wet applications, garlic powder hydrates and releases its flavour into sauces, dressings, dips, soups, gravies and ready meals. It removes the need to prepare fresh garlic on the line and gives a steady flavour from batch to batch. It also suits instant mixes and dry soup bases, where a dry ingredient is essential and fresh garlic is not an option.",
       },
       {
+        heading: "Labelling the finished product",
+        text: "Garlic powder is not always treated as a spice on labels. In the United States, for example, FDA rules exclude garlic from the definition of spice, so garlic powder must be declared by its own name rather than within the word spices. Check the rules in each market where your product is sold, and declare any anti-caking agent the powder contains.",
+      },
+      {
         heading: "Food service and repacking",
         text: "Restaurants, caterers and quick-service kitchens use garlic powder for marinades, garlic bread, breading mixes and everyday seasoning, valuing its convenience and consistency. Importers and repackers buy it in bulk for retail and catering packs. Whatever the use, agree the particle size, packaging and quality parameters with your supplier so that the powder suits your process and your market.",
+      },
+      {
+        heading: "Frequently asked questions",
+        text: "Common questions from food manufacturers.",
+      },
+      {
+        heading: "Powder or granules?",
+        level: 3,
+        text: "Powder disperses fastest and suits seasonings, coatings and smooth sauces. Granules flow with less dust and give a slightly slower flavour release, which some rubs and dry mixes prefer. Test both in your product if you are unsure.",
+      },
+      {
+        heading: "How much garlic powder replaces fresh garlic?",
+        level: 3,
+        text: "It depends on the strength of the powder and on your recipe, so there is no reliable fixed ratio. Run a trial batch with the approved sample and set the dose by taste.",
+      },
+      {
+        heading: "Standards and references",
+        text: "US Code of Federal Regulations, 21 CFR 101.22(a)(2) and (h)(3), on the declaration of spices and of garlic and onion powder. Labelling rules differ by market; confirm the current rules where your product is sold.",
       },
     ],
   ],
@@ -80,31 +122,43 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
     // Dry Mango Powder Quality: Tang, Colour and Freshness
     [
       {
+        heading: "In brief",
+        text: "Amchur is bought for its sourness, so acidity is the parameter that matters most, followed by colour, dryness and freedom from insects and mould. Ask whether the powder contains added salt, agree an acidity range and a moisture limit, and approve a sample before ordering.",
+      },
+      {
         heading: "What makes good amchur",
         text: "Dry mango powder, or amchur, is valued for one thing above all: a clean, sharp sourness with a fruity edge. Because it is simply unripe green mango that has been dried and ground, its quality reflects the fruit, the drying and the grinding. When you assess a sample, you are really checking how well each of those steps was carried out and how the powder has been kept since.",
       },
       {
-        heading: "Taste the tang",
-        text: "A small pinch on the tongue should give an immediate, bright sourness, followed by a faint fruity sweetness. Flat, dull or bitter notes can point to fruit picked at the wrong stage or to old stock. Compare samples side by side, and if sourness is critical to your recipe, discuss with your supplier how it will be assessed and confirmed for each lot.",
+        heading: "Taste the tang, then measure it",
+        text: "A small pinch on the tongue should give an immediate, bright sourness, followed by a faint fruity sweetness. Flat, dull or bitter notes can point to fruit picked at the wrong stage or to old stock. Taste is a good first check, but acidity can also be measured: India's FSSAI standard for amchur requires acidity, expressed as anhydrous tartaric acid, of between 12 and 26 per cent by weight. If sourness is critical to your recipe, agree an acidity range and ask for it to be reported per lot.",
       },
       {
         heading: "Look at the colour",
-        text: "Amchur is naturally pale, ranging from a light beige to a light brown. Some variation between lots is normal, depending on the fruit and the drying. A noticeably dark or patchy colour can suggest over-drying, scorching or moisture damage during storage. Agree a reference sample with your supplier so that each shipment can be compared against the same standard.",
+        text: "Amchur is naturally pale, ranging from light beige to light brown. Some variation between lots is normal, depending on the fruit and the drying. A noticeably dark or patchy colour can suggest over-drying, scorching or moisture damage during storage. Amchur should not contain added colouring. Agree a reference sample with your supplier so that each shipment can be compared against the same standard.",
       },
       {
-        heading: "Check texture and freshness",
-        text: "The powder should be fine and dry. Because amchur readily absorbs moisture, soft lumps are common in powder that has been exposed to humid air, and hard cakes or a musty smell are a warning sign. Fineness affects how the powder blends into masalas and seasonings, so specify the texture your product needs and ask the supplier to agree it in writing.",
+        heading: "Check texture, moisture and cleanliness",
+        text: "The powder should be fine and dry. Because amchur readily absorbs moisture, soft lumps are common in powder that has been exposed to humid air, and hard cakes or a musty smell are a warning sign. Dried fruit is also attractive to insects, so look for webbing, live insects or fragments. For reference, FSSAI sets a maximum of 12 per cent moisture and limits on ash and crude fibre; set the moisture limit your product needs on the specification.",
+      },
+      {
+        heading: "Salted or unsalted",
+        text: "Indian food standards allow edible common salt to be added to amchur, up to 5 per cent by weight on a dry basis, and some powder on the market is salted. If your recipe or label needs an unsalted product, say so in your enquiry and on the specification, so that quotations are for the same product.",
       },
       {
         heading: "Agree the paperwork",
-        text: "Before a first order, ask for a sample, a specification sheet and details of how each lot is checked. Agree the parameters that matter for your product and your destination market, such as moisture, fineness and any tests your customers require, together with packaging and labelling. Confirming these up front makes it far easier to keep every shipment consistent.",
+        text: "Before a first order, ask for a sample, a specification sheet and details of how each lot is checked. Agree the parameters that matter for your product and your destination market, such as acidity, moisture, fineness, salt and any tests your customers require, together with packaging and labelling. Confirming these up front makes it far easier to keep every shipment consistent.",
+      },
+      {
+        heading: "Standards and references",
+        text: "FSSAI Food Products Standards and Food Additives Regulations, 2011, section 2.9.24, Dried Mango Powder (Amchur): moisture not more than 12 per cent; acidity as anhydrous tartaric acid 12 to 26 per cent; edible common salt permitted up to 5 per cent on a dry basis. There is currently no Codex or ISO product standard specific to amchur, so the buyer's specification carries more weight.",
       },
     ],
     // From Green Mango to Amchur: How Dry Mango Powder Is Made
     [
       {
         heading: "Starting with unripe fruit",
-        text: "Amchur begins with mangoes picked while still green and hard. At this stage the fruit is sour rather than sweet, and it is that sourness the powder is prized for. Ripe mangoes would give a sweeter, softer product that is harder to dry, so the choice of fruit and the timing of the harvest set the character of the finished powder.",
+        text: "Amchur begins with mangoes picked while still green and hard. At this stage the fruit is sour rather than sweet, and it is that sourness the powder is prized for. Ripe mangoes would give a sweeter, softer product that is harder to dry, so the choice of fruit and the timing of the harvest set the character of the finished powder. Sound fruit matters too: bruised, diseased or fallen fruit carries a higher risk of mould.",
       },
       {
         heading: "Peeling and slicing",
@@ -112,15 +166,19 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Drying the slices",
-        text: "The slices are then dried until they are brittle and snap cleanly. Drying removes the water that would otherwise let the fruit spoil, and concentrates the sour flavour. Care is needed throughout: too much heat can darken the slices and dull their taste, while drying too slowly in damp conditions can lead to mould. Dried slices are also traded on their own for grinding later.",
+        text: "The slices are then dried, in the sun or in driers, until they are brittle and snap cleanly. Drying removes the water that would otherwise let the fruit spoil and concentrates the sour flavour. Care is needed throughout: too much heat can darken the slices and dull their taste, while drying too slowly in damp conditions can lead to mould. Slices dried in the open also need protecting from dust, birds and insects. Dried slices are traded on their own as well, for grinding later.",
+      },
+      {
+        heading: "Sorting and cleaning the dried slices",
+        text: "Before grinding, dried slices are sorted to remove pieces that are mouldy, discoloured, insect-damaged or still soft, along with any stones, peel or foreign matter. This is the last practical chance to remove defects, because once the slices are milled, a mouldy or infested piece is mixed through the whole lot.",
       },
       {
         heading: "Grinding and sieving",
-        text: "The dried slices are ground into powder and sieved to the agreed fineness. Grinding releases the fruit's tang into a form that blends evenly into masalas and seasonings. The particle size is set to suit the buyer's use, whether that is a fine powder for spice blends or a slightly coarser grind for other applications.",
+        text: "The dried slices are ground into powder and sieved to the agreed fineness. Grinding releases the fruit's tang into a form that blends evenly into masalas and seasonings. The particle size is set to suit the buyer's use, whether a fine powder for spice blends or a slightly coarser grind for other applications. If salt is part of the agreed product, it is added and mixed at this stage.",
       },
       {
         heading: "Packing to keep it dry",
-        text: "Because amchur absorbs moisture easily, it is packed promptly into moisture-resistant packaging, such as lined bags or sealed inner liners, in the format agreed with the buyer. Good packing protects the powder through storage and shipping and keeps it free-flowing and sharp-tasting until it reaches the spice blender, food manufacturer or repacker.",
+        text: "Because amchur absorbs moisture easily, it is packed promptly into moisture-resistant packaging, such as lined bags or sealed inner liners, in the format agreed with the buyer, and each lot is coded so it can be traced. Good packing protects the powder through storage and shipping and keeps it free-flowing and sharp-tasting until it reaches the spice blender, food manufacturer or repacker.",
       },
     ],
     // Dry Mango Powder (Amchur) in Chaat Masala, Chutneys and Snacks
@@ -131,19 +189,33 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Chaat masala and other blends",
-        text: "Amchur is one of the defining ingredients of chaat masala, giving the blend its familiar sharp, tangy lift. It also appears in many tandoori, chana and vegetable masalas. Spice blend manufacturers rely on it for a consistent sour note, so they usually specify fineness and colour closely to keep their blends uniform from batch to batch.",
+        text: "Amchur is one of the defining ingredients of chaat masala, giving the blend its familiar sharp, tangy lift. It also appears in many tandoori, chana and vegetable masalas. Spice blend manufacturers rely on it for a consistent sour note, so they usually specify acidity, fineness and colour closely to keep their blends uniform from batch to batch.",
       },
       {
         heading: "Snack seasonings",
-        text: "In the snack industry, amchur adds a tangy edge to namkeen, chips, coated nuts and other savoury snacks, often alongside chilli, black salt and other spices. Because it is dry, it mixes easily with other seasoning ingredients and sticks well to coated snacks, giving a bright, mouth-watering flavour that balances salt and heat.",
+        text: "In the snack industry, amchur adds a tangy edge to namkeen, chips, coated nuts and other savoury snacks, often alongside chilli, black salt and other spices. Because it is dry, it mixes easily with other seasoning ingredients and sticks well to coated snacks, giving a bright flavour that balances salt and heat. Its tendency to absorb moisture means seasoning blends containing amchur need good packing too.",
       },
       {
         heading: "Chutneys, pickles and curries",
-        text: "Amchur brings fruity sourness to chutneys, pickles and relishes, and is used in vegetable curries, dals and stuffed vegetables to brighten rich or earthy flavours. In meat marinades it adds tang alongside other spices. In ready meals and instant mixes, it gives cooks and manufacturers a dependable sour note that does not depend on fresh fruit being in season.",
+        text: "Amchur brings fruity sourness to chutneys, pickles and relishes, and is used in vegetable curries, dals and stuffed vegetables to brighten rich or earthy flavours. In meat marinades it adds tang alongside other spices. In ready meals and instant mixes, it gives manufacturers a dependable sour note that does not depend on fresh fruit being in season.",
       },
       {
         heading: "Choosing the right supply",
-        text: "Whether you are a spice blender, snack maker or importer supplying the food service trade, agree the fineness, packaging and quality parameters your product needs before ordering. Ask for a sample to test in your own recipe, and confirm how each lot will be checked. That way, the amchur you receive behaves the same way in every production run.",
+        text: "Whether you are a spice blender, snack maker or importer supplying the food service trade, agree the acidity, fineness, salt content, packaging and quality parameters your product needs before ordering. Ask for a sample to test in your own recipe, and confirm how each lot will be checked. That way, the amchur you receive behaves the same way in every production run.",
+      },
+      {
+        heading: "Frequently asked questions",
+        text: "Questions food makers often ask about amchur.",
+      },
+      {
+        heading: "Can amchur replace tamarind or lemon juice?",
+        level: 3,
+        text: "In many dry and low-moisture products, yes, and it is often chosen for exactly that reason. The flavour is fruitier than vinegar and different from tamarind, so adjust the dose by tasting a trial batch.",
+      },
+      {
+        heading: "Is amchur the same as dried mango slices?",
+        level: 3,
+        text: "Amchur is the powder ground from dried unripe mango slices. The slices themselves are also traded, mainly for grinding or for cooking whole in some regional dishes.",
       },
     ],
   ],
@@ -152,7 +224,7 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
     [
       {
         heading: "No single recipe",
-        text: "Garam masala is not one fixed product. It is a blend of ground spices whose make-up varies by region, by household and by brand. Typical blends draw on spices such as cumin, coriander, black pepper, cloves, cinnamon, green cardamom, bay leaf and nutmeg, but which spices are used, and in what proportions, changes the character of the blend considerably. For a buyer, the recipe is the specification.",
+        text: "Garam masala is not one fixed product. It is a blend of ground spices whose make-up varies by region, by household and by brand. Typical blends draw on spices such as coriander, cumin, black pepper, cloves, cinnamon, green cardamom, Indian bay leaf (tej patta, from Cinnamomum tamala rather than the Mediterranean bay laurel) and nutmeg, but which spices are used, and in what proportions, changes the character of the blend considerably. For a buyer, the recipe is the specification.",
       },
       {
         heading: "Start with your reference",
@@ -160,22 +232,44 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Agree the details in writing",
-        text: "Once a blend is approved, record its composition, the fineness of the grind, the colour range you will accept and any other parameters that matter to you. Keep a retained sample of the approved blend. Agreeing these points clearly at the start makes it far easier to check every later lot against the same standard and to resolve any differences quickly.",
+        text: "Once a blend is approved, record its composition, the fineness of the grind, the colour range you will accept, the moisture limit and any other parameters that matter to you. Keep a retained sample of the approved blend. Agreeing these points clearly at the start makes it far easier to check every later lot against the same standard and to resolve any differences quickly.",
       },
       {
         heading: "Ingredients drive the blend",
-        text: "Because garam masala is made from several spices, its quality depends on each of them. Fresh, aromatic whole spices give a lively blend; old or poorly stored spices give a flat one. Ask your supplier how the individual spices are selected and checked before grinding, and how the blend is mixed to keep it uniform throughout each batch.",
+        text: "Because garam masala is made from several spices, its quality depends on each of them. Fresh, aromatic whole spices give a lively blend; old or poorly stored spices give a flat one. Ask your supplier how the individual spices are selected, cleaned and checked before grinding, whether they are ground together or separately, and how the blend is mixed to keep it uniform throughout each batch.",
+      },
+      {
+        heading: "Each ingredient brings its own risks",
+        text: "A blend inherits the food-safety profile of its parts. Pepper and nutmeg, for example, are among the spices for which EU law limits aflatoxins, and that limit also applies to mixtures containing them. Testing the finished blend against your market's limits for mycotoxins, pesticide residues and microbiology, rather than relying on the individual spices alone, gives you a result for the product you actually receive.",
       },
       {
         heading: "Plan for consistency",
         text: "Natural spices vary from crop to crop, so some small variation in a blend is normal. What matters is that each batch stays close to the approved reference. Agree how samples will be checked before shipment, and keep communication open with your supplier so that any adjustments to the recipe are discussed and approved rather than discovered on arrival.",
+      },
+      {
+        heading: "Frequently asked questions",
+        text: "Questions buyers often ask before commissioning a garam masala blend.",
+      },
+      {
+        heading: "Can a supplier match my existing blend?",
+        level: 3,
+        text: "Usually a close match can be developed from your recipe or a reference sample, then refined through rounds of samples. Approve the final version in writing and keep it as the reference.",
+      },
+      {
+        heading: "Should the recipe be confidential?",
+        level: 3,
+        text: "If the blend is part of your brand, discuss confidentiality with your supplier before sharing the recipe.",
       },
     ],
     // Importing Garam Masala in Bulk: Specifications, Packing and Labelling
     [
       {
         heading: "Build a clear specification",
-        text: "A bulk order of garam masala should rest on a written specification: the agreed composition, fineness, colour range and any quality parameters that you and your destination market require. Attach the approved reference sample to the specification so that both sides are judging each lot against the same thing. A clear specification is the foundation of every repeat order.",
+        text: "A bulk order of garam masala should rest on a written specification: the agreed composition, fineness, colour range, moisture and the quality parameters that you and your destination market require. Attach the approved reference sample to the specification so that both sides are judging each lot against the same thing. India's FSSAI standard for mixed masala, for reference, sets a maximum of 12 per cent moisture.",
+      },
+      {
+        heading: "Contaminant testing for spice blends",
+        text: "Spice blends have drawn regulators' attention in recent years. In April 2024, Hong Kong's Centre for Food Safety reported ethylene oxide in several spice mix products from India and directed the trade to stop selling them. In the European Union, the maximum residue level for ethylene oxide in spices is set at the limit of quantification, and aflatoxin and ochratoxin A limits apply to spice mixtures. Agree before production which residue, mycotoxin and microbiological tests will be carried out on the finished blend, and ask for the results with each lot.",
       },
       {
         heading: "Choose packing that protects aroma",
@@ -183,15 +277,29 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       },
       {
         heading: "Get the labelling right",
-        text: "Labelling rules for spice blends differ between markets. Many require the ingredients of a blend to be listed, and some have particular requirements for allergen statements, origin, batch codes and dates. Check your own market's rules and share them with your supplier early, so that bag markings and any retail labels are prepared correctly before the goods are packed.",
+        text: "Labelling rules for spice blends differ between markets.",
       },
       {
-        heading: "Documents and testing",
-        text: "Ask which documents will accompany each shipment and which tests your importing country or your customers expect, such as checks for contaminants or residues. Agree these before production rather than after. Having the right paperwork ready helps clearance at the destination port and avoids delays that can harm an aromatic product waiting in a hot warehouse.",
+        heading: "European Union",
+        level: 3,
+        text: "Under Regulation (EU) No 1169/2011, a blend sold to consumers lists its ingredients, and where no spice significantly predominates they may be listed in a different order with the words in variable proportion. When garam masala is used at no more than 2 per cent in another food, the manufacturer of that food may declare it simply as spices or mixed spices.",
+      },
+      {
+        heading: "United States",
+        level: 3,
+        text: "Under 21 CFR 101.22, spices may generally be declared collectively as spice, but spices that also colour, such as turmeric or paprika, must be declared as spice and coloring or by name, and onion and garlic powder must be named. If your blend contains mustard, celery or another ingredient that is a declarable allergen in your market, it must be labelled accordingly.",
+      },
+      {
+        heading: "Documents and planning",
+        text: "Ask which documents will accompany each shipment, such as the invoice, packing list, certificate of origin and certificates of analysis, and which documents your importing country requires. Freshland Exports supplies garam masala from a minimum order of 500 kg. Share your composition, quantity, packing and destination early, so that spices can be sourced, blended and packed close to dispatch.",
       },
       {
         heading: "Shipping and arrival",
         text: "During transit, protect the cargo from heat, humidity and strong-smelling goods that could taint a spice blend. On arrival, store it in a cool, dry place, off the floor and away from direct light. Rotate stock so older lots are used first, and keep opened bags tightly sealed so the blend keeps its warm, layered aroma until it is used.",
+      },
+      {
+        heading: "Standards and references",
+        text: "Hong Kong Centre for Food Safety, press release of 5 April 2024 on ethylene oxide in spice mix products. Commission Regulation (EU) 2015/868 (ethylene oxide in spices). Commission Regulation (EU) 2023/915, entries 1.1.14 and 1.2.17 (aflatoxins and ochratoxin A, including spice mixtures). Regulation (EU) No 1169/2011, Annex VII. US 21 CFR 101.22. FSSAI Food Products Standards and Food Additives Regulations, 2011, section 2.9.20, Mixed Masala. Requirements change; confirm the current rules for your market.",
       },
     ],
     // How Food Makers Use Garam Masala in Curries, Rice and Marinades
@@ -215,6 +323,20 @@ export const powdersBBodies: Record<string, readonly [ArticleBody, ArticleBody, 
       {
         heading: "Food service and private label",
         text: "For restaurants and caterers, a ready blend saves time and keeps dishes consistent across kitchens and shifts. Spice brands and repackers buy garam masala in bulk for retail and catering packs, often to their own recipe. Whatever the end use, agree the composition, fineness and packaging with your supplier, and test samples in your own dishes before scaling up.",
+      },
+      {
+        heading: "Frequently asked questions",
+        text: "Common questions from food manufacturers.",
+      },
+      {
+        heading: "How is garam masala different from curry powder?",
+        level: 3,
+        text: "Curry powder is usually built around turmeric, coriander and chilli and gives colour and body; garam masala is built around aromatic spices such as cardamom, cinnamon, cloves and pepper and is used for fragrance. Many recipes use both.",
+      },
+      {
+        heading: "When should it be added in a factory process?",
+        level: 3,
+        text: "Adding it late, after the main cooking step, keeps more aroma; adding it early gives a mellower, more integrated flavour. Trial batches on your own line are the best guide.",
       },
     ],
   ],

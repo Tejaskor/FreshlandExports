@@ -184,12 +184,15 @@ export function Features({
   variant,
   data = product.features,
   headingId = "features-heading",
+  columns = 3,
 }: {
   product: AgriProduct;
   variant: "numbered" | "bento" | "band" | "alternating";
   /** Another list in the same layouts, e.g. commercial applications. */
   data?: AgriProduct["features"];
   headingId?: string;
+  /** Band only: desktop columns. Four items in three columns leave two empty cells. */
+  columns?: 3 | 4;
 }) {
   const features = data;
   const items = features.items;
@@ -204,7 +207,10 @@ export function Features({
             as="ul"
             stagger={0.06}
             variant="rise"
-            className="mt-10 grid gap-px overflow-hidden rounded-[1.5rem] bg-white/12 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3"
+            className={cn(
+              "mt-10 grid gap-px overflow-hidden rounded-[1.5rem] bg-white/12 sm:grid-cols-2 lg:mt-12",
+              columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3",
+            )}
           >
             {items.map((item) => (
               <li key={item.title} className="bg-[var(--p-deep)] p-6 transition-colors duration-500 hover:bg-white/[0.04]">

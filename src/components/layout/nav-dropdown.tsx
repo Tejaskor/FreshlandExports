@@ -140,12 +140,12 @@ export function NavDropdown({
                       )}
                     >
                       {link.icon && (
-                        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-sage-100 text-forest ring-1 ring-sage-200 transition-colors duration-200 group-hover/link:bg-white group-hover/link:text-leaf">
+                        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-sage-100 text-forest ring-1 ring-sage-200 transition-colors duration-200 group-hover/link:bg-white group-hover/link:text-forest">
                           <Icon name={link.icon} className="size-5" />
                         </span>
                       )}
                       <span className="min-w-0 pt-0.5">
-                        <span className="flex items-center gap-2 text-[1rem] font-semibold text-forest transition-colors duration-200 group-hover/link:text-leaf">
+                        <span className="flex items-center gap-2 text-[1rem] font-semibold text-forest transition-colors duration-200">
                           {link.label}
                           <Icon
                             name="arrow-right"

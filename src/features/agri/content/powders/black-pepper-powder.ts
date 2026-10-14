@@ -1,9 +1,17 @@
-import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
+import { powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
 import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
 const slug = "black-pepper-powder";
+
+/**
+ * Photography in public/images/products/Black pepper powder/. Three files
+ * end in "..webp" on disk; they are referenced exactly as named.
+ */
+function img(file: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/Black pepper powder/${file}`, alt, label, ...(position && { position }) };
+}
 
 export const blackPepperPowder: AgriProduct = {
   slug,
@@ -17,6 +25,7 @@ export const blackPepperPowder: AgriProduct = {
     tagline: "Sharp, warm, finely ground.",
     body: "Ground black pepper with a sharp, woody bite, supplied in bulk to seasoning makers, meat and snack processors, importers and food service buyers.",
     highlights: ["Ground peppercorns", "Grind as required", "Bulk supply"],
+    compact: true,
     secondary: "enquire",
   },
   intro: {
@@ -50,10 +59,30 @@ export const blackPepperPowder: AgriProduct = {
     heading: "A Pinch Everywhere",
     intro: "Temporary overview — replace with final culinary applications.",
     groups: [
-      { title: "Table & Kitchen", text: "Seasoning at the table and at the stove.", items: ["Table pepper", "Eggs", "Salads"] },
-      { title: "Soups & Sauces", text: "Warmth for rich, creamy dishes.", items: ["Pepper sauce", "Soups", "Gravies"] },
-      { title: "Marinades & Rubs", text: "Mixed with salt and herbs for meats and vegetables.", items: ["Steak rubs", "Marinades", "Roasts"] },
-      { title: "Spice Blends", text: "A base note in many masalas.", items: ["Garam masala", "Rasam powder", "Curry blends"] },
+      {
+        title: "Table & Kitchen",
+        text: "Seasoning at the table and at the stove.",
+        items: ["Table pepper", "Eggs", "Salads"],
+        image: img("black-pepper-seasoning-pasta.webp", "A bowl of creamy pasta finished with grated cheese and ground black pepper", "Pepper on pasta"),
+      },
+      {
+        title: "Soups & Sauces",
+        text: "Warmth for rich, creamy dishes.",
+        items: ["Pepper sauce", "Soups", "Gravies"],
+        image: img("black-pepper-application-soup.webp", "A bowl of creamy soup dusted with ground black pepper and topped with parsley", "Pepper in soup"),
+      },
+      {
+        title: "Marinades & Rubs",
+        text: "Mixed with salt and herbs for meats and vegetables.",
+        items: ["Steak rubs", "Marinades", "Roasts"],
+        image: img("black-pepper-application-meat.webp", "A sliced, pepper-crusted roast beef on a board with roasted vegetables", "Pepper-crusted meat"),
+      },
+      {
+        title: "Spice Blends",
+        text: "A base note in many masalas.",
+        items: ["Garam masala", "Rasam powder", "Curry blends"],
+        image: img("black-pepper-ready-meals.webp", "Roasted broccoli, peppers and potatoes coated in a black pepper spice seasoning", "Pepper seasoning"),
+      },
     ],
   },
   commercial: {
@@ -105,27 +134,64 @@ export const blackPepperPowder: AgriProduct = {
     body: "Share the grind, quantity, packaging and destination you need, and our team will reply with availability and pricing.",
   },
   images: {
-    // black-pepper-powder-hero.webp — a mound of ground black pepper in a dark stone bowl, a few whole peppercorns scattered on charcoal slate (4:5).
-    hero: powderImg(slug, "hero", "Ground black pepper in a white bowl with a heaped spoon and whole peppercorns on a white cloth", "black-pepper-powder-hero.webp", "40% 45%"),
-    // black-pepper-powder-applications.webp — ground pepper being dusted over a creamy soup and a grilled dish (16:10).
-    detail: powderImg(slug, "applications", "Spaghetti cacio e pepe topped with grated cheese and ground black pepper, with whole peppercorns on the table", "black-pepper-powder-applications.webp", "60% 50%"),
+    // Hero banner (wide collage): 21:10 from a 2.46:1 photograph, kept on the bowl of ground pepper.
+    hero: img(
+      "black-pepper-hero.webp",
+      "Ground black pepper heaped in a wooden bowl beside a scoop of whole peppercorns and pepper vine leaves",
+      "Black pepper powder",
+      "70% 50%",
+    ),
+    // The introduction's photograph: where the peppercorns come from.
+    detail: img(
+      "black-pepper-plantation.webp",
+      "Long clusters of green and ripening red peppercorns hanging among the leaves of a black pepper vine",
+      "Black pepper vine",
+    ),
+    // A 16:10 frame from a 3:1 photograph, kept on the pepper mound.
+    specs: img(
+      "black-pepper-specifications.webp",
+      "A mound of ground black pepper beside a wooden scoop of whole peppercorns",
+      "Black pepper specifications",
+      "62% 50%",
+    ),
     extra: [
-      // black-pepper-powder-texture.webp — close-up of fine ground pepper beside a coarse cracked grind (1:1).
-      powderImg(slug, "texture", "A mound of finely ground black pepper on a plain white surface", "black-pepper-powder-texture.webp"),
-      // black-pepper-powder-seasoning.webp — ground pepper mixed with salt and herbs as a rub (1:1).
-      powderImg(slug, "seasoning", "Hands pressing a dry pepper spice rub onto raw pork ribs in a foil tray", "black-pepper-powder-seasoning.webp", "60% 50%"),
+      img(
+        "black-pepper-whole-peppercorns..webp",
+        "A wooden bowl of whole black peppercorns in front of green pepper leaves",
+        "Whole peppercorns",
+      ),
+      img(
+        "black-pepper-ground-closeup.webp",
+        "Ground black pepper in a wooden scoop beside whole peppercorns",
+        "Ground pepper close-up",
+      ),
     ],
   },
+  caseStudyImages: {
+    "choosing-whole-or-ground-pepper": img(
+      "case-study-black-pepper.webp",
+      "A wooden bowl of whole black peppercorns on hessian, with more peppercorns scattered on the table",
+      "Whole black pepper",
+    ),
+    // Its default card photo is the whole Black Pepper catalogue shot, which
+    // the related products row already shows; this one fits its topic
+    // (grind and microbiological requirements for meat products).
+    "black-pepper-for-meat-and-savoury-seasoning": img(
+      "black-pepper-quality-check.webp",
+      "A gloved hand taking a sample of ground black pepper from a glass dish beside whole peppercorns",
+      "Quality sampling",
+    ),
+  },
   sections: [
-    { type: "hero", variant: "collage" },
-    { type: "intro", variant: "statement" },
-    { type: "features", variant: "bento" },
+    { type: "hero", variant: "collage", wide: true },
+    { type: "intro", variant: "split", shape: "leaf" },
+    { type: "features", variant: "alternating" },
     { type: "uses", variant: "gallery" },
-    { type: "commercial", variant: "band" },
+    { type: "commercial", variant: "band", columns: 4 },
     { type: "specs", variant: "table" },
     { type: "storage" },
     { type: "faq", variant: "center" },
     { type: "related" },
-    { type: "contact", variant: "split" },
+    { type: "contact", variant: "band" },
   ],
 };

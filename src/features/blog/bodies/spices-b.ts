@@ -353,8 +353,12 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
     // Fresh and Dried Ginger: What Importers Should Check
     [
       {
-        heading: "Fresh ginger: the skin",
-        text: "Fresh ginger should have a thin, firm, fairly smooth skin that is free from deep cuts, cracks, soft patches and mould. A light layer of soil is normal; wet, wrinkled or shrivelled skin is not. Gently scrape a hand with a fingernail: the flesh underneath should look fresh and moist rather than dry or discoloured.",
+        heading: "In brief",
+        text: "Fresh ginger is judged by its skin, plumpness, size of hands and freedom from sprouts and mould; dried ginger by its dryness, cleanliness, aroma and form. The two are different products with different storage needs and, in the European Union, different import controls, so specify which one you are buying from the start.",
+      },
+      {
+        heading: "Fresh ginger: maturity and skin",
+        text: "Mature ginger is harvested when the plant's tops begin to wilt and die, and good rhizomes are plump, with a dry, bright yellow-brown skin. Look for a firm, fairly smooth skin free from deep cuts, cracks, soft patches and mould. A light layer of soil is normal; wet, wrinkled or shrivelled skin is not. Scrape a hand gently with a fingernail: the flesh underneath should look fresh and moist rather than dry or discoloured.",
       },
       {
         heading: "Fresh ginger: size and shape",
@@ -362,45 +366,61 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       },
       {
         heading: "Fibre and pungency",
-        text: "Cut a piece and look at the flesh. Younger ginger tends to be juicier and less fibrous, while mature ginger is more pungent and fibrous. Which one suits you depends on use: fresh retail and juicing often favour lower fibre, while drying and processing may prefer mature rhizomes. Both vary by variety and season.",
+        text: "Cut a piece and look at the flesh. Younger ginger tends to be juicier and less fibrous, while mature ginger is more pungent and fibrous. Indian agricultural guidance recommends harvesting ginger for drying later, at about seven to eight months, than ginger for fresh use or pickling. Which one suits you depends on use: fresh retail and juicing often favour lower fibre, while drying and processing prefer mature rhizomes.",
       },
       {
         heading: "Dried ginger",
-        text: "Dried ginger is traded whole, split or sliced, peeled or unpeeled. Good stock is hard, dry and free from mould and insect damage, with a strong, clean aroma when broken. Check the colour of the cut surface for evenness, and agree the form, moisture limit and foreign matter limits on the specification sheet.",
+        text: "Dried ginger is traded whole, split or sliced, peeled or unpeeled, and bleached or unbleached. Good stock is hard, dry and free from mould and insect damage, with a strong, clean aroma when broken. Check the colour of the cut surface for evenness, and agree the form, moisture limit and foreign matter limits on the specification sheet. If you need it ground, our Dry Ginger Powder page covers the powder.",
+      },
+      {
+        heading: "EU controls differ by form",
+        text: "In the European Union, dried ginger from India is listed with other dried spices in Annex II of Implementing Regulation 2019/1793, as amended in 2026, for pesticide residues: each consignment needs an official certificate and analysis results, and 20 per cent of consignments are checked at the border. Dried ginger is also subject to EU maximum levels for aflatoxins. Fresh ginger is not in those annexes, but as a plant product it needs a phytosanitary certificate. Confirm the requirements for your destination and form before shipment.",
       },
       {
         heading: "Sourcing and export",
-        text: "For either form, share the quantity, size or form, packing and destination with your enquiry, and confirm availability, which depends on the season. Fresh ginger is a plant product, so confirm the documents and inspections your destination requires and how the consignment will be kept in sound condition in transit.",
+        text: "For either form, share the quantity, size or form, packing and destination with your enquiry, and confirm availability, which depends on the season. For the United States, check entry conditions for fresh ginger in the USDA APHIS ACIR database.",
+      },
+      {
+        heading: "Standards and references",
+        text: "USDA Agriculture Handbook 66 (2016), Ginger. ICAR-Indian Institute of Spices Research, Ginger: cultivation practices (Spices Board of India). Commission Implementing Regulation (EU) 2019/1793, Annex II, as amended by Implementing Regulation (EU) 2026/1206. Commission Regulation (EU) 2023/915, entry 1.1.15. Rules change; confirm current requirements before shipment.",
       },
     ],
     // Storing Ginger to Prevent Sprouting and Shrivelling
     [
       {
-        heading: "Fresh ginger has two enemies",
-        text: "Fresh ginger is a living rhizome. Kept too warm, it begins to sprout and lose firmness; kept too dry, it loses moisture and shrivels; and in wet, poorly ventilated conditions, it can rot. Good storage keeps it in a steady middle ground, so the rhizomes stay firm and plump until they are sold or processed.",
+        heading: "Fresh ginger has several enemies",
+        text: "Fresh ginger is a living rhizome. Kept too cold, it suffers chilling injury; kept too dry, it loses moisture and shrivels; kept wet, it grows mould and can rot; and held too long, it begins to sprout. Good storage keeps it in a steady middle ground, so the rhizomes stay firm and plump until they are sold or processed.",
       },
       {
-        heading: "Cool and steady",
-        text: "Fresh ginger generally keeps best in cool conditions that stay steady, rather than swinging between warm and cold. Very cold storage can damage it, so it is not treated like hardier vegetables. Agree the temperature and humidity conditions for your shipment with your supplier and keep the cold chain consistent from loading to delivery.",
+        heading: "General reference storage conditions",
+        text: "The USDA recommends storing mature ginger at about 12 to 14 °C with 85 to 90 per cent relative humidity, under which it can keep for roughly two to three months. At lower humidity, around 65 per cent, rhizomes dehydrate and wilt. These are general figures for mature, sound rhizomes; agree the conditions for each shipment with your supplier and logistics provider.",
       },
       {
-        heading: "Air without excess moisture",
-        text: "Pack fresh ginger in breathable packing that lets air move around the rhizomes and avoid condensation, which encourages mould. Keep cartons or bags off wet floors, avoid stacking so tightly that air cannot circulate, and do not wash ginger before storage unless it will be used soon.",
+        heading: "Not too cold",
+        text: "Mature ginger is chilling sensitive below about 12 °C. Symptoms include loss of skin colour and pitting, and in severe cases internal breakdown. Ginger should therefore not share a store or container with produce that needs near-freezing temperatures, such as onions, garlic or cabbage held for long storage.",
+      },
+      {
+        heading: "Air without condensation",
+        text: "Pack fresh ginger in breathable packing that lets air move around the rhizomes, and avoid condensation, which encourages surface mould. Keep cartons or bags off wet floors, avoid stacking so tightly that air cannot circulate, and do not wash ginger before storage unless it will be used soon. Ginger has a strong odour that other produce, such as eggplant, can pick up, so store it apart.",
       },
       {
         heading: "Dried ginger needs dry storage",
-        text: "Dried ginger is a different product. It should be kept in a cool, dry, well-ventilated store away from sunlight and strong odours, in clean bags or lined packing. Moisture is the main risk, bringing mould and insects, so keep it off the floor, reseal opened bags and check stock at intervals.",
+        text: "Dried ginger is a different product. Keep it in a cool, dry, well-ventilated store away from sunlight and strong odours, in clean bags or lined packing. Moisture is the main risk, bringing mould and insects, and damp storage also raises the risk of mould toxins, so keep it off the floor, reseal opened bags and check stock at intervals.",
       },
       {
         heading: "Check and rotate",
         text: "For both forms, check stock regularly. Remove fresh rhizomes that are soft, sprouting or mouldy, and dried pieces showing damp or insect damage, so that problems do not spread. Use stock in the order it arrived and plan volumes around actual demand.",
+      },
+      {
+        heading: "Standards and references",
+        text: "USDA Agriculture Handbook 66 (2016), Ginger, and its chilling-sensitivity table.",
       },
     ],
     // Ginger in Teas, Sauces, Bakery and Beverages
     [
       {
         heading: "Teas and hot drinks",
-        text: "Ginger is a familiar flavour in spiced teas, herbal infusions and hot drinks. Tea blenders usually work with dried ginger, cut or crushed to suit their blends, and look for strong, clean aroma and very little dust. Cafés and food service may also use fresh ginger, sliced or grated, in brewed drinks.",
+        text: "Ginger is a familiar flavour in spiced teas, herbal infusions and hot drinks. Tea blenders usually work with dried ginger, cut or crushed to suit their blends, and look for a strong, clean aroma and very little dust. Cafés and food service may also use fresh ginger, sliced or grated, in brewed drinks.",
       },
       {
         heading: "Sauces, pastes and cooking",
@@ -408,19 +428,32 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       },
       {
         heading: "Bakery and confectionery",
-        text: "Ground dried ginger brings warmth to gingerbread, biscuits, cakes and spiced bakes, and candied ginger appears in confectionery. Bakery manufacturers generally want a consistent flavour strength, fine grind and low foreign matter, whether they grind in-house or buy the ground spice.",
+        text: "Ground dried ginger brings warmth to gingerbread, biscuits, cakes and spiced bakes, and candied ginger appears in confectionery. Bakery manufacturers generally want a consistent flavour strength, fine grind and low foreign matter, whether they grind in-house or buy the ground spice; our Dry Ginger Powder page covers the ground product.",
       },
       {
         heading: "Beverages",
-        text: "Ginger flavours soft drinks, ginger beers, cordials, juices and shots. Beverage makers may use fresh ginger for pressing, where juiciness and lower fibre help, or dried ginger and extracts for consistency. Any claims made on beverage labels depend on the rules of the destination market.",
+        text: "Ginger flavours soft drinks, ginger beers, cordials, juices and shots. Beverage makers may use fresh ginger for pressing, where juiciness and lower fibre help, or dried ginger and extracts for consistency. Claims made on beverage labels are regulated differently in each market, so check local rules before describing any benefit.",
       },
       {
         heading: "Choosing fresh or dried",
-        text: "Fresh ginger gives a bright, juicy flavour but needs careful storage and faster use. Dried ginger is easier to store and ship and gives a deeper, warmer heat. Tell your supplier how the ginger will be used, and agree the form, size and packing per order.",
+        text: "Fresh ginger gives a bright, juicy flavour but needs careful storage at chill-free temperatures and faster use. Dried ginger is easier to store and ship and gives a deeper, warmer heat, but in some markets, including the EU for ginger from India, it carries additional residue-testing requirements. Tell your supplier how the ginger will be used, and agree the form, size and packing per order.",
+      },
+      {
+        heading: "Frequently asked questions",
+        text: "Common questions from food and drink makers.",
+      },
+      {
+        heading: "Can fresh ginger be refrigerated?",
+        level: 3,
+        text: "Ordinary refrigerator temperatures are below the range in which mature ginger keeps best, and can cause chilling injury over time. Cool storage at around 12 to 14 °C is preferred for bulk stock.",
+      },
+      {
+        heading: "Is young ginger the same as mature ginger?",
+        level: 3,
+        text: "Young ginger is harvested early, with thin skin, low fibre and a milder taste, and is more perishable. Mature ginger is more pungent and fibrous and stores longer.",
       },
     ],
   ],
-
   "other-agricultural-products": [
     // Building a Mixed Agricultural Order from India
     [
@@ -430,11 +463,15 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       },
       {
         heading: "Group products that travel together",
-        text: "Not every product can share space. Fresh produce differs in the temperature it needs, how it reacts to other produce and how sensitive it is to odours or moisture. Dry spices and hardy tubers travel very differently from leafy or delicate vegetables. Discuss which items can be combined safely before fixing the order.",
+        text: "Not every product can share space. Fresh produce differs in the temperature it needs, how it reacts to ethylene and how sensitive it is to odours or moisture. Onions, garlic and cabbage keep best near 0 °C, while cucumbers, okra, eggplant, green chillies and ginger can suffer chilling injury at that temperature. Cabbage and cucumbers are sensitive to ethylene from ripening fruit, and onions and ginger give off odours other products can absorb. Dry spices travel very differently again. Discuss which items can be combined safely before fixing the order.",
       },
       {
         heading: "One specification per product",
         text: "Each item in a mixed order still needs its own clear specification: variety or type, size range, quality expectations, packing and labelling. Putting this in a single order sheet, product by product, makes it easier to quote, pack and check. Confirm each line against a sample where that is practical.",
+      },
+      {
+        heading: "Documents for each line",
+        text: "Import requirements are set product by product. In the European Union, for example, some vegetables from India, such as green chillies and drumsticks, need an official certificate and residue analysis for every consignment, while others need only the phytosanitary certificate. Check the requirements for each product in the mix, because one missing document can hold up the whole consignment.",
       },
       {
         heading: "Packing and loading plan",
@@ -443,6 +480,10 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       {
         heading: "Timing it right",
         text: "Each product has its own season and harvest window, so the best mixed order is planned around when every item is available in good condition. Share your full list and expected volumes early, and accept that some lines may need to change depending on the season.",
+      },
+      {
+        heading: "Standards and references",
+        text: "USDA Agriculture Handbook 66 (2016), storage and compatibility data. Commission Implementing Regulation (EU) 2019/1793, as amended by Implementing Regulation (EU) 2026/1206.",
       },
     ],
     // Seasonality: Planning Fresh Produce Imports Around Harvests
@@ -457,7 +498,11 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       },
       {
         heading: "Stored crops and fresh crops",
-        text: "Some products, such as onions, garlic and many dried spices, can be stored after harvest and shipped across much of the year. More perishable items need to move soon after picking. Planning around this difference helps you decide what to buy steadily and what to buy in concentrated windows.",
+        text: "Some products, such as onions, garlic and many dried spices, can be stored after harvest and shipped across much of the year. India's onions, for example, come from more than one season, with the spring rabi crop making up about 70 to 75 per cent of production. More perishable items, such as okra, beans and green chillies, need to move soon after picking. Planning around this difference helps you decide what to buy steadily and what to buy in concentrated windows.",
+      },
+      {
+        heading: "Policy can move with supply",
+        text: "When domestic supply is tight, governments sometimes restrict exports. India, for example, prohibited onion exports from December 2023 to May 2024 before easing and then removing its export duty. Build a check on current export policy into your planning for sensitive products.",
       },
       {
         heading: "Plan ahead with your supplier",
@@ -467,28 +512,40 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
         heading: "Keep some flexibility",
         text: "Even with a plan, seasons change. Build some flexibility into your programme, such as alternative sizes, varieties or shipment dates, so that a late harvest or poor weather does not leave you without stock. Agree how changes will be communicated before the season begins.",
       },
+      {
+        heading: "Standards and references",
+        text: "Press Information Bureau, Government of India, release of 22 March 2025 on onion production and export measures.",
+      },
     ],
     // Phytosanitary Certificates and Export Documents for Fresh Produce
     [
       {
         heading: "The phytosanitary certificate",
-        text: "Fresh produce is a plant product, so many destination countries require a phytosanitary certificate. It is issued by the plant protection authority of the exporting country after inspection, and states that the consignment meets the destination's plant health requirements. Requirements differ by product and country, so confirm what applies before the order is shipped.",
+        text: "Fresh produce is a plant product, so most destination countries require a phytosanitary certificate. In India it is issued by the national plant protection organisation, the Directorate of Plant Protection, Quarantine and Storage, through its online PQMS system, after inspection, and states that the consignment meets the importing country's plant-health requirements. The European Union requires one for almost all fresh fruit and vegetables from non-EU countries, with only a handful of exempt fruits such as pineapples, coconuts, durians, bananas and dates.",
       },
       {
-        heading: "Commercial documents",
-        text: "A commercial invoice and packing list accompany almost every shipment. The invoice sets out the goods, value and terms of sale, while the packing list details how the goods are packed, marked and weighed. Customs authorities use both to check the shipment, so the details on them should match each other and the goods.",
+        heading: "Additional declarations",
+        text: "Some importing countries require specific statements on the phytosanitary certificate about particular pests. EU rules, for example, require additional declarations for fruits of chillies, eggplant and bitter gourd concerning pests such as Thrips palmi and fall armyworm. These must be arranged before harvest and packing, not at the port, so check them early.",
       },
       {
-        heading: "Transport documents",
-        text: "The bill of lading for sea freight, or the air waybill for air freight, records that the carrier has received the goods and sets out the terms of carriage. It is also used when the importer, or their agent, collects the consignment at the destination port or airport.",
+        heading: "Food-safety certificates",
+        text: "Plant health and food safety are separate. For certain products and origins, the EU also requires an official certificate and laboratory results showing compliance with pesticide residue limits for every consignment; for India this currently includes fresh chillies, drumsticks, yardlong beans and curry leaves, among others. These documents sit alongside the phytosanitary certificate, not in place of it.",
       },
       {
-        heading: "Origin and other documents",
-        text: "A certificate of origin may be needed to show where the goods come from, which can matter for duties and trade agreements. Some markets or buyers also ask for additional documents, such as treatment records or other certificates. Confirm with your customs broker and supplier which ones your shipment needs.",
+        heading: "Commercial and transport documents",
+        text: "A commercial invoice and packing list accompany almost every shipment. The invoice sets out the goods, value and terms of sale, while the packing list details how the goods are packed, marked and weighed. The bill of lading for sea freight, or the air waybill for air freight, records that the carrier has received the goods and is used to collect them at destination. Details on all of these should match each other and the goods.",
+      },
+      {
+        heading: "Origin, traceability and other documents",
+        text: "A certificate of origin may be needed to show where the goods come from, which can matter for duties and trade agreements. For many vegetables exported from India, APEDA's HortiNet traceability system links each consignment to registered farms. Some markets or buyers also ask for treatment records or other certificates. For the United States, the USDA APHIS Agricultural Commodity Import Requirements (ACIR) database, which replaced the older FAVIR database in 2022, sets out the conditions for each commodity and country.",
       },
       {
         heading: "Getting documents right",
-        text: "Delays at customs often come from small mismatches between documents, labels and the goods themselves. Agree the document list as part of the order, share the consignee details and any import permits in good time, and check draft documents before the shipment leaves.",
+        text: "Delays at the border often come from small mismatches between documents, labels and the goods themselves. Agree the document list as part of the order, share the consignee details and any import permits in good time, and check draft documents before the shipment leaves.",
+      },
+      {
+        heading: "Standards and references",
+        text: "Regulation (EU) 2019/2072, Annexes VII and XI. Commission Implementing Regulation (EU) 2019/1793, Annex II, as amended by Implementing Regulation (EU) 2026/1206. Implementing Regulation (EU) 2023/1134. APEDA HortiNet. USDA APHIS ACIR. Rules change; confirm current requirements for each product and destination.",
       },
     ],
   ],

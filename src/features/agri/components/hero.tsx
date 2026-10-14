@@ -96,7 +96,7 @@ function HeroCopy({
         delay={0.1}
         intro
       >
-        <Line>{hero.title}</Line>
+        {hero.titleLines ? hero.titleLines.map((line) => <Line key={line}>{line}</Line>) : <Line>{hero.title}</Line>}
       </RevealLines>
       <Reveal delay={0.3} variant="rise">
         <p
@@ -186,10 +186,13 @@ export function Hero({
   product,
   variant,
   reverse = false,
+  wide = false,
 }: {
   product: AgriProduct;
   variant: HeroVariant;
   reverse?: boolean;
+  /** Collage only: a landscape main photograph across the top, the extras below. */
+  wide?: boolean;
 }) {
   const { images, hero } = product;
   const extra = images.extra ?? [];
@@ -411,6 +414,47 @@ export function Hero({
 
     /* Three photographs in varied shapes beside the copy. */
     case "collage":
+      // A landscape main photograph keeps its width: a wide banner over the
+      // two extras, rather than a tall crop of a small part of it.
+      // Even columns and a title sized so a two- or three-word name breaks
+      // after its second word at desktop widths (e.g. "Black Pepper" /
+      // "Powder") rather than one word per line; tighter bottom padding.
+      if (wide) {
+        return (
+          <LightHero compact className="bg-[var(--p-tint)]">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
+              <div className="lg:col-span-6">
+                <HeroCopy product={product} titleSize="text-[clamp(2.75rem,1.4rem+3.6vw,5rem)]" />
+                <Highlights items={hero.highlights} className="mt-6 gap-x-5" />
+              </div>
+              <Reveal variant="unveil" delay={0.2} className="grid grid-cols-2 gap-3 lg:col-span-6">
+                <ProductImage
+                  slot={images.hero}
+                  priority
+                  sizes="(min-width: 1024px) 46vw, 100vw"
+                  className="col-span-2 aspect-[16/9] w-full rounded-[2rem] shadow-[var(--shadow-figure)] sm:aspect-[21/10]"
+                />
+                {extra[0] && (
+                  <ProductImage
+                    slot={extra[0]}
+                    compact
+                    sizes="(min-width: 1024px) 23vw, 50vw"
+                    className="aspect-[5/4] w-full rounded-[1.5rem]"
+                  />
+                )}
+                {extra[1] && (
+                  <ProductImage
+                    slot={extra[1]}
+                    compact
+                    sizes="(min-width: 1024px) 23vw, 50vw"
+                    className="aspect-[5/4] w-full rounded-[1.5rem]"
+                  />
+                )}
+              </Reveal>
+            </div>
+          </LightHero>
+        );
+      }
       return (
         <LightHero className="bg-[var(--p-tint)]">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
@@ -516,22 +560,43 @@ export function Hero({
                 aria-hidden="true"
                 className="absolute inset-0 -z-10 bg-[radial-gradient(45%_65%_at_80%_40%,color-mix(in_srgb,var(--p-accent)_45%,transparent)_0%,transparent_70%)]"
               />
-              <Container className="grid items-center gap-12 px-6 py-12 sm:px-10 lg:min-h-[38rem] lg:grid-cols-12 lg:gap-12 lg:px-10 lg:py-16 min-[1441px]:px-gutter">
-                <div className="lg:col-span-6">
-                  <HeroCopy product={product} inverse />
-                  <Highlights items={hero.highlights} inverse className="mt-8 border-t border-white/15 pt-6" />
+              {/* Compact: no fixed minimum height, less padding inside the
+                  stage, a title sized to keep two lines, the copy aligned
+                  with the top of the photographs (not centred against the
+                  taller image column), and a square, slightly smaller main
+                  photograph with less room reserved for the overlap. */}
+              <Container
+                className={cn(
+                  "grid items-center px-6 sm:px-10 lg:grid-cols-12 lg:px-10 min-[1441px]:px-gutter",
+                  hero.compact ? "gap-10 py-10 lg:gap-12 lg:py-12" : "gap-12 py-12 lg:min-h-[38rem] lg:gap-12 lg:py-16",
+                )}
+              >
+                <div className={cn("lg:col-span-6", hero.compact && "lg:self-start")}>
+                  <HeroCopy
+                    product={product}
+                    inverse
+                    titleSize={hero.compact ? "text-[clamp(2.5rem,1.4rem+3.6vw,5rem)]" : undefined}
+                  />
+                  <Highlights
+                    items={hero.highlights}
+                    inverse
+                    className={cn("border-t border-white/15", hero.compact ? "mt-6 pt-5" : "mt-8 pt-6")}
+                  />
                 </div>
-                <div className="relative pb-16 lg:col-span-6 lg:pb-20">
+                <div className={cn("relative lg:col-span-6", hero.compact ? "pb-12 lg:pb-14" : "pb-16 lg:pb-20")}>
                   <Reveal variant="bloom">
                     <ProductImage
                       slot={images.hero}
                       priority
                       dark
                       sizes="(min-width: 1024px) 40vw, 90vw"
-                      className="ml-auto aspect-[4/5] w-[82%] rounded-[2.5rem] ring-1 ring-white/15"
+                      className={cn(
+                        "ml-auto rounded-[2.5rem] ring-1 ring-white/15",
+                        hero.compact ? "aspect-square w-[76%]" : "aspect-[4/5] w-[82%]",
+                      )}
                     />
                   </Reveal>
-                  <Reveal variant="rise" delay={0.3} className="absolute bottom-0 left-0 w-[46%]">
+                  <Reveal variant="rise" delay={0.3} className={cn("absolute bottom-0 left-0", hero.compact ? "w-[44%]" : "w-[46%]")}>
                     <ProductImage
                       slot={extra[0] ?? images.detail}
                       dark
