@@ -5,7 +5,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { freshOnionAbout } from "@/features/fresh-onion/data";
 import { freshOnionImages } from "@/features/fresh-onion/images";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
 import { type } from "@/features/products/styles";
 import { cn } from "@/lib/utils";
 

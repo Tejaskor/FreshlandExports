@@ -1,4 +1,4 @@
-import type { MoringaImage } from "@/features/moringa/images";
+import type { ImageSlotData } from "@/features/products/types";
 
 /**
  * Image slots for the Turmeric Powder page.
@@ -41,4 +41,4 @@ export const turmericImages = {
     alt: "A bowl of turmeric powder with a vegetable stir-fry, a glass of golden milk and fresh turmeric roots",
     label: "Turmeric powder in culinary use",
   },
-} satisfies Record<string, MoringaImage>;
+} satisfies Record<string, ImageSlotData>;

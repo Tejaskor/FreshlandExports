@@ -7,7 +7,7 @@ import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { freshOnionHero } from "@/features/fresh-onion/data";
 import { freshOnionImages } from "@/features/fresh-onion/images";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
 
 /**
  * Split hero on pale sage: a large two-line title and the copy on the left;

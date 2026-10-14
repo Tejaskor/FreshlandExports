@@ -4,7 +4,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
 import { onionHero } from "@/features/onion-powder/data";
 import { onionImages } from "@/features/onion-powder/images";
 import { OnionRings } from "@/features/onion-powder/components/onion-rings";

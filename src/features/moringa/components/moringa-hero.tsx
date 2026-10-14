@@ -4,7 +4,8 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
+import { moringaImages } from "@/features/moringa/images";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import { OrbitBadge } from "@/features/moringa/components/orbit-badge";
 import { moringaHero } from "@/features/moringa/data";
@@ -131,7 +132,7 @@ export function MoringaHero() {
                     className="aspect-[16/11] rounded-[44%_56%_38%_62%/52%_40%_60%_48%] shadow-[var(--shadow-panel)] sm:aspect-[16/10]"
                   >
                     <ImageSlot
-                      image="hero"
+                      slot={moringaImages.hero}
                       tone="dark"
                       priority
                       framed={false}

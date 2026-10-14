@@ -1,5 +1,5 @@
 import type { IconName } from "@/components/ui/icon";
-import type { MoringaImage } from "@/features/moringa/images";
+import type { ImageSlotData } from "@/features/products/types";
 import { freshOnionImages } from "@/features/fresh-onion/images";
 import { moqFor } from "@/features/products/moq";
 
@@ -59,7 +59,7 @@ export const freshOnionFeatures: readonly { title: string; text: string; icon: I
   },
 ];
 
-export const freshOnionUses: readonly { title: string; items: readonly string[]; image: MoringaImage }[] = [
+export const freshOnionUses: readonly { title: string; items: readonly string[]; image: ImageSlotData }[] = [
   {
     title: "Culinary & Cooking",
     items: ["Curries and gravies", "Vegetable dishes", "Rice and pulao", "Soups and stews"],

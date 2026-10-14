@@ -2,7 +2,8 @@ import { Container } from "@/components/ui/container";
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
+import { moringaImages } from "@/features/moringa/images";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import { RecipesPanel } from "@/features/moringa/components/moringa-recipes";
 import { applications } from "@/features/moringa/data";
@@ -90,7 +91,7 @@ export function MoringaApplications() {
             <li key={item.title} className={tiles[index]}>
               <div className={cn("group relative block h-full overflow-hidden", radii[index])}>
                 <ImageSlot
-                  image={item.image}
+                  slot={moringaImages[item.image]}
                   tone="dark"
                   compact
                   framed={false}

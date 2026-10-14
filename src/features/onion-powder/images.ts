@@ -1,4 +1,4 @@
-import type { MoringaImage } from "@/features/moringa/images";
+import type { ImageSlotData } from "@/features/products/types";
 
 /**
  * Image slots for the Onion Powder page.
@@ -40,4 +40,4 @@ export const onionImages = {
     alt: "Onion powder being sprinkled over a dish of roasted vegetables, with a bowl of onion powder and fresh onions",
     label: "Onion powder in food preparation",
   },
-} satisfies Record<string, MoringaImage>;
+} satisfies Record<string, ImageSlotData>;

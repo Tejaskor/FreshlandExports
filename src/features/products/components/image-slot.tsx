@@ -4,7 +4,7 @@ import path from "node:path";
 import Image from "next/image";
 
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
-import { type MoringaImage, type MoringaImageKey, moringaImages } from "@/features/moringa/images";
+import type { ImageSlotData } from "@/features/products/types";
 import { cn } from "@/lib/utils";
 
 type Tone = "dark" | "light" | "sage" | "warm" | "golden" | "product" | "productDark";
@@ -65,12 +65,9 @@ const tones: Record<Tone, { ground: string; sprig: string; text: string; rule: s
   },
 };
 
-/** Either a Moringa slot by key, or any product page's own slot. */
-type SlotSource = { image: MoringaImageKey; slot?: never } | { slot: MoringaImage; image?: never };
-
 /**
- * One photographic slot on a product page — the Moringa page passes a key
- * from ../images.ts, other product pages pass their own slot object.
+ * One photographic slot on a product page; each page passes a slot object
+ * from its own images.ts.
  *
  * Until a file exists at the slot's path (each images.ts also holds the
  * slot's generation prompt) it renders a clearly-labelled placeholder
@@ -80,8 +77,7 @@ type SlotSource = { image: MoringaImageKey; slot?: never } | { slot: MoringaImag
  * Server-only: it checks the filesystem.
  */
 export function ImageSlot({
-  image,
-  slot: ownSlot,
+  slot,
   className,
   mediaClassName,
   tone = "light",
@@ -90,7 +86,8 @@ export function ImageSlot({
   compact = false,
   bare = false,
   framed = true,
-}: SlotSource & {
+}: {
+  slot: ImageSlotData;
   className?: string;
   /** Applied to the photograph or placeholder art — hover scales live here. */
   mediaClassName?: string;
@@ -107,7 +104,6 @@ export function ImageSlot({
    */
   framed?: boolean;
 }) {
-  const slot: MoringaImage = ownSlot ?? moringaImages[image as MoringaImageKey];
   const onDisk = existsSync(path.join(process.cwd(), "public", slot.file));
   const palette = tones[tone];
 

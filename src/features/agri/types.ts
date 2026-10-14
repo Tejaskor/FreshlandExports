@@ -1,6 +1,6 @@
 import type { IconName } from "@/components/ui/icon";
 import type { Faq } from "@/features/moringa/data";
-import type { MoringaImage } from "@/features/moringa/images";
+import type { ImageSlotData as SharedImageSlotData } from "@/features/products/types";
 
 /**
  * Agricultural and fruit product landing pages.
@@ -15,7 +15,7 @@ import type { MoringaImage } from "@/features/moringa/images";
  * product content. It avoids specific figures, certifications or claims.
  */
 
-export type ImageSlotData = MoringaImage;
+export type ImageSlotData = SharedImageSlotData;
 
 /** Product accent palette, exposed to the page as CSS variables. */
 export type AgriTheme = {

@@ -5,7 +5,7 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
 import { TurmericSun } from "@/features/turmeric-powder/components/turmeric-sun";
 import { turmericHero } from "@/features/turmeric-powder/data";
 import { turmericImages } from "@/features/turmeric-powder/images";

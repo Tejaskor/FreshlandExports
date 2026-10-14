@@ -1,4 +1,4 @@
-import type { MoringaImage } from "@/features/moringa/images";
+import type { ImageSlotData } from "@/features/products/types";
 
 /**
  * Image slots for the Fresh Onion page, one photograph per section from
@@ -86,4 +86,4 @@ export const freshOnionImages = {
     alt: "Fresh red onions stored in ventilated wooden crates in a storage shed",
     label: "Onion storage and handling",
   },
-} satisfies Record<string, MoringaImage>;
+} satisfies Record<string, ImageSlotData>;

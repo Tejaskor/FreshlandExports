@@ -1,3 +1,5 @@
+import type { ImageSlotData } from "@/features/products/types";
+
 /**
  * Image slots for the Moringa Powder page.
  *
@@ -8,16 +10,6 @@
  *
  * The comment above every slot is the exact image-generation prompt for it.
  */
-
-export type MoringaImage = {
-  /** Site-relative path the finished image should be saved to. */
-  file: string;
-  alt: string;
-  /** Short caption printed on the placeholder so the slot is easy to find. */
-  label: string;
-  /** CSS object-position for the crop, when the subject is off-centre (default: centre). */
-  position?: string;
-};
 
 export const moringaImages = {
   // --- 1. Hero — right side, landscape 16:9 --------------------------------
@@ -144,6 +136,6 @@ export const moringaImages = {
     alt: "Freshland Exports moringa powder pouch beside a bowl of moringa powder and fresh leaves",
     label: "Specs · Packaging",
   },
-} satisfies Record<string, MoringaImage>;
+} satisfies Record<string, ImageSlotData>;
 
 export type MoringaImageKey = keyof typeof moringaImages;

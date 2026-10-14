@@ -6,7 +6,8 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
 import { FaqBlock } from "@/features/moringa/components/moringa-faq";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
+import { moringaImages } from "@/features/moringa/images";
 import { MoringaSprig } from "@/features/moringa/components/moringa-sprig";
 import {
   moringaMoq,
@@ -49,7 +50,7 @@ export function MoringaDetails() {
           <div className="flex flex-col gap-6 lg:col-span-5">
             <ClipReveal from="up">
               <ImageSlot
-                image="packaging"
+                slot={moringaImages.packaging}
                 tone="sage"
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="aspect-[4/3] w-full rounded-[1.5rem_4rem_1.5rem_1.5rem]"
@@ -105,7 +106,7 @@ function ProcessTimeline() {
             >
               <div className="relative">
                 <ImageSlot
-                  image={step.image}
+                  slot={moringaImages[step.image]}
                   tone={index % 2 === 0 ? "sage" : "light"}
                   bare
                   framed={false}

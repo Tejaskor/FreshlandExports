@@ -1,6 +1,7 @@
 import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Reveal } from "@/animations/reveal";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
+import { moringaImages } from "@/features/moringa/images";
 import { RecipeDetails } from "@/features/moringa/components/recipe-details";
 import { type Recipe, recipes, usageTip, uses } from "@/features/moringa/data";
 import { type } from "@/features/products/styles";
@@ -78,7 +79,7 @@ export function RecipesPanel({ className }: { className?: string }) {
                 )}
               >
                 <ImageSlot
-                  image={recipe.image}
+                  slot={moringaImages[recipe.image]}
                   tone="sage"
                   bare
                   framed={false}
@@ -122,7 +123,7 @@ function FeaturedRecipe({ recipe }: { recipe: Recipe }) {
     <article className="lg:col-span-7">
       <Reveal variant="unveil">
         <ImageSlot
-          image={recipe.image}
+          slot={moringaImages[recipe.image]}
           tone="sage"
           sizes="(min-width: 1024px) 55vw, 100vw"
           className="aspect-[5/4] w-full rounded-[3rem_3rem_3rem_0.75rem] lg:rounded-[5rem_3rem_3rem_0.75rem]"

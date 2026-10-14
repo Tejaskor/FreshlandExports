@@ -4,7 +4,8 @@ import { Line, RevealLines } from "@/animations/reveal-lines";
 import { Parallax } from "@/animations/parallax";
 import { Reveal } from "@/animations/reveal";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { ImageSlot } from "@/features/moringa/components/image-slot";
+import { ImageSlot } from "@/features/products/components/image-slot";
+import { moringaImages } from "@/features/moringa/images";
 import { MoringaProcess } from "@/features/moringa/components/moringa-process";
 import { MoringaNutrients } from "@/features/moringa/components/moringa-nutrients";
 import { moringaIntro } from "@/features/moringa/data";
@@ -56,7 +57,7 @@ export function MoringaAbout() {
             <ClipReveal from="left" className="mask-organic-alt overflow-hidden shadow-[var(--shadow-figure)]">
               <Parallax amount={8} overscan={1.1} className="aspect-[16/11]">
                 <ImageSlot
-                  image="tree"
+                  slot={moringaImages.tree}
                   tone="sage"
                   framed={false}
                   sizes="(min-width: 1024px) 45vw, 100vw"
@@ -81,7 +82,7 @@ export function MoringaAbout() {
         <MoringaNutrients
           media={
             <ImageSlot
-              image="nutrition"
+              slot={moringaImages.nutrition}
               tone="light"
               bare
               framed={false}
