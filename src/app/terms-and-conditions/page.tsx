@@ -1,3 +1,4 @@
+import { featureFlags } from "@/config/features";
 import { LegalPage } from "@/features/legal/components/legal-page";
 import { photoCreditsSection } from "@/features/legal/photo-credits";
 import { termsIntro, termsLastUpdated, termsSections } from "@/features/legal/terms";
@@ -10,8 +11,11 @@ export const metadata = createMetadata({
   path: "/terms-and-conditions",
 });
 
-/** Content lives in features/legal/terms.ts; photo credits in features/legal/photo-credits.ts. */
-const sections = [...termsSections, photoCreditsSection];
+/**
+ * Content lives in features/legal/terms.ts; photo credits in
+ * features/legal/photo-credits.ts, shown while featureFlags.photoCredits is on.
+ */
+const sections = [...termsSections, ...(featureFlags.photoCredits ? [photoCreditsSection] : [])];
 
 export default function TermsPage() {
   return (

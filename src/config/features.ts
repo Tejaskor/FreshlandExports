@@ -17,4 +17,12 @@ export const featureFlags = {
    * form is not shown and the Privacy Policy does not mention comments.
    */
   blogComments: false,
+  /**
+   * The Photo Credits section closing the Terms & Conditions page is
+   * temporarily hidden. The credit records (features/agri/content/
+   * photo-credits.ts) and the section itself remain in place — set this to
+   * true to show it again. CC BY and CC BY-SA photographs still require
+   * attribution while it is hidden.
+   */
+  photoCredits: false,
 } as const;
