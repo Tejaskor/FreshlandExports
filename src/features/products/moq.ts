@@ -16,6 +16,8 @@ export const categoryMoq: Record<CatalogueCategoryId, string> = {
 const moqCategory: Record<string, CatalogueCategoryId> = {
   // Whole turmeric has a spice page but no catalogue entry.
   turmeric: "spices",
+  // Listed with the powders, but ordered on the spice terms.
+  "red-chilli-powder": "spices",
 };
 
 /** Copy shared by every MOQ section. */

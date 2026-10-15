@@ -8,10 +8,16 @@ import { spicesABodies } from "@/features/blog/bodies/spices-a";
 import { spicesBBodies } from "@/features/blog/bodies/spices-b";
 import { spicesCBodies } from "@/features/blog/bodies/spices-c";
 import { vegetablesBodies } from "@/features/blog/bodies/vegetables";
-import { type ArticleImage, articleImages } from "@/features/blog/images";
+import { type ArticleImage, type SectionImage, articleImages, sectionImages } from "@/features/blog/images";
 import { blogCategories, type BlogCategory } from "@/features/blog/meta";
-import { type ArticleBody, productBlogs } from "@/features/products/blog";
-import { type CatalogueCategoryId, findCatalogueProduct } from "@/features/products/catalogue";
+import { caseStudies, caseStudyHref } from "@/features/case-studies/data";
+import { type ArticleBody, type ArticleHashtag, type ArticleSection, productBlogs } from "@/features/products/blog";
+import {
+  type CatalogueCategoryId,
+  catalogue,
+  catalogueCategoryHref,
+  findCatalogueProduct,
+} from "@/features/products/catalogue";
 import { exportProductHref, findExportProduct } from "@/features/products/export-catalogue";
 import { productMenu } from "@/features/products/menu";
 
@@ -63,6 +69,10 @@ export type BlogPost = {
   views?: number;
   /** The product the article belongs to; `href` is null when it has no page. */
   product: { slug: string; name: string; href: string | null };
+  /** Topic hashtags shown at the end of the article, each a link; empty until written. */
+  hashtags: readonly ArticleHashtag[];
+  /** Photographs placed between the article's sections. */
+  figures: readonly SectionImage[];
 };
 
 /** Fields a card needs — what crosses into client components. */
@@ -89,6 +99,33 @@ const slugify = (text: string) =>
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+
+/* --- Links inside article text ----------------------------------------- */
+
+/**
+ * Section text may link to another page of the site as `[anchor text](/path)`.
+ * Only site paths are accepted, and every target is checked when the index
+ * is built (see checkInlineLinks), so a mistyped link fails the build.
+ */
+const inlineLinkPattern = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+
+export type TextPart = string | { text: string; href: string };
+
+/** Section text split into plain runs and links, in reading order. */
+export function textParts(text: string): TextPart[] {
+  const parts: TextPart[] = [];
+  let last = 0;
+  for (const match of text.matchAll(inlineLinkPattern)) {
+    if (match.index > last) parts.push(text.slice(last, match.index));
+    parts.push({ text: match[1], href: match[2] });
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+/** Section text as it reads on the page, without link markup. */
+export const plainText = (text: string) => text.replace(inlineLinkPattern, "$1");
 
 /** Menu order first (the order buyers browse the range), then the rest. */
 const menuOrder = productMenu.flatMap((group) => group.items.map((item) => item.slug));
@@ -142,6 +179,8 @@ function buildPosts(): readonly BlogPost[] {
         author: article.author,
         views: article.views,
         product: { slug: productSlug, name, href: productHref(productSlug) },
+        hashtags: article.hashtags ?? [],
+        figures: sectionImages[slug] ?? [],
       };
     });
   });
@@ -151,7 +190,114 @@ function buildPosts(): readonly BlogPost[] {
     if (seen.has(post.slug)) throw new Error(`Blog: duplicate article slug "${post.slug}"`);
     seen.add(post.slug);
   }
+  checkInlineLinks(posts);
+  checkFigures(posts);
+  checkHashtags(posts);
   return posts;
+}
+
+/** Every piece of an article's text that may carry links, in reading order. */
+export function sectionTexts(section: ArticleSection): string[] {
+  return [
+    section.text,
+    ...(section.list?.items ?? []),
+    ...(section.faq ?? []).flatMap((entry) => [entry.question, entry.answer]),
+  ];
+}
+
+/**
+ * Each photograph follows a section of its own article and appears once on
+ * the whole Blog — never repeating an article's main image or another
+ * article's photograph.
+ */
+function checkFigures(posts: readonly BlogPost[]) {
+  const used = new Set(posts.map((post) => post.image.src));
+  for (const slug of Object.keys(sectionImages)) {
+    if (!posts.some((post) => post.slug === slug)) throw new Error(`Blog: images for unknown article "${slug}"`);
+  }
+  for (const post of posts) {
+    for (const figure of post.figures) {
+      if (!post.body.some((section) => section.heading === figure.after))
+        throw new Error(`Blog: "${post.slug}" has no section "${figure.after}" for ${figure.src}`);
+      if (used.has(figure.src)) throw new Error(`Blog: ${figure.src} is used more than once`);
+      used.add(figure.src);
+    }
+  }
+}
+
+/**
+ * Three or fewer "#CamelCase" tags, no two articles with the same set, and
+ * each tag linking to an existing page: never the article itself, never a
+ * page its topic labels already link to, and no two tags to the same page.
+ */
+function checkHashtags(posts: readonly BlogPost[]) {
+  const pages = sitePages(posts);
+  const labelPages = new Set([
+    ...catalogue.map((category) => listingHref(category.label)),
+    ...catalogue.map(catalogueCategoryHref),
+  ]);
+  const sets = new Set<string>();
+  for (const post of posts) {
+    if (post.hashtags.length === 0) continue;
+    if (post.hashtags.length > 3) throw new Error(`Blog: "${post.slug}" has more than three hashtags`);
+    const targets = new Set<string>();
+    for (const { tag, href } of post.hashtags) {
+      if (!/^#[A-Za-z][A-Za-z0-9]*$/.test(tag)) throw new Error(`Blog: "${post.slug}" has a malformed hashtag "${tag}"`);
+      if (!pages.has(href)) throw new Error(`Blog: hashtag ${tag} on "${post.slug}" links to unknown page "${href}"`);
+      if (href === post.href) throw new Error(`Blog: hashtag ${tag} on "${post.slug}" links to its own article`);
+      if (labelPages.has(href)) throw new Error(`Blog: hashtag ${tag} on "${post.slug}" repeats a topic label's page`);
+      if (targets.has(href)) throw new Error(`Blog: two hashtags on "${post.slug}" link to "${href}"`);
+      targets.add(href);
+    }
+    const key = post.hashtags.map((entry) => entry.tag).sort().join(" ");
+    if (sets.has(key)) throw new Error(`Blog: "${post.slug}" repeats another article's hashtags`);
+    sets.add(key);
+  }
+}
+
+/** The Blog listing filtered to a topic category or product range, by its label. */
+const listingHref = (label: string) => `${blogPath}?category=${slugify(label)}`;
+
+/**
+ * Every page an article may link to: another article, a Blog listing by
+ * topic or range, a product page, a catalogue section, a case study, the
+ * catalogue or the contact page.
+ */
+function sitePages(posts: readonly BlogPost[]) {
+  return new Set<string>([
+    "/contact",
+    "/products",
+    ...posts.map((post) => post.href),
+    ...blogCategories.map(listingHref),
+    ...catalogue.map((category) => listingHref(category.label)),
+    ...catalogue.map(catalogueCategoryHref),
+    ...catalogue.flatMap((category) => category.products.flatMap((product) => productHref(product.slug) ?? [])),
+    // Product pages outside the catalogue (whole turmeric) that articles belong to.
+    ...posts.flatMap((post) => post.product.href ?? []),
+    ...caseStudies.map((study) => caseStudyHref(study.slug)),
+  ]);
+}
+
+/**
+ * Every link written into article text must point at a page that exists —
+ * another article, a product page, a catalogue section, a case study or the
+ * contact page — never at its own article, and each destination only once
+ * per article.
+ */
+function checkInlineLinks(posts: readonly BlogPost[]) {
+  const pages = sitePages(posts);
+  for (const post of posts) {
+    const linked = new Set<string>();
+    for (const section of post.body) {
+      for (const part of sectionTexts(section).flatMap(textParts)) {
+        if (typeof part === "string") continue;
+        if (!pages.has(part.href)) throw new Error(`Blog: "${post.slug}" links to unknown page "${part.href}"`);
+        if (part.href === post.href) throw new Error(`Blog: "${post.slug}" links to itself`);
+        if (linked.has(part.href)) throw new Error(`Blog: "${post.slug}" links to "${part.href}" more than once`);
+        linked.add(part.href);
+      }
+    }
+  }
 }
 
 export const blogPosts = buildPosts();
@@ -334,6 +480,9 @@ export function articleOutline(post: BlogPost) {
       level: section.level ?? 2,
       heading: section.heading,
       text: section.text,
+      list: section.list,
+      faq: section.faq,
+      figures: post.figures.filter((figure) => figure.after === section.heading),
     };
   });
   const toc: OutlineItem[] = sections.map(({ id, heading, level }) => ({ id, text: heading, level }));
@@ -342,7 +491,7 @@ export function articleOutline(post: BlogPost) {
 
 /** Minutes to read at an unhurried 200 words a minute. */
 export function readingMinutes(post: BlogPost) {
-  const words = [post.description, ...post.body.flatMap((section) => [section.heading, section.text])]
+  const words = [post.description, ...post.body.flatMap((section) => [section.heading, ...sectionTexts(section).map(plainText)])]
     .join(" ")
     .split(/\s+/)
     .filter(Boolean).length;
@@ -373,3 +522,50 @@ export function toCardData(post: BlogPost): BlogCardData {
   return { slug, href, topic, category, title, description, image, art, published };
 }
 
+
+/**
+ * Linked labels at the end of an article: more articles from its product
+ * range, and that range on /products. Both are existing pages; a label is
+ * left out when the article's own text already links there.
+ */
+export function topicLabels(post: BlogPost) {
+  const range = postRange(post);
+  const category = catalogue.find((entry) => entry.id === range.id);
+  const linked = new Set(
+    post.body
+      .flatMap(sectionTexts)
+      .flatMap(textParts)
+      .flatMap((part) => (typeof part === "string" ? [] : [part.href])),
+  );
+  const labels = [
+    { label: `${range.label} articles`, href: blogListHref({ range }) },
+    ...(category ? [{ label: `${category.label} range`, href: catalogueCategoryHref(category) }] : []),
+  ];
+  return labels.filter((label) => !linked.has(label.href));
+}
+
+/**
+ * An article's hashtags with an accessible name for each link: the tag
+ * first (as shown), then where it leads.
+ */
+export function hashtagLinks(post: BlogPost) {
+  return post.hashtags.map(({ tag, href }) => {
+    const article = blogPosts.find((other) => other.href === href);
+    const study = caseStudies.find((entry) => caseStudyHref(entry.slug) === href);
+    // A catalogue product's page, or an article's own product page outside the catalogue (whole turmeric).
+    const product =
+      catalogue.flatMap((category) => category.products).find((entry) => productHref(entry.slug) === href) ??
+      blogPosts.find((other) => other.product.href === href)?.product;
+    const filter = href.startsWith(`${blogPath}?category=`) ? findFilter(href.split("=")[1]) : undefined;
+    const destination = article
+      ? `article: ${article.title}`
+      : study
+        ? `case study: ${study.title}`
+        : product
+          ? `${product.name} product page`
+          : filter
+            ? `${filterLabel(filter)} articles`
+            : "related page";
+    return { tag, href, label: `${tag}, ${destination}` };
+  });
+}

@@ -26,6 +26,13 @@ function productUsedOn(path: string) {
   return product ? `${product.name} page` : "product page";
 }
 
+/** Articles that show a product photograph as their main image or between their sections. */
+function articlesShowing(path: string) {
+  return blogPosts
+    .filter((post) => post.image.src === path || post.figures.some((figure) => figure.src === path))
+    .map((post) => `“${post.title}”`);
+}
+
 function articleUsedOn(path: string) {
   const slug = (path.split("/").pop() ?? "").replace(/\.webp$/, "");
   const post = blogPosts.find((entry) => entry.slug === slug);
@@ -39,7 +46,7 @@ const items = (blog: boolean): PhotoCreditItem[] =>
     .filter(([path]) => path.startsWith("/images/Blog/") === blog)
     .map(([path, credit]) => ({
       title: fileTitle(credit.source),
-      usedOn: blog ? articleUsedOn(path) : productUsedOn(path),
+      usedOn: blog ? articleUsedOn(path) : [productUsedOn(path), ...articlesShowing(path)].join("; "),
       author: credit.author,
       license: credit.license,
       licenseUrl: credit.licenseUrl,

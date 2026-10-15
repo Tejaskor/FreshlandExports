@@ -9,4 +9,12 @@ export const featureFlags = {
    * content remain in place — set this to true to restore the page.
    */
   signatureIngredients: false,
+  /**
+   * The comment form under each Blog article. Comments go to the shared form
+   * webhook as `type: "blog_comment"`; turn this on only once the Make.com
+   * scenario routes them away from the lead records, holds them for
+   * moderation, and a real test submission has arrived there. While off, the
+   * form is not shown and the Privacy Policy does not mention comments.
+   */
+  blogComments: false,
 } as const;

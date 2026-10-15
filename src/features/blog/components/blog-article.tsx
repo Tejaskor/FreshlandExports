@@ -4,29 +4,72 @@ import { Reveal } from "@/animations/reveal";
 import { Figure } from "@/components/media/figure";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { Icon } from "@/components/ui/icon";
 import { RuledEyebrow } from "@/components/ui/ruled-eyebrow";
-import { siteConfig } from "@/config/site";
+import { featureFlags } from "@/config/features";
+import { placeholderSiteUrl, siteConfig } from "@/config/site";
 import { ArticleToc } from "@/features/blog/components/article-toc";
 import { BlogCard, blogGrid } from "@/features/blog/components/blog-card";
 import { BrochureCard } from "@/features/blog/components/brochure-card";
+import { CommentForm } from "@/features/blog/components/comment-form";
 import { StickySidebar } from "@/features/blog/components/sticky-sidebar";
 import {
   type BlogPost,
   articleOutline,
   blogListHref,
+  hashtagLinks,
   readingMinutes,
   relatedPosts,
+  textParts,
   toCardData,
+  topicLabels,
 } from "@/features/blog/data";
 import { formatPublished } from "@/features/blog/meta";
-import { productBlogs } from "@/features/products/blog";
+import { type ArticleList, productBlogs } from "@/features/products/blog";
 import { ProductCaseStudies } from "@/features/case-studies/components/product-case-studies";
+import { ShareButtons } from "@/features/case-studies/components/share-buttons";
+import { absoluteUrl, cn } from "@/lib/utils";
 
 /** Headings clear the fixed header when reached by a hash link or the TOC. */
 const anchorClearance = "scroll-mt-28";
 
 const metaDivider = <span aria-hidden="true" className="h-3 w-px bg-line-strong" />;
+
+const textLink =
+  "font-semibold text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf";
+
+/** A section's points, as a bulleted or numbered list. */
+function SectionList({ list }: { list: ArticleList }) {
+  const List = list.ordered ? "ol" : "ul";
+  return (
+    <List
+      className={cn(
+        "mt-3 space-y-2 pl-6 text-[1.0625rem] leading-[1.7] text-ink-muted marker:font-semibold marker:text-leaf",
+        list.ordered ? "list-decimal" : "list-disc",
+      )}
+    >
+      {list.items.map((item) => (
+        <li key={item} className="pl-1">
+          <SectionText text={item} />
+        </li>
+      ))}
+    </List>
+  );
+}
+
+/** Section text, with any `[anchor](/path)` links rendered as site links. */
+function SectionText({ text }: { text: string }) {
+  return textParts(text).map((part, index) =>
+    typeof part === "string" ? (
+      part
+    ) : (
+      <Link key={index} href={part.href} className={textLink}>
+        {part.text}
+      </Link>
+    ),
+  );
+}
 
 /**
  * One Blog article: the text on the left with its title, details, photograph
@@ -41,6 +84,10 @@ export function BlogArticle({ post }: { post: BlogPost }) {
   const related = relatedPosts(post);
   const productPhoto = productBlogs[post.product.slug];
   const minutes = readingMinutes(post);
+  const labels = topicLabels(post);
+  // The canonical address when the real domain is configured; otherwise the
+  // share buttons use the address the reader is on, never the placeholder.
+  const shareUrl = siteConfig.url === placeholderSiteUrl ? undefined : absoluteUrl(post.href, siteConfig.url);
 
   return (
     <>
@@ -106,10 +153,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 {post.product.href && (
                   <p className="mt-4 text-[1rem] leading-[1.75] text-ink-muted">
                     This guide is part of our{" "}
-                    <Link
-                      href={post.product.href}
-                      className="font-semibold text-forest underline decoration-line-strong underline-offset-4 transition-colors duration-300 hover:text-leaf hover:decoration-leaf"
-                    >
+                    <Link href={post.product.href} className={textLink}>
                       {post.product.name}
                     </Link>{" "}
                     insights — see the product page for specifications, packaging and supply.
@@ -133,11 +177,79 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                       >
                         {section.heading}
                       </Heading>
-                      <p className="mt-2 text-[1.0625rem] leading-[1.7] text-ink-muted">{section.text}</p>
+                      <p className="mt-2 text-[1.0625rem] leading-[1.7] text-ink-muted">
+                        <SectionText text={section.text} />
+                      </p>
+                      {section.list && <SectionList list={section.list} />}
+                      {section.faq && (
+                        <div className="mt-4">
+                          <FaqAccordion
+                            items={section.faq.map((entry) => ({
+                              question: entry.question,
+                              answer: <SectionText text={entry.answer} />,
+                            }))}
+                            defaultOpen={null}
+                            headingLevel={3}
+                          />
+                        </div>
+                      )}
+                      {section.figures.map((figure) => (
+                        <Figure
+                          key={figure.src}
+                          image={figure.src}
+                          alt={figure.alt}
+                          art={post.art}
+                          sizes="(min-width: 1280px) 52rem, (min-width: 768px) 60vw, 100vw"
+                          className="mt-5 aspect-[16/9] w-full rounded-xl"
+                        />
+                      ))}
                     </section>
                   );
                 })}
               </div>
+
+              {/* Hashtags name the topic; the labels lead to related pages. */}
+              {post.hashtags.length > 0 && (
+                <div className="mt-10 border-t border-line pt-6">
+                  <ul aria-label="Topics" className="flex flex-wrap gap-x-4 gap-y-1.5">
+                    {hashtagLinks(post).map((hashtag) => (
+                      <li key={hashtag.tag}>
+                        <Link
+                          href={hashtag.href}
+                          aria-label={hashtag.label}
+                          className="rounded-sm text-[0.875rem] font-semibold text-leaf underline-offset-4 transition-colors duration-300 hover:text-forest hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                        >
+                          {hashtag.tag}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  {labels.length > 0 && (
+                    <nav aria-label="Explore related content" className="mt-4 flex flex-wrap items-center gap-2">
+                      <span className="type-label mr-1 font-semibold text-ink-faint">Explore</span>
+                      {labels.map((label) => (
+                        <Link
+                          key={label.href}
+                          href={label.href}
+                          className="rounded-full border border-line-strong px-3.5 py-1.5 text-[0.8125rem] font-semibold text-forest transition-colors duration-300 hover:border-leaf hover:text-leaf focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                        >
+                          {label.label}
+                        </Link>
+                      ))}
+                    </nav>
+                  )}
+                </div>
+              )}
+
+              <ShareButtons
+                title={post.title}
+                url={shareUrl}
+                heading="Share this article"
+                className={post.hashtags.length > 0 ? "mt-8" : "mt-12"}
+              />
+
+              {/* Held for review; shown only once comment routing is live. */}
+              {featureFlags.blogComments && <CommentForm slug={post.slug} className="mt-8" />}
 
               {/* Related product */}
               {post.product.href && (

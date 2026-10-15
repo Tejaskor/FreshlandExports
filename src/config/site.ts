@@ -7,6 +7,9 @@ import type { IconName } from "@/components/ui/icon";
 import { featureFlags } from "@/config/features";
 import { catalogue, catalogueCategoryHref } from "@/features/products/catalogue";
 
+/** Stands in for the real domain in local builds; never shared publicly. */
+export const placeholderSiteUrl = "https://freshland-exports.example.com";
+
 export const siteConfig = {
   name: "Freshland Exports",
   shortName: "Freshland",
@@ -23,7 +26,7 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : "https://freshland-exports.example.com"),
+      : placeholderSiteUrl),
   locale: "en_IN",
   lang: "en",
   themeColor: "#14452f",

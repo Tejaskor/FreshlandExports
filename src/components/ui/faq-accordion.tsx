@@ -1,15 +1,16 @@
 "use client";
 
-import { useId, useState } from "react";
+import { type ReactNode, useId, useState } from "react";
 
 import { Collapse } from "@/components/ui/collapse";
-import type { FaqEntry } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 /**
  * One-open-at-a-time accordion; by default the first answer starts open.
  * `offset` continues the numbering when one list is split across columns.
  * `headingLevel` sets each question's heading so it nests under the page's own.
+ * An answer may be rich content (text with links); the FAQPage data for a
+ * page is built from its plain-text entries separately.
  */
 export function FaqAccordion({
   items,
@@ -17,7 +18,7 @@ export function FaqAccordion({
   defaultOpen = 0,
   headingLevel = 3,
 }: {
-  items: readonly FaqEntry[];
+  items: readonly { question: string; answer: ReactNode }[];
   offset?: number;
   defaultOpen?: number | null;
   headingLevel?: 2 | 3 | 4;

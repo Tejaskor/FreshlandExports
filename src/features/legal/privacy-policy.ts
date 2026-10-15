@@ -15,6 +15,7 @@
  * draft for business review, not legal advice.
  */
 
+import { featureFlags } from "@/config/features";
 import type { LegalSection } from "@/features/legal/types";
 
 /** ISO date of the business-approved version. Shown only once set. */
@@ -55,6 +56,12 @@ export const privacySections: readonly LegalSection[] = [
           "Your country or market and, for brochure requests, your buyer type.",
           "The products or categories you are interested in and your required or expected quantity.",
           "Any message, specifications or other requirements you include in your enquiry.",
+          // Only while the Blog comment form is live.
+          ...(featureFlags.blogComments
+            ? [
+                "For comments on our blog articles, your name, email address, your comment and the article it was left on. Your email address is never published.",
+              ]
+            : []),
         ],
       },
       { type: "h3", text: "Information collected automatically" },
@@ -79,6 +86,11 @@ export const privacySections: readonly LegalSection[] = [
           "Respond to your product enquiries and quotation requests.",
           "Communicate with you about the products, quantities and business requirements you have asked about.",
           "Process brochure requests and provide the brochure you requested.",
+          ...(featureFlags.blogComments
+            ? [
+                "Review comments left on our blog articles, which are not published automatically, and contact you about your comment if needed.",
+              ]
+            : []),
           "Understand which of our campaigns and channels lead visitors to the website.",
           "Operate, maintain, secure and improve the website, including preventing spam and misuse of our forms.",
           "Meet applicable legal, regulatory and recordkeeping obligations.",
