@@ -579,8 +579,8 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
   "white-pepper-powder": {
-    image: null,
-    alt: "White pepper powder",
+    image: photo("White Pepper powder/white-pepper-powder-hero.webp"),
+    alt: "A mound of off-white ground white pepper in a speckled ceramic bowl on a wooden board, with whole white peppercorns scattered on linen",
     art: "powder",
     articles: [
       {
@@ -610,8 +610,8 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
   "nutmeg-powder": {
-    image: null,
-    alt: "Nutmeg powder",
+    image: "/images/Blog/nutmeg-powder/nutmeg-powder-hero.webp",
+    alt: "Nutmeg powder with whole nutmeg seeds",
     art: "powder",
     articles: [
       {

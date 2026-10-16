@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/animations/reveal";
 import { ProductImage, SectionHeader } from "@/features/agri/components/shared";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 import { UseTabs } from "@/features/agri/components/use-tabs";
 import { cn } from "@/lib/utils";
 
@@ -40,18 +40,38 @@ export function Uses({
       text: group.text ?? "",
       items: group.items,
     }));
+    const photo = (slot: ImageSlotData, key?: string) => (
+      <ProductImage
+        key={key}
+        slot={slot}
+        dark
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        className="aspect-[4/3] w-full rounded-[2rem_2rem_2rem_0.5rem]"
+      />
+    );
+    /* Groups with their own photographs swap the photograph with the active tab. */
+    if (uses.groups.some((group) => group.image)) {
+      return (
+        <section aria-labelledby="uses-heading" className="bg-[var(--p-deep)] py-14 text-white lg:py-20">
+          <Container>
+            <SectionHeader id="uses-heading" eyebrow={uses.eyebrow} heading={uses.heading} intro={uses.intro} inverse />
+            <div className="mt-10 lg:mt-12">
+              <UseTabs
+                categories={categories}
+                media={uses.groups.map((group) => photo(group.image ?? images.uses ?? images.detail, group.title))}
+              />
+            </div>
+          </Container>
+        </section>
+      );
+    }
     return (
       <section aria-labelledby="uses-heading" className="bg-[var(--p-deep)] py-14 text-white lg:py-20">
         <Container>
           <SectionHeader id="uses-heading" eyebrow={uses.eyebrow} heading={uses.heading} intro={uses.intro} inverse />
           <div className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-10">
             <Reveal variant="unveil" className="lg:col-span-5">
-              <ProductImage
-                slot={images.uses ?? images.detail}
-                dark
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="aspect-[4/3] w-full rounded-[2rem_2rem_2rem_0.5rem]"
-              />
+              {photo(images.uses ?? images.detail)}
             </Reveal>
             <Reveal variant="rise" delay={0.1} className="lg:col-span-7">
               <UseTabs categories={categories} />
@@ -135,12 +155,26 @@ export function Uses({
     );
   }
 
-  /* Four columns, each topped with an accent rule. */
+  /* Four columns, each topped with an accent rule; `images.uses`, if set, as a banner above. */
   return (
     <section aria-labelledby="uses-heading" className="bg-white py-14 lg:py-20">
       <Container>
         <SectionHeader id="uses-heading" eyebrow={uses.eyebrow} heading={uses.heading} intro={uses.intro} />
-        <Reveal as="ul" stagger={0.06} variant="rise" className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+        {images.uses && (
+          <Reveal variant="unveil" className="mt-10 lg:mt-12">
+            <ProductImage
+              slot={images.uses}
+              sizes="(min-width: 1440px) 1344px, 100vw"
+              className="aspect-[16/10] w-full rounded-[1.75rem] sm:aspect-[3/1]"
+            />
+          </Reveal>
+        )}
+        <Reveal
+          as="ul"
+          stagger={0.06}
+          variant="rise"
+          className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-4", images.uses ? "mt-4" : "mt-10 lg:mt-12")}
+        >
           {uses.groups.map((group) => (
             <li key={group.title} className="rounded-[1.5rem] border border-line bg-white p-6">
               <span aria-hidden="true" className="block h-1 w-10 rounded-full bg-[var(--p-accent)]" />

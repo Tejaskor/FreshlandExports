@@ -227,9 +227,15 @@ export function Features({
     );
   }
 
-  /* One large lead card, the rest compact beside it. */
+  /* One large lead card, the rest compact beside it; the product's features
+     photograph, if set, fills the cells left over in the last row. */
   if (variant === "bento") {
     const [lead, ...rest] = items;
+    const photo = data === product.features ? product.images.features : undefined;
+    const smSpan = rest.length % 2 === 1 ? "sm:col-span-1" : "sm:col-span-2";
+    const lgSpan = ["lg:col-span-4", "lg:col-span-3", "lg:col-span-2", "lg:col-span-1"][
+      rest.length > 4 ? (rest.length - 4) % 4 : 0
+    ];
     return (
       <section aria-labelledby={headingId} className="bg-[var(--p-tint)] py-14 lg:py-20">
         <Container>
@@ -257,6 +263,15 @@ export function Features({
                 </article>
               </li>
             ))}
+            {photo && (
+              <li className={cn(smSpan, lgSpan)}>
+                <ProductImage
+                  slot={photo}
+                  sizes="(min-width: 1024px) 75vw, (min-width: 640px) 50vw, 100vw"
+                  className="aspect-[16/10] w-full rounded-[1.5rem] sm:aspect-auto sm:h-full sm:min-h-48 lg:min-h-64"
+                />
+              </li>
+            )}
           </Reveal>
         </Container>
       </section>

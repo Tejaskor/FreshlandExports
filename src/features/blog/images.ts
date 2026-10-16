@@ -127,14 +127,32 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
   "white-pepper-powder": [
-    article("white-pepper-powder-quality-colour-aroma-and-fineness", "Fine white pepper powder dusted over the perforated metal lid of a pepper shaker"),
-    article("using-white-pepper-powder-in-sauces-soups-and-seasonings", "A glass bowl of hot and sour soup on a wooden table"),
-    article("importing-white-pepper-powder-specifications-and-packing", "A neat heap of whole white peppercorns on a pale background"),
+    {
+      src: "/images/Blog/white-pepper-powder/white-pepper-powder-quality-colour-aroma-fineness.webp",
+      alt: "Fine white pepper powder in a wooden bowl and scoop beside whole white peppercorns in a wooden spoon and jute sack",
+    },
+    {
+      src: "/images/Blog/white-pepper-powder/white-pepper-powder--soups-hero.webp",
+      alt: "A glass bowl of soup with tofu, egg ribbons and vegetables seasoned with white pepper powder",
+    },
+    {
+      src: "/images/Blog/white-pepper-powder/white-pepper-powder-export-specifications-packing.webp",
+      alt: "A heap of whole white peppercorns on a pale surface beside a wooden bowl and a jute sack",
+    },
   ],
   "nutmeg-powder": [
-    article("buying-nutmeg-powder-what-to-check-in-a-sample", "Whole nutmegs beside a metal nutmeg grater on a woven mat"),
-    article("nutmeg-powder-in-bakery-dairy-and-beverage-production", "A whole baked pumpkin pie cooling on a wire rack"),
-    article("storing-nutmeg-powder-to-protect-its-aroma", "Whole dried nutmeg kernels on a white background"),
+    {
+      src: "/images/Blog/nutmeg-powder/nutmeg-powder-quality-sample.webp",
+      alt: "Whole nutmeg seeds beside a metal grater and ground nutmeg powder for sample quality inspection.",
+    },
+    {
+      src: "/images/Blog/nutmeg-powder/nutmeg-powder-bakery-applications.webp",
+      alt: "Nutmeg pie on a wooden surface, illustrating nutmeg powder use in bakery products.",
+    },
+    {
+      src: "/images/Blog/nutmeg-powder/nutmeg-powder-airtight-storage.webp",
+      alt: "Ground nutmeg stored in a sealed jar beside whole nutmeg seeds.",
+    },
   ],
   "dry-ginger-powder": [
     article("dry-ginger-powder-quality-colour-pungency-and-fibre", "Light brown dry ginger powder in a clear pouch beside a white saucer with a small heap of powder"),
@@ -670,17 +688,37 @@ export const sectionImages: Record<string, readonly SectionImage[]> = {
     { after: "Curries and gravies", src: powder("garam-masala-curry.webp"), alt: "A pot of Kerala chicken curry with green chillies, a tomato and dried red chillies alongside" },
   ],
   "white-pepper-powder-quality-colour-aroma-and-fineness": [
-    { after: "Why colour matters most", src: powder("white-pepper-powder-hero.webp"), alt: "A small mound of ground white pepper in a white leaf-shaped dish on a wooden board" },
+    {
+      after: "Why colour matters most",
+      src: "/images/Blog/white-pepper-powder/white-pepper-powder-appearance.webp",
+      alt: "White pepper powder in a white ceramic bowl with whole white peppercorns in a ceramic spoon",
+    },
   ],
   "using-white-pepper-powder-in-sauces-soups-and-seasonings": [
-    { after: "Asian and international cuisines", src: powder("white-pepper-powder-applications.webp"), alt: "Ground white pepper dusted over a bowl of century egg congee" },
+    {
+      after: "Asian and international cuisines",
+      src: "/images/Blog/white-pepper-powder/white-pepper-powder-asian-cuisine.webp",
+      alt: "An Asian noodle soup with chicken, mushrooms, bok choy and carrots seasoned with white pepper",
+    },
   ],
   "buying-nutmeg-powder-what-to-check-in-a-sample": [
-    { after: "Know what you are buying", src: powder("nutmeg-powder-fruit.webp"), alt: "A split nutmeg fruit on the tree showing the seed wrapped in red mace" },
-    { after: "Colour and texture", src: powder("nutmeg-powder-hero.webp"), alt: "A small heap of freshly grated nutmeg on a white surface" },
+    {
+      after: "Know what you are buying",
+      src: "/images/Blog/nutmeg-powder/nutmeg-fruit-red-mace.webp",
+      alt: "A split yellow nutmeg fruit on a leafy branch, showing the brown seed wrapped in red mace",
+    },
+    {
+      after: "Colour and texture",
+      src: "/images/Blog/nutmeg-powder/ground-nutmeg-powder.webp",
+      alt: "A heap of reddish-brown ground nutmeg with small soft clumps, beside whole and halved nutmegs on a pale stone surface",
+    },
   ],
   "nutmeg-powder-in-bakery-dairy-and-beverage-production": [
-    { after: "Dairy and desserts", src: powder("nutmeg-powder-applications.webp"), alt: "A glass of eggnog dusted with grated nutmeg, seen from above on a wooden table" },
+    {
+      after: "Dairy and desserts",
+      src: "/images/Blog/nutmeg-powder/nutmeg-powder-dairy-desserts.webp",
+      alt: "Glass bowls of creamy rice pudding dusted with ground nutmeg, with whole nutmegs, a bowl of nutmeg powder and a jug of milk",
+    },
   ],
   "dry-ginger-powder-quality-colour-pungency-and-fibre": [
     { after: "What sonth should look like", src: powder("dry-ginger-powder-hero.webp"), alt: "A bowl of dried ginger pieces beside a bowl of ginger powder on a dark surface" },

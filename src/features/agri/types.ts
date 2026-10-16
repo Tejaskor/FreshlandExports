@@ -144,7 +144,9 @@ export type AgriProduct = {
   images: {
     hero: ImageSlotData;
     detail: ImageSlotData;
-    /** Tabbed uses photograph; falls back to `detail`. */
+    /** Bento features only: a photograph filling the grid's last row. */
+    features?: ImageSlotData;
+    /** Tabbed / list uses photograph (falls back to `detail`); a banner above the columns layout. */
     uses?: ImageSlotData;
     /** Specifications photograph; falls back to `detail`. */
     specs?: ImageSlotData;

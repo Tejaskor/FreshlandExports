@@ -1,9 +1,14 @@
-import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
+import { powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
 import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
 const slug = "white-pepper-powder";
+
+/** Photography in public/images/products/White Pepper powder/. */
+function img(file: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/White Pepper powder/${file}`, alt, label, ...(position && { position }) };
+}
 
 export const whitePepperPowder: AgriProduct = {
   slug,
@@ -17,7 +22,6 @@ export const whitePepperPowder: AgriProduct = {
     tagline: "Pepper heat, without the specks.",
     body: "Pale, finely ground white pepper for sauce makers, seasoning blenders, food processors and importers who want heat with no dark specks.",
     highlights: ["Pale, fine powder", "Clean pepper heat", "Bulk supply"],
-    badge: "Pale • Fine • Export Ready",
     card: { title: "Ground White Pepper", text: "For light-coloured foods" },
     secondary: "enquire",
   },
@@ -52,13 +56,13 @@ export const whitePepperPowder: AgriProduct = {
   },
   uses: {
     eyebrow: "Culinary Applications",
-    heading: "Where Black Specks Don't Belong",
-    intro: "Temporary overview — replace with final culinary applications.",
+    heading: "Where White Pepper Works Best",
+    intro: "White pepper powder adds a warm, earthy heat to sauces, soups, seasonings and food preparations where a lighter appearance is preferred.",
     groups: [
-      { title: "Sauces & Dressings", text: "Seasons light-coloured sauces without marking them.", items: ["White sauces", "Cream sauces", "Mayonnaise", "Pale dressings"] },
-      { title: "Soups & Mashes", text: "Gentle heat in creamy dishes.", items: ["Cream soups", "Chowders", "Mashed potatoes"] },
-      { title: "Asian Cooking", text: "A familiar pepper note across many cuisines.", items: ["Stir-fries", "Hot and sour soup", "Marinades"] },
-      { title: "Blends & Seasonings", text: "A base heat in seasoning mixes.", items: ["Seasoning blends", "Snack coatings", "Spice rubs"] },
+      { title: "Sauces & Dressings", text: "Adds gentle pepper heat without prominent black specks.", items: ["White sauces", "Cream sauces", "Mayonnaise", "Salad dressings"] },
+      { title: "Soups & Mashed Dishes", text: "Brings balanced warmth to smooth, creamy preparations.", items: ["Cream soups", "Chowders", "Mashed potatoes", "Cream-based gravies"] },
+      { title: "Asian Cuisine", text: "A familiar peppery note in a variety of Asian dishes.", items: ["Stir-fries", "Hot and sour soup", "Noodle dishes", "Marinades"] },
+      { title: "Blends & Seasonings", text: "A versatile ingredient for food manufacturing and seasoning blends.", items: ["Spice blends", "Snack seasonings", "Soup mixes", "Ready-to-cook seasonings"] },
     ],
   },
   commercial: {
@@ -110,10 +114,56 @@ export const whitePepperPowder: AgriProduct = {
     body: "Share the fineness, quantity, packaging and destination you need, and our team will reply with availability and pricing.",
   },
   images: {
-    // white-pepper-powder-hero.webp — a heap of fine off-white pepper powder in a pale ceramic bowl, a few whole white peppercorns beside it, on a light linen surface (4:5).
-    hero: powderImg(slug, "hero", "A small mound of ground white pepper in a white leaf-shaped dish on a wooden board", "white-pepper-powder-hero.webp"),
-    // white-pepper-powder-applications.webp — white pepper being dusted over a creamy white sauce or soup, no dark specks visible (4:3).
-    detail: powderImg(slug, "applications", "Ground white pepper dusted over a bowl of century egg congee", "white-pepper-powder-applications.webp"),
+    // A 16:10 frame from a 2:1 photograph, centred on the bowl.
+    hero: img(
+      "white-pepper-powder-hero.webp",
+      "A mound of off-white ground white pepper in a speckled ceramic bowl on a wooden board, with whole white peppercorns scattered on linen",
+      "White pepper powder",
+    ),
+    // The introduction's pill (3:5) from a 2:3 portrait, kept on the mound.
+    detail: img(
+      "white-pepper-powder-texture-close-up.webp",
+      "Close-up of fine, pale cream white pepper powder heaped beside whole white peppercorns",
+      "White pepper texture",
+      "60% 50%",
+    ),
+    // Fills the last row of the highlights grid; kept on the powder's colour and grain.
+    features: img(
+      "white-pepper-powder-quality-appearance.webp",
+      "A stoneware bowl of pale, fine white pepper powder on a rustic wooden table, with whole white peppercorns beside it",
+      "White pepper appearance",
+      "45% 40%",
+    ),
+    // Banner above the culinary application cards.
+    uses: img(
+      "white-pepper-powder-culinary-applications.webp",
+      "A bowl of smooth cream soup seasoned with ground white pepper and a parsley leaf, with whole white peppercorns on the table",
+      "White pepper in cream soup",
+      "50% 45%",
+    ),
+    // Wide (3:1) banner above the MOQ panel.
+    moq: img(
+      "white-peppercorns-bulk-export-packaging.webp",
+      "Open jute sacks of whole white peppercorns in a warehouse, with a metal scoop of peppercorns in front",
+      "White pepper in bulk",
+      "60% 55%",
+    ),
+  },
+  caseStudyImages: {
+    // Its default card photo is the catalogue shot; this one fits its topic
+    // (white pepper in pale sauce production).
+    "white-pepper-and-allium-powders-for-pale-sauces": img(
+      "white-pepper-powder-food-processing.webp",
+      "Ground white pepper being poured from a wooden scoop into a stainless-steel vessel in a food processing plant",
+      "White pepper in food processing",
+    ),
+    // Its default card photo shows black pepper; this one shows whole white
+    // peppercorns being cleaned and sieved for a processing line.
+    "choosing-whole-or-ground-pepper": img(
+      "white-peppercorns-cleaning-and-sieving.webp",
+      "Whole white peppercorns falling through a stainless-steel sieve onto a wooden surface",
+      "Cleaning and sieving white peppercorns",
+    ),
   },
   sections: [
     { type: "hero", variant: "editorial" },

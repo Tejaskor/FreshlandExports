@@ -1,9 +1,14 @@
 import { powderImg, powderSpecsNote, powdersCategory } from "@/features/agri/content/powders/helpers";
 import { spiceFaqs, spiceSpecs } from "@/features/agri/content/spices/helpers";
-import type { AgriProduct } from "@/features/agri/types";
+import type { AgriProduct, ImageSlotData } from "@/features/agri/types";
 
 // TEMPORARY content — replace with final product copy.
 const slug = "nutmeg-powder";
+
+/** Photography in public/images/products/Nutmeg Powder/. */
+function img(file: string, alt: string, label: string, position?: string): ImageSlotData {
+  return { file: `/images/products/Nutmeg Powder/${file}`, alt, label, ...(position && { position }) };
+}
 
 export const nutmegPowder: AgriProduct = {
   slug,
@@ -50,13 +55,33 @@ export const nutmegPowder: AgriProduct = {
   },
   uses: {
     eyebrow: "Culinary Applications",
-    heading: "Sweet Kitchens and Savoury Ones",
-    intro: "Temporary overview — replace with final culinary applications.",
+    heading: "From Bakery Favourites to Savoury Applications",
+    intro: "A warm, aromatic spice for bakery products, dairy-based desserts, beverages and selected savoury preparations.",
     groups: [
-      { title: "Bakery", text: "A classic warm spice in baked goods.", items: ["Cakes", "Biscuits", "Spiced breads", "Pies"] },
-      { title: "Desserts & Dairy", text: "Rounds out creamy, sweet dishes.", items: ["Custards", "Puddings", "Rice pudding", "Eggnog"] },
-      { title: "Savoury Cooking", text: "A subtle note in rich, savoury dishes.", items: ["White sauces", "Meat dishes", "Garam masala", "Soups"] },
-      { title: "Beverages", text: "Warmth in hot and spiced drinks.", items: ["Spiced milk", "Chai blends", "Mulled drinks"] },
+      {
+        title: "Bakery",
+        text: "A warm, aromatic spice used in sweet baked goods.",
+        items: ["Cakes", "Biscuits", "Spiced Breads", "Pies"],
+        image: img("nutmeg-applications-bakery.webp", "Nutmeg-spiced loaf cake and biscuits arranged on a wooden board.", "Nutmeg in bakery"),
+      },
+      {
+        title: "Desserts & Dairy",
+        text: "Adds a distinctive warm note to creamy and milk-based preparations.",
+        items: ["Custards", "Rice Pudding", "Milk Desserts", "Dessert Sauces"],
+        image: img("nutmeg-applications-desserts-dairy.webp", "Creamy rice pudding sprinkled with ground nutmeg in a ceramic bowl.", "Nutmeg in desserts and dairy"),
+      },
+      {
+        title: "Savoury Cooking",
+        text: "Used in selected savoury recipes and seasoning blends.",
+        items: ["Cream Sauces", "Soups", "Vegetable Dishes", "Seasoning Blends"],
+        image: img("nutmeg-applications-savoury.webp", "Creamy mushroom sauce seasoned with ground nutmeg and fresh herbs.", "Nutmeg in savoury cooking"),
+      },
+      {
+        title: "Beverages",
+        text: "Adds a warm spice note to selected hot and cold beverages.",
+        items: ["Spiced Milk", "Chai Blends", "Flavoured Beverages", "Beverage Mixes"],
+        image: img("nutmeg-applications-beverages.webp", "Warm milk-based drink topped with ground nutmeg in a ceramic mug.", "Nutmeg in beverages"),
+      },
     ],
   },
   commercial: {
@@ -117,15 +142,35 @@ export const nutmegPowder: AgriProduct = {
     body: "Tell us the fineness, quantity, packaging and destination you need, and our team will reply with availability and pricing.",
   },
   images: {
-    // nutmeg-powder-hero.webp — a wooden spoon heaped with reddish-brown ground nutmeg beside two whole nutmegs, one half-grated on a small grater, on a warm cream surface (4:5).
-    hero: powderImg(slug, "hero", "A small heap of freshly grated nutmeg on a white surface", "nutmeg-powder-hero.webp"),
+    // The collage's tall (3:5) main photograph, cropped from a landscape frame onto the bowl.
+    hero: img(
+      "nutmeg-powder-scoop.webp",
+      "A wooden bowl heaped with reddish-brown ground nutmeg beside whole nutmegs, one cut in half, with green nutmeg leaves behind",
+      "Nutmeg powder",
+      "64% 50%",
+    ),
     // nutmeg-powder-applications.webp — ground nutmeg dusted over a custard tart or a cup of spiced milk (4:3).
     detail: powderImg(slug, "applications", "A glass of eggnog dusted with grated nutmeg, seen from above on a wooden table", "nutmeg-powder-applications.webp", "50% 40%"),
+    // Specifications table photograph.
+    specs: img(
+      "nutmeg-powder-specifications.webp",
+      "Fine ground nutmeg powder in a white ceramic dish surrounded by whole nutmegs on a white surface",
+      "Nutmeg powder specifications",
+    ),
     extra: [
-      // nutmeg-powder-fruit.webp — an opened nutmeg fruit showing the brown seed wrapped in red mace (1:1).
-      powderImg(slug, "fruit", "A split nutmeg fruit on the tree showing the seed wrapped in red mace", "nutmeg-powder-fruit.webp", "35% 45%"),
-      // nutmeg-powder-kernels.webp — shelled whole nutmeg kernels in a small bowl (1:1).
-      powderImg(slug, "kernels", "Whole nutmeg kernels in a stone bowl, one cut in half", "nutmeg-powder-kernels.webp"),
+      // Top-right circle, kept on the opened fruit.
+      img(
+        "nutmeg-fruit-red-mace.webp",
+        "A split nutmeg fruit on the tree showing the brown seed wrapped in red mace",
+        "Nutmeg fruit and mace",
+        "45% 55%",
+      ),
+      // Bottom-right square.
+      img(
+        "nutmeg-powder-whole-nutmeg.webp",
+        "A heap of ground nutmeg and a wooden scoop of powder in front of whole and halved nutmegs",
+        "Ground and whole nutmeg",
+      ),
     ],
   },
   sections: [

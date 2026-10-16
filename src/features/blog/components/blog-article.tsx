@@ -259,7 +259,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                 >
                   <Figure
                     image={productPhoto?.image ?? null}
-                    alt=""
+                    alt={productPhoto?.image ? productPhoto.alt : ""}
                     art={post.art}
                     sizes="(min-width: 640px) 11rem, 100vw"
                     className="aspect-[16/9] w-full sm:aspect-auto sm:h-full"
