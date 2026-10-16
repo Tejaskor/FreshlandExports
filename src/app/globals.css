@@ -117,6 +117,22 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
   --ease-soft: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Floating WhatsApp button: a soft glow that breathes. Opacity and scale
+     only, so it stays on the compositor. */
+  --animate-whatsapp-glow: whatsapp-glow 2.8s ease-in-out infinite;
+
+  @keyframes whatsapp-glow {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.9;
+      transform: scale(1.08);
+    }
+  }
 }
 
 /* ==========================================================================
