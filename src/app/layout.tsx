@@ -4,6 +4,7 @@ import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SkipLink } from "@/components/layout/skip-link";
+import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { BrochureProvider } from "@/features/brochure/brochure-provider";
 import { siteConfig } from "@/config/site";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {children}
             </main>
             <SiteFooter />
+            <WhatsAppButton />
           </BrochureProvider>
         </SmoothScrollProvider>
 

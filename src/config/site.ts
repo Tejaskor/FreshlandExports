@@ -47,6 +47,12 @@ export const siteConfig = {
     // not Freshland Exports' real details yet; replace them with confirmed ones.
     email: "info@freshlandexports.com",
     phone: "+91 20 4000 1200",
+    whatsapp: {
+      // WhatsApp Business number. International format, digits only — no "+",
+      // spaces, brackets or hyphens (91 = India).
+      number: "919172753107",
+      message: "Hello Freshland Exports, I would like to know more about your products.",
+    },
     address: {
       street: "Botanical Estate Road",
       locality: "Pune",
