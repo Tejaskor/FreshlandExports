@@ -92,14 +92,32 @@ export const frozenPeas: AgriProduct = {
     body: "Tell us your grade, pack size and quantity, and our team will reply with availability and a quotation.",
   },
   images: {
-    // Collage hero — frozen peas with a light frost (3:5 tall).
-    hero: img(slug, "hero", "Frost-covered frozen green peas in a white bowl", "Frozen peas close-up", "50% 55%"),
-    // Detail — peas in a bowl, round crop (1:1).
-    detail: img(slug, "detail", "Close-up of bright green peas", "Bowl of frozen peas"),
+    // Collage hero — frozen peas spilling from a scoop (3:5 tall).
+    hero: {
+      file: "/images/products/Agricultural Products/Frozen Peas/frozen-peas-processing-hero.webp",
+      alt: "Frozen green peas spilling from a steel scoop onto a processing table in a food plant",
+      label: "Frozen peas processing",
+    },
+    // Overview — peas in a bowl, round crop (1:1).
+    detail: {
+      file: "/images/products/Agricultural Products/Frozen Peas/fresh-green-peas-bulk-supply.webp",
+      alt: "Frozen green peas in a wooden bowl on hessian, with loose peas around it",
+      label: "Bowl of green peas",
+    },
+    // Specifications — loose frozen peas (16:10).
+    specs: {
+      file: "/images/products/Agricultural Products/Frozen Peas/frozen-peas-product-specifications.webp",
+      alt: "A heap of loose, frost-covered frozen green peas on a dark steel surface",
+      label: "Frozen peas specifications",
+    },
     extra: [
-      // Circle — fresh pea pods (1:1).
-      img(slug, "pods", "Heap of fresh green pea pods", "Pea pods"),
-      // Rounded square — a scoop of frozen peas (1:1).
+      // Collage tile — fresh pea pods (5:4).
+      {
+        file: "/images/products/Agricultural Products/Frozen Peas/fresh-green-pea-pods-close-up.webp",
+        alt: "Fresh green pea pods, one split open to show the peas inside",
+        label: "Pea pods",
+      },
+      // Collage tile — a scoop of frozen peas (5:4). No new photograph was supplied for this slot.
       img(slug, "scoop", "Close-up of plump shelled green peas", "Scoop of frozen peas"),
     ],
   },

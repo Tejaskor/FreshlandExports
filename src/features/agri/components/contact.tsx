@@ -10,11 +10,11 @@ import { QuoteIntro } from "@/features/products/components/quote-intro";
 function Invitation({ product, inverse = false, center = false }: { product: AgriProduct; inverse?: boolean; center?: boolean }) {
   return (
     <QuoteIntro
-      productName={product.name}
+      productName={product.quoteName ?? product.name}
       inverse={inverse}
       center={center}
       accentClassName={inverse ? "text-[var(--p-soft)]" : "text-[var(--p-accent)]"}
-      body={product.quote?.body}
+      body={product.quote?.body ?? product.quoteIntro}
     />
   );
 }

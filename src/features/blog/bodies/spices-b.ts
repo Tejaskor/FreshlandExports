@@ -1266,7 +1266,7 @@ export const spicesBBodies: Record<string, readonly [ArticleBody, ArticleBody, A
       },
       {
         heading: "Stored crops and fresh crops",
-        text: "Some products, such as onions, garlic and many dried spices, can be stored after harvest and shipped across much of the year. India's onions, for example, come from [more than one season](/blog/red-pink-and-white-onions-choosing-the-right-type), with the spring rabi crop making up about 70 to 75 per cent of production (Press Information Bureau, Government of India, 2025). More perishable items, such as okra, beans and green chillies, need to move soon after picking. Planning around this difference helps you decide what to buy steadily and what to buy in concentrated windows.",
+        text: "Some products, such as onions, garlic and many dried spices, can be stored after harvest and shipped across much of the year. India's onions, for example, come from [more than one season](/blog/onion-varieties-in-india-red-pink-white-yellow-and-shallots), with the spring rabi crop making up about 70 to 75 per cent of production (Press Information Bureau, Government of India, 2025). More perishable items, such as okra, beans and green chillies, need to move soon after picking. Planning around this difference helps you decide what to buy steadily and what to buy in concentrated windows.",
       },
       {
         heading: "Policy can move with supply",

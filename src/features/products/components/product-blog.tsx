@@ -14,6 +14,7 @@ export function ProductBlog({
   slug,
   productName,
   heading,
+  description,
   className,
   accentClassName = "text-leaf",
   linkClassName = "text-rust-deep group-hover:text-rust",
@@ -23,6 +24,8 @@ export function ProductBlog({
   productName: string;
   /** Replaces the default "Latest Blogs" heading. */
   heading?: string;
+  /** Replaces the default introduction under the heading. */
+  description?: string;
   /** Section background (and any border). */
   className?: string;
   /** Colour of the category labels. */
@@ -34,7 +37,7 @@ export function ProductBlog({
   return (
     <BlogSection
       posts={productPosts(slug)}
-      description={`Buyer guides on quality, sourcing, storage and uses of ${productName.toLowerCase()} for export.`}
+      description={description ?? `Buyer guides on quality, sourcing, storage and uses of ${productName.toLowerCase()} for export.`}
       heading={heading}
       className={className}
       accentClassName={accentClassName}

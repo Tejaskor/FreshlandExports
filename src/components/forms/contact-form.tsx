@@ -11,11 +11,13 @@ import {
   type ContactSource,
   type ContactState,
   type FormVariant,
+  type PreferenceField,
   countries,
   hasErrors,
   formVariant,
   limits,
   markets,
+  preferenceFields,
   productInterestGroups,
   productSeparator,
   quantities,
@@ -72,6 +74,7 @@ export function ContactForm({
   defaultMessage,
   variant = "compact",
   submitLabel = "Send Message",
+  preference,
 }: {
   /**
    * Where the lead comes from, sent as `source`: "homepage_contact",
@@ -94,6 +97,8 @@ export function ContactForm({
    */
   variant?: FormVariant;
   submitLabel?: string;
+  /** Compact form only: an optional product-specific choice, e.g. the onion variety. */
+  preference?: PreferenceField;
 }) {
   const detailed = variant === "detailed";
   const quote = variant === "quote";
@@ -181,6 +186,7 @@ export function ContactForm({
         <input type="hidden" name="source" value={source} />
         {business && <input type="hidden" name="variant" value={variant} />}
         {quote && <input type="hidden" name="product" value={product ?? ""} />}
+        {preference && !business && <input type="hidden" name="preference_field" value={preference} />}
 
         {business ? (
           <div className={cn("grid sm:grid-cols-2", quote ? "mt-5 gap-3" : "mt-4 gap-2.5")}>
@@ -378,6 +384,24 @@ export function ContactForm({
               />
               {error("phone")}
             </label>
+
+            {preference && (
+              <label className="block sm:col-span-2">
+                <span className="sr-only">{preferenceFields[preference].label} (optional)</span>
+                <select
+                  name="preference"
+                  defaultValue=""
+                  className={cn(field, "has-[option[value='']:checked]:text-ink-faint")}
+                >
+                  <option value="">{preferenceFields[preference].label} (optional)</option>
+                  {preferenceFields[preference].options.map((option) => (
+                    <option key={option} value={option} className="text-ink">
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
 
             <label className="block sm:col-span-2">
               <span className="sr-only">Message (required)</span>

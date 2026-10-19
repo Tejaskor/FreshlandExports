@@ -16,8 +16,8 @@ export const freshOnionImages = {
   // pale sage surface, soft natural light, no text or logo, landscape 5:4."
   hero: {
     file: `${dir}/fresh-onions-hero.webp`,
-    alt: "A heap of fresh red onions with dry papery skins on a woven basket",
-    label: "Fresh red & white onions",
+    alt: "A selection of fresh red, pink, white, yellow-brown and small purple onions arranged in a wooden produce crate.",
+    label: "Fresh onions — mixed varieties",
   },
 
   // About — close-up of fresh onions with natural leaves (portrait 4:5).
@@ -26,7 +26,7 @@ export const freshOnionImages = {
   // no text or logo, portrait 4:5."
   closeUp: {
     file: `${dir}/fresh-onion-selection.webp`,
-    alt: "Fresh red onions laid out on sorting trays for selection",
+    alt: "Fresh red onions spread on perforated sorting trays, with crates of onions behind",
     label: "Fresh onions with leaves",
   },
 
@@ -46,7 +46,7 @@ export const freshOnionImages = {
   // no text or logo, landscape 16:10."
   salad: {
     file: `${dir}/fresh-onions-salads.webp`,
-    alt: "A fresh salad with red onion rings, tomato, cucumber and lettuce",
+    alt: "Red onion rings in a bowl of salad with tomato, cucumber, carrot and lettuce",
     label: "Onion salad",
   },
 
@@ -56,7 +56,7 @@ export const freshOnionImages = {
   // no text or logo, landscape 16:10."
   sliced: {
     file: `${dir}/fresh-onions-food-processing.webp`,
-    alt: "Whole, sliced and diced red onions on steel trays in a food-processing kitchen",
+    alt: "Whole, halved, sliced and diced red onions on steel trays in a food-processing area",
     label: "Sliced onions",
   },
 
@@ -66,7 +66,7 @@ export const freshOnionImages = {
   // landscape 16:10."
   cooked: {
     file: `${dir}/fresh-onions-food-service.webp`,
-    alt: "Sliced onions in steel trays prepared in a commercial kitchen",
+    alt: "Sliced onions and prepared ingredients in steel trays beside a pan in a commercial kitchen",
     label: "Cooked dish with onions",
   },
 
@@ -83,7 +83,34 @@ export const freshOnionImages = {
   // Storage & Handling — onions in ventilated crates in a storage shed (16:10).
   storage: {
     file: `${dir}/fresh-onion-storage-handling.webp`,
-    alt: "Fresh red onions stored in ventilated wooden crates in a storage shed",
+    alt: "Fresh onions stored in ventilated produce crates inside a storage area",
     label: "Onion storage and handling",
+  },
+
+  // Varieties — one photograph per onion category.
+  red: {
+    file: `${dir}/fresh-red-onions.webp`,
+    alt: "Fresh red onions with red-purple skins and cut bulbs showing their pale inner layers.",
+    label: "Red onions",
+  },
+  pink: {
+    file: `${dir}/fresh-pink-onions.webp`,
+    alt: "Pink onions with rose-coloured skins and cut bulbs showing pale pink and white layers.",
+    label: "Pink onions",
+  },
+  white: {
+    file: `${dir}/fresh-white-onions.webp`,
+    alt: "Fresh white onions, including cut bulbs showing their white concentric layers.",
+    label: "White onions",
+  },
+  yellowBrown: {
+    file: `${dir}/fresh-yellow-brown-onions.webp`,
+    alt: "Golden-brown onions with papery outer skins and cut bulbs showing pale inner layers.",
+    label: "Yellow/brown onions",
+  },
+  shallots: {
+    file: `${dir}/fresh-sambar-onions-shallots.webp`,
+    alt: "Small pink-purple sambar onions and shallots arranged in a basket, with cut bulbs showing their inner layers.",
+    label: "Sambar onions / shallots",
   },
 } satisfies Record<string, ImageSlotData>;

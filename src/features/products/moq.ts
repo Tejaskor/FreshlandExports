@@ -18,6 +18,7 @@ const moqCategory: Record<string, CatalogueCategoryId> = {
   turmeric: "spices",
   // Listed with the powders, but ordered on the spice terms.
   "red-chilli-powder": "spices",
+  "clove-powder": "spices",
 };
 
 /** Copy shared by every MOQ section. */

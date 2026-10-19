@@ -31,7 +31,10 @@ export function FreshOnionContact({ productSlug }: { productSlug: string }) {
               source={productEnquirySource(productSlug)}
               title="Request a Quote for Fresh Onions"
               submitLabel="Request a Quote"
-              defaultMessage={"I'd like a quote for Fresh Onions.\nCompany: \nRequired quantity: \nPackaging preference: \n"}
+              preference="onion_variety"
+              defaultMessage={
+                "I'd like a quote for Fresh Onions.\nCompany: \nRequired quantity: \nDestination: \nSize / specifications: \nPackaging preference: \n"
+              }
             />
           </Reveal>
         </div>

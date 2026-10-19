@@ -103,6 +103,7 @@ export function AgriPage({ product }: { product: AgriProduct }) {
             <ProductBlog
               slug={product.slug}
               productName={product.name}
+              description={product.blogIntro}
               className={
                 section.variant === "split" || section.variant === "centered"
                   ? "border-t border-line bg-white"

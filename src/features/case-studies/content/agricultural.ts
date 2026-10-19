@@ -14,6 +14,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Food Service",
     topic: "Crisp, uniform vegetables for salad kitchens",
     products: ["cucumber", "cabbage", "beans"],
+    image: {
+      src: "/images/Case Studies/agri/fresh-vegetables-food-service-salad-lines-hero.webp",
+      alt: "Fresh cabbage, whole and sliced cucumbers, and green beans arranged for restaurant salad and coleslaw preparation.",
+      art: "leaf",
+    },
     keywords: ["salad", "coleslaw", "food service", "cucumber", "cabbage", "green beans", "restaurants"],
     intro: [
       "Salad and coleslaw lines in food service depend on vegetables that look fresh on the plate and cut cleanly in a busy kitchen. Cucumbers need to stay firm and green, cabbage heads need to be compact enough to shred evenly, and green beans need to keep their snap after blanching. Each of the three handles differently between the farm and the restaurant.",
@@ -128,6 +133,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Frozen Food Processing",
     topic: "Frozen and fresh inputs for frozen vegetable packs",
     products: ["frozen-peas", "beans", "okra"],
+    image: {
+      src: "/images/Case Studies/agri/vegetables-frozen-vegetable-line-hero.webp",
+      alt: "Frozen green peas in clear sealed bags on wire shelves in a cold store",
+      art: "leaf",
+    },
     keywords: ["frozen vegetables", "frozen peas", "mixed vegetables", "okra", "green beans", "iqf", "cut and frozen"],
     intro: [
       "A frozen vegetable range often mixes two kinds of raw material. Some items, such as green peas, can be bought already frozen and free-flowing, ready to blend. Others, such as green beans and okra, may be bought fresh and cut and frozen in the packer’s own plant. Each route needs a different specification and a different kind of logistics.",
@@ -238,6 +248,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Ethnic Grocery Retail",
     topic: "Tender, graded vegetables for ethnic grocery shelves",
     products: ["okra", "bitter-gourd", "drumstick", "eggplant"],
+    image: {
+      src: "/images/Case Studies/agri/south-asian-vegetables-ethnic-grocery-importers.webp",
+      alt: "Fresh green okra in a woven market basket with eggplants, bitter gourds and bundled drumsticks displayed behind it",
+      art: "leaf",
+    },
     keywords: ["ethnic grocery", "south asian", "okra", "bitter gourd", "drumstick", "brinjal", "karela"],
     intro: [
       "Grocery stores serving South Asian communities stock vegetables their shoppers know well and judge closely. Okra should snap rather than bend, bitter gourd should be firm and green, drumstick pods should be long and tender, and eggplant should be glossy and firm. Shoppers who cook bhindi, karela, sambar and baingan bharta notice quickly when produce is tired.",
@@ -352,6 +367,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Ready Meals",
     topic: "Vegetable inputs for curry-based ready meals",
     products: ["elephant-yam", "eggplant", "frozen-peas"],
+    image: {
+      src: "/images/Case Studies/agri/ready-meal-vegetables-elephant-yam-eggplant-frozen-peas-hero.webp",
+      alt: "Elephant yam, fresh eggplant and green peas arranged as ingredients for vegetable curry preparation.",
+      art: "leaf",
+    },
     keywords: ["ready meals", "curry", "elephant yam", "suran", "eggplant", "frozen peas", "food manufacturing"],
     intro: [
       "Vegetable curries in a ready-meal range ask a lot of their ingredients. Elephant yam must be peeled and cubed before cooking, eggplant needs to hold its shape in sauce rather than collapse, and peas must arrive frozen and ready to add at the right stage. The way each ingredient is bought shapes yield, piece size and how consistent each portion looks.",
@@ -462,6 +482,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Paste Manufacturing",
     topic: "Fresh aromatics for paste and sauce production",
     products: ["onion", "garlic", "green-chili"],
+    image: {
+      src: "/images/Case Studies/agri/onion-garlic-green-chilli-paste-manufacturers-hero.webp",
+      alt: "Red onions, one halved, beside whole garlic bulbs, peeled cloves and a pile of fresh green chillies",
+      art: "leaf",
+    },
     keywords: ["paste", "ginger garlic paste", "onion paste", "chilli sauce", "peeled garlic", "food processing"],
     intro: [
       "Paste and sauce makers turn fresh aromatics into consistent products, and the raw material sets the limits. Onion size and skin condition affect peeling, garlic can be bought as whole bulbs or as peeled cloves, and green chillies vary in heat by variety and must be fresh and firm when they reach the grinder.",
@@ -558,7 +583,7 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     insights: [
       "fresh-garlic-for-food-processing-applications-forms-and-handling",
       "green-chillies-in-sauces-pickles-and-food-processing",
-      "red-pink-and-white-onions-choosing-the-right-type",
+      "onion-varieties-in-india-red-pink-white-yellow-and-shallots",
     ],
   },
   {
@@ -573,6 +598,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Cold-Chain Logistics",
     topic: "Cool-chain planning for highly perishable vegetables",
     products: ["cucumber", "green-chili", "beans", "okra"],
+    image: {
+      src: "/images/Case Studies/agri/cold-chain-planning-perishable-vegetables-hero.webp",
+      alt: "Fresh cucumbers, green beans, okra and green chillies arranged for perishable vegetable handling.",
+      art: "leaf",
+    },
     keywords: ["cold chain", "reefer", "pre-cooling", "chilling injury", "perishable", "transit", "humidity"],
     intro: [
       "Cucumbers, green chillies, green beans and okra are all highly perishable, but they are not perishable in the same way. Cucumbers can suffer chilling injury if held too cold, beans keep best cool and humid, okra prefers cool and well-ventilated conditions and bruises easily, and green chillies are stored cool, dry and well-ventilated. A single setting for all four is a compromise that needs to be planned rather than assumed.",
@@ -687,6 +717,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Wholesale Distribution",
     topic: "Ventilation and dry storage for bulbs and tubers",
     products: ["onion", "garlic", "elephant-yam"],
+    image: {
+      src: "/images/Case Studies/agri/shipping-onions-garlic-elephant-yam-hero.webp",
+      alt: "A wooden crate of red onions, a jute sack of garlic bulbs and whole and cut elephant yams in a produce warehouse",
+      art: "leaf",
+    },
     keywords: ["onion", "garlic", "elephant yam", "ventilation", "curing", "sprouting", "breathable packaging"],
     intro: [
       "Onions, garlic and elephant yam are among the more storable fresh products, which is why they are often shipped long distances. They still need care. Moisture encourages sprouting and mould in onions, garlic should be kept cool, dry and well-ventilated, and elephant yam tubers need protection from excess moisture and rough handling.",
@@ -801,6 +836,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Pickles & Fermented Foods",
     topic: "Raw vegetables for fermentation and pickling",
     products: ["cabbage", "cucumber"],
+    image: {
+      src: "/images/Case Studies/agri/cabbage-cucumber-pickles-fermented-foods-hero.webp",
+      alt: "Fresh cabbage and whole and sliced cucumbers arranged for pickle and fermented vegetable preparation.",
+      art: "leaf",
+    },
     keywords: ["sauerkraut", "kimchi", "pickles", "fermentation", "cabbage", "cucumber", "brine"],
     intro: [
       "Fermented and pickled vegetables keep the character of the raw material. Cabbage for sauerkraut or kimchi-style ferments should be firm and tightly layered so shreds stay crisp, and cucumbers for pickling should be firm and of a size that suits the jar or the cut. Vegetables that have softened before processing tend to soften further in brine.",
@@ -909,6 +949,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Restaurants & Catering",
     topic: "Traditional vegetables for Indian food-service menus",
     products: ["drumstick", "bitter-gourd", "elephant-yam"],
+    image: {
+      src: "/images/Case Studies/agri/traditional-vegetables-restaurants-caterers-hero.webp",
+      alt: "Fresh drumstick pods, bitter gourds and elephant yam arranged together for restaurant and catering use.",
+      art: "leaf",
+    },
     keywords: ["restaurants", "catering", "sambar", "drumstick", "karela", "elephant yam", "indian cuisine"],
     intro: [
       "Indian restaurants and caterers rely on traditional vegetables for dishes such as sambar, stuffed karela and yam curries. Chefs want drumstick pods that are tender rather than woody, bitter gourds that are firm and green, and elephant yam tubers that are sound and easy to peel and cut. When one of them is missing or poor, a menu item suffers.",
@@ -1129,6 +1174,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Food Service",
     topic: "Grade, pack size and frozen handling for peas",
     products: ["frozen-peas"],
+    image: {
+      src: "/images/Case Studies/agri/specifying-frozen-peas-food-service-kitchens-hero.webp",
+      alt: "A chef plating rice with peas and carrots beside steel trays of peas, rice and vegetables in a commercial kitchen",
+      art: "leaf",
+    },
     keywords: ["frozen peas", "green peas", "food service", "free-flowing", "pack size", "reefer", "frozen storage"],
     intro: [
       "Frozen peas are a kitchen staple because they need no shelling and can be portioned straight from the bag. That convenience depends on the peas staying whole and free-flowing, which in turn depends on the grade bought and on the product staying frozen from the supplier’s store to the kitchen freezer.",
@@ -1238,6 +1288,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Supermarket Retail",
     topic: "Uniform beans and okra for prepacked retail",
     products: ["beans", "okra"],
+    image: {
+      src: "/images/Case Studies/agri/green-beans-and-okra-supermarket-retail-packs.webp",
+      alt: "Fresh green beans and whole and sliced green okra arranged together on a light surface",
+      art: "leaf",
+    },
     keywords: ["retail packs", "supermarket", "green beans", "okra", "prepacked", "uniform length", "shelf"],
     intro: [
       "In a clear retail pack, every pod is on display. Shoppers notice when green beans vary in length or colour, or when okra pods are marked or browning. Both vegetables also have a short fresh life, so the time between harvest, packing and the shelf matters as much as how they are graded.",
@@ -1347,6 +1402,11 @@ export const agriculturalCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Fresh-Cut Processing",
     topic: "Cabbage heads for coring and shredding",
     products: ["cabbage"],
+    image: {
+      src: "/images/Case Studies/agri/cabbage-coleslaw-shredded-salad-packs-hero.webp",
+      alt: "Whole and halved green cabbage with freshly shredded cabbage arranged on a cutting board.",
+      art: "leaf",
+    },
     keywords: ["cabbage", "coleslaw", "shredded cabbage", "fresh-cut", "salad packs", "head size", "trimming"],
     intro: [
       "For a fresh-cut processor, a cabbage head is raw material for a machine. Heads that are firm and compact core and shred cleanly and give crisp, even strands, while loose or oversized heads slow the line and lose more leaves to trimming. The condition of the outer leaves decides how much is removed before the head even reaches the shredder.",

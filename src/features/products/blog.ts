@@ -672,8 +672,8 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
   "clove-powder": {
-    image: null,
-    alt: "Clove powder",
+    image: photo("Clove Powder/clove-powder-hero.webp"),
+    alt: "Ground clove powder in a wooden bowl with whole dried cloves",
     art: "powder",
     articles: [
       {
@@ -714,7 +714,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
         topic: "Export Guide",
         title: "Fresh Onion Export Guide: Quality, Grading, Storage and Buyer Requirements",
         description:
-          "What importers check when buying fresh onions in bulk from India: bulb quality, size grading, curing, packing, export policy, documents and order planning.",
+          "Learn what buyers should review when sourcing fresh onions, including bulb condition, grading, packing, export documents and order requirements.",
         updated: "2026-10-13",
         hashtags: [{ tag: "#FreshOnions", href: "/products/onion" }, { tag: "#OnionBuyingGuide", href: "/blog?category=product-guides" }, { tag: "#OnionPowder", href: "/products/onion-powder" }],
         body: [
@@ -780,7 +780,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
               },
               {
                 question: "Which onion type should I order?",
-                answer: "The one your customers expect. Our guide to [red, pink and white onions](/blog/red-pink-and-white-onions-choosing-the-right-type) compares the types and their uses.",
+                answer: "The one your customers expect. Our guide to [red, pink and white onions](/blog/onion-varieties-in-india-red-pink-white-yellow-and-shallots) compares the types and their uses.",
               },
               {
                 question: "What should importers check in an onion sample?",
@@ -802,7 +802,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
         topic: "Storage",
         title: "Ventilation and Curing: Keeping Onions Sound in Transit",
         description:
-          "How curing, temperature, humidity and ventilation keep onions firm in storage and transit, with general reference storage conditions from the USDA.",
+          "Understand how ventilation, handling and suitable storage conditions help maintain onion quality during storage and transport.",
         updated: "2026-10-13",
         hashtags: [{ tag: "#BulbStorage", href: "/blog/how-to-store-fresh-garlic-prevent-sprouting-and-maintain-quality" }, { tag: "#FreshOnions", href: "/products/onion" }, { tag: "#StoredCrops", href: "/blog/seasonality-planning-fresh-produce-imports-around-harvests" }],
         body: [
@@ -820,7 +820,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
             list: {
               items: [
                 "Pungent dry onions: about 0 °C with 65 to 75 per cent relative humidity, under which they can keep for six to nine months.",
-                "Mild or sweet onions: one to three months, which is one reason [onion type](/blog/red-pink-and-white-onions-choosing-the-right-type) matters when planning a long journey.",
+                "Mild or sweet onions: one to three months, which is one reason [onion type](/blog/onion-varieties-in-india-red-pink-white-yellow-and-shallots) matters when planning a long journey.",
                 "Onions are not chilling sensitive but can freeze at around −0.8 °C.",
               ],
             },
@@ -880,15 +880,15 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
       },
       {
         topic: "Buying Guide",
-        title: "Red, Pink and White Onions: Choosing the Right Type",
+        title: "Onion Varieties in India: Red, Pink, White, Yellow and Shallots",
         description:
-          "How red, pink and white onions differ in colour, flavour and use, and what to agree with your supplier on type, season and size before you order.",
-        updated: "2026-10-13",
+          "Explore onion colour categories and small-onion products found in India, their appearance, common uses and considerations for bulk buyers.",
+        updated: "2026-10-19",
         hashtags: [{ tag: "#RedOnions", href: "/products/onion" }, { tag: "#OnionPowder", href: "/blog/onion-powder-in-seasonings-sauces-and-ready-meals" }, { tag: "#OnionProcessing", href: "/case-studies/onion-garlic-and-chilli-for-paste-manufacturers" }],
         body: [
           {
             heading: "Why type matters",
-            text: "Onion type affects how a product looks on the shelf, how it tastes in a dish and how it behaves in processing. Markets have strong preferences, and a type that sells well in one country can be unfamiliar in another, so the type is usually the first line on an onion specification.",
+            text: "Onion type affects how a product looks on the shelf, how it tastes in a dish and how it behaves in processing. Markets have strong preferences, and a type that sells well in one country can be unfamiliar in another, so the type is usually the first line on an onion specification. This guide covers the main colour categories, red, pink, white and yellow or brown, and the small onions and shallots that are traded as a separate product.",
           },
           {
             heading: "Red onions",
@@ -901,6 +901,14 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           {
             heading: "White onions",
             text: "White onions have white skins and flesh. They are used in cooking and food processing, and are preferred in some markets for their clean appearance in pale dishes. [Dehydrated onion products](/blog/onion-powder-for-food-manufacturing-what-to-specify) are made from white, cream, pink and red onions (see FSSAI Food Products Standards, section 2.9.28, Dehydrated Onion), so processors buying fresh onions for drying usually specify the type that matches the colour of their finished product.",
+          },
+          {
+            heading: "Yellow and brown onions",
+            text: "Yellow or brown onions have golden to light-brown papery skins and pale flesh. They are a familiar everyday onion in many international markets and are used in cooking and processing. In India, red and pink onions are the more familiar types, so if your market expects yellow or brown onions, confirm early whether they can be sourced for your shipment window and check a sample against your market's colour expectations.",
+          },
+          {
+            heading: "Small onions and shallots",
+            text: "Small onions, often sold in India as sambar onions, are widely used in South Indian cooking, where they are added whole or sliced to dishes such as sambar. They are a separate product from standard bulb onions, not simply a small grade of them: many small onions in trade are multiplier types that form clusters of small bulbs, and the name shallot is used for more than one kind of small onion. Agree the product by name and sample rather than by size alone, and specify the bulb size range, skin colour and packing you need.",
           },
           {
             heading: "Season and storability",
@@ -919,7 +927,7 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
           },
           {
             heading: "Conclusion",
-            text: "Red, pink and white onions differ mainly in colour, appearance and the markets that expect them, while pungency depends more on variety and growing conditions. Start from what your customers buy, confirm which crop and type are available for your shipment window, and taste a sample of the lot you intend to order.",
+            text: "Red, pink, white and yellow or brown onions differ mainly in colour, appearance and the markets that expect them, while pungency depends more on variety and growing conditions. Small onions and shallots are a distinct product with their own uses. Start from what your customers buy, confirm which crop and type are available for your shipment window, and taste a sample of the lot you intend to order.",
           },
           {
             heading: "Frequently asked questions",
@@ -932,6 +940,10 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
               {
                 question: "Can one shipment carry more than one type?",
                 answer: "Often, if the types are packed and marked separately. Agree the split and the marking on the order so each type can be identified on arrival; our [fresh onion export guide](/blog/fresh-onion-export-guide-quality-grading-storage-and-buyer-requirements) covers packing and documents.",
+              },
+              {
+                question: "Are sambar onions the same as shallots?",
+                answer: "Not always. Small onions sold as sambar onions and products sold as shallots can be different kinds of small onion, so agree the product by name and sample rather than assuming they are identical.",
               },
               {
                 question: "Which onion type suits salads and toppings?",
@@ -2050,8 +2062,8 @@ export const productBlogs: Record<string, ProductBlogEntry> = {
     ],
   },
   "frozen-peas": {
-    image: photo("Frozen Peas.webp"),
-    alt: "Frozen green peas",
+    image: photo("Agricultural Products/Frozen Peas/frozen-peas-processing-hero.webp"),
+    alt: "Frozen green peas spilling from a steel scoop onto a processing table in a food plant",
     art: "leaf",
     articles: [
       {

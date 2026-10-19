@@ -202,7 +202,7 @@ export function Features({
     return (
       <section aria-labelledby={headingId} className="bg-[var(--p-deep)] py-14 text-white lg:py-20">
         <Container>
-          <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} inverse align="start" />
+          <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} intro={features.intro} inverse align="start" />
           <Reveal
             as="ul"
             stagger={0.06}
@@ -239,7 +239,7 @@ export function Features({
     return (
       <section aria-labelledby={headingId} className="bg-[var(--p-tint)] py-14 lg:py-20">
         <Container>
-          <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} align="start" />
+          <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} intro={features.intro} align="start" />
           <Reveal as="ul" stagger={0.06} variant="rise" className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
             <li className="sm:col-span-2 lg:row-span-2">
               <article className="flex h-full flex-col justify-between rounded-[2rem_2rem_2rem_0.75rem] bg-[var(--p-deep)] p-7 text-white sm:p-9">
@@ -285,7 +285,7 @@ export function Features({
         <Container className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28">
-              <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} align="start" />
+              <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} intro={features.intro} align="start" />
             </div>
           </div>
           <Reveal as="ol" stagger={0.07} variant="rise" className="space-y-3 lg:col-span-8">
@@ -316,7 +316,7 @@ export function Features({
   return (
     <section aria-labelledby={headingId} className="bg-[var(--p-tint)] py-14 lg:py-20">
       <Container>
-        <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} align="start" />
+        <SectionHeader id={headingId} eyebrow={features.eyebrow} heading={features.heading} intro={features.intro} align="start" />
         <Reveal as="ol" stagger={0.05} variant="rise" className="mt-8 grid gap-x-10 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3">
           {items.map((item, index) => (
             <li key={item.title} className="flex gap-4 border-t border-[var(--p-soft)] py-5">

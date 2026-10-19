@@ -159,6 +159,38 @@ export function validateContact(values: ContactValues, variant: FormVariant = "c
   return errors;
 }
 
+/**
+ * Optional, product-specific choices a product page's compact form can add
+ * (sent as `preference_field` + `preference`). The answer travels inside the
+ * message, so the webhook payload keeps the same fields for every form.
+ */
+export const preferenceFields = {
+  onion_variety: {
+    label: "Preferred Onion Variety",
+    options: [
+      "Red Onions",
+      "Pink Onions",
+      "White Onions",
+      "Yellow/Brown Onions",
+      "Sambar Onions / Shallots",
+      "Other / Not Sure",
+    ],
+  },
+} as const;
+
+export type PreferenceField = keyof typeof preferenceFields;
+
+/** Prepends a valid optional choice to the message; anything else is ignored. */
+export function withPreference(values: ContactValues, formData: FormData): ContactValues {
+  const key = formData.get("preference_field");
+  const choice = formData.get("preference");
+  if (typeof key !== "string" || !Object.hasOwn(preferenceFields, key) || typeof choice !== "string") return values;
+  const field = preferenceFields[key as PreferenceField];
+  if (!(field.options as readonly string[]).includes(choice)) return values;
+  const line = `${field.label}: ${choice}`;
+  return { ...values, message: values.message ? `${line}\n${values.message}` : line };
+}
+
 export function hasErrors(errors: ContactErrors) {
   return Object.keys(errors).length > 0;
 }

@@ -9,6 +9,7 @@ import {
   readContact,
   readContactSource,
   validateContact,
+  withPreference,
 } from "@/components/forms/contact-schema";
 import { readPageUrl } from "@/components/forms/lead-meta";
 import { postToWebhook } from "@/components/forms/webhook";
@@ -32,7 +33,9 @@ export async function submitContact(
   const source = readContactSource(formData);
 
   try {
-    await deliverEnquiry(values, {
+    // An optional product choice (e.g. onion variety) is added to the message
+    // after validation, so it never affects the visitor's own message checks.
+    await deliverEnquiry(withPreference(values, formData), {
       source,
       form_type: contactFormType(source),
       page_url: readPageUrl(formData),

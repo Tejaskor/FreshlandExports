@@ -348,6 +348,11 @@ export const powderCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Bakery & Confectionery",
     topic: "Warm spices for baked goods",
     products: ["nutmeg-powder", "clove-powder", "dry-ginger-powder", "cinnamon"],
+    image: {
+      src: "/images/Case Studies/spices/warm-spice-powders-bakery-confectionery-case-study-hero.webp",
+      alt: "Nutmeg, ginger and clove powders arranged with whole spices and freshly baked goods.",
+      art: "powder",
+    },
     keywords: ["bakery", "gingerbread", "spice cake", "biscuits", "nutmeg", "cloves", "cinnamon"],
     intro: [
       "Nutmeg, clove, ginger and cinnamon are the classic warm spices of seasonal bakes. They are used in small amounts, so a fine, even grind helps the flavour spread through the dough, and their aromatic oils need protecting from air, heat and light.",
@@ -1224,6 +1229,11 @@ export const powderCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Sauces & Pastes",
     topic: "Choosing chilli form for sauces and pastes",
     products: ["red-chilli", "red-chilli-powder", "green-chili"],
+    image: {
+      src: "/images/Case Studies/agri/specifying-chilli-sauces-pastes-hero.webp",
+      alt: "Dried red chillies, red chilli powder, fresh green chillies and chilli sauce arranged for sauce and paste production.",
+      art: "powder",
+    },
     keywords: ["chilli sauce", "paste", "dried chilli", "chilli powder", "green chilli", "heat", "colour"],
     intro: [
       "Chilli varieties differ widely in heat and colour. Dried red chillies can be soaked and ground into pastes, red chilli powder blends quickly into wet sauces, and fresh green chillies give a bright, green heat for green sauces and pickles. Each form brings a different look and different handling.",
@@ -1543,6 +1553,11 @@ export const powderCaseStudies: readonly CaseStudyEntry[] = [
     industry: "Beverages & Tea Blends",
     topic: "Spices for a chai masala blend",
     products: ["green-cardamom", "dry-ginger-powder", "clove-powder"],
+    image: {
+      src: "/images/Case Studies/spices/spiced-tea-chai-masala-case-study-hero.webp",
+      alt: "Green cardamom pods, ginger, cloves and other spices arranged beside a cup of chai.",
+      art: "powder",
+    },
     keywords: ["chai masala", "spiced tea", "cardamom", "ginger", "cloves", "tea blend"],
     intro: [
       "Green cardamom is central to spiced tea traditions, with a sweet, floral and slightly minty fragrance. Dry ginger powder adds a warm, concentrated pungency, and a little clove brings depth. Together they make a typical chai masala.",

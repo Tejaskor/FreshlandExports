@@ -107,7 +107,8 @@ export type AgriProduct = {
     body: readonly string[];
     highlights: readonly { label: string; value: string }[];
   };
-  features: { eyebrow: string; heading: string; items: readonly Feature[] };
+  /** `intro`: an optional lead line under the heading. */
+  features: { eyebrow: string; heading: string; intro?: string; items: readonly Feature[] };
   uses: { eyebrow: string; heading: string; intro: string; groups: readonly UseGroup[] };
   process?: { eyebrow: string; heading: string; steps: readonly Step[]; note?: string; image?: ImageSlotData };
   specs: {
@@ -132,7 +133,7 @@ export type AgriProduct = {
   /** Shown under the site-wide FAQ heading. */
   faqs?: { items: readonly Faq[] };
   /** Commercial applications, rendered with the feature layouts. */
-  commercial?: { eyebrow: string; heading: string; items: readonly Feature[] };
+  commercial?: { eyebrow: string; heading: string; intro?: string; items: readonly Feature[] };
   /** Storage recommendations, rendered as a compact strip. */
   storage?: { heading: string; text: string; points: readonly string[] };
   cta: { eyebrow: string; heading: string; body: string };
@@ -141,6 +142,12 @@ export type AgriProduct = {
    * quantity), with its own line under the "Looking for …" heading.
    */
   quote?: { body: string };
+  /** Replaces the shared line under the "Looking for …" heading, keeping the standard form. */
+  quoteIntro?: string;
+  /** The product as named in the "Looking for … for Your Business?" heading, when it differs from `name`. */
+  quoteName?: string;
+  /** Replaces the Blog section's generic introduction. */
+  blogIntro?: string;
   images: {
     hero: ImageSlotData;
     detail: ImageSlotData;

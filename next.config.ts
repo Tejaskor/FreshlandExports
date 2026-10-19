@@ -35,6 +35,7 @@ const nextConfig: NextConfig = {
         "/blog/storage-and-handling-considerations-for-bulk-chilli-powder",
       ],
       ["red-chilli-powder-in-sauces-snacks-and-seasoning-blends", "/products/red-chilli-powder"],
+      ["red-pink-and-white-onions-choosing-the-right-type", "/blog/onion-varieties-in-india-red-pink-white-yellow-and-shallots"],
     ];
     // The Blog lives at /blog and /blog/<slug>. Its earlier addresses under
     // Resources (/resources, /resources/<slug>) redirect in one hop; query

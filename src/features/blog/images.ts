@@ -155,26 +155,44 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
   "dry-ginger-powder": [
-    article("dry-ginger-powder-quality-colour-pungency-and-fibre", "Light brown dry ginger powder in a clear pouch beside a white saucer with a small heap of powder"),
-    article("from-rhizome-to-sonth-how-dry-ginger-powder-is-made", "A full frame of sun-dried ginger rhizomes ready for grinding"),
-    article("exporting-dry-ginger-powder-packaging-labelling-and-shipping", "Pieces of dried ginger rhizome on a pale background"),
+    {
+      src: "/images/Blog/dry-ginger-powder/dry-ginger-powder-quality-colour-pungency.webp",
+      alt: "Dry ginger powder in a bowl beside whole dried ginger rhizomes.",
+    },
+    {
+      src: "/images/Blog/dry-ginger-powder/dry-ginger-powder-production-process.webp",
+      alt: "Freshly harvested ginger rhizomes spread on a woven bamboo tray.",
+    },
+    {
+      src: "/images/Blog/dry-ginger-powder/dry-ginger-powder-export-packaging-shipping.webp",
+      alt: "Ground ginger powder and dried ginger roots beside bulk packaging in a warehouse.",
+    },
   ],
   "clove-powder": [
-    article("buying-clove-powder-aroma-colour-and-purity-checks", "Cloves drying in shades of red, green and brown"),
-    article("why-clove-powder-loses-aroma-faster-than-whole-cloves", "Whole dried cloves with intact heads on a white background"),
-    article("using-clove-powder-in-meat-sauce-and-bakery-production", "Chocolate-coated German lebkuchen spice biscuits stacked on a plate"),
+    {
+      src: "/images/Blog/clove-powder/buying-clove-powder-aroma-colour-purity-hero.webp",
+      alt: "Whole dried cloves spilling from a hessian sack beside a wooden bowl heaped with cloves",
+    },
+    {
+      src: "/images/Blog/clove-powder/why-clove-powder-loses-aroma-storage.webp",
+      alt: "A bowl of clove powder beside whole cloves on a board and a clip-top glass jar of cloves",
+    },
+    {
+      src: "/images/Blog/clove-powder/using-clove-powder-meat-sauce-bakery.webp",
+      alt: "Clove powder and whole cloves beside spiced meat on a board, a pan of sauce and spiced muffins on a cooling rack",
+    },
   ],
   /* --- Agricultural products ------------------------------------------- */
   onion: [
     {
       src: product("Agricultural Products/Onion/fresh-onion-quality-inspection.webp"),
-      alt: "Fresh onions being inspected for size and skin quality",
+      alt: "Firm red onions, whole and halved, laid out on a pale surface for checking skin and bulb condition",
     },
     {
       src: product("Agricultural Products/Onion/fresh-onion-storage-handling.webp"),
-      alt: "Fresh onions in breathable bags in a ventilated store",
+      alt: "Red onions in ventilated wooden crates inside an open-sided storage shed",
     },
-    { src: product("Agricultural Products/Onion/fresh-onion-selection.webp"), alt: "Red, pink and white onions side by side" },
+    { src: product("Agricultural Products/Onion/fresh-onion-selection.webp"), alt: "Fresh red onions spread on perforated sorting trays, with crates of onions behind" },
   ],
   garlic: [
     {
@@ -235,14 +253,32 @@ export const articleImages: Record<string, Trio> = {
     },
   ],
   "frozen-peas": [
-    article("frozen-green-peas-size-grading-colour-and-iqf-quality", "Close-up of uniform, smooth shelled green peas filling the frame"),
-    article("maintaining-the-cold-chain-for-frozen-peas", "Macro of a single frozen green pea coated in ice crystals against a dark background"),
-    article("frozen-peas-in-ready-meals-food-service-and-retail-packs", "Chef rinsing green peas and sliced carrots in a steel hotel pan under a tap in a commercial kitchen"),
+    {
+      src: "/images/Blog/agri/frozen-green-peas-size-grading-colour-iqf-quality-hero.webp",
+      alt: "Close-up of bright, evenly sized shelled green peas",
+    },
+    {
+      src: "/images/Blog/agri/maintaining-cold-chain-frozen-peas-hero.webp",
+      alt: "Frost-covered frozen peas moving along a conveyor in a cold processing facility",
+    },
+    {
+      src: "/images/Blog/agri/specifying-frozen-peas-food-service-kitchens-hero.webp",
+      alt: "A gloved worker scooping green peas into meal trays of rice and carrots in a commercial kitchen",
+    },
   ],
   okra: [
-    article("selecting-tender-okra-for-export-length-and-freshness", "Pile of freshly harvested young okra pods, tender and uniformly green"),
-    article("handling-okra-gently-to-avoid-bruising-and-browning", "Two woven baskets filled with fresh green okra pods at a market"),
-    article("okra-in-curries-gumbo-and-frozen-food-lines", "Close-up of fresh okra cut into rounds, showing the seed chambers"),
+    {
+      src: "/images/Blog/agri/selecting-tender-okra-export.webp",
+      alt: "Fresh green okra pods with intact stems arranged in a woven basket at a produce market",
+    },
+    {
+      src: "/images/Blog/agri/handling-okra-gently-to-prevent-bruising.webp",
+      alt: "Gloved workers gently inspecting and sorting fresh green okra pods into produce crates",
+    },
+    {
+      src: "/images/Blog/agri/okra-curries-gumbo-frozen-food-lines.webp",
+      alt: "Sliced green okra cooked in tomato curry with fresh okra pods and cut pieces nearby",
+    },
   ],
   "bitter-gourd": [
     article("bitter-gourd-quality-ridges-colour-and-firmness", "Bowl of firm, bright green bitter gourds with pronounced ridges and bumps"),
@@ -412,20 +448,20 @@ export const sectionImages: Record<string, readonly SectionImage[]> = {
   "frozen-green-peas-size-grading-colour-and-iqf-quality": [
     {
       after: "Free-flowing IQF pieces",
-      src: agri("frozen-peas/frozen-peas-hero.webp"),
-      alt: "Separate, frost-covered frozen green peas in a white bowl",
+      src: "/images/products/Agricultural Products/Frozen Peas/frozen-peas-product-specifications.webp",
+      alt: "A heap of loose, frost-covered frozen green peas on a dark steel surface",
     },
     {
       after: "Tenderness and taste",
-      src: agri("frozen-peas/frozen-peas-pods.webp"),
-      alt: "Heap of fresh green pea pods",
+      src: "/images/products/Agricultural Products/Frozen Peas/fresh-green-pea-pods-close-up.webp",
+      alt: "Fresh green pea pods, one split open to show the peas inside",
     },
   ],
   "frozen-peas-in-ready-meals-food-service-and-retail-packs": [
     {
       after: "Retail packs",
-      src: agri("frozen-peas/frozen-peas-detail.webp"),
-      alt: "Close-up of bright, evenly coloured green peas",
+      src: "/images/products/Agricultural Products/Frozen Peas/fresh-green-peas-bulk-supply.webp",
+      alt: "Frozen green peas in a wooden bowl on hessian, with loose peas around it",
     },
   ],
   "selecting-tender-okra-for-export-length-and-freshness": [
@@ -438,18 +474,18 @@ export const sectionImages: Record<string, readonly SectionImage[]> = {
   "okra-in-curries-gumbo-and-frozen-food-lines": [
     {
       after: "South Asian cooking",
-      src: agri("okra/okra-use-curry.webp"),
-      alt: "Bhindi masala okra curry served with white rice",
+      src: product("Agricultural Products/Okra/fresh-okra-curries-stir-fries.webp"),
+      alt: "Indian okra curry cooked with tomatoes, onions and spices, garnished with fresh coriander",
     },
     {
       after: "Stews and gumbo",
-      src: agri("okra/okra-use-stew.webp"),
-      alt: "Bamia, an okra and meat stew in tomato sauce, served with rice",
+      src: product("Agricultural Products/Okra/fresh-okra-soups-stews.webp"),
+      alt: "Okra and meat stew served with basmati rice in a ceramic plate",
     },
     {
       after: "Frozen okra lines",
-      src: agri("okra/okra-use-frozen.webp"),
-      alt: "Glass bowl of frost-covered cut okra pieces",
+      src: product("Agricultural Products/Okra/fresh-okra-frozen-processed.webp"),
+      alt: "Frost-covered sliced okra in a glass bowl beside fresh okra pods and a bag of frozen pieces",
     },
   ],
   "bitter-gourd-quality-ridges-colour-and-firmness": [
@@ -721,12 +757,24 @@ export const sectionImages: Record<string, readonly SectionImage[]> = {
     },
   ],
   "dry-ginger-powder-quality-colour-pungency-and-fibre": [
-    { after: "What sonth should look like", src: powder("dry-ginger-powder-hero.webp"), alt: "A bowl of dried ginger pieces beside a bowl of ginger powder on a dark surface" },
+    {
+      after: "Bleached or unbleached",
+      src: "/images/Blog/dry-ginger-powder/dry-ginger-powder-bleached-unbleached.webp",
+      alt: "Dried ginger pieces in a dark bowl beside a bowl of ground ginger powder, for comparing colour and appearance.",
+    },
   ],
   "buying-clove-powder-aroma-colour-and-purity-checks": [
-    { after: "Colour and texture", src: powder("clove-powder-hero.webp"), alt: "A mound of dark brown clove powder beside a heap of whole cloves on a white surface" },
+    {
+      after: "Colour and texture",
+      src: "/images/Blog/clove-powder/clove-powder-colour-texture-purity.webp",
+      alt: "A mound of reddish-brown clove powder beside whole cloves on a ceramic plate",
+    },
   ],
   "using-clove-powder-in-meat-sauce-and-bakery-production": [
-    { after: "Bakery and sweet goods", src: powder("clove-powder-applications.webp"), alt: "Gingerbread biscuits beside a glass of milk" },
+    {
+      after: "Bakery and sweet goods",
+      src: "/images/Blog/clove-powder/clove-powder-bakery-sweet-goods.webp",
+      alt: "Sliced spiced fruit loaf and cookies on a cooling rack beside a small bowl of clove powder and whole cloves",
+    },
   ],
 };

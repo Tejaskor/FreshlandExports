@@ -34,8 +34,8 @@ export function FreshOnionUses() {
           </div>
           <Reveal variant="rise" delay={0.1} className="lg:col-span-4 lg:col-start-9">
             <p className="text-[1rem] leading-relaxed text-white/75">
-              From home kitchens to food factories and restaurants, fresh onions are a staple for
-              every kind of food business we supply.
+              Fresh onions are used across home cooking, salads, food processing and food-service
+              kitchens. Typical uses for each are shown below.
             </p>
           </Reveal>
         </div>
@@ -62,6 +62,7 @@ export function FreshOnionUses() {
                 </div>
                 <figcaption className="mt-5">
                   <h3 className="font-display text-heading leading-tight text-white">{use.title}</h3>
+                  <p className="mt-2 max-w-md text-[0.9375rem] leading-relaxed text-white/75">{use.text}</p>
                   <ul aria-label={`${use.title} applications`} className="mt-3 flex flex-wrap gap-2">
                     {use.items.map((item) => (
                       <li

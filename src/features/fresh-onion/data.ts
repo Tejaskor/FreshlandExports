@@ -13,8 +13,8 @@ const moq = moqFor("onion");
 
 export const freshOnionHero = {
   eyebrow: "Agricultural Export Products",
-  subheading: "Bulk Fresh Onions for Importers, Distributors and Food Businesses.",
-  body: "Freshland Exports supplies fresh onions selected for firmness, dry outer skins and a consistent appearance, in bulk quantities for wholesale, retail and food-processing buyers. Size, packaging and quantities are agreed with each order.",
+  subheading: "Bulk Fresh Onions for Importers, Distributors and Food Businesses",
+  body: "Freshland Exports supplies selected fresh onions for wholesale, distribution, food-service and processing requirements, subject to availability and buyer specifications. Variety, size, packaging and quantity are agreed with each order.",
   highlights: ["Bulk Export Supply", "Selected for Quality", `MOQ ${moq}`],
 } as const;
 
@@ -22,78 +22,118 @@ export const freshOnionAbout = {
   eyebrow: "Product Overview",
   heading: ["Fresh, Selected and", "Ready for Bulk Supply"],
   body: [
-    "Fresh onions are one of the most traded vegetables in the world, and buyers need them to arrive firm, dry and in sound condition. Our focus is on freshness and careful selection: bulbs are checked for firmness, intact skins and freedom from visible damage before they are packed.",
-    "We supply fresh onions in bulk to importers, distributors, wholesalers and food businesses, with size, packaging and quantity agreed for each order so every shipment matches what your market expects.",
+    "Fresh onions are a bulk agricultural product for importers, distributors, wholesalers, food-service businesses and food processors. Bulbs are selected against the buyer's requirements and checked for visible damage and condition before packing.",
+    "Appearance, colour, size, grading, packaging and order quantity are agreed according to each buyer's requirements and the onions actually available at the time of the order.",
   ],
   highlights: [
-    { label: "Product", value: "Fresh Onion" },
-    { label: "Product Type", value: "Fresh Vegetable" },
-    { label: "Appearance", value: "Round to oval bulbs" },
-    { label: "Colour", value: "Red, pink, or white, depending on variety" },
-    { label: "Flavour", value: "Mild to pungent" },
-    { label: "Texture", value: "Firm and crisp" },
-    { label: "Applications", value: "Cooking, food processing, and wholesale distribution" },
+    { label: "Product", value: "Fresh Onions" },
+    { label: "Product Type", value: "Fresh vegetable" },
+    { label: "Appearance", value: "Round to oval bulbs, depending on variety" },
+    { label: "Colour", value: "Depends on variety" },
+    { label: "Flavour", value: "Characteristic onion flavour" },
+    { label: "Texture", value: "Firm and crisp, subject to condition and quality" },
+    { label: "Applications", value: "Cooking, salads, food processing and food service" },
+  ],
+} as const;
+
+/** Onion categories, each with its own photograph; availability is confirmed per enquiry. */
+export const freshOnionVarieties = {
+  eyebrow: "Our Varieties",
+  heading: "Explore Our Fresh Onion Varieties",
+  intro:
+    "Explore the main onion colour categories and small-onion products relevant to buyers. Available varieties depend on sourcing, season, quantity and destination-market requirements.",
+  items: [
+    {
+      title: "Red Onions",
+      text: "Red onions range from light red to deep red or purple-red, depending on variety. They are commonly used in curries, gravies, cooking and salads.",
+      image: freshOnionImages.red,
+    },
+    {
+      title: "Pink Onions",
+      text: "Pinkish-coloured onions for buyers seeking a particular colour and appearance. Specific varieties and availability must be confirmed with the supplier.",
+      image: freshOnionImages.pink,
+    },
+    {
+      title: "White Onions",
+      text: "White onions have pale skins and white flesh and can be used in culinary and food-processing applications.",
+      image: freshOnionImages.white,
+    },
+    {
+      title: "Yellow/Brown Onions",
+      text: "Yellow to brown-skinned onions for buyers seeking this colour category. Confirm sourcing and destination-market suitability before placing an order.",
+      image: freshOnionImages.yellowBrown,
+    },
+    {
+      title: "Sambar Onions / Shallots",
+      text: "Small onions and shallots used in regional cooking, including South Indian dishes. Treat this as a distinct small-bulb category rather than a colour variant of standard bulb onions.",
+      image: freshOnionImages.shallots,
+    },
   ],
 } as const;
 
 export const freshOnionFeatures: readonly { title: string; text: string; icon: IconName }[] = [
   {
     title: "Freshness & Quality",
-    text: "Bulbs are selected for firmness, dry outer skins and freedom from visible damage, so they arrive in sound condition for your customers.",
+    text: "Selected according to agreed buyer requirements and checked for visible damage and condition before packing.",
     icon: "sprout",
   },
   {
     title: "Variety & Grading",
-    text: "Red, pink or white onions, depending on availability, sorted to the size you specify.",
+    text: "Colour, size and grading depend on actual availability and the buyer's specifications.",
     icon: "target",
   },
   {
     title: "Food Applications",
-    text: "Suited to home cooking, fresh preparations, food processing and food-service kitchens.",
+    text: "Suitable uses include cooking, salads, food processing and food-service applications.",
     icon: "layers",
   },
   {
     title: "Bulk Supply",
-    text: `Bulk quantities from a minimum order of ${moq}, with packaging and quantities agreed for each shipment.`,
+    text: "Orders are handled according to confirmed quantity, packaging and supply availability.",
     icon: "globe",
   },
 ];
 
-export const freshOnionUses: readonly { title: string; items: readonly string[]; image: ImageSlotData }[] = [
+export const freshOnionUses: readonly { title: string; text: string; items: readonly string[]; image: ImageSlotData }[] = [
   {
     title: "Culinary & Cooking",
+    text: "A base ingredient in everyday cooking, from curries and gravies to rice dishes and stews.",
     items: ["Curries and gravies", "Vegetable dishes", "Rice and pulao", "Soups and stews"],
     image: freshOnionImages.wholeOnions,
   },
   {
     title: "Fresh Salads",
+    text: "Sliced raw in salads and as a topping, where colour and crispness show.",
     items: ["Fresh salads", "Sandwiches", "Burgers", "Onion toppings"],
     image: freshOnionImages.salad,
   },
   {
     title: "Food Processing",
+    text: "Fresh onions as a raw material for processors preparing sauces, pickles and prepared foods.",
     items: ["Sauces and dips", "Pickles", "Frozen food products", "Ready-to-eat meals"],
     image: freshOnionImages.sliced,
   },
   {
     title: "Food Service",
+    text: "Bulk onions for restaurants, caterers and hotel kitchens that prepare them on site.",
     items: ["Restaurants", "Catering", "Hotel kitchens", "Marinades and grills"],
     image: freshOnionImages.cooked,
   },
 ];
 
 export const freshOnionSpecs: readonly { label: string; value: string }[] = [
-  { label: "Product Name", value: "Fresh Onion" },
-  { label: "Product Type", value: "Fresh Vegetable" },
-  { label: "Appearance", value: "Round to oval bulbs" },
-  { label: "Colour", value: "Red, pink, or white, depending on variety" },
+  { label: "Product Name", value: "Fresh Onions" },
+  { label: "Product Type", value: "Fresh vegetable" },
+  { label: "Varieties", value: "Red, pink, white, yellow/brown and small onions/shallots, subject to availability" },
+  { label: "Appearance", value: "Round to oval bulbs, depending on variety" },
+  { label: "Colour", value: "Depends on variety" },
   { label: "Flavour", value: "Characteristic onion flavour" },
-  { label: "Texture", value: "Firm and crisp" },
-  { label: "Size", value: "As per buyer requirements" },
-  { label: "Packaging", value: "As per buyer requirements" },
+  { label: "Texture", value: "Firm and crisp, subject to condition and quality" },
+  { label: "Size", value: "As agreed with the buyer" },
+  { label: "Packaging", value: "As agreed with the buyer, subject to available export options" },
   { label: "Supply", value: "Bulk supply, subject to availability" },
-  { label: "Shelf Life", value: "Depends on variety and storage conditions" },
-  { label: "Storage", value: "Cool, dry, and well-ventilated conditions" },
+  { label: "Shelf Life", value: "Depends on variety, initial condition and storage conditions" },
+  { label: "Storage", value: "Cool, dry and well-ventilated conditions appropriate to the product" },
 ];
 
 export const freshOnionSpecsNote =
@@ -104,12 +144,11 @@ export const freshOnionStorage = {
   body: "Fresh onions keep best when they stay dry and have air moving around them. These practices help protect quality from packing to delivery.",
   tips: [
     "Store in a cool, dry and well-ventilated area.",
-    "Keep away from moisture, which encourages sprouting and mould.",
-    "Protect from direct sunlight and heat.",
-    "Use breathable bags, not sealed plastic.",
-    "Stack bags with space for airflow and avoid crushing the lower layers.",
-    "Handle gently when loading and unloading to prevent bruising.",
-    "Inspect stock regularly and remove soft or damaged bulbs.",
+    "Keep away from excess moisture and direct sunlight.",
+    "Allow adequate airflow during storage.",
+    "Avoid crushing bulbs during handling and stacking.",
+    "Inspect stock regularly and remove damaged bulbs.",
+    "Follow storage and transport requirements appropriate to the variety and shipment.",
   ],
 } as const;
 
@@ -126,9 +165,9 @@ export type FreshOnionFaq = { question: string; answer: string };
 /** Fresh onion FAQs — answers stay within the confirmed specifications. */
 export const freshOnionFaqs: readonly FreshOnionFaq[] = [
   {
-    question: "Which types of fresh onions do you supply?",
+    question: "Which onion varieties and colours can you supply?",
     answer:
-      "We supply red, pink and white onions, depending on the season and availability. Tell us which type your market prefers and we will confirm what is available for your order.",
+      "Red, pink, white and yellow/brown onions, as well as small onions or shallots, can be discussed with our team. What we can supply depends on sourcing, season, quantity and your requirements, so tell us the type your market prefers and we will confirm current availability.",
   },
   {
     question: "What is the minimum order quantity?",
@@ -137,22 +176,21 @@ export const freshOnionFaqs: readonly FreshOnionFaq[] = [
   {
     question: "Can you supply onions in a specific size?",
     answer:
-      "Yes. Bulb size is supplied as per buyer requirements and confirmed with each order, so please share the size range you need.",
+      "Please state the size and grading you need in your enquiry. We confirm them against the onions available for your order.",
   },
   {
     question: "How are fresh onions packed for export?",
     answer:
-      "Packaging is supplied as per buyer requirements. We agree the bag type and weight with you before dispatch, using breathable packaging that lets air move around the onions.",
+      "Packaging depends on your specifications, the destination's requirements and the packing options available for the order. We agree the packaging with you before dispatch.",
   },
   {
-    question: "How should fresh onions be stored, and how long do they keep?",
+    question: "How should fresh onions be stored, and how long do they last?",
     answer:
-      "Keep them in a cool, dry and well-ventilated place, away from moisture and direct sunlight, and handle the bags gently to avoid bruising. Shelf life depends on the variety and on storage conditions; good storage helps onions stay firm for longer.",
+      "Keep them in a cool, dry and well-ventilated place, away from excess moisture and direct sunlight, with enough airflow and without crushing the bulbs. How long they last depends on the variety, their condition at packing and the conditions during storage and transit.",
   },
   {
     question: "How do I request a quote?",
     answer:
-      "Use the enquiry form on this page to share the onion type, quantity, size, packaging and destination. Our team will reply with availability and pricing.",
+      "Use the quote form on this page to share your preferred variety, quantity, destination and specifications. Our team will reply with availability and pricing.",
   },
 ];
-

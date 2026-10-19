@@ -29,6 +29,8 @@ export interface ExportProduct {
   /** One line for menus and cards. */
   summary: string;
   description: string;
+  /** Page title, when the product name alone does not describe the page. */
+  seoTitle?: string;
   /** Search-result description, when the generic one is not specific enough. */
   seoDescription?: string;
   forms: readonly string[];
@@ -147,6 +149,9 @@ export const exportProducts: readonly ExportProduct[] = [
   {
     slug: "onion",
     name: "Onion",
+    seoTitle: "Bulk Fresh Onions for Importers and Food Businesses",
+    seoDescription:
+      "Bulk fresh onions for importers, distributors, food-service and processing buyers: red, pink, white, yellow/brown and shallots, subject to availability. Request a quote.",
     category: "agricultural",
     summary: "Fresh red, pink and white onions, size-graded",
     description:

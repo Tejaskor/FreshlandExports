@@ -66,7 +66,7 @@ export function FreshOnionHero() {
 
           <div className="relative lg:col-span-6">
             <ClipReveal from="left" duration={1.2} className="overflow-hidden rounded-[2.5rem_2.5rem_2.5rem_0.75rem] shadow-[var(--shadow-figure)]">
-              {/* Hero — fresh red onions. */}
+              {/* Hero — mixed onion varieties in a crate. */}
               <ImageSlot
                 slot={freshOnionImages.hero}
                 tone="sage"
@@ -99,7 +99,7 @@ export function FreshOnionHero() {
             <Reveal variant="sweep-left" delay={0.75} className="absolute top-4 right-4">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-[0.8125rem] font-medium text-forest shadow-[var(--shadow-card)] backdrop-blur-sm">
                 <span aria-hidden="true" className="size-2 rounded-full bg-rust" />
-                Red · Pink · White
+                Red · Pink · White · Yellow · Shallots
               </span>
             </Reveal>
           </div>

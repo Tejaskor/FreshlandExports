@@ -155,13 +155,22 @@ export function Quality({ product, kind = "quality" }: { product: AgriProduct; k
    Specifications
    ======================================================================== */
 
-function EnquiryNote({ inverse = false }: { inverse?: boolean }) {
+/**
+ * The specifications button and its note. `row`: stacked and left-aligned on
+ * phones, one vertically centred row from `sm`, the note wrapping to two lines.
+ */
+function EnquiryNote({ inverse = false, row = false }: { inverse?: boolean; row?: boolean }) {
   return (
-    <div className={cn("flex flex-wrap items-center gap-4", inverse ? "text-white/75" : "text-ink-muted")}>
-      <AnchorButton href="#quote-form" size="md" className="font-semibold">
+    <div
+      className={cn(
+        row ? "flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6" : "flex flex-wrap items-center gap-4",
+        inverse ? "text-white/75" : "text-ink-muted",
+      )}
+    >
+      <AnchorButton href="#quote-form" size="md" className={cn("font-semibold", row && "shrink-0")}>
         Request Specifications
       </AnchorButton>
-      <p className="max-w-xs text-[0.8125rem] leading-relaxed">
+      <p className={cn("text-[0.8125rem] leading-relaxed", row ? "max-w-[17rem]" : "max-w-xs")}>
         Grades, sizing and packaging are confirmed with each enquiry.
       </p>
     </div>
@@ -207,9 +216,10 @@ export function Specs({
                   </div>
                 ))}
               </dl>
-              <p className="mt-6 text-[0.8125rem] leading-relaxed text-white/65">{specs.note}</p>
-              <div className="mt-6">
-                <EnquiryNote inverse />
+              {/* The footer line carries the enquiry note, so `specs.note`
+                  (the same message) is not repeated above it. */}
+              <div className="border-t border-white/12 pt-6 sm:pt-8">
+                <EnquiryNote inverse row />
               </div>
             </div>
           </Reveal>

@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Params) {
   if (exportProduct) {
     const media = exportProductMedia(exportProduct);
     return createMetadata({
-      title: exportProduct.name,
+      title: exportProduct.seoTitle ?? exportProduct.name,
       description:
         exportProduct.seoDescription ??
         `${exportProduct.name} from India — ${exportProduct.summary.toLowerCase()}. ${exportCategories[exportProduct.category].name} from Freshland Exports; specifications, packaging and quotes on request.`,
