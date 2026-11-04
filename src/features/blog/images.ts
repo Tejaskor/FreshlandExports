@@ -244,7 +244,7 @@ export const articleImages: Record<string, Trio> = {
       alt: "Long, glossy green chillies sorted on a stainless steel table",
     },
     {
-      src: product("GreenChillies/Fresh Green Chilli Sorting Display.png"),
+      src: product("GreenChillies/Fresh Green Chilli Sorting Display.webp"),
       alt: "Fresh green chillies on a metal sorting tray, with yellowing and blemished pods set apart and more chillies in a crate and basket behind",
     },
     {

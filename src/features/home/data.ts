@@ -64,18 +64,18 @@ export const certifications: readonly {
   width: number;
   height: number;
 }[] = [
-  { name: "EU Organic", image: "/images/home/hero/EU Organic.png", width: 1536, height: 1024 },
-  { name: "USDA Organic", image: "/images/home/hero/USDA Organic.png", width: 1284, height: 1225 },
-  { name: "India Organic", image: "/images/home/hero/India Organic.png", width: 1278, height: 1230 },
-  { name: "Spices Board India", image: "/images/home/hero/Spices Board India.png", width: 1254, height: 1254 },
-  { name: "FSSAI", image: "/images/home/hero/FSSAI.png", width: 1774, height: 887 },
-  { name: "FIEO", image: "/images/home/hero/FIEO.png", width: 1353, height: 1162 },
-  { name: "APEDA", image: "/images/home/hero/APEDA.png", width: 1334, height: 1179 },
-  { name: "FSSC 22000", image: "/images/home/hero/FSSC 22000.png", width: 2172, height: 724 },
-  { name: "Halal India", image: "/images/home/hero/Halal India.png", width: 1254, height: 1254 },
-  { name: "KBD", image: "/images/home/hero/KBD.png", width: 566, height: 541 },
-  { name: "ZED Certification", image: "/images/home/hero/Zed Certification.png", width: 600, height: 497 },
-  { name: "IEC Code", image: "/images/home/hero/ICE-Certificate.png", width: 971, height: 257 },
+  { name: "EU Organic", image: "/images/home/hero/EU Organic.webp", width: 1536, height: 1024 },
+  { name: "USDA Organic", image: "/images/home/hero/USDA Organic.webp", width: 1284, height: 1225 },
+  { name: "India Organic", image: "/images/home/hero/India Organic.webp", width: 1278, height: 1230 },
+  { name: "Spices Board India", image: "/images/home/hero/Spices Board India.webp", width: 1254, height: 1254 },
+  { name: "FSSAI", image: "/images/home/hero/FSSAI.webp", width: 1774, height: 887 },
+  { name: "FIEO", image: "/images/home/hero/FIEO.webp", width: 1353, height: 1162 },
+  { name: "APEDA", image: "/images/home/hero/APEDA.webp", width: 1334, height: 1179 },
+  { name: "FSSC 22000", image: "/images/home/hero/FSSC 22000.webp", width: 2172, height: 724 },
+  { name: "Halal India", image: "/images/home/hero/Halal India.webp", width: 1254, height: 1254 },
+  { name: "KBD", image: "/images/home/hero/KBD.webp", width: 566, height: 541 },
+  { name: "ZED Certification", image: "/images/home/hero/Zed Certification.webp", width: 600, height: 497 },
+  { name: "IEC Code", image: "/images/home/hero/ICE-Certificate.webp", width: 971, height: 257 },
 ] as const;
 
 export const stats: readonly { value: string; label: string }[] = [

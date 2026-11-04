@@ -26,7 +26,7 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center", large ? "gap-3.5" : "gap-2.5", className)}>
       <Image
-        src="/images/shared/logos/freshland-mark.png"
+        src="/images/shared/logos/freshland-mark.webp"
         alt=""
         width={415}
         height={391}

@@ -32,13 +32,13 @@ export const certificates: readonly Certificate[] = [
     title: "FSSC 22000",
     description:
       "A food safety management certification designed to support systematic controls, consistent processes, and food safety throughout applicable operations.",
-    logo: { src: `${dir}/FSSC 22000.png`, alt: "FSSC 22000 logo" },
+    logo: { src: `${dir}/FSSC 22000.webp`, alt: "FSSC 22000 logo" },
   },
   {
     title: "FSSAI Registration",
     description:
       "Our food business registration supports compliance with applicable food safety requirements in India.",
-    logo: { src: `${dir}/FSSAI.png`, alt: "FSSAI logo" },
+    logo: { src: `${dir}/FSSAI.webp`, alt: "FSSAI logo" },
   },
   {
     title: "FDA Registration",
@@ -51,55 +51,55 @@ export const certificates: readonly Certificate[] = [
     title: "Halal Certification",
     description:
       "Halal certification provides assurance that the products and processes covered by the certificate meet the applicable Halal requirements.",
-    logo: { src: `${dir}/Halal India.png`, alt: "Halal India certification mark" },
+    logo: { src: `${dir}/Halal India.webp`, alt: "Halal India certification mark" },
   },
   {
     title: "Certificate of Registration as Exporter of Spices",
     description:
       "Exporter registration supports eligible spice export activities and compliance with applicable trade requirements.",
-    logo: { src: `${dir}/Spices Board India.png`, alt: "Spices Board India emblem" },
+    logo: { src: `${dir}/Spices Board India.webp`, alt: "Spices Board India emblem" },
   },
   {
     title: "APEDA Registration",
     description:
       "APEDA registration supports eligible agricultural and processed food export activities from India.",
-    logo: { src: `${dir}/APEDA.png`, alt: "APEDA logo" },
+    logo: { src: `${dir}/APEDA.webp`, alt: "APEDA logo" },
   },
   {
     title: "NPOP Organic Certification",
     description:
       "Organic certification under India's National Programme for Organic Production applies to the products and operations listed in the certificate's scope.",
-    logo: { src: `${dir}/India Organic.png`, alt: "India Organic (NPOP) certification mark" },
+    logo: { src: `${dir}/India Organic.webp`, alt: "India Organic (NPOP) certification mark" },
   },
   {
     title: "USDA Organic / NOP",
     description:
       "Organic certification under the USDA National Organic Program applies to the products and operations covered by the relevant certificate.",
-    logo: { src: `${dir}/USDA Organic.png`, alt: "USDA Organic seal" },
+    logo: { src: `${dir}/USDA Organic.webp`, alt: "USDA Organic seal" },
   },
   {
     title: "EU Organic Certification",
     description:
       "Organic certification for products and operations covered by the applicable European Union organic standards.",
-    logo: { src: `${dir}/EU Organic.png`, alt: "EU organic logo" },
+    logo: { src: `${dir}/EU Organic.webp`, alt: "EU organic logo" },
   },
   {
     title: "Kosher Certification",
     description:
       "Kosher certification confirms that the products and processes covered by the certificate meet the requirements of the issuing certification body.",
-    logo: { src: `${dir}/KBD.png`, alt: "KLBD kosher certification mark" },
+    logo: { src: `${dir}/KBD.webp`, alt: "KLBD kosher certification mark" },
   },
   {
     title: "ZED Certification",
     description:
       "The Zero Defect Zero Effect programme recognizes eligible businesses for their performance against the applicable quality and environmental criteria.",
-    logo: { src: `${dir}/Zed Certification.png`, alt: "MSME ZED certification logo" },
+    logo: { src: `${dir}/Zed Certification.webp`, alt: "MSME ZED certification logo" },
   },
   {
     title: "IEC Code Registration",
     description:
       "Import Export Code registration with India's Directorate General of Foreign Trade, which supports import and export activities from India.",
     // The mark lives with the homepage certification marks (not copied here).
-    logo: { src: "/images/home/hero/ICE-Certificate.png", alt: "IEC Code (Import Export Code) registration mark" },
+    logo: { src: "/images/home/hero/ICE-Certificate.webp", alt: "IEC Code (Import Export Code) registration mark" },
   },
 ];

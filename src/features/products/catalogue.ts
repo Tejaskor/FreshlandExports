@@ -75,7 +75,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     summary: "Carefully processed powders for food and commercial applications.",
     anchor: "powder-products",
     cover: {
-      file: "Powder.png",
+      file: "Powder.webp",
       alt: "Bowls of moringa, turmeric and onion powders beside fresh turmeric root, moringa leaves and onions",
     },
     card: {
@@ -196,7 +196,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     summary: "Fresh produce for wholesale, food service and export.",
     anchor: "agricultural-products",
     cover: {
-      file: "Vegetables.png",
+      file: "Vegetables.webp",
       alt: "Fresh cabbage, onions, garlic, cucumbers, green beans and green chillies",
     },
     card: {
@@ -300,7 +300,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     summary: "Selected fresh fruits for wholesale and international markets.",
     anchor: "fresh-fruits",
     cover: {
-      file: "fruits.png",
+      file: "fruits.webp",
       alt: "Fresh mangoes, bananas, oranges, pomegranate, guavas and grapes",
     },
     card: {
@@ -375,7 +375,7 @@ export const catalogue: readonly CatalogueCategory[] = [
     summary: "Selected spices for flavour, aroma and food applications.",
     anchor: "whole-spices",
     cover: {
-      file: "Spices.png",
+      file: "Spices.webp",
       alt: "Bowls of whole spices: red chillies, cinnamon, black pepper, cumin, cloves, cardamom and mustard seeds",
     },
     card: {

@@ -21,9 +21,10 @@ const nextConfig: NextConfig = {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
   images: {
-    // 75 stays the default; 90 is reserved for hero photography, where the
-    // sources are already compressed WebP and a second 75% pass visibly softens them.
-    qualities: [75, 90],
+    // Vercel Image Optimization is switched off: every image is served as-is
+    // from /public (no /_next/image requests, no transformation quota). Assets
+    // are pre-compressed WebP, so keep them that way when adding new ones.
+    unoptimized: true,
   },
   async redirects() {
     // Retitled articles: their slugs follow the title. Each earlier address
